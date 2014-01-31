@@ -36,12 +36,6 @@ A: humanities c and v, science, latin, and math k (math c coming soon!).
 
 -
 
-> will hwstack ever have model un tasks?
-
-A: i'm trying to get jacob to let me.
-
--
-
 > why did you make this readme file? i can see you in person at school, you know.
 
 A: why do you ask so many questions?
