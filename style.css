@@ -22,11 +22,15 @@ span:nth-of-type(3) {
 }
 
 #thestack-wrapper {
-  width: 60%;
+  width: 50%;
   background-color: #DDDDDD;
 }
 
 #mystack-wrapper {
   width: 30%;
   background-color: #CCCCCC;
+}
+
+#wrapper {
+  margin: 0px auto;
 }
