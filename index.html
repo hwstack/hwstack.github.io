@@ -107,7 +107,13 @@ TODO:
 </td>
 
 <td id="mystack-wrapper">
-  lorem!
+  <table width="100%" cellpadding="0px" cellspacing="0px">
+    <tr>
+      <td><input type="text" id="key" name="key" value="" style="width: 110px;"></td>
+			<td><input type="text" id="val" name="val" value="" style="width: 98%"></td>
+			<td><a href="javascript:insert_value()">Add Task</a></td>
+    </tr>
+  </table>
 </td>
 
   </tr>
@@ -129,6 +135,63 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 //var toInsert = "<div class="entry"><span>" + dueDate + "</span>&nbsp;<span>" + classTag + "</span><br /><span>" + taskInfo + "</span></div>";
 //$(".entry").before(toInsert);
 //var win = window.open('about:blank','','height=400,width=400,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+
+
+			function addToMyStack(){
+				var row = new Element("tr"),
+					key = $('key').value,
+					val = $('val').value;
+				if(!key){
+					alert("Error W00PS: Class must be specified!");
+					$('key').focus();
+					return;
+				}
+				$.jStorage.set(key, val);
+				$('key').value = "";
+				$('val').value = "";
+				reDraw();
+			}
+			
+			function flush_data(){
+				$.jStorage.flush();
+				reDraw();
+			}
+			
+			function get_value(){
+				var value = $.jStorage.get($F("key2"));
+				alert(value);
+				$('key2').value = "";
+			}
+			
+			function flush_values(){
+				$.jStorage.flush();
+				reDraw();
+			}
+			
+			function reDraw(){
+
+				var row, del, index;
+
+				$$("tr[class~=rida]").each(function(c){c.remove();});
+
+				index = $.jStorage.index();
+				for(var i=0; i<index.length; i++){
+					row = new Element("tr",{className:"rida"});
+					row.insert(new Element("td").update(index[i]));
+					row.insert(new Element("td").update($.jStorage.get(index[i])));
+					del = new Element("a",{href:"javascript:void(0)"}).update("DEL");
+					(function(i){
+						del.observe("click", function(){
+							$.jStorage.deleteKey(i);
+							reDraw();
+						});
+					})(index[i])
+					row.insert(new Element("td").insert(del));
+					$("tulemused").insert(row);
+
+				}
+			}
+		
 
 </script>
 
