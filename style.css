@@ -1,5 +1,5 @@
 /* specific entry selector */
-div {
+div, td {
   padding: 10px;
   background-color: #EEEEEE;
   font-family: 'Alef', 'sans-serif';
