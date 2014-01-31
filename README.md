@@ -1,12 +1,13 @@
 hwstack.github.io
 =================
 
-######a new tasks system
+#####a new tasks system
 
 
 goal: with only two (and a half) people, we can easily get all of the hw tasks for the whole grade. putting these on a nice website (thanks for the css, jacob) will make for a good task system.
 
-####Q/A
+##Q&A
+
 
 > why shouldn't i just use google tasks?
 
