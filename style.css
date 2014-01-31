@@ -21,8 +21,12 @@ span:nth-of-type(3) {
   font-size: 1.1em;
 }
 
-#wrapper {
-  width: 45%;
+#thestack-wrapper {
+  width: 60%;
   background-color: #DDDDDD;
-  margin: 0px auto;
+}
+
+#mystack-wrapper {
+  width: 30%;
+  background-color: #CCCCCC;
 }
