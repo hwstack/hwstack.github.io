@@ -6,6 +6,8 @@ hwstack.github.io
 
 goal: with only two (and a half) people, we can easily get all of the hw tasks for the whole grade. putting these on a nice website (thanks for the css, jacob) will make for a good task system.
 
+####Q/A
+
 > why shouldn't i just use google tasks?
 
 A: what if you mess it up? what if you forget a task? for some, gtasks is reliable -- for others, not so much.
