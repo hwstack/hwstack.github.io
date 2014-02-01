@@ -142,17 +142,17 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 
 
 			function addToMyStack(){
-				//var row = new Element("tr");
-				var key = $("#key").val();
-				var val = $("#val").val();
+				var row = new Element("tr");
+				var key = $("key").val();
+				var val = $("val").val();
 				if(!key){
 					alert("Error W00PS: Class must be specified!");
 					$("key").focus();
 					return;
 				}
 				$.jStorage.set(key, val);
-				//$("#key").val() = "";
-				//$("#val").val() = "";
+				$("key").val() = "";
+				$("val").val() = "";
 				reDraw();
 			}
 			
@@ -164,7 +164,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 			function get_value(){
 				var value = $.jStorage.get($F("key2"));
 				alert(value);
-				$("#key2").val() = "";
+				$("key2").val() = "";
 			}
 			
 			function flush_values(){
