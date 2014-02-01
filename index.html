@@ -152,12 +152,22 @@ function flush_data(){
 	reDraw();
 }
 
-function reDraw(){
-	var key = $("#key").val();
-	var task = $("#task").val();
-	var del = document.createElement("<a href='javascript:flush_data()'>X</a>");
+function deleteTask( key ) {
+	$.jStorage.deleteKey(key);
+	reDraw();
+}
 
-	$( "<tr><td>" + task + "</td><td>" + key + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
+function reDraw(){
+	var key, task, row;
+	
+	var index = $.jStorage.index();
+	for(i=0; i<index.length; i++) {
+		task = index[i];
+		key = $.jStorage.get(task);
+		row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(" + key + ")'>X</a></td></tr>" );
+	}
+
+	row.insertAfter( "#tulemused" );
 }
 
 </script>
