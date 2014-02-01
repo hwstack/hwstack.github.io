@@ -19,7 +19,7 @@ TODO:
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
   <!--<script src="https://rawgithub.com/hwstack/hwstack.github.io/master/cb.js"></script>-->
-  <script src="https://rawgithub.com/sstephenson/prototype/master/src/prototype/prototype.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
   <link rel="shortcut icon" href="http://www.iconj.com/ico/a/8/a8dr4op713.ico" type="image/x-icon" />
 </head>
 <body>
@@ -174,26 +174,23 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 			
 			function reDraw(){
 
-				var row, col, a, del, index;
+				var row, del, index;
 
-				$("tr[class~=rida]").each(function(c){
-					c.remove();
-				});
+				$$("tr[class~=rida]").each(function(c){c.remove();});
 
 				index = $.jStorage.index();
 				for(var i=0; i<index.length; i++){
-					row = document.createElement("tr",{className:"rida"});
-					col = document.createElement("td");
-					row.insert(col.update(index[i]));
-					row.insert(col.update($.jStorage.get(index[i])));
-					del = document.createElement("a",{href:"javascript:void(0)"}).update("DEL");
+					row = new Element("tr",{className:"rida"});
+					row.insert(new Element("td").update(index[i]));
+					row.insert(new Element("td").update($.jStorage.get(index[i])));
+					del = new Element("a",{href:"javascript:void(0)"}).update("DEL");
 					(function(i){
 						del.observe("click", function(){
 							$.jStorage.deleteKey(i);
 							reDraw();
 						});
 					})(index[i])
-					row.insert(col.insert(del));
+					row.insert(new Element("td").insert(del));
 					$("tulemused").insert(row);
 
 				}
