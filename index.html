@@ -113,8 +113,8 @@ TODO:
   </tbody>
     <tr>
       <td><input type="text" id="key" name="key" value="" style="width: 110px;"></td>
-	<td><input type="text" id="val" name="val" value="" style="width: 98%"></td>
-	<td><!--<a href="javascript:addToMyStack()">Add Task</a>--></td>
+	<td><input type="text" id="task" name="task" value="" style="width: 98%"></td>
+	<td><a href="javascript:addToMyStack()">Add Task</a></td>
     </tr>
   </table>
 </td>
@@ -140,18 +140,15 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 //var win = window.open('about:blank','','height=400,width=400,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
 
 
-			/*function addToMyStack(){
-				var row = new Element("tr");
-				var key = $("key").value;
-				var val = $("val").value;
+			function addToMyStack(){
+				var key = $("#key").val();
+				var task = $("#task").val();
 				if(!key){
 					alert("Error W00PS: Class must be specified!");
-					$("key").focus();
+					$("#key").focus();
 					return;
 				}
-				$.jStorage.set(key, val);
-				$("key").value = "";
-				$("val").value = "";
+				$.jStorage.set(key, task);
 				reDraw();
 			}
 			
@@ -160,40 +157,15 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 				reDraw();
 			}
 			
-			function get_value(){
-				var value = $.jStorage.get($F("key2"));
-				alert(value);
-				$("key2").val() = "";
-			}
-			
-			function flush_values(){
-				$.jStorage.flush();
-				reDraw();
-			}
-			
 			function reDraw(){
 
-				var row, del, index;
+				var task = $("#task").val();
+				var del = document.createElement("<a href="javascript:flush_data()">[x]</a>");
 
-				$$("tr[class~=rida]").each(function(c){c.remove();});
+				$("tr[class~=rida]").each(function(c){c.remove();});
 
-				index = $.jStorage.index();
-				for(var i=0; i<index.length; i++){
-					row = new Element("tr",{className:"rida"});
-					row.insert(new Element("td").update(index[i]));
-					row.insert(new Element("td").update($.jStorage.get(index[i])));
-					del = new Element("a",{href:"javascript:void(0)"}).update("DEL");
-					(function(i){
-						del.observe("click", function(){
-							$.jStorage.deleteKey(i);
-							reDraw();
-						});
-					})(index[i])
-					row.insert(new Element("td").insert(del));
-					$("tulemused").insert(row);
-
-				}
-			}*/
+				$( "<tr><td>" + task + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
+			}
 		
 
 </script>
