@@ -155,7 +155,7 @@ function flush_data(){
 function reDraw(){
 	var key = $("#key").val();
 	var task = $("#task").val();
-	var del = document.createElement("<a href='javascript:flush_data()'>[x]</a>");
+	var del = document.createElement("<a href='javascript:flush_data()'>X</a>");
 
 	$( "<tr><td>" + task + "</td><td>" + key + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
 }
