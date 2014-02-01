@@ -12,7 +12,7 @@ TODO:
 <head>
   <title>hwStack v0.0.2a</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js"></script>
+  <!--<script src="https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js"></script>-->
   
   <link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -153,10 +153,11 @@ function flush_data(){
 }
 
 function reDraw(){
+	var key = $("#key").val();
 	var task = $("#task").val();
-	var del = $("<a href='javascript:flush_data()'>[x]</a>");
+	var del = document.createElement("<a href='javascript:flush_data()'>[x]</a>");
 
-	$( "<tr><td>" + task + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
+	$( "<tr><td>" + task + "</td><td>" + key + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
 }
 
 </script>
