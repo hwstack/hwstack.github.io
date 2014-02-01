@@ -182,17 +182,17 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 
 				index = $.jStorage.index();
 				for(var i=0; i<index.length; i++){
-					row = new Element("tr",{className:"rida"});
-					row.insert(new Element("td").update(index[i]));
-					row.insert(new Element("td").update($.jStorage.get(index[i])));
-					del = new Element("a",{href:"javascript:void(0)"}).update("DEL");
+					row = document.createElement("tr",{className:"rida"});
+					row.insert(document.createElement("td").update(index[i]));
+					row.insert(document.createElement("td").update($.jStorage.get(index[i])));
+					del = document.createElement("a",{href:"javascript:void(0)"}).update("DEL");
 					(function(i){
 						del.observe("click", function(){
 							$.jStorage.deleteKey(i);
 							reDraw();
 						});
 					})(index[i])
-					row.insert(new Element("td").insert(del));
+					row.insert(document.createElement("td").insert(del));
 					$("tulemused").insert(row);
 
 				}
