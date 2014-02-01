@@ -1,8 +1,3 @@
-//var toInsert = "<div class="entry"><span>" + dueDate + "</span>&nbsp;<span>" + classTag + "</span><br /><span>" + taskInfo + "</span></div>";
-//$(".entry").before(toInsert);
-//var win = window.open('about:blank','','height=400,width=400,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
-
-
 function add() {
 	var key = $("#key").val();
 	var task = $("#task").val();
@@ -28,3 +23,8 @@ function reDraw(){
 
 	$( "<tr><td>" + task + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
 }
+
+
+//var toInsert = "<div class="entry"><span>" + dueDate + "</span>&nbsp;<span>" + classTag + "</span><br /><span>" + taskInfo + "</span></div>";
+//$(".entry").before(toInsert);
+//var win = window.open('about:blank','','height=400,width=400,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
