@@ -38,7 +38,7 @@ TODO:
   
   <div class="entry">
     <span>2/3/14</span>&nbsp;<span>#Span</span><br />
-    <span>Informal Writing WorksheetHOHOHHO</span>
+    <span>Informal Writing Worksheet</span>
   </div>
   <div>
     <span>2/5/14</span>&nbsp;<span>#Lat</span><br />
@@ -143,16 +143,16 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 
 			function addToMyStack(){
 				//var row = new Element("tr");
-				var key = $('key').value;
-				var val = $('val').value;
+				var key = $("#key").value;
+				var val = $("#val").value;
 				if(!key){
 					alert("Error W00PS: Class must be specified!");
-					$('key').focus();
+					$("key").focus();
 					return;
 				}
 				$.jStorage.set(key, val);
-				$('key').value = "";
-				$('val').value = "";
+				$("#key").value = "";
+				$("#val").value = "";
 				reDraw();
 			}
 			
@@ -164,7 +164,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 			function get_value(){
 				var value = $.jStorage.get($F("key2"));
 				alert(value);
-				$('key2').value = "";
+				$("key2").value = "";
 			}
 			
 			function flush_values(){
