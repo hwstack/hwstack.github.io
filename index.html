@@ -174,7 +174,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 			
 			function reDraw(){
 
-				var row, del, index;
+				var row, col, a, del, index;
 
 				$("tr[class~=rida]").each(function(c){
 					c.remove();
@@ -183,8 +183,9 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 				index = $.jStorage.index();
 				for(var i=0; i<index.length; i++){
 					row = document.createElement("tr",{className:"rida"});
-					row.insert(document.createElement("td").update(index[i]));
-					row.insert(document.createElement("td").update($.jStorage.get(index[i])));
+					col = document.createElement("td");
+					row.insert(col.update(index[i]));
+					row.insert(col.update($.jStorage.get(index[i])));
 					del = document.createElement("a",{href:"javascript:void(0)"}).update("DEL");
 					(function(i){
 						del.observe("click", function(){
@@ -192,7 +193,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 							reDraw();
 						});
 					})(index[i])
-					row.insert(document.createElement("td").insert(del));
+					row.insert(col.insert(del));
 					$("tulemused").insert(row);
 
 				}
