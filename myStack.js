@@ -17,7 +17,7 @@ function flush_data(){
 
 function reDraw(){
 	var task = $("#task").val();
-	var del = document.createElement('<a href="javascript:flush_data()">[x]</a>');
+	var del = document.createElement("<a href='javascript:flush_data()'>[x]</a>");
 
 	//$("tr[class~=rida]").each(function(c){c.remove();});
 
