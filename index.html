@@ -114,7 +114,7 @@ TODO:
     <tr>
       <td><input type="text" id="key" name="key" value="" style="width: 110px;"></td>
 	<td><input type="text" id="task" name="task" value="" style="width: 98%"></td>
-	<td><a href="#" onclick="addToMyStack()">Add Task</a></td>
+	<td><a href="javascript:add()">Add Task</a></td>
     </tr>
   </table>
 </td>
@@ -140,7 +140,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 //var win = window.open('about:blank','','height=400,width=400,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
 
 
-			function addToMyStack(){
+			function add() {
 				var key = $("#key").val();
 				var task = $("#task").val();
 				if(!key){
