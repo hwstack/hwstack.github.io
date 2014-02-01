@@ -176,7 +176,9 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 
 				var row, del, index;
 
-				$$("tr[class~=rida]").each(function(c){c.remove();});
+				$("tr[class~=rida]").each(function(c){
+					c.remove();
+				});
 
 				index = $.jStorage.index();
 				for(var i=0; i<index.length; i++){
