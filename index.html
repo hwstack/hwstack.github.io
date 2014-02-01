@@ -122,7 +122,7 @@ TODO:
   </tr>
 </table>
 
-<script type="text/javascript">
+<script>
 
 $( "span:contains('#HumVaughan')" ).css( "color", "#4B8AE3" );
 $( "span:contains('#HumCadigan')" ).css( "color", "#4343E6" );
@@ -162,7 +162,7 @@ $( "span:contains('#MUN')" ).css( "color", "#282828");
 				var task = $("#task").val();
 				var del = document.createElement("<a href="javascript:flush_data()">[x]</a>");
 
-				$("tr[class~=rida]").each(function(c){c.remove();});
+				//$("tr[class~=rida]").each(function(c){c.remove();});
 
 				$( "<tr><td>" + task + "</td><td>" + del + "</td></tr>" ).insertAfter( "#tulemused" );
 			}
