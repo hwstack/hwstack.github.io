@@ -19,6 +19,8 @@ TODO:
   
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
   <script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>
   
@@ -130,6 +132,10 @@ TODO:
 
 <script type="text/javascript">
 
+	$(function() {
+		$( document ).tooltip();
+	});
+
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
@@ -196,7 +202,7 @@ TODO:
 			task = $.jStorage.get(key);
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"', '"+task+"')";
-			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a title='edit' href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
@@ -229,15 +235,15 @@ TODO:
 		})(this[0]));
 	}
 	
-	$("div").click(function(){
-		$("#task").val( this.task.innerHTML );
-		$("#key").val( this.class_.innerHTML );
+	$(".task").click(function(){
+		$("#task").val( this.innerHTML );
+		$("#task").focus();
 	});
 	
-	/*$(".class").click(function(){
+	$(".class").click(function(){
 		$("#key").val( this.innerHTML );
 		$("#key").focus();
-	});*/
+	});
 
 </script>
 
