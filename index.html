@@ -230,12 +230,12 @@ TODO:
 	}
 	
 	$(".task").click(function(){
-		$("#task").val( this.outerHTML );
+		$("#task").val( this.innerHTML );
 		$("#task").focus();
 	});
 	
 	$(".class").click(function(){
-		$("#key").val( this.outerHTML );
+		$("#key").val( this.innerHTML );
 		$("#key").focus();
 	});
 
