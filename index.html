@@ -168,7 +168,7 @@ function reDraw(){
 	for(i=0; i<($.jStorage.index().length); i++) {
 		key = $.jStorage.index()[i];
 		task = $.jStorage.get(key);
-		href = $("javascript:delTask('" + key + "')")
+		href = "javascript:delTask('" + key + "')"
 		$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href='" + href + "'>X</a></td></tr>" );
 		$( "#tasks" ).prepend( $row );
 	}
