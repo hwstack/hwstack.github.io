@@ -233,6 +233,7 @@ TODO:
 		var key = $( "this.class" ).html() + $( "this.date" ).html();
 		var task = $( "this.task" ).html();
 		$.jStorage.set(key, task);
+		console.log(key+", "+task);
 		
 		reDraw();
 	});
