@@ -154,21 +154,22 @@ function flush_data(){
 	reDraw();
 }
 
-function deleteTask( key ) {
+function delTask( key ) {
 	$.jStorage.deleteKey(key.toString());
 	reDraw();
 }
 
 function reDraw(){
-	var key, task, row;
+	var key, task, row, href;
 	
 	//clears old list before drawing new one
 	$("#tasks").empty();
 	
 	for(i=0; i<($.jStorage.index().length); i++) {
-		task = $.jStorage.index()[i];
-		key = $.jStorage.get(task);
-		$row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
+		key = $.jStorage.index()[i];
+		task = $.jStorage.get(key);
+		href =  "javascript:delTask('" + key + "')"
+		$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href='" + href + "'>X</a></td></tr>" );
 		$( "#tasks" ).prepend( $row );
 	}
 }
