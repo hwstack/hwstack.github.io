@@ -12,14 +12,12 @@ TODO:
 <head>
   <title>hwStack - myStack!</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <!--<script src="https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js"></script>-->
-  
   <link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>-->
+  
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
-  <!--<script src="https://rawgithub.com/hwstack/hwstack.github.io/master/cb.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>-->
+  <script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>
+  
   <link rel="shortcut icon" href="http://www.iconj.com/ico/a/8/a8dr4op713.ico" type="image/x-icon" />
 </head>
 <body>
@@ -134,6 +132,7 @@ TODO:
 	});
 
 	reDraw();
+	$('#wrapper').jscroll();
 
 	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
 	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
