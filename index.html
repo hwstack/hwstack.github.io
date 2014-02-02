@@ -149,7 +149,7 @@ TODO:
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
 	
-	$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
+	//$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
 	
 	function add(){
 		var key = $("#key").val();
@@ -229,9 +229,8 @@ TODO:
 		})(this[0]));
 	}
 	
-	$(".copyToMyStack").click(function(){
-		$entry = $(this).outerHTML();
-		$( "#tasks" ).prepend( $entry );
+	$("div").click(function(){
+		$( "#tasks" ).prepend( $(this).outerHTML() );
 	});
 
 </script>
