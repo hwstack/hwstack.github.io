@@ -163,13 +163,13 @@ function reDraw(){
 	var key, task, row;
 	
 	//clears old list before drawing new one
-	$(".tasks").remove();
+	$("#tasks").empty();
 	
 	var index = $.jStorage.index();
 	for(i=0; i<index.length; i++) {
 		task = index[i];
 		key = $.jStorage.get(task);
-		row = $( "<tr class='task'><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
+		row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
 	}
 
 	row.insertAfter( "#tasks" );
