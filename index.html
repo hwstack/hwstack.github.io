@@ -109,7 +109,7 @@ TODO:
 
 <td id="mystack-wrapper">
   <table width="100%" cellpadding="0px" cellspacing="0px">
-  <tbody id="tasks">
+  <tbody id='tasks'>
   	<!--personal tasks appear here-->
   </tbody>
     <tr>
@@ -172,7 +172,7 @@ function reDraw(){
 		row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
 	}
 
-	row.insertAfter( "#tasks" );
+	row.insertAfter( "<tbody id='tasks'>" );
 }
 
 </script>
