@@ -161,7 +161,7 @@ function reDraw(){
 	var key, task, row;
 	
 	//clears old list before drawing new one
-	$("tr[class~=task]").each(function(c){c.remove();});
+	$("tr[class~=task]").remove();
 	
 	var index = $.jStorage.index();
 	for(i=0; i<index.length; i++) {
