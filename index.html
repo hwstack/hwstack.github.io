@@ -141,15 +141,6 @@ TODO:
 	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
-	
-	$( "td[id!='mystack-wrapper']:contains('#humv')" ).css( "color", "#4B8AE3" );
-	$( "td[id!='mystack-wrapper']:contains('#humc')" ).css( "color", "#4343E6" );
-	$( "td[id!='mystack-wrapper']:contains('#span')" ).css( "color", "#EB3921" );
-	$( "td[id!='mystack-wrapper']:contains('#mathk')" ).css( "color", "#C321EB" );
-	$( "td[id!='mystack-wrapper']:contains('#mathc')" ).css( "color", "#369E19" );
-	$( "td[id!='mystack-wrapper']:contains('#sci')" ).css( "color", "#EB9721" );
-	$( "td[id!='mystack-wrapper']:contains('#lat')" ).css( "color", "#8A8A8A" );
-	$( "td[id!='mystack-wrapper']:contains('#mun')" ).css( "color", "#282828");
 
 	function add(){
 		var key = $("#key").val();
@@ -187,6 +178,15 @@ TODO:
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+href+'"'+">[x]</a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
+	
+		$( "td[id!='mystack-wrapper']:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( "td[id!='mystack-wrapper']:contains('#humc')" ).css( "color", "#4343E6" );
+		$( "td[id!='mystack-wrapper']:contains('#span')" ).css( "color", "#EB3921" );
+		$( "td[id!='mystack-wrapper']:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( "td[id!='mystack-wrapper']:contains('#mathc')" ).css( "color", "#369E19" );
+		$( "td[id!='mystack-wrapper']:contains('#sci')" ).css( "color", "#EB9721" );
+		$( "td[id!='mystack-wrapper']:contains('#lat')" ).css( "color", "#8A8A8A" );
+		$( "td[id!='mystack-wrapper']:contains('#mun')" ).css( "color", "#282828");
 	}
 	
 	$( "#task, #key" ).keypress(function (e) {
