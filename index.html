@@ -150,7 +150,11 @@ TODO:
 			$("#key").focus();
 			return;
 		}
+		
+		$("#key").val('');
+		$("#task").val('');
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
+		
 		$.jStorage.set(key, task);
 		reDraw();
 	}
