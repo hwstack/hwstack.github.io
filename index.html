@@ -209,8 +209,8 @@ TODO:
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			delHref = "javascript:delTask('"+key +"')";
-			editHref = "javascript:editTask('"+task+", "+key+"')";
+			delHref = "javascript:delTask('"+key+"')";
+			editHref = "javascript:editTask('"+task+","+key+"')";
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
