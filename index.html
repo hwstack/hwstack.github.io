@@ -192,18 +192,26 @@ TODO:
 		$.jStorage.deleteKey(key.toString());
 		reDraw();
 	}
+	
+	function editTask ( task, key ){
+		$("#key").val(key);
+		$("#task").val(task);
+		$("#task").focus();
+		reDraw();
+	}
 
 	function reDraw(){
-		var key, task, row, href;
-	
+		var key, task, row, delHref, editHref;
+
 		//clears old list before drawing new one
 		$("#tasks").empty();
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			href = "javascript:delTask('" + key + "')";
-			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+href+'"'+"><i class='fa fa-pencil-square-o'></i></a></td></tr>" );
+			delHref = "javascript:delTask('"+key +"')";
+			editHref = "javascript:editTask('"+task+", "+key+"')";
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
