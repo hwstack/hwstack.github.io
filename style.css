@@ -66,7 +66,7 @@ a:link, a:visited, a:hover, a:active {
 .clearable{
   background:url(http://i.imgur.com/z7ZSYjt.png) no-repeat right -10px center;
   border:1px solid #999;
-  padding:3px 8px 3px 4px; /* USE the same right padding in jQ! */
+  padding:0px 8px 0px 4px; /* USE the same right padding in jQ! */
   border-radius:3px;
 }
 .clearable.x{
