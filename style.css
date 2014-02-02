@@ -5,6 +5,10 @@ div, td {
   font-family: 'Alef', 'sans-serif';
 }
 
+div {
+  cursor: pointer;
+}
+
 /* specific date selector */
 span:nth-of-type(1) {
   color: #888888;
