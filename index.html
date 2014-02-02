@@ -230,8 +230,8 @@ TODO:
 	}
 	
 	$("div").click(function(){
-		var key = $( "this .class" ).html() + $( "this .date" ).html() + "";
-		var task = $( "this .task" ).html();
+		var key = $( "this.class" ).html() + $( "this.date" ).html() + "";
+		var task = $( "this.task" ).html();
 		$.jStorage.set(key, task);
 		console.log(key+", "+task);
 		
