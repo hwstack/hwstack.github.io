@@ -169,9 +169,8 @@ function reDraw(){
 		task = $.jStorage.index()[i];
 		key = $.jStorage.get(task);
 		$row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
+		$( "#tasks" ).prepend( $row );
 	}
-
-	$( "#tasks" ).prepend( $row );
 }
 
 </script>
