@@ -142,16 +142,14 @@ TODO:
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
 	
-	$( "td:contains('#humv')" ).css( "color", "#4B8AE3" );
-	$( "td:contains('#humc')" ).css( "color", "#4343E6" );
-	$( "td:contains('#span')" ).css( "color", "#EB3921" );
-	$( "td:contains('#mathk')" ).css( "color", "#C321EB" );
-	$( "td:contains('#mathc')" ).css( "color", "#369E19" );
-	$( "td:contains('#sci')" ).css( "color", "#EB9721" );
-	$( "td:contains('#lat')" ).css( "color", "#8A8A8A" );
-	$( "td:contains('#mun')" ).css( "color", "#282828");
-	
-	$( "#info" ).css( "color", "#8A8A8A" );
+	$( "td[id='']:contains('#humv')" ).css( "color", "#4B8AE3" );
+	$( "td[id='']:contains('#humc')" ).css( "color", "#4343E6" );
+	$( "td[id='']:contains('#span')" ).css( "color", "#EB3921" );
+	$( "td[id='']:contains('#mathk')" ).css( "color", "#C321EB" );
+	$( "td[id='']:contains('#mathc')" ).css( "color", "#369E19" );
+	$( "td[id='']:contains('#sci')" ).css( "color", "#EB9721" );
+	$( "td[id='']:contains('#lat')" ).css( "color", "#8A8A8A" );
+	$( "td[id='']:contains('#mun')" ).css( "color", "#282828");
 
 	function add(){
 		var key = $("#key").val();
@@ -182,16 +180,16 @@ TODO:
 		//clears old list before drawing new one
 		$("#tasks").empty();
 	
-		for(i=0; i<($.jStorage.index().length); i++) {
+		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
 			href = "javascript:delTask('" + key + "')";
-			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td class='info'><a href="+'"'+href+'"'+">[x]</a></td></tr>" );
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+href+'"'+">[x]</a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	}
 	
-	$( "#task", "#key" ).keypress(function (e) {
+	$( "#task, #key" ).keypress(function (e) {
   		if (e.which == 13) {
   			add();
   			return false;
