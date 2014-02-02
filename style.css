@@ -24,21 +24,28 @@ span:nth-of-type(3) {
 #thestack-wrapper {
   width: 50%;
   background-color: #DDDDDD;
+  
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s; /* Safari */
 }
 
 #mystack-wrapper {
   width: 30%;
-  max-width: 30%;
   vertical-align: top;
   background-color: #CCCCCC;
+  
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s; /* Safari */
 }
 
 #wrapper {
