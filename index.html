@@ -160,7 +160,7 @@ function delTask( key ) {
 }
 
 function reDraw(){
-	var key, task, row, href;
+	var key, task, row;
 	
 	//clears old list before drawing new one
 	$("#tasks").empty();
@@ -168,8 +168,7 @@ function reDraw(){
 	for(i=0; i<($.jStorage.index().length); i++) {
 		key = $.jStorage.index()[i];
 		task = $.jStorage.get(key);
-		href = "javascript:delTask('" + key + "')"
-		$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href='" + href + "'>X</a></td></tr>" );
+		$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href='" + "javascript:delTask('" + key + "')" + "'>X</a></td></tr>" );
 		$( "#tasks" ).prepend( $row );
 	}
 }
