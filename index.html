@@ -110,13 +110,13 @@ TODO:
 <td id="mystack-wrapper">
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
-  	<td><input type="text" id="key" name="key" value="" style="width: 110px;"></td>
+ 	<td><input type="text" id="key" name="key" value="" style="width: 110px;"></td>
 	<td><input type="text" id="task" name="task" value="" style="width: 98%"></td>
-	<td><a href="javascript:add()">Add Task</a></td>
+	<td><a href="javascript:add()"><b>+</b></a></td>
   </tr>
   	<tbody id="tasks">
-  		<!--personal tasks appear here-->
-	 </tbody>
+  		<!--tasks are plopped here-->
+	</tbody>
   </table>
 </td>
 
@@ -125,54 +125,68 @@ TODO:
 
 <script type="text/javascript">
 
-reDraw();
+	reDraw();
 
-$( "span:contains('#HumVaughan')" ).css( "color", "#4B8AE3" );
-$( "span:contains('#HumCadigan')" ).css( "color", "#4343E6" );
-$( "span:contains('#Hum&nbsp;')" ).css( "color", "#1F39E0" );
-$( "span:contains('#Span')" ).css( "color", "#EB3921" );
-$( "span:contains('#MathKramer')" ).css( "color", "#C321EB" );
-$( "span:contains('#MathCW')" ).css( "color", "#369E19" );
-$( "span:contains('#Sci')" ).css( "color", "#EB9721" );
-$( "span:contains('#Lat')" ).css( "color", "#8A8A8A" );
-$( "span:contains('#MUN')" ).css( "color", "#282828");
+	$( "span:contains('#HumVaughan')" ).css( "color", "#4B8AE3" );
+	$( "span:contains('#HumCadigan')" ).css( "color", "#4343E6" );
+	$( "span:contains('#Hum&nbsp;')" ).css( "color", "#1F39E0" );
+	$( "span:contains('#Span')" ).css( "color", "#EB3921" );
+	$( "span:contains('#MathKramer')" ).css( "color", "#C321EB" );
+	$( "span:contains('#MathCW')" ).css( "color", "#369E19" );
+	$( "span:contains('#Sci')" ).css( "color", "#EB9721" );
+	$( "span:contains('#Lat')" ).css( "color", "#8A8A8A" );
+	$( "span:contains('#MUN')" ).css( "color", "#282828");
 
-function add() {
-	var key = $("#key").val();
-	var task = $("#task").val();
-	if(!key){
-		alert("Error W00PS: Class must be specified!");
-		$("#key").focus();
-		return;
+	function add() {
+		var key = $("#key").val();
+		var task = $("#task").val();
+		if(!key){
+			alert("Error W00PS: Class must be specified!");
+			$("#key").focus();
+			return;
+		}
+		$.jStorage.set(key, task);
+		reDraw();
 	}
-	$.jStorage.set(key, task);
-	reDraw();
-}
 
-function flush_data(){
-	$.jStorage.flush();
-	reDraw();
-}
-
-function delTask( key ) {
-	$.jStorage.deleteKey(key.toString());
-	reDraw();
-}
-
-function reDraw(){
-	var key, task, row, href;
-	
-	//clears old list before drawing new one
-	$("#tasks").empty();
-	
-	for(i=0; i<($.jStorage.index().length); i++) {
-		key = $.jStorage.index()[i];
-		task = $.jStorage.get(key);
-		href = "javascript:delTask('" + key + "')";
-		$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href="+'"' + href + '"'+">X</a></td></tr>" );
-		$( "#tasks" ).prepend( $row );
+	function flush_data(){
+		$.jStorage.flush();
+		reDraw();
 	}
-}
+
+	function delTask( key ) {
+		$.jStorage.deleteKey(key.toString());
+		reDraw();
+	}
+
+	function reDraw(){
+		var key, task, row, href;
+	
+		//clears old list before drawing new one
+		$("#tasks").empty();
+	
+		for(i=0; i<($.jStorage.index().length); i++) {
+			key = $.jStorage.index()[i];
+			task = $.jStorage.get(key);
+			href = "javascript:delTask('" + key + "')";
+			$row = $( "<tr><td>" + key + "</td><td>" + task + "</td><td><a href="+'"' + href + '"'+">[x]</a></td></tr>" );
+			$( "#tasks" ).prepend( $row );
+		}
+	}
+	
+	$('#task').keypress(function (e) {
+  		if (e.which == 13) {
+  			add();
+  			return false;
+  		}
+	});
+	
+	$('#key').keypress(function (e) {
+  		if (e.which == 13) {
+  			add();
+  			return false;
+  		}
+	});
 
 </script>
 
