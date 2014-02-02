@@ -229,13 +229,14 @@ TODO:
 		})(this[0]));
 	}
 	
-	$("div").click(function(){
-		var key = $( "this.class" ).html() + $( "this.date" ).html() + "";
-		var task = $( "this.task" ).html();
-		$.jStorage.set(key, task);
-		console.log(key+", "+task);
-		
-		reDraw();
+	$(".task").click(function(){
+		$("#task").val( this.html() );
+		$("#task").focus();
+	});
+	
+	$(".class").click(function(){
+		$("#key").val( this.html() );
+		$("#key").focus();
 	});
 
 </script>
