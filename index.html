@@ -125,16 +125,22 @@ TODO:
 
 <script type="text/javascript">
 
+	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+    	return function( elem ) {
+        	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+		};
+	});
+
 	reDraw();
 
-	$( $("span.toLowerCase()"):contains('#humv') ).css( "color", "#4B8AE3" );
-	$( "span.toLowerCase():contains('#humc')" ).css( "color", "#4343E6" );
-	$( "span.toLowerCase():contains('#span')" ).css( "color", "#EB3921" );
-	$( "span.toLowerCase():contains('#mathk')" ).css( "color", "#C321EB" );
-	$( "span.toLowerCase():contains('#mathc')" ).css( "color", "#369E19" );
-	$( "span.toLowerCase():contains('#sci')" ).css( "color", "#EB9721" );
-	$( "span.toLowerCase():contains('#lat')" ).css( "color", "#8A8A8A" );
-	$( "span.toLowerCase():contains('#mun')" ).css( "color", "#282828");
+	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
+	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
+	$( "span:contains('#span')" ).css( "color", "#EB3921" );
+	$( "span:contains('#mathk')" ).css( "color", "#C321EB" );
+	$( "span:contains('#mathc')" ).css( "color", "#369E19" );
+	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
+	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
+	$( "span:contains('#mun')" ).css( "color", "#282828");
 
 	function add(){
 		var key = $("#key").val();
