@@ -145,13 +145,13 @@ TODO:
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
 	
-	//
-	var keyFTS, taskFTS, dateFTS;
 	
-	for (i=0; i<$( "div" ).length; i++) {
-		dateFTS = $( "div" ).find("span")[i]
+	/*var keyFTS, taskFTS, dateFTS;
+	
+	for (i=0; i<$( "div" ).length; i+2) {
+		dateFTS = $( "div span")[i].text();
 		$( "div" )[i+1].append( "<a href='javascript:addFromTheStack("+'"'+keyFTS+'",'+'"'+taskFTS+'",'+'"'+dateFTS+'"'+")'><img src='http://placehold.it/30x18' style='position:relative;top:4px;' /></a>" );
-	}
+	}*/
 	
 	function add(){
 		var key = $("#key").val();
@@ -172,7 +172,7 @@ TODO:
 	}
 	
 	function addFromTheStack( key, task, date ) {
-		task = task + " (" date ")";
+		task = task+" ("+date+")";
 		
 		$.jStorage.set(key, task);
 		reDraw();
