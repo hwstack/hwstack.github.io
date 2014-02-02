@@ -132,10 +132,6 @@ TODO:
 
 <script type="text/javascript">
 
-	$(function() {
-		$( document ).tooltip();
-	});
-
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
@@ -202,7 +198,7 @@ TODO:
 			task = $.jStorage.get(key);
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"', '"+task+"')";
-			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a title='edit' href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
