@@ -36,7 +36,7 @@ TODO:
   
   <div>
     <span>2/3/14</span>&nbsp;<span>#Span</span><br />
-    <span>Informal Writing Worksheet</span>
+    <p>Informal Writing Worksheet</p>
   </div>
   <div>
     <span>2/5/14</span>&nbsp;<span>#Lat</span><br />
@@ -131,8 +131,6 @@ TODO:
 		};
 	});
 	
-	$( "div" ).append( "<img src='http://placehold.it/30x18' style='position:relative;right:0px;' />" );
-	
 	reDraw();
 	$('#thestack-wrapper').jscroll({
 		autoTrigger: false
@@ -146,7 +144,15 @@ TODO:
 	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
-
+	
+	//
+	var keyFTS, taskFTS, dateFTS;
+	
+	for (i=0; i<$( "div" ).length; i++) {
+		dateFTS = $( "div" ).find("span")[i]
+		$( "div" )[i+1].append( "<a href='javascript:addFromTheStack("+'"'+keyFTS+'",'+'"'+taskFTS+'",'+'"'+dateFTS+'"'+")'><img src='http://placehold.it/30x18' style='position:relative;top:4px;' /></a>" );
+	}
+	
 	function add(){
 		var key = $("#key").val();
 		var task = $("#task").val();
@@ -163,6 +169,13 @@ TODO:
 		$.jStorage.set(key, task);
 		reDraw();
 		$("#key").focus();
+	}
+	
+	function addFromTheStack( key, task, date ) {
+		task = task + " (" date ")";
+		
+		$.jStorage.set(key, task);
+		reDraw();
 	}
 
 	function flush_data(){
