@@ -109,7 +109,7 @@ TODO:
 
 <td id="mystack-wrapper">
   <table width="100%" cellpadding="0px" cellspacing="0px">
-  <tbody id="tulemused">
+  <tbody id="tasks">
   	<!--personal tasks appear here-->
   </tbody>
     <tr>
@@ -160,14 +160,17 @@ function deleteTask( key ) {
 function reDraw(){
 	var key, task, row;
 	
+	//clears old list before drawing new one
+	$("tr[class~=task]").each(function(c){c.remove();});
+	
 	var index = $.jStorage.index();
 	for(i=0; i<index.length; i++) {
 		task = index[i];
 		key = $.jStorage.get(task);
-		row = $( "<tr><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
+		row = $( "<tr class='task'><td>" + task + "</td><td>" + key + "</td><td><a href='javascript:deleteTask(key)'>X</a></td></tr>" );
 	}
 
-	row.insertAfter( "#tulemused" );
+	row.insertAfter( "#tasks" );
 }
 
 </script>
