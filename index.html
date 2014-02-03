@@ -266,7 +266,7 @@ TODO:
 		$("#key").focus();
 	});
 	
-	function createOverlay(){
+	/*function createOverlay(){
 		var docHeight = $(document).height();
 
 		$("body").append("<div id='overlay'></div>");
@@ -284,7 +284,22 @@ TODO:
 			});
 	}
 	
-	function removeOverlay(){ $("#overlay").remove() }
+	function removeOverlay(){ $("#overlay").remove() }*/
+	
+	function justTheStack(){
+		$("#mystack-wrapper").animate({width:'0px'});
+		$("#thestack-wrapper").animate({width:'100%'});
+	}
+	
+	function justMyStack(){
+		$("#mystack-wrapper").animate({width:'100%'});
+		$("#thestack-wrapper").animate({width:'0px'});
+	}
+	
+	function resetView(){
+		$("#mystack-wrapper").animate({width:'45%'});
+		$("#thestack-wrapper").animate({width:'55%'});
+	}
 
 </script>
 
