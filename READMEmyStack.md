@@ -4,7 +4,8 @@ Features:
 ####Adding Tasks
 ----------------
 Fill out the "_#class_" and "_task & date_" inputs and press enter (alternatively, you can press the plus symbol to the right of the inputs).
-[HTML Enabled]()
+
+[HTML Enabled](https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md#note)
 
 ####Editing Tasks
 -----------------
@@ -16,6 +17,8 @@ Click on the pencil icon to the right of the task, and the info will appear in t
 _Note:_ ```<br>``` creates a line break.  For example, ```Prepare for Crisis #4<br>Study WWW Lists 1-5``` becomes
 >Prepare for Crisis #4<br>Study WWW Lists 1-5
 
+[HTML Enabled](https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md#note)
+
 ----
 ######Note:
-You can use any HTML in the "_#class_" and "_task & date_" inputs.  If you don't know what the heck I'm talking about, this does not apply to you.  (But for those interested, [looky here](http://www.w3schools.com/html/html_formatting.asp "nothing scary").)
+You can use any **HTML** in the "_#class_" and "_task & date_" inputs.  If you don't know what the heck I'm talking about, it's ok. For those interested, [looky here](http://www.w3schools.com/html/html_formatting.asp "nothing scary").
