@@ -26,7 +26,7 @@ span:nth-of-type(3) {
 }
 
 #thestack-wrapper {
-  width: 50%;
+  width: 55%;
   background-color: #DDDDDD;
   
   -moz-border-radius: 10px;
@@ -36,7 +36,7 @@ span:nth-of-type(3) {
 }
 
 #mystack-wrapper {
-  width: 30%;
+  width: 45%;
   vertical-align: top;
   background-color: #CCCCCC;
   
@@ -48,7 +48,7 @@ span:nth-of-type(3) {
 
 #wrapper {
   margin: 0px auto;
-  width: 50%;
+  width: 60%;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
