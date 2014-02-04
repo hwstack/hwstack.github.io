@@ -208,6 +208,14 @@ TODO:
 	}
 	
 	function argsAdd( key, task ) {
+		
+		if(!key){
+			alert("Woops!  :I  Class must be specified!");
+			return;
+		}
+		
+		key = (key.substring(0,1) == "#" ? key : "#"+key);
+		
 		$.jStorage.set(key, task);
 		reDraw();
 	}
