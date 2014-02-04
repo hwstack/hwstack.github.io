@@ -189,6 +189,9 @@ TODO:
 	//$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
 	
 	function add( key, task ){
+		key = ( $("#key").val() ? $("#key").val() );
+		task = ( $("#task").val() ? $("#task").val() );
+		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
 			$("#key").focus();
