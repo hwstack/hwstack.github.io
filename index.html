@@ -335,12 +335,22 @@ TODO:
 	
 	function removeOverlay(){ $("#overlay").remove() }*/
 	
-	function specificView( type ){
-		if(type==0){ //just theStack
+	function setView( type ){
+		if(type==0){ //both
+			$("#thestack-wrapper").css( "display", "" );
+			$("#mystack-wrapper").css( "display", "" );
+		}
+		
+		if(type==1){ //just myStack
+			$("#thestack-wrapper").css( "display", "none" );
+			$("#mystack-wrapper").css( "display", "" );
+		}
+		if(type==2){ //just theStack
 			$("#thestack-wrapper").css( "display", "" );
 			$("#mystack-wrapper").css( "display", "none" );
-		}else{ //just myStack
-			$("#thestack-wrapper").css( "display", "none" );
+		}
+		else{
+			$("#thestack-wrapper").css( "display", "" );
 			$("#mystack-wrapper").css( "display", "" );
 		}
 	}
