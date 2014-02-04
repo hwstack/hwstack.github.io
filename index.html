@@ -151,7 +151,7 @@ TODO:
   <tr>
  	<td style="width: 25%"><input type="text" class="clearable" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
 	<td style="width: 75%"><textarea class="clearable" id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
-	<td><a href="javascript:add( $('#key').val(), $('#task').val() )"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
+	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
   </tr>
   	<tbody id="tasks">
   		<!--tasks are plopped here-->
@@ -188,9 +188,9 @@ TODO:
 	
 	//$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
 	
-	function add( key, task ){
-		key = ( $("#key").val() ? $("#key").val() );
-		task = ( $("#task").val() ? $("#task").val() );
+	function add(){
+		var key = $("#key").val();
+		var task = $("#task").val();
 		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
@@ -205,6 +205,11 @@ TODO:
 		$.jStorage.set(key, task);
 		reDraw();
 		$("#key").focus();
+	}
+	
+	function argsAdd( key, task ) {
+		$.jStorage.set(key, task);
+		reDraw();
 	}
 
 	function flush_data(){
