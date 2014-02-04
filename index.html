@@ -43,7 +43,7 @@ TODO:
   <h2 style="margin: 0px auto;">theStack</h2><br />
   <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md"><small><i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about</small></a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a id="sel-view" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
+  <a id="sel-view-tS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
   	<i class="fa fa-user"></i>&nbsp;
   	show just <b>theStack</b>
   </a>
@@ -182,7 +182,7 @@ TODO:
   	clear tasks
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a id="sel-view" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
+  <a id="sel-view-mS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
   	<i class="fa fa-user"></i>&nbsp;
   	show just <b>myStack</b>
   </a>
@@ -355,11 +355,11 @@ TODO:
 		if(type=="tS"){ //just theStack
 			$( "#thestack-wrapper" ).css( "display", "" );
 			$( "#mystack-wrapper" ).css( "display", "none" );
-			$( "#sel-view" ).replaceWith( "<a href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			$( "#sel-view-tS" ).replaceWith( "<a href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
 		}else if(type=="mS"){ //just myStack
 			$( "#thestack-wrapper" ).css( "display", "none" );
 			$( "#mystack-wrapper" ).css( "display", "" );
-			$( "#sel-view" ).replaceWith( "<a href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			$( "#sel-view-mS" ).replaceWith( "<a href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
 		}
 	}
 	
