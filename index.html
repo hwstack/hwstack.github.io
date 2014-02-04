@@ -42,7 +42,8 @@ TODO:
 <td id="thestack-wrapper">
   <h2 style="margin: 0px auto;">theStack</h2><br />
   <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md"><small><i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about</small></a>
-  <a style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a style="position:relative;bottom:12px;" href="javascript:specificView('tS')">
   	<i class="fa fa-user"></i>&nbsp;
   	show just <b>theStack</b>
   </a>
@@ -180,7 +181,8 @@ TODO:
   	<i class="fa fa-fire"></i>&nbsp;
   	clear tasks
   </a>
-  <a style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a style="position:relative;bottom:12px;" href="javascript:specificView('mS')">
   	<i class="fa fa-user"></i>&nbsp;
   	show just <b>myStack</b>
   </a>
@@ -351,17 +353,19 @@ TODO:
 	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
-			$("#thestack-wrapper").css( "display", "" );
-			$("#mystack-wrapper").css( "display", "none" );
+			$( "#thestack-wrapper" ).css( "display", "" );
+			$( "#mystack-wrapper" ).css( "display", "none" );
+			$( "#thestack-wrapper" ).prepend( "<a href='javascript:resetView()'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
 		}else if(type=="mS"){ //just myStack
-			$("#thestack-wrapper").css( "display", "none" );
-			$("#mystack-wrapper").css( "display", "" );
+			$( "#thestack-wrapper" ).css( "display", "none" );
+			$( "#mystack-wrapper" ).css( "display", "" );
+			$( "#thestack-wrapper" ).prepend( "<a href='javascript:resetView()'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
 		}
 	}
 	
 	function resetView(){
-		$("#thestack-wrapper").css( "display", "" );
-		$("#mystack-wrapper").css( "display", "" );
+		$( "#thestack-wrapper" ).css( "display", "" );
+		$( "#mystack-wrapper" ).css( "display", "" );
 	}
 	
 	$("#task").resizeable();
