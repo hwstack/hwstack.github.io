@@ -42,6 +42,10 @@ TODO:
 <td id="thestack-wrapper">
   <h2 style="margin: 0px auto;">theStack</h2><br />
   <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md"><small><i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about</small></a>
+  <a style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	show just <b>theStack</b>
+  </a>
   
   <div>
     <span>2/6/14</span>&nbsp;<span class="class">#MathCW</span><br />
@@ -175,6 +179,10 @@ TODO:
   <a style="position:relative;bottom:12px;" href="javascript:flush_data()">
   	<i class="fa fa-fire"></i>&nbsp;
   	clear tasks
+  </a>
+  <a style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	show just <b>myStack</b>
   </a>
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
@@ -339,11 +347,13 @@ TODO:
 	
 	function removeOverlay(){ $("#overlay").remove() }*/
 	
+	specificView( getQueryVariable("v") );
+	
 	function specificView( type ){
-		if(type==0){ //just theStack
+		if(type=="tS"){ //just theStack
 			$("#thestack-wrapper").css( "display", "" );
 			$("#mystack-wrapper").css( "display", "none" );
-		}else{ //just myStack
+		}else if(type=="mS"){ //just myStack
 			$("#thestack-wrapper").css( "display", "none" );
 			$("#mystack-wrapper").css( "display", "" );
 		}
@@ -355,6 +365,16 @@ TODO:
 	}
 	
 	$("#task").resizeable();
+	
+	function getQueryVariable( variable ){
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
+	}
 
 </script>
 
