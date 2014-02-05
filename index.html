@@ -285,8 +285,8 @@ TODO:
 			task = $.jStorage.get(key);
 			key = escape(key);
 			task = escape(task);
-			delHref = 'javascript:delTask("'+key+'")';
-			editHref = 'javascript:editTask("'+key+'", "'+task+'")';
+			delHref = "javascript:delTask('"+key+"')";
+			editHref = "javascript:editTask('"+key+"', '"+task+"')";
 			$row = $( "<tr><td>"+unescape(key)+"</td><td>"+unescape(task)+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
