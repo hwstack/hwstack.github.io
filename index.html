@@ -237,15 +237,18 @@ TODO:
 			return;
 		}
 		
+		if(key.indexOf("'") === -1 || key.indexOf('"') === -1 || task.indexOf("'") === -1 || task.indexOf('"') === -1){
+			alert("Quotation marks or appostrophes don't work at the moment... (sorry)");
+			return;
+		}
+		
 		$("#key").val('');
 		$("#task").val('');
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
 		
-		$.jStorage.set( addslashes(key), addslashes(task) );
+		$.jStorage.set(key, task);
 		reDraw();
 		$("#key").focus();
-		
-		console.log( addslashes(key) + ", " + addslashes(task) );
 	}
 	
 	function argsAdd( key, task ) {
@@ -256,7 +259,10 @@ TODO:
 		}
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
 		
-		$.jStorage.set( addslashes(key), addslashes(task) );
+		key = key.replace(/["']/g, "");
+		task = task.replace(/["']/g, "");
+		
+		$.jStorage.set(key, task);
 		reDraw();
 	}
 
@@ -266,16 +272,13 @@ TODO:
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey( unescape(key.toString()) );
+		$.jStorage.deleteKey( key.toString() );
 		reDraw();
 	}
 	
 	function editTask ( key, task ){
-		console.log("got to editTask");
-		var propKey = addslashes(key);
-		var propTask = addslashes(task);
-		$("#key").val( propKey );
-		$("#task").val( propTask );
+		$("#key").val( key );
+		$("#task").val( task );
 		$("#task").focus();
 	}
 
@@ -382,10 +385,6 @@ TODO:
 			if(pair[0] == variable){return pair[1];}
 		}
 		return(false);
-	}
-	
-	function addslashes( str ) {
-		return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
 	}
 
 </script>
