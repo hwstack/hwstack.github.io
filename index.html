@@ -264,13 +264,13 @@ TODO:
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey( decodeURIComponent(key.toString()) );
+		$.jStorage.deleteKey( unescape(key.toString()) );
 		reDraw();
 	}
 	
 	function editTask ( key, task ){
-		$("#key").val( decodeURIComponent(key) );
-		$("#task").val( decodeURIComponent(task) );
+		$("#key").val( unescape(key) );
+		$("#task").val( unescape(task) );
 		$("#task").focus();
 	}
 
@@ -283,8 +283,10 @@ TODO:
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			delHref = "javascript:delTask('"+encodeURIComponent(key)+"')";
-			editHref = "javascript:editTask('"+encodeURIComponent(key)+"', '"+encodeURIComponent(task)+"')";
+			key = escape(key);
+			task = escape(task);
+			delHref = "javascript:delTask('"+key+"')";
+			editHref = "javascript:editTask('"+key+"', '"+task+"')";
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
