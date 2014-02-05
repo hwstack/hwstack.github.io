@@ -36,6 +36,7 @@ TODO:
 
 <small style="color:#ff0000" align="right" style="position:absolute">v0.1beta</small>
 <small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
+		(function(){
 		
 		var key = prompt('What class?');
 		var task = prompt('What is your task?');
@@ -48,6 +49,7 @@ TODO:
 		task = escape(task);
 		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, '_blank');
 		
+		})();
 ">Bookmarklet</a></small>
 
 <table id="wrapper">
