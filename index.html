@@ -8,7 +8,7 @@ TODO:
 <html>
 
 <head>
-  <title>hwStack v0.2.0a</title>
+  <title>hwStack v0.1beta</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   
   <!--supplementary CSS libaries-->
@@ -45,9 +45,7 @@ TODO:
  			alert('Woops!  :I  Class must be specified!');
  			return;
  		}
- 		key = escape(key);
- 		task = escape(task);
- 		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, 'myWindow');
+ 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task), 'myWindow');
  		
  		})();
  ">Bookmarklet</a></small>
