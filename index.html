@@ -274,11 +274,6 @@ TODO:
 		
 		$.jStorage.set(key, task);
 		reDraw();
-		
-		var state = {
-			"yoloCuzICan": true
-		};
-		history.pushState(state, "hwStack", "http://hwstack.github.io/");
 	}
 
 	function flush_data(){
@@ -397,7 +392,11 @@ TODO:
 		var t = getQueryVariable('t');
 		if(k && t){
 			argsAdd(k, t);
-			var disWindow = window.open('http://hwstack.github.io/', '_self');
+			
+			var state = {
+				"yoloCuzICan": true
+			};
+			history.pushState(state, "hwStack", "http://hwstack.github.io/");
 		}
 	}
 	
