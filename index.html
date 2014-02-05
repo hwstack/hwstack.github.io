@@ -216,8 +216,16 @@ TODO:
 
 <script type="text/javascript">
 
-	/*$( "span:nth-child(3n+2)" ).attr('class', '_class');
-	$( "span:nth-child(3n)" ).attr('class', 'task');*/
+	var fullDate = new Date()
+	console.log(fullDate);
+	
+	//convert month to 2 digits
+	var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+
+	var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+	console.log(currentDate);
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////
 	
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
