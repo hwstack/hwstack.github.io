@@ -265,7 +265,7 @@ TODO:
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey(key.toString());
+		$.jStorage.deleteKey( unescape(key.toString()) );
 		reDraw();
 	}
 	
@@ -284,7 +284,7 @@ TODO:
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			delHref = "javascript:delTask('"+key+"')";
+			delHref = "javascript:delTask('"+escape(key)+"')";
 			editHref = "javascript:editTask('"+escape(key)+"', '"+escape(task)+"')";
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
