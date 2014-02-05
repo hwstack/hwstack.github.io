@@ -25,7 +25,7 @@ TODO:
   <!--favicon-->
   <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
 </head>
-<body onload="argsAdd(getQueryVariable('k'),getQueryVariable('t'))">
+<body onload="checkForArgs()">
 
 <!--"fork me on github" ribbon-->
 <a href="https://github.com/hwstack/hwstack.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -385,6 +385,14 @@ TODO:
 	}
 	
 	$("#task").resizeable();
+	
+	function checkForArgs() {
+		var k = getQueryVariable('k');
+		var t = getQueryVariable('t');
+		if(k && t){
+			argsAdd(k, t);
+		}
+	}
 	
 	function getQueryVariable( variable ){
 		var query = window.location.search.substring(1);
