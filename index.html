@@ -35,8 +35,8 @@ TODO:
 <label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
 
-<small style="color:#ff0000" style="position:absolute">v0.1beta</small><br />
-<small style="position:absolute;top:0.5em;" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
+<small style="color:#ff0000" style="position:absolute">v0.1beta</small>
+<small style="position:absolute;top:0.7em;" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
  		
  		var key = prompt('What class?');
@@ -49,8 +49,8 @@ TODO:
  		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task), 'myWindow');
  		
  		})();
- ">Bookmarklet</a></small>
- <small style="position:absolute;top:0.5em;" id="date"></small>
+ ">Bookmarklet</a></small><br />
+ <small id="date"></small>
 <table id="wrapper">
   <tr>
   
@@ -219,7 +219,7 @@ TODO:
 <script type="text/javascript">
 
 	var date = moment().format("M/D/YY");
-	$("#date") = date;
+	$("#date").html(date);
 	
 	////////////////////////////////////////////
 	
