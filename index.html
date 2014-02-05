@@ -35,7 +35,23 @@ TODO:
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
 
 <small style="color:#ff0000" align="right" style="position:absolute">v0.1beta</small>
-<small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:var myWindow = window.open('http://hwstack.github.io', '_blank'); myWindow.blur(); myWindow.focus(); publicAdd(myWindow);">Bookmarklet</a></small>
+<small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
+		
+		var key = myWindow.prompt('What class?');
+		
+		while(!key) {
+			alert('Woops!  :I  Class must be specified!');
+			key = myWindow.prompt('What class?');
+		}
+		
+		key = (key.substring(0,1) == '#' ? key : '#'+key);
+
+		var task = myWindow.prompt('What is your task?');
+		
+		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, '_blank');
+		
+">Bookmarklet</a></small>
+
 <table id="wrapper">
   <tr>
   
@@ -251,25 +267,9 @@ TODO:
 		$("#key").focus();
 	}
 	
-	function publicAdd( Window ) {
-		//get key
-		var key = myWindow.prompt('What class?');
-		
-		while(!key) {
-			alert("Woops!  :I  Class must be specified!");
-			key = myWindow.prompt('What class?');
-		}
-		
-		key = (key.substring(0,1) == "#" ? key : "#"+key);
-		key = key.replace(/["']/g, "");
-		
-		//get task
-		var task = myWindow.prompt('What is your task?');
-		task = task.replace(/["']/g, "");
-		
+	function argsAdd( key, task ) {
 		$.jStorage.set(key, task);
 		reDraw();
-		Window.close();
 	}
 
 	function flush_data(){
@@ -385,12 +385,16 @@ TODO:
 	
 	function getQueryVariable( variable ){
 		var query = window.location.search.substring(1);
-		var vars = query.split("&");
+		var vars = query.split("+");
 		for (var i=0;i<vars.length;i++) {
 			var pair = vars[i].split("=");
 			if(pair[0] == variable){return pair[1];}
 		}
 		return(false);
+	}
+	
+	if ( getQueryVariable(k) || getQueryVariable(t) ){
+		argsAdd( getQueryVariable(k), getQueryVariable(t) );
 	}
 
 </script>
