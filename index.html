@@ -269,8 +269,10 @@ TODO:
 	}
 	
 	function editTask ( key, task ){
-		$("#key").val( unescape(key) );
-		$("#task").val( unescape(task) );
+		propKey = unescape(key);
+		propTask = unescape(task);
+		$("#key").val( propKey );
+		$("#task").val( propTask );
 		$("#task").focus();
 	}
 
