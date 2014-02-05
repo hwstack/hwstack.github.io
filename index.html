@@ -217,10 +217,9 @@ TODO:
 
 <script type="text/javascript">
 
-	var date = moment().format("M, D, YY");
-	console.log(date);
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////
+	var date = moment().format("M/D/YY");
+	$( "div:contains(date)" ).css( "color", "#FFFFFF" );
+
 	
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
