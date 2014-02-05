@@ -47,7 +47,7 @@ TODO:
 		}
 		key = escape(key);
 		task = escape(task);
-		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, '_blank');
+		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, 'myWindow');
 		
 		})();
 ">Bookmarklet</a></small>
@@ -394,6 +394,7 @@ TODO:
 		if(k && t){
 			argsAdd(k, t);
 		}
+		var disWindow = window.open('http://hwstack.github.io/', 'disWindow');
 	}
 	
 	function getQueryVariable( variable ){
