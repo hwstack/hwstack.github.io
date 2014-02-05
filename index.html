@@ -21,6 +21,7 @@ TODO:
   <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
   <script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -216,14 +217,8 @@ TODO:
 
 <script type="text/javascript">
 
-	var fullDate = new Date()
-	console.log(fullDate);
-	
-	//convert month to 2 digits
-	var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
-
-	var currentDate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
-	console.log(currentDate);
+	var date = moment().format("M, D, YY");
+	console.log(date);
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	
