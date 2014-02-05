@@ -25,7 +25,7 @@ TODO:
   <!--favicon-->
   <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
 </head>
-<body onload="checkURLArgs()">
+<body onload="argsAdd(getQueryVariable('k'),getQueryVariable('t'))">
 
 <!--"fork me on github" ribbon-->
 <a href="https://github.com/hwstack/hwstack.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -37,17 +37,15 @@ TODO:
 <small style="color:#ff0000" align="right" style="position:absolute">v0.1beta</small>
 <small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
 		
-		var key = myWindow.prompt('What class?');
+		var key = prompt('What class?');
+		var task = prompt('What is your task?');
 		
-		while(!key) {
+		if(!key) {
 			alert('Woops!  :I  Class must be specified!');
-			key = myWindow.prompt('What class?');
+			return;
 		}
-		
-		key = (key.substring(0,1) == '#' ? key : '#'+key);
-
-		var task = myWindow.prompt('What is your task?');
-		
+		key = escape(key);
+		task = escape(task);
 		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, '_blank');
 		
 ">Bookmarklet</a></small>
@@ -268,6 +266,11 @@ TODO:
 	}
 	
 	function argsAdd( key, task ) {
+		key = unescape(key);
+		key = (key.substring(0,1) == '#' ? key : '#'+key);
+		
+		ask = unescape(task);
+		
 		$.jStorage.set(key, task);
 		reDraw();
 	}
@@ -391,12 +394,6 @@ TODO:
 			if(pair[0] == variable){return pair[1];}
 		}
 		return(false);
-	}
-	
-	function checkURLArgs(){
-		k = getQueryVariable("k");
-		t = getQueryVariable("t");
-		if(k||t){argsAdd(k,t);}
 	}
 
 </script>
