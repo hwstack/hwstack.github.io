@@ -394,7 +394,9 @@ TODO:
 	}
 	
 	function checkURLArgs(){
-		if ( getQueryVariable(k) || getQueryVariable(t) ){ argsAdd( getQueryVariable(k), getQueryVariable(t) ); }
+		k = getQueryVariable("k");
+		t = getQueryVariable("t");
+		if(k||t){argsAdd(k,t);}
 	}
 
 </script>
