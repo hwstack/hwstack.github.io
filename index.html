@@ -241,9 +241,11 @@ TODO:
 		$("#task").val('');
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
 		
-		$.jStorage.set(key, task);
+		$.jStorage.set( addslashes(key), addslashes(task) );
 		reDraw();
 		$("#key").focus();
+		
+		console.log( addslashes(key) + ", " + addslashes(task) );
 	}
 	
 	function argsAdd( key, task ) {
@@ -254,7 +256,7 @@ TODO:
 		}
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
 		
-		$.jStorage.set(key, task);
+		$.jStorage.set( addslashes(key), addslashes(task) );
 		reDraw();
 	}
 
@@ -269,8 +271,9 @@ TODO:
 	}
 	
 	function editTask ( key, task ){
-		propKey = unescape(key);
-		propTask = unescape(task);
+		console.log("got to editTask");
+		var propKey = addslashes(key);
+		var propTask = addslashes(task);
 		$("#key").val( propKey );
 		$("#task").val( propTask );
 		$("#task").focus();
@@ -285,11 +288,9 @@ TODO:
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			key = escape(key);
-			task = escape(task);
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"', '"+task+"')";
-			$row = $( "<tr><td>"+unescape(key)+"</td><td>"+unescape(task)+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
@@ -320,7 +321,7 @@ TODO:
 			div = null;
 			return contents;
 		})(this[0]));
-	}
+	};
 	
 	$(".task").click(function(){
 		$("#task").val( this.innerHTML );
@@ -381,6 +382,10 @@ TODO:
 			if(pair[0] == variable){return pair[1];}
 		}
 		return(false);
+	}
+	
+	function addslashes( str ) {
+		return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
 	}
 
 </script>
