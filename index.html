@@ -6,5 +6,407 @@ TODO:
 
 <!DOCTYPE html>
 <html>
-<head <a href="http://hwstack.github.io/">hwStack</a>> Out of Order. Use hwStack</head>
+
+<head>
+  <title>hwStack v0.2.0a</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <!--supplementary CSS libaries-->
+  <link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+  <!--supplementary JS scripts-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
+  <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
+  <script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>
+  
+  <!--favicon-->
+  <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
+</head>
+<body onload="checkForArgs()">
+
+<!--"fork me on github" ribbon-->
+<a href="https://github.com/hwstack/hwstack.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<!--<label for="1">id=1</label><input type="checkbox" name="1" id="1" onclick="doThing(1);"/><br />
+<label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
+<label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
+
+<small style="color:#ff0000" align="right" style="position:absolute">v0.1beta</small>
+<small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
+		(function(){
+		
+		var key = prompt('What class?');
+		var task = prompt('What is your task?');
+		
+		if(!key) {
+			alert('Woops!  :I  Class must be specified!');
+			return;
+		}
+		key = escape(key);
+		task = escape(task);
+		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, '_blank');
+		
+		})();
+">Bookmarklet</a></small>
+
+<table id="wrapper">
+  <tr>
+  
+<td id="thestack-wrapper">
+  <h2 style="margin: 0px auto;">theStack</h2><br />
+  <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md"><small><i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about</small></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="sel-view-tS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	show just <b>theStack</b>
+  </a>
+  
+  <div>
+    <span>2/6/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Problem Sets:<br />p. 559: #9-16 (all), #22-25<br />p. 566: #11-25 (all), #29<br />p. 571: #10-24 (all), #26</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">13.4 Practice (all)<br />13.4 Enrichment</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HaHQ5YVYzOE9WeTA/edit" target="_blank">HwDoc</a></span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Y'all is presentin' ye skit on Friday!  Make dem edits necessarios y memoriza!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Finish the <i>Narrative</i> and Reflect.</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Finish yo Final! Good luck to those who left it all for t'night!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Fix up yo List 6 Analogies in the <i>WWW</i> (if you need to).  1st draft of essay due Thursday.</span>
+  </div>
+  
+  <hr />
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.3 (all)</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">p. 559: #9-16 (all), #22-25</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">1. Present skit on <i>Thursday</i> (memorize).<br />2. <b>Reading Comprehension</b> worksheet</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Read Chapters 9 & 10 and reflect in journal.</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Complete the flash cards and word analogies for list 6.  Study for Grammar test.   Bring list 1-6 flash cards to class on Tuesday.</span>
+  </div>
+  <div>
+    <span>2/3/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Informal Writing Worksheet</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HaHQ5YVYzOE9WeTA/edit" target="_blank">HwDoc</a></span>
+  </div>
+  <div>
+    <span>2/3/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.2 (all)</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Be sure to have all flash cards for lists 1-5 on Tuesday.  Study for Grammar Test.  Complete any missing work.</span>
+  </div>
+  <div>
+    <span>2/1/14</span>&nbsp;<span class="class">#MUN&nbsp;</span><br />
+    <span class="task">BUAMUN!</span>
+  </div>
+  <hr />
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Hum&nbsp;</span><br />
+    <span class="task">Book Card!</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">W.B. 10.11-10.12</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.1(all)</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Outline Essay</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Choose the top 3 elements you want to create a 10min presentation on, later on. Only chemical symbols in your first or last name may be used.<br /><b>Resource:</b><br /><a href="http://ptable.com" target="_blank">Ptable</a></span>
+  </div>
+   <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Prepare for Crisis #4<br />Study WWW Lists 1-5</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Informal Writing Worksheet</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Study for Chapter 12 test.</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Textbook: pg 524 #7-24 odd, #24-29 all; pg 530 #9-31 odd, #34; pg 536 #11-25 odd, #35, #39-46 all</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Study for your grammar test.  Make any necessary edits to your short story.</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Latin</span><br />
+    <span class="task">January project due!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Final Due!</span>
+  </div>
+</td>
+
+<td id="mystack-wrapper">
+  <h2 style="margin: 0px auto;">myStack</h2><br />
+  <a style="position:relative;bottom:12px;" href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
+  	<small>
+  		<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about
+  	</small>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a style="position:relative;bottom:12px;" href="javascript:flush_data()">
+  	<i class="fa fa-fire"></i>&nbsp;
+  	clear tasks
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="sel-view-mS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	show just <b>myStack</b>
+  </a>
+  <table width="100%" cellpadding="0px" cellspacing="0px">
+  <tr>
+ 	<td style="width: 25%"><input type="text" class="clearable" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
+	<td style="width: 75%"><textarea class="clearable" id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
+	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
+  </tr>
+  	<tbody id="tasks">
+  		<!--tasks are plopped here-->
+	</tbody>
+  </table>
+</td>
+
+  </tr>
+</table>
+
+<script type="text/javascript">
+
+	/*$( "span:nth-child(3n+2)" ).attr('class', '_class');
+	$( "span:nth-child(3n)" ).attr('class', 'task');*/
+	
+	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+    	return function( elem ) {
+        	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+		};
+	});
+	
+	reDraw();
+	
+	//$('#thestack-wrapper').jscroll({ autoTrigger: false });
+
+	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
+	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
+	$( "span:contains('#span')" ).css( "color", "#EB3921" );
+	$( "span:contains('#mathk')" ).css( "color", "#C321EB" );
+	$( "span:contains('#mathc')" ).css( "color", "#369E19" );
+	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
+	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
+	$( "span:contains('#mun')" ).css( "color", "#282828");
+	
+	//$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
+	
+	function add(){
+		var key = $("#key").val();
+		var task = $("#task").val();
+		
+		if(!key){
+			alert("Woops!  :I  Class must be specified!");
+			$("#key").focus();
+			return;
+		}
+		
+		/*if(key.indexOf("'") === -1 || key.indexOf('"') === -1 || task.indexOf("'") === -1 || task.indexOf('"') === -1){
+			alert("Quotation marks or appostrophes don't work at the moment... (sorry)");
+			return;
+		}*/
+		
+		$("#key").val('');
+		$("#task").val('');
+		key = (key.substring(0,1) == "#" ? key : "#"+key);
+		
+		$.jStorage.set(key, task);
+		reDraw();
+		$("#key").focus();
+	}
+	
+	function argsAdd( key, task ) {
+		key = unescape(key);
+		key = (key.substring(0,1) == '#' ? key : '#'+key);
+		
+		task = unescape(task);
+		
+		$.jStorage.set(key, task);
+		reDraw();
+	}
+
+	function flush_data(){
+		$.jStorage.flush();
+		reDraw();
+	}
+
+	function delTask( key ){
+		$.jStorage.deleteKey( key.toString() );
+		reDraw();
+	}
+	
+	function editTask ( key ){
+		$("#key").val( key );
+		$("#task").val( $.jStorage.get(key) );
+		$("#task").focus();
+	}
+
+	function reDraw(){
+		var key, task, row, delHref, editHref;
+
+		//clears old list before drawing new one
+		$("#tasks").empty();
+	
+		for(i=0; i<($.jStorage.index().length); i++){
+			key = $.jStorage.index()[i];
+			task = $.jStorage.get(key);
+			delHref = "javascript:delTask('"+key+"')";
+			editHref = "javascript:editTask('"+key+"')";
+			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$( "#tasks" ).prepend( $row );
+		}
+	
+		$( "td[id!='mystack-wrapper']:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( "td[id!='mystack-wrapper']:contains('#humc')" ).css( "color", "#4343E6" );
+		$( "td[id!='mystack-wrapper']:contains('#span')" ).css( "color", "#EB3921" );
+		$( "td[id!='mystack-wrapper']:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( "td[id!='mystack-wrapper']:contains('#mathc')" ).css( "color", "#369E19" );
+		$( "td[id!='mystack-wrapper']:contains('#sci')" ).css( "color", "#EB9721" );
+		$( "td[id!='mystack-wrapper']:contains('#lat')" ).css( "color", "#8A8A8A" );
+		$( "td[id!='mystack-wrapper']:contains('#mun')" ).css( "color", "#282828" );
+	}
+	
+	$( "#task, #key" ).keypress(function (e) {
+  		if (e.which == 13) {
+  			add();
+  			return false;
+  		}
+	});
+	
+	$.fn.outerHTML = function(){
+		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
+		return (!this.length) ? this : (this[0].outerHTML || (
+		function(el){
+			var div = document.createElement('div');
+			div.appendChild(el.cloneNode(true));
+			var contents = div.innerHTML;
+			div = null;
+			return contents;
+		})(this[0]));
+	};
+	
+	$(".task").click(function(){
+		$("#task").val( this.innerHTML );
+		$("#task").focus();
+	});
+	
+	$(".class").click(function(){
+		$("#key").val( this.innerHTML );
+		$("#key").focus();
+	});
+	
+	/*function createOverlay(){
+		var docHeight = $(document).height();
+
+		$("body").append("<div id='overlay'></div>");
+
+		$("#overlay")
+			.height(docHeight)
+			.css({
+				'opacity' : 0.4,
+				'position': 'fixed',
+				'top': 0,
+				'left': 0,
+				'background-color': 'black',
+				'width': '100%',
+				'z-index': 5000
+			});
+	}
+	
+	function removeOverlay(){ $("#overlay").remove() }*/
+	
+	specificView( getQueryVariable("v") );
+	
+	function specificView( type ){
+		if(type=="tS"){ //just theStack
+			$( "#thestack-wrapper" ).css( "display", "" );
+			$( "#mystack-wrapper" ).css( "display", "none" );
+			$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+		}else if(type=="mS"){ //just myStack
+			$( "#thestack-wrapper" ).css( "display", "none" );
+			$( "#mystack-wrapper" ).css( "display", "" );
+			$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+		}
+	}
+	
+	function resetView(){
+		$( "#thestack-wrapper" ).css( "display", "" );
+		$( "#mystack-wrapper" ).css( "display", "" );
+	}
+	
+	$("#task").resizeable();
+	
+	function checkForArgs() {
+		var k = getQueryVariable('k');
+		var t = getQueryVariable('t');
+		if(k && t){
+			argsAdd(k, t);
+		}
+	}
+	
+	function getQueryVariable( variable ){
+		var query = window.location.search.substring(1);
+		var vars = query.split("+");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
+	}
+
+</script>
+
+</body>
 </html>
