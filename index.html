@@ -252,7 +252,6 @@ TODO:
 			alert("Woops!  :I  Class must be specified!");
 			return;
 		}
-		
 		key = (key.substring(0,1) == "#" ? key : "#"+key);
 		
 		$.jStorage.set(key, task);
@@ -265,13 +264,13 @@ TODO:
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey( unescape(key.toString()) );
+		$.jStorage.deleteKey( decodeURIComponent(key.toString()) );
 		reDraw();
 	}
 	
 	function editTask ( key, task ){
-		$("#key").val( unescape(key) );
-		$("#task").val( unescape(task) );
+		$("#key").val( decodeURIComponent(key) );
+		$("#task").val( decodeURIComponent(task) );
 		$("#task").focus();
 	}
 
@@ -284,8 +283,8 @@ TODO:
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
-			delHref = "javascript:delTask('"+escape(key)+"')";
-			editHref = "javascript:editTask('"+escape(key)+"', '"+escape(task)+"')";
+			delHref = "javascript:delTask('"+encodeURIComponent(key)+"')";
+			editHref = "javascript:editTask('"+encodeURIComponent(key)+"', '"+encodeURIComponent(task)+"')";
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
