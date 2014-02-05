@@ -276,9 +276,9 @@ TODO:
 		reDraw();
 	}
 	
-	function editTask ( key, task ){
+	function editTask ( key ){
 		$("#key").val( key );
-		$("#task").val( task );
+		$("#task").val( $.jStorage.get(key) );
 		$("#task").focus();
 	}
 
@@ -292,7 +292,7 @@ TODO:
 			key = $.jStorage.index()[i];
 			task = $.jStorage.get(key);
 			delHref = "javascript:delTask('"+key+"')";
-			editHref = "javascript:editTask('"+key+"', '"+task+"')";
+			editHref = "javascript:editTask('"+key+"')";
 			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
