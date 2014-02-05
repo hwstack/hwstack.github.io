@@ -269,7 +269,7 @@ TODO:
 		key = unescape(key);
 		key = (key.substring(0,1) == '#' ? key : '#'+key);
 		
-		ask = unescape(task);
+		task = unescape(task);
 		
 		$.jStorage.set(key, task);
 		reDraw();
