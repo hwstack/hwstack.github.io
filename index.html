@@ -35,22 +35,7 @@ TODO:
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
 
 <small style="color:#ff0000" align="right" style="position:absolute">v0.1beta</small>
-<small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
-		(function(){
-		
-		var key = prompt('What class?');
-		var task = prompt('What is your task?');
-		
-		if(!key) {
-			alert('Woops!  :I  Class must be specified!');
-			return;
-		}
-		key = escape(key);
-		task = escape(task);
-		var myWindow = window.open('http://hwstack.github.io/?k='+key+'+t='+task, 'myWindow');
-		
-		})();
-">Bookmarklet</a></small>
+<small style="position:absolute" align="right" ><a title="Bookmarlet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:var myWindow = window.open('http://hwstack.github.io', '_blank'); myWindow.blur(); myWindow.focus(); var key = prompt('What class?'); var task = prompt('What is your task?'); argsAdd(key, task);">Bookmarklet</a></small>
 
 <table id="wrapper">
   <tr>
