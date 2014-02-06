@@ -57,7 +57,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
  		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task), 'myWindow');
  		
  		})();
- ">Add Task</a></small>
+ ">Add Task</a></small>&nbsp;&nbsp;
+<small style="position:absolute;top:1.2em;"><a title="Popout" href="javascript:popout()">Popout</a></small>
+
 <table id="wrapper">
   <tr>
   
@@ -233,8 +235,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 </table>
 
 <script type="text/javascript">
-
-	function bodyOnload() {
+	
+	function popout(){
+		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
+	}	
+	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
 	}
