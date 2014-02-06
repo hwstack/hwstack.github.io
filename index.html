@@ -29,7 +29,7 @@ TODO:
 <body onload="bodyOnload()">
 
 <!--"fork me on github" ribbon-->
-<a href="https://github.com/hwstack/hwstack.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/hwstack/hwstack.github.io" target="_blank" id="ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 <!--<label for="1">id=1</label><input type="checkbox" name="1" id="1" onclick="doThing(1);"/><br />
 <label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
@@ -57,6 +57,7 @@ TODO:
   <h2 align="center">theStack</h2><br />
   
   <!--nav-->
+  <nav style="margin: 0px auto;">
   <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
   	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;
   	<span class="link-title">about</span>
@@ -66,6 +67,7 @@ TODO:
   	<i class="fa fa-user"></i>&nbsp;
   	<span class="link-title">show just <b>theStack</b></span>
   </a>
+  </nav>
   
   <div>
     <span>2/6/14</span>&nbsp;<span class="class">#MathCW</span><br />
@@ -190,6 +192,8 @@ TODO:
 
 <td id="mystack-wrapper">
   <h2 align="center">myStack</h2><br />
+  
+  <nav style="margin: 0px auto;">
   <a style="position:relative;bottom:12px;" href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
   	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;<span class="link-title">about</span>
   </a>
@@ -203,6 +207,8 @@ TODO:
   	<i class="fa fa-user"></i>&nbsp;
   	<span class="link-title">show just <b>myStack</b></span>
   </a>
+  </nav>
+  
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
  	<td style="width: 25%"><input type="text" class="clearable" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
@@ -224,16 +230,20 @@ TODO:
 		checkForArgs();
 		if ($(window).width() <= 1024){	
 			$( ".link-title" ).css( "display", "none" );
+			$( "#ribbon" ).css( "display", "none" );
 		}else{
 			$( ".link-title" ).css( "display", "" );
+			$( "#ribbon" ).css( "display", "" );
 		}
 	}
 	
 	$(window).resize(function(){
 		if ($(window).width() <= 1024){	
 			$( ".link-title" ).css( "display", "none" );
+			$( "#ribbon" ).css( "display", "none" );
 		}else{
 			$( ".link-title" ).css( "display", "" );
+			$( "#ribbon" ).css( "display", "" );
 		}
 	});
 
