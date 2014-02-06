@@ -228,7 +228,15 @@ TODO:
 
 	function bodyOnload() {
 		checkForArgs();
-		if ($(window).width() <= 1024){	
+		updateLayout();
+	}
+	
+	$(window).resize(function(){
+		updateLayout();
+	});
+	
+	function updateLayout() {
+		if ($(window).width() <= 1308){	
 			$( ".link-title" ).css( "display", "none" );
 			$( "#ribbon" ).css( "display", "none" );
 		}else{
@@ -236,16 +244,6 @@ TODO:
 			$( "#ribbon" ).css( "display", "" );
 		}
 	}
-	
-	$(window).resize(function(){
-		if ($(window).width() <= 1024){	
-			$( ".link-title" ).css( "display", "none" );
-			$( "#ribbon" ).css( "display", "none" );
-		}else{
-			$( ".link-title" ).css( "display", "" );
-			$( "#ribbon" ).css( "display", "" );
-		}
-	});
 
 	//var date = moment().format("M/D/YY");
 	//$("#date").html(date);
