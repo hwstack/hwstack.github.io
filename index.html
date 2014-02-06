@@ -229,6 +229,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </div>
 </td>
 
+<!--bug reports column-->
+<td id="bugreports-wrapper" style="display:none;" >
+	<!--TODO-->
+</td>
+
 <td id="mystack-wrapper">
   <h2 align="center">myStack</h2><br />
   
@@ -331,7 +336,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		$("#key").val('');
 		$("#task").val('');
-		key = (key.substring(0,1) == "#" ? key : "#"+key);
+		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$.jStorage.set(key, task);
 		reDraw();
@@ -340,7 +345,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function argsAdd( key, task ) {
 		key = unescape(key);
-		key = (key.substring(0,1) == '#' ? key : '#'+key);
+		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		task = unescape(task);
 		
