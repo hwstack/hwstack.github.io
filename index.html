@@ -266,8 +266,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
- 	<td style="width: 25%"><input type="text" class="clearable" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
-	<td style="width: 75%"><textarea class="clearable" id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
+  	<td style="width: 10%"><input type="text" id="date" name="date" value="" placeholder="due date" style="width: 100%" /></td>
+ 	<td style="width: 25%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
+	<td style="width: 65%"><textarea id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
+	
 	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
   </tr>
   	<tbody id="tasks">
@@ -380,6 +382,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function add(){
 		var key = $("#key").val();
 		var task = $("#task").val();
+		var date = $("#date").val();
 		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
@@ -396,7 +399,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("#task").val('');
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
-		$.jStorage.set(key, task);
+		$.jStorage.set(key, task+","+date);
 		reDraw();
 		$("#key").focus();
 	}
@@ -428,17 +431,20 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 
 	function reDraw(){
-		var key, task, row, delHref, editHref;
+		var key, task, date, row, delHref, editHref, valArray;
 
 		//clears old list before drawing new one
 		$("#tasks").empty();
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			task = $.jStorage.get(key);
+			val = $.jStorage.get(key).split(",");
+			task = val[0];
+			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<div class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></div>" )
+			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
