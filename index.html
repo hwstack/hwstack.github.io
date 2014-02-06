@@ -281,6 +281,21 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 
 <script type="text/javascript">
 
+	
+	var mySubs = []
+
+	function addToSub( key ){
+		
+		mySubs.push(key);
+		
+	}
+	
+	function deleteSub( i ){
+		
+		i==parseInt(i) ? console.log("int") : break;
+		i==all ? mySubs = [] : Array.remove(mySubs.i);
+	}
+
 	function showClass( key ){
 		$("div").css("display","none");
 		$("hr").css("display","none");
