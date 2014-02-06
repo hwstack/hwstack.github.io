@@ -55,11 +55,16 @@ TODO:
   
 <td id="thestack-wrapper">
   <h2 align="center">theStack</h2><br />
-  <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md"><small><i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about</small></a>
+  
+  <!--nav-->
+  <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
+  	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<span class="link-title">about</span>
+  </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a id="sel-view-tS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
   	<i class="fa fa-user"></i>&nbsp;
-  	show just <b>theStack</b>
+  	<span class="link-title">show just <b>theStack</b></span>
   </a>
   
   <div>
@@ -186,19 +191,17 @@ TODO:
 <td id="mystack-wrapper">
   <h2 align="center">myStack</h2><br />
   <a style="position:relative;bottom:12px;" href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
-  	<small>
-  		<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;about
-  	</small>
+  	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;<span class="link-title">about</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a style="position:relative;bottom:12px;" href="javascript:flush_data()">
   	<i class="fa fa-fire"></i>&nbsp;
-  	clear tasks
+  	<span class="link-title">clear tasks</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a id="sel-view-mS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
   	<i class="fa fa-user"></i>&nbsp;
-  	show just <b>myStack</b>
+  	<span class="link-title">show just <b>myStack</b></span>
   </a>
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
@@ -216,9 +219,25 @@ TODO:
 </table>
 
 <script type="text/javascript">
+	
+	$(window).onload(function(){
+		if ($(window).width() <= 1024){	
+			$( ".link-title" ).css( "display", "none" );
+		}else{
+			$( ".link-title" ).css( "display", "" );
+		}
+	});
+	
+	$(window).resize(function(){
+		if ($(window).width() <= 1024){	
+			$( ".link-title" ).css( "display", "none" );
+		}else{
+			$( ".link-title" ).css( "display", "" );
+		}
+	});
 
-	var date = moment().format("M/D/YY");
-	$("#date").html(date);
+	//var date = moment().format("M/D/YY");
+	//$("#date").html(date);
 	
 	////////////////////////////////////////////
 	
