@@ -270,11 +270,31 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 
 <script type="text/javascript">
 
-	functions getDivs(){
+	functions subClass( class ){
+		$("div").css("display","none");
 		
-		var divTags = $("div");
-		console.log(divTags);
-		
+		if(class == "mathk"){
+			$("div.mathk").css("display","");
+			return;
+		}else if(class == "mathcw"){
+			$("div.mathcw").css("display","");
+			return;
+		}else if(class == "humv"){
+			$("div.humv").css("display","");
+			return;
+		}else if(class == "humc"){
+			$("div.humc").css("display","");
+			return;
+		}else if(class == "span"){
+			$("div.span").css("display","");
+			return;
+		}else if(class == "lat"){
+			$("div.lat").css("display","");
+			return;
+		}else if(class == "sci"){
+			$("div.sci").css("display","");
+			return;
+		}
 	}
 		
 	
