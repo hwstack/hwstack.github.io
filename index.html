@@ -75,6 +75,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   
   <!--nav-->
   <nav align="center">
+  
   <a style="position:relative;bottom:12px;" target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
   	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;
   	<span class="link-title">about</span>
@@ -84,6 +85,16 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   	<i class="fa fa-user"></i>&nbsp;
   	<span class="link-title">show just this</span>
   </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <!--showClass categories-->
+  <a id="sel-view-tS" title="show just #HumVaughan" style="position:relative;bottom:12px;color:#4B8AE3;" href="javascript:showClass('humv')">
+  	<i class="fa fa-book"></i>&nbsp;
+  </a>
+  <a id="sel-view-tS" title="show just #HumCadigan" style="position:relative;bottom:12px;color:#4B8AE3;" href="javascript:showClass('humc')">
+  	<i class="fa fa-book"></i>&nbsp;
+  </a>
+  
   </nav>
   
   <div class="span">
@@ -272,6 +283,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 
 	function showClass( key ){
 		$("div").css("display","none");
+		$("hr").css("display","none");
 		
 		if(key == "mathk"){
 			$("div.mathk").css("display","");
@@ -296,7 +308,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			return;
 		}
 	}
-		
+	
+	function resetShowClass() {
+		$("div").css("display","");
+		$("hr").css("display","");
+	}
 	
 	function popout(){
 		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
