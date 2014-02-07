@@ -111,6 +111,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
     <span>2/10/14</span>&nbsp;<span class="class">#MathCW</span><br />
     <span class="task">Problem sets:<br />p 576 #9-23 all,<br />p 580 #7-22 all,<br />p 580 #26-28 all</span>
   </div>
+    <div class="lat">
+    <span>2/12/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task">Olympic WS</span>
+  </div>
   <div class="mathcw">
     <span>2/12/14</span>&nbsp;<span class="class">#MathCW</span><br />
     <span class="task">Problem sets:<br />p 587 #10-22</span>
@@ -312,6 +316,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		mySubs.push(key);
 		$.jStorage.set(mySubsKey, mySubs);
+		reDraw();
 		
 	}
 	
@@ -319,7 +324,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
 		$.jStorage.set(mySubsKey, mySubs);
+		reDraw();
 	}
+	
+	
 	
 	
 	//////////////////////////////////////////////////////////
