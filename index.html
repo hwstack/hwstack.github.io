@@ -291,12 +291,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function addToSub( key ){
 		
 		mySubs.push(key);
+		$.jStorage.set()
 		
 	}
 	
 	function deleteSub( i ){
 		
-		i==all ? mySubs = [] : Array.remove(mySubs.i);
+		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
 	}
 	
 	
