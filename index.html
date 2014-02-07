@@ -488,7 +488,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			val = $.jStorage.get(key).split(",");
+			val = $.jStorage.get(key).toString().split(",");
 			task = val[0];
 			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
