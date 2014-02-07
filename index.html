@@ -1,5 +1,15 @@
 <!--
 
+This is free software. Feel free to use, copy, or modify it at your leisure.
+
+Just don't say you made the original.
+
+Fool, that was our job
+
+Peace on earth!
+
+--------------------------------
+
 TODO:
 
 "Subscribed" Tags -- Save Tag preferences as jStorage cookie, option to "Show All" or "Show Subscribed".
@@ -273,9 +283,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
   </tr>
   
-  <tbody id="tasks">
+  <tr id="tasks">
   	<!--tasks are plopped here-->
-  </tbody>
+  </tr>
   
   </table>
 </td>
@@ -287,16 +297,20 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 
 	
 	var mySubs = []
+	
+	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF"
 
 	function addToSub( key ){
 		
 		mySubs.push(key);
+		$.jStorage.set(mySubsKey, mySubs)
 		
 	}
 	
 	function deleteSub( i ){
 		
-		i==all ? mySubs = [] : Array.remove(mySubs.i);
+		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
+		$.jStorage.set(mySubsKey, mySubs)
 	}
 	
 	
@@ -347,7 +361,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		today = moment().format("M/D/YY");
 		tomorrow = today.replace( today.substr(2,1), ( Number(today.substr(2,1))+1 ).toString() );
 		
-		$("#date").attr("placeholder", tomorrow);
+		$("#date").attr("placeholder", tommorrow);
 	}
 	
 	$(window).resize(function(){
@@ -456,7 +470,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
 			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
