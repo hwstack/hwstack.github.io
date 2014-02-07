@@ -426,7 +426,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function editTask ( key ){
 		$("#key").val( key );
-		$("#task").val( $.jStorage.get(key) );
+		var val = $.jStorage.get(key).split(",");
+		$("#task").val( val[0] );
+		$("#date").val( val[1] );
 		$("#task").focus();
 	}
 
@@ -443,22 +445,22 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<td class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
+			$row = $( "<td colspan='2' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
 			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
 	
-		$( "td[id!='mystack-wrapper']:contains('#humv')" ).css( "color", "#4B8AE3" );
-		$( "td[id!='mystack-wrapper']:contains('#humc')" ).css( "color", "#4343E6" );
-		$( "td[id!='mystack-wrapper']:contains('#span')" ).css( "color", "#EB3921" );
-		$( "td[id!='mystack-wrapper']:contains('#mathk')" ).css( "color", "#C321EB" );
-		$( "td[id!='mystack-wrapper']:contains('#mathc')" ).css( "color", "#369E19" );
-		$( "td[id!='mystack-wrapper']:contains('#sci')" ).css( "color", "#EB9721" );
-		$( "td[id!='mystack-wrapper']:contains('#lat')" ).css( "color", "#8A8A8A" );
-		$( "td[id!='mystack-wrapper']:contains('#mun')" ).css( "color", "#282828" );
+		$( ".class:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( ".class:contains('#humc')" ).css( "color", "#4343E6" );
+		$( ".class:contains('#span')" ).css( "color", "#EB3921" );
+		$( ".class:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( ".class:contains('#mathc')" ).css( "color", "#369E19" );
+		$( ".class:contains('#sci')" ).css( "color", "#EB9721" );
+		$( ".class:contains('#lat')" ).css( "color", "#8A8A8A" );
+		$( ".class:contains('#mun')" ).css( "color", "#282828");
 	}
 	
-	$( "#task, #key" ).keypress(function (e) {
+	$( "#task, #key, #date" ).keypress(function (e) {
   		if (e.which == 13) {
   			add();
   			return false;
