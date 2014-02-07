@@ -296,21 +296,21 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 <script type="text/javascript">
 
 	
-	var mySubs = []
+	var mySubs = [];
 	
-	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF"
+	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 
 	function addToSub( key ){
 		
 		mySubs.push(key);
-		jQuery.jStorage.set(mySubsKey, mySubs);
+		$.jStorage.set(mySubsKey, mySubs);
 		
 	}
 	
 	function deleteSub( i ){
 		
 		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
-		jQuery.jStorage.set(mySubsKey, mySubs);
+		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
 	
