@@ -266,7 +266,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   
   <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
-  	<td style="width: 15%"><input type="text" id="date" name="date" value="" placeholder="due date" style="width: 100%" /></td>
+  	<td style="width: 15%"><input type="text" id="date" name="date" value="" style="width: 100%" /></td>
  	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
 	<td style="width: 65%"><textarea id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
 	
@@ -291,13 +291,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function addToSub( key ){
 		
 		mySubs.push(key);
-		$.jStorage.set()
 		
 	}
 	
 	function deleteSub( i ){
 		
-		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
+		i==all ? mySubs = [] : Array.remove(mySubs.i);
 	}
 	
 	
@@ -340,13 +339,15 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
 	}
 	
-	var currentDate;
+	var today, tomorrow;
 	
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
-		currentDate = moment().format("M/D/YY");
-		$("#date").val(currentDate);
+		today = moment().format("M/D/YY");
+		tomorrow = today.replace( today.substr(2,1), ( Number(today.substr(2,1))+1 ).toString() );
+		
+		$("#date").attr("placeholder", tommorrow);
 	}
 	
 	$(window).resize(function(){
