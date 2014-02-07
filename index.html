@@ -62,14 +62,15 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 <small><a title="Bookmarklet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
  		
- 		var key = prompt('What class?');
- 		var task = prompt('What is your task?');
+              var date = prompt('When is this due?');
+              var task = prompt('What is your task?');
+ 		var key = prompt('For which class?');
  		
  		if(!key) {
  			alert('Woops!  :I  Class must be specified!');
  			return;
  		}
- 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task), 'myWindow');
+ 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
  		
  		})();
  ">Add Task</a></small>&nbsp;|&nbsp;
@@ -441,6 +442,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		task = unescape(task);
+              date = unescape(date);
 		
 		$.jStorage.set(key, task+","+date);
 		reDraw();
@@ -565,8 +567,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function checkForArgs() {
 		var k = getQueryVariable('k');
 		var t = getQueryVariable('t');
+              var d = getQueryVariable('d');
 		if(k && t){
-			argsAdd(k, t);
+			argsAdd(k, t, d);
 			
 			var state = {
 				"yoloCuzICan": true
