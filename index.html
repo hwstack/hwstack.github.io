@@ -352,7 +352,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		}
 	}
 	
-	function resetShowClass() {
+	function resetShowClass(){
 		$("div").css("display","");
 		$("hr").css("display","");
 	}
@@ -549,11 +549,22 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		if(type=="tS"){ //just theStack
 			$( "#thestack-wrapper" ).css( "display", "" );
 			$( "#mystack-wrapper" ).css( "display", "none" );
-			$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			
+if( !(getQueryVariable("r") == "0") ) {
+$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+} else {
+    $("#sel-view-tS").css("display", "none");
+}
+
 		}else if(type=="mS"){ //just myStack
 			$( "#thestack-wrapper" ).css( "display", "none" );
 			$( "#mystack-wrapper" ).css( "display", "" );
-			$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			
+if( !(getQueryVariable("r") == "0") ) {
+$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+} else {
+    $("#sel-view-mS").css("display", "none");
+}
 		}
 	}
 	
