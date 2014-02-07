@@ -283,9 +283,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
   </tr>
   
-  <tr id="tasks">
+  <tbody id="tasks">
   	<!--tasks are plopped here-->
-  </tr>
+  </tbody>
   
   </table>
 </td>
@@ -470,7 +470,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
+			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
