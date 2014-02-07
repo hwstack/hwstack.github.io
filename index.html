@@ -137,7 +137,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </div>
   <div class="mathk">
     <span>2/7/14</span>&nbsp;<span class="class">#MathKramer</span><br />
-    <span class="task">Finish and Correct Pop Test on Chapter 12!</span>
+    <span class="task">Finish and Correct Stupid Pop Test on Chapter 12!</span>
   </div>
   
   <hr />
@@ -316,12 +316,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		mySubs.push(key);
 		$.jStorage.set(mySubsKey, mySubs);
-		
 	}
 	
 	function deleteSub( i ){
 		
-		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
+		i=="all" ? mySubs = [] : array.splice(mySubs, i)
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
