@@ -329,7 +329,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function deleteSub( i ){
 		
-		i=="all" ? mySubs = [] : delete mySubs.i;
+		i=="all" ? mySubs = [] : delete mySubs[i];
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
