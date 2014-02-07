@@ -298,6 +298,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		i==all ? mySubs = [] : Array.remove(mySubs.i);
 	}
+	
+	
+	//////////////////////////////////////////////////////////
 
 	function showClass( key ){
 		$("div").css("display","none");
@@ -336,9 +339,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
 	}
 	
+	var currentDate;
+	
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
+		currentDate = moment().format("M/D/YY");
+		$("#task").val(date);
 	}
 	
 	$(window).resize(function(){
@@ -354,8 +361,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			$( "#ribbon" ).css( "display", "" );
 		}
 	}
-
-	//var date = moment().format("M/D/YY");
 	//$("#date").html(date);
 	
 	////////////////////////////////////////////
@@ -399,6 +404,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		$("#key").val('');
 		$("#task").val('');
+		$("#date").val('');
+		
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$.jStorage.set(key, task+","+date);
@@ -406,13 +413,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("#key").focus();
 	}
 	
-	function argsAdd( key, task ) {
+	function argsAdd( key, task, date ) {
 		key = unescape(key);
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		task = unescape(task);
 		
-		$.jStorage.set(key, task);
+		$.jStorage.set(key, task+","+date);
 		reDraw();
 	}
 
@@ -447,7 +454,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			date = val[1];
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<td colspan='2' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
+			$row = $( "<td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td>" );
 			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
 		}
