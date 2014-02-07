@@ -303,14 +303,14 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function addToSub( key ){
 		
 		mySubs.push(key);
-		$.jStorage.set(mySubsKey, mySubs)
+		$.jStorage.set(mySubsKey, mySubs);
 		
 	}
 	
 	function deleteSub( i ){
 		
 		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
-		$.jStorage.set(mySubsKey, mySubs)
+		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
 	
