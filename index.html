@@ -361,7 +361,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		today = moment().format("M/D/YY");
 		tomorrow = today.replace( today.substr(2,1), ( Number(today.substr(2,1))+1 ).toString() );
 		
-		$("#date").attr("placeholder", tommorrow);
+		$("#date").attr("placeholder", tomorrow);
 	}
 	
 	$(window).resize(function(){
