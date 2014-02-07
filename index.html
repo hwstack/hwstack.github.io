@@ -64,7 +64,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
  		
               var date = prompt('When is this due?');
               var task = prompt('What is your task?');
- 		var key = prompt('For which class?');
+              var key = prompt('For which class?');
  		
  		if(!key) {
  			alert('Woops!  :I  Class must be specified!');
@@ -137,7 +137,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </div>
   <div class="mathk">
     <span>2/7/14</span>&nbsp;<span class="class">#MathKramer</span><br />
-    <span class="task">Finish and Correct Stupid Pop Test on Chapter 12!</span>
+    <span class="task">Finish and Correct Pop Test on Chapter 12!</span>
   </div>
   
   <hr />
@@ -316,11 +316,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		mySubs.push(key);
 		$.jStorage.set(mySubsKey, mySubs);
+		
 	}
 	
 	function deleteSub( i ){
 		
-		i=="all" ? mySubs = [] : array.splice(mySubs, i)
+		i=="all" ? mySubs = [] : Array.remove(mySubs.i);
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
@@ -392,7 +393,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 	//$("#date").html(date);
 	
-	////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
 	
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
@@ -447,7 +448,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		task = unescape(task);
-              date = unescape(date);
+                date = unescape(date);
 		
 		$.jStorage.set(key, task+","+date);
 		reDraw();
@@ -555,21 +556,21 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			$( "#thestack-wrapper" ).css( "display", "" );
 			$( "#mystack-wrapper" ).css( "display", "none" );
 			
-if( !(getQueryVariable("r") == "0") ) {
-$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
-} else {
-    $("#sel-view-tS").css("display", "none");
-}
+			if( getQueryVariable("r") != "no" ) {
+				$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			} else {
+				$("#sel-view-tS").css("display", "none");
+			}
 
 		}else if(type=="mS"){ //just myStack
 			$( "#thestack-wrapper" ).css( "display", "none" );
 			$( "#mystack-wrapper" ).css( "display", "" );
 			
-if( !(getQueryVariable("r") == "0") ) {
-$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
-} else {
-    $("#sel-view-mS").css("display", "none");
-}
+			if( getQueryVariable("r") != "no" ) {
+				$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+			} else {
+    			$("#sel-view-mS").css("display", "none");
+			}
 		}
 	}
 	
