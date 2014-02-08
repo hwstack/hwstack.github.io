@@ -414,7 +414,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		reDraw();
 		specificView( getQueryVariable("v") );
 		
-		colorizeEntries(today);
+		colorizeEntries(today, tomorrow);
 	}
 	
 	$(window).resize(function(){
@@ -439,15 +439,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
 		};
 	});
-
-	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
-	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
-	$( "span:contains('#span')" ).css( "color", "#EB3921" );
-	$( "span:contains('#mathk')" ).css( "color", "#C321EB" );
-	$( "span:contains('#mathc')" ).css( "color", "#369E19" );
-	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
-	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
-	$( "span:contains('#mun')" ).css( "color", "#282828");
 	
 	function add(){
 		var key = $("#key").val();
@@ -518,15 +509,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			
 			$( "#tasks" ).prepend( $row );
 		}
-	
-		$( ".class:contains('#humv')" ).css( "color", "#4B8AE3" );
-		$( ".class:contains('#humc')" ).css( "color", "#4343E6" );
-		$( ".class:contains('#span')" ).css( "color", "#EB3921" );
-		$( ".class:contains('#mathk')" ).css( "color", "#C321EB" );
-		$( ".class:contains('#mathc')" ).css( "color", "#369E19" );
-		$( ".class:contains('#sci')" ).css( "color", "#EB9721" );
-		$( ".class:contains('#lat')" ).css( "color", "#8A8A8A" );
-		$( ".class:contains('#mun')" ).css( "color", "#282828");
+		
+		colorizeEntries();
 	}
 	
 	function clearInputs(){
@@ -542,9 +526,36 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   		}
 	});
 	
-	function colorizeEntries( today ){
-		//marks entries due today
+	function colorizeEntries(){
+		//colors entry tags
+		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( "span:contains('#humc')" ).css( "color", "#4343E6" );
+		$( "span:contains('#span')" ).css( "color", "#EB3921" );
+		$( "span:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( "span:contains('#mathc')" ).css( "color", "#369E19" );
+		$( "span:contains('#sci')" ).css( "color", "#EB9721" );
+		$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
+		$( "span:contains('#mun')" ).css( "color", "#282828");
+		
+		//colors task tags 
+		$( ".class:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( ".class:contains('#humc')" ).css( "color", "#4343E6" );
+		$( ".class:contains('#span')" ).css( "color", "#EB3921" );
+		$( ".class:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( ".class:contains('#mathc')" ).css( "color", "#369E19" );
+		$( ".class:contains('#sci')" ).css( "color", "#EB9721" );
+		$( ".class:contains('#lat')" ).css( "color", "#8A8A8A" );
+		$( ".class:contains('#mun')" ).css( "color", "#282828");
+		
+		//colors entries due today
 		$("div:contains("+today+")").css("background-color","#EBD754");
+		//colors tasks due today
+		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
+		
+		//colors entries due tomorrow
+		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		//colors tasks due tomorrow
+		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 	}
 	
 	///////////////////////////////////////////////////////////
