@@ -543,11 +543,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	};
 	
 	$("div").click(function(){
-		var key = $(this).find(".key").html();
+		var key = $(this).find(".class").html();
 		var task = $(this).find(".task").html();
 		var date = $(this).find(".date").html();
 		
-		$.jStorage.set( key.toString(), task.toString()+","+date.toString() );
+		$.jStorage.set( key, task+","+date );
 		reDraw();
 	});
 	
