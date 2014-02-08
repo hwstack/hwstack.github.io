@@ -461,7 +461,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
-		$.jStorage.set(key, task+","+date);
+		$.jStorage.set("task:"+key, task+","+date);
 		reDraw();
 		$("#key").focus();
 	}
@@ -473,7 +473,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		task = unescape(task);
                 date = unescape(date);
 		
-		$.jStorage.set(key, task+","+date);
+		$.jStorage.set("task:"+key, task+","+date);
 		reDraw();
 	}
 
@@ -483,13 +483,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey( key.toString() );
+		$.jStorage.deleteKey( "task:"+key.toString() );
 		reDraw();
 	}
 	
 	function editTask ( key ){
 		$("#key").val( key );
-		var val = $.jStorage.get(key).split(",");
+		var val = $.jStorage.get("task:"key).split(",");
 		$("#task").val( val[0] );
 		$("#date").val( val[1] );
 		$("#task").focus();
@@ -503,11 +503,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			val = $.jStorage.get(key).toString().split(",");
+			val = $.jStorage.get("task:"+key).toString().split(",");
 			task = val[0];
 			date = val[1];
-			delHref = "javascript:delTask('"+key+"')";
-			editHref = "javascript:editTask('"+key+"')";
+			delHref = "javascript:delTask('""task:"+key+"')";
+			editHref = "javascript:editTask('"+"task:"+key+"')";
 			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
 			$( "#tasks" ).prepend( $row );
