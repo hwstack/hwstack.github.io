@@ -542,13 +542,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	};
 	
 	$("div").click(function(){
-		var $task = $(".task"),
-			$key = $(".class"),
-			$date = $(".date");
-		
-		var task = this.$task.innerHTML;
-		var key = this.$class.innerHTML;
-		var date = this.$date.innerHTML;
+		var task = $("this:nth-child(1)").innerHTML;
+		var key = $("this:nth-child(2)").innerHTML;
+		var date = $("this:nth-child(3)").innerHTML;
 		console.log(task, key, date);
 	});
 	
