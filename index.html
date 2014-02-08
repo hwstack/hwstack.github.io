@@ -461,7 +461,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
-		$.jStorage.set("task:"+key, task+","+date);
+		$.jStorage.set(key, task+","+date);
 		reDraw();
 		$("#key").focus();
 	}
@@ -473,7 +473,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		task = unescape(task);
                 date = unescape(date);
 		
-		$.jStorage.set("task:"+key, task+","+date);
+		$.jStorage.set(key, task+","+date);
 		reDraw();
 	}
 
@@ -483,13 +483,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 
 	function delTask( key ){
-		$.jStorage.deleteKey( "task:"+key.toString() );
+		$.jStorage.deleteKey( key.toString() );
 		reDraw();
 	}
 	
 	function editTask ( key ){
 		$("#key").val( key );
-		var val = $.jStorage.get("task:"key).split(",");
+		var val = $.jStorage.get(key).split(",");
 		$("#task").val( val[0] );
 		$("#date").val( val[1] );
 		$("#task").focus();
@@ -503,7 +503,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			val = $.jStorage.get("task:"+key).toString().split(",");
+			val = $.jStorage.get(key).toString().split(",");
 			task = val[0];
 			date = val[1];
 			delHref = "javascript:delTask('""task:"+key+"')";
