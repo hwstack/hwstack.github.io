@@ -506,7 +506,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			val = $.jStorage.get(key).toString().split(",");
 			task = unescape( val[0] );
 			date = unescape( val[1] );
-			key = unescape( key );
 			
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
@@ -549,7 +548,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var task = $(this).find(".task").html();
 		var date = $(this).find(".date").html();
 		
-		$.jStorage.set( escape(key), escape(task)+","+escape(date) );
+		var val = task+","+date;
+		
+		$.jStorage.set( key, val );
 		reDraw();
 	});
 	
