@@ -398,7 +398,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 	
 	function popout(){
-		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
+		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
 	}
 	
 	var today, tomorrow;
@@ -422,13 +422,16 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	});
 	
 	function updateLayout(){
-		if ($(window).width() <= 797){	
+		if ($(window).width() <= 1308){	
 			$( ".link-title" ).css( "display", "none" );
 			$( "#ribbon" ).css( "display", "none" );
 		}else{
 			$( ".link-title" ).css( "display", "" );
 			$( "#ribbon" ).css( "display", "" );
 		}
+		
+		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
+		$("#wrapper").css("width", wrapperWidth);
 	}
 	
 	//$("#date").html(date);
