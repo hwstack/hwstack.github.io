@@ -403,17 +403,20 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
+		
 		today = moment().format("M/D/YY");
 		tomorrow = today.replace( today.substr(2,1), ( Number(today.substr(2,1))+1 ).toString() );
-		
 		$("#date").attr("placeholder", tomorrow);
+		
+		reDraw();
+		specificView( getQueryVariable("v") );
 	}
 	
 	$(window).resize(function(){
 		updateLayout();
 	});
 	
-	function updateLayout() {
+	function updateLayout(){
 		if ($(window).width() <= 1308){	
 			$( ".link-title" ).css( "display", "none" );
 			$( "#ribbon" ).css( "display", "none" );
@@ -426,13 +429,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	///////////////////////////////////////////////////////////////////////////////
 	
-	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+	$.expr[":"].contains = $.expr.createPseudo(function(arg){
     	return function( elem ) {
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
 		};
 	});
-	
-	reDraw();
 
 	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
 	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
@@ -465,7 +466,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("#key").focus();
 	}
 	
-	function argsAdd( key, task, date ) {
+	function argsAdd( key, task, date ){
 		key = unescape(key);
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
@@ -522,8 +523,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 	}
 	
-	$( "#task, #key, #date" ).keypress(function (e) {
-  		if (e.which == 13) {
+	$("#task, #key, #date").keypress(function(e){
+  		if(e.which==13){
   			add();
   			return false;
   		}
@@ -542,28 +543,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	};
 	
 	$("div").click(function(){
-		var task = $("this:nth-child(1)").innerHTML;
-		var key = $("this:nth-child(2)").innerHTML;
-		var date = $("this:nth-child(3)").innerHTML;
-		console.log(task, key, date);
+		var key = $(this).find(".key").html();
+		var task = $(this).find(".task").html();
+		var date = $(this).find(".date").html();
+		argsAdd(key, task, date);
 	});
-	
-	/*$(".task").click(function(){
-		$("#task").val( this.innerHTML );
-		$("#task").focus();
-	});
-	
-	$(".class").click(function(){
-		$("#key").val( this.innerHTML );
-		$("#key").focus();
-	});
-	
-	$(".date").click(function(){
-		$("#date").val( this.innerHTML );
-		$("#date").focus();
-	});*/
-	
-	specificView( getQueryVariable("v") );
 	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
