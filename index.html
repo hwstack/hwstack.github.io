@@ -527,6 +527,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 	}
 	
+	function clearInputs(){
+		$("#key").val('');
+		$("#task").val('');
+		$("#date").val('');
+	}
+	
 	$("#task, #key, #date").keypress(function(e){
   		if(e.which==13){
   			add();
