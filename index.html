@@ -526,6 +526,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   		}
 	});
 	
+	////////////////////////////////////////////////////////////////////////
+	
 	function colorizeEntries(){
 		//colors entry tags
 		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
@@ -548,17 +550,17 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 		
 		//colors entries due today
-		$("div:contains("+today+")").css("background-color","#EBD754");
+		$("div[id!=thestack-wrapper]:contains("+today+")").css("background-color","#EBD754");
 		//colors tasks due today
 		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
 		
 		//colors entries due tomorrow
-		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		$("div[id!=thestack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		//colors tasks due tomorrow
 		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 	}
 	
-	///////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
