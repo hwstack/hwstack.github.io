@@ -325,8 +325,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 </table>
 
 <script type="text/javascript">
-
 	
+	
+	function gen(){
+		var myWindow = window.open('', '', 'width=400,height=300');myWindow.document.write('<script>function output(){var date=document.getElementById("date").value;var key=document.getElementById("class").value;var task=document.getElementById("task").value;document.getElementById("output").value="<div class="'+key+'"><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>";}</script><table><tr><td><input type="text" placeholder="due date" id="date"/></td><td rowspan="3"><textarea placeholder="output" rows="6" id="output"></textarea></td></tr><tr><td><input type="text" placeholder="class" id="class"/></td></tr><tr><td><textarea placeholder="task" id="task"></textarea></td></tr><tr><td colspan="2"><button onclick="output()"></button>');
+	}
+	//////////////////////////////////
 	var mySubs = [];
 	
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
