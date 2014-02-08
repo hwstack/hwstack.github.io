@@ -541,7 +541,14 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		})(this[0]));
 	};
 	
-	$(".task").click(function(){
+	$("div").click(function(){
+		var task = this.task.innerHTML;
+		var key = this.class.innerHTML;
+		var date = this.date.innerHTML;
+		console.log(task, key, date);
+	});
+	
+	/*$(".task").click(function(){
 		$("#task").val( this.innerHTML );
 		$("#task").focus();
 	});
@@ -550,6 +557,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("#key").val( this.innerHTML );
 		$("#key").focus();
 	});
+	
+	$(".date").click(function(){
+		$("#date").val( this.innerHTML );
+		$("#date").focus();
+	});*/
 	
 	specificView( getQueryVariable("v") );
 	
