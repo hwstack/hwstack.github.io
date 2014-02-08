@@ -547,7 +547,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var task = $(this).find(".task").html();
 		var date = $(this).find(".date").html();
 		
-		$.jStorage.set(key, task+","+date);
+		$.jStorage.set( key.toString(), task.toString()+","+date.toString() );
 		reDraw();
 	});
 	
