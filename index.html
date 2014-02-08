@@ -43,7 +43,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
   
-  <script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>
+  <!--<script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   
   <!--favicon-->
@@ -61,17 +61,14 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 <small style="color:#ff0000">v0.1beta</small>
 <small><a title="Bookmarklet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
- 		
-              var date = prompt('When is this due?');
-              var task = prompt('What is your task?');
-              var key = prompt('For which class?');
- 		
+        	var date = prompt('When is this due?');
+        	var task = prompt('What is your task?');
+        	var key = prompt('For which class?');
  		if(!key) {
  			alert('Woops!  :I  Class must be specified!');
  			return;
  		}
  		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
- 		
  		})();
  ">Add Task</a></small>&nbsp;|&nbsp;
 <small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
@@ -107,6 +104,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </a>-->
   
   </nav>
+  
+  <div class="sci">
+    <span>2/11/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Presentation Due</span>
+  </div>
     <div class="mathk">
     <span>2/10/14</span>&nbsp;<span class="class">#MathKramer</span><br />
     <span class="task">14.1 Practice All, do 13.5 at some point		</span>
@@ -114,6 +116,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   <div class="humc">
     <span>2/10/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
     <span class="task">Graphic Organizer :)</span>
+  </div>
+  <div class="humv">
+    <span>2/10/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Essay, if needed still.  Grammar test corrections-be sure to follow the directions <u>exactly</u>.  See the instruction sheet.  Actively read the handout on Sumner, Garrison, and Stowe.</span>
   </div>
   <div class="mathcw">
     <span>2/10/14</span>&nbsp;<span class="class">#MathCW</span><br />
@@ -127,6 +133,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
     <span>2/12/14</span>&nbsp;<span class="class">#MathCW</span><br />
     <span class="task">Problem sets:<br />p 587 #10-22</span>
   </div>
+  
+  <hr />
   <div class="span">
     <span>2/7/14</span>&nbsp;<span class="class">#Span</span><br />
     <span class="task">Prepare to present yer skitz!</span>
@@ -425,8 +433,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	});
 	
 	reDraw();
-	
-	//$('#thestack-wrapper').jscroll({ autoTrigger: false });
 
 	$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
 	$( "span:contains('#humc')" ).css( "color", "#4343E6" );
@@ -436,8 +442,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	$( "span:contains('#sci')" ).css( "color", "#EB9721" );
 	$( "span:contains('#lat')" ).css( "color", "#8A8A8A" );
 	$( "span:contains('#mun')" ).css( "color", "#282828");
-	
-	//$( "div" ).append( "<img class='copyToMyStack' style='cursor:pointer' src='http://placehold.it/30x18' style='position:relative;top:4px;' />" );
 	
 	function add(){
 		var key = $("#key").val();
@@ -449,11 +453,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			$("#key").focus();
 			return;
 		}
-		
-		/*if(key.indexOf("'") === -1 || key.indexOf('"') === -1 || task.indexOf("'") === -1 || task.indexOf('"') === -1){
-			alert("Quotation marks or appostrophes don't work at the moment... (sorry)");
-			return;
-		}*/
 		
 		$("#key").val('');
 		$("#task").val('');
@@ -509,7 +508,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
 			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
-			//$row = $( "<tr><td>"+key+"</td><td>"+task+"</td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			
 			$( "#tasks" ).prepend( $row );
 		}
 	
@@ -552,26 +551,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("#key").focus();
 	});
 	
-	/*function createOverlay(){
-		var docHeight = $(document).height();
-
-		$("body").append("<div id='overlay'></div>");
-
-		$("#overlay")
-			.height(docHeight)
-			.css({
-				'opacity' : 0.4,
-				'position': 'fixed',
-				'top': 0,
-				'left': 0,
-				'background-color': 'black',
-				'width': '100%',
-				'z-index': 5000
-			});
-	}
-	
-	function removeOverlay(){ $("#overlay").remove() }*/
-	
 	specificView( getQueryVariable("v") );
 	
 	function specificView( type ){
@@ -601,8 +580,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$( "#thestack-wrapper" ).css( "display", "" );
 		$( "#mystack-wrapper" ).css( "display", "" );
 	}
-	
-	$("#task").resizeable();
 	
 	function checkForArgs() {
 		var k = getQueryVariable('k');
