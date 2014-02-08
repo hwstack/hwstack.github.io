@@ -413,6 +413,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		
 		reDraw();
 		specificView( getQueryVariable("v") );
+		
+		colorizeEntries(today);
 	}
 	
 	$(window).resize(function(){
@@ -539,6 +541,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   			return false;
   		}
 	});
+	
+	function colorizeEntries( today ){
+		//marks entries due today
+		$( "div:contains(today), td:contains(today)" ).css("background-color","#EBD754");
+	}
+	
+	///////////////////////////////////////////////////////////
 	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
