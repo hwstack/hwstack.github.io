@@ -48,7 +48,7 @@ span:nth-of-type(3) {
 
 #wrapper {
   margin: 0px auto;
-  width: 60%;
+  width: 100%;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
