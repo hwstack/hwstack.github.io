@@ -308,7 +308,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
  	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
 	<td style="width: 65%"><textarea id="task" name="task" value="" placeholder="task &#038; date" style="width: 100%"></textarea></td>
 	
-	<td><a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-square-o"></i></a></td>
+	<td>
+		<a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-circle"></i></a><br />
+		<a href="javascript:clearInputs()"><i title="clear inputs" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-times-circle"></i></a><br />
+	</td>
   </tr>
   
   <tbody id="tasks">
@@ -509,7 +512,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			
 			delHref = "javascript:delTask('"+key+"')";
 			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-times'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-pencil'></i></a></td></tr>" );
+			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 			
 			$( "#tasks" ).prepend( $row );
 		}
@@ -560,7 +563,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			$( "#mystack-wrapper" ).css( "display", "none" );
 			
 			if( getQueryVariable("r") != "no" ) {
-				$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+				$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
 			} else {
 				$("#sel-view-tS").css("display", "none");
 			}
@@ -570,7 +573,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			$( "#mystack-wrapper" ).css( "display", "" );
 			
 			if( getQueryVariable("r") != "no" ) {
-				$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-sitemap'></i>&nbsp;return to main view</a><br />" );
+				$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
 			} else {
     			$("#sel-view-mS").css("display", "none");
 			}
