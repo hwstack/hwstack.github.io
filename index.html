@@ -544,12 +544,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function colorizeEntries( today ){
 		//marks entries due today
-		var $divs = $("div");
-		for(i=0; i<$divs.length; i++){
-			if( $divs[i].contains( today ) ){
-				$divs[i].css("background-color","#EBD754");
-			}
-		}
+		$("div:contains("+today+")").css("background-color","#EBD754");
 	}
 	
 	///////////////////////////////////////////////////////////
