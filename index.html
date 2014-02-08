@@ -399,6 +399,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function popout(){
 		var popout = window.open("http://hwstack.github.io","hwStack","width=570,height=750");
+		var wrapper = popout.document.("wrapper");
+		wrapper.css("width","100%");
 	}
 	
 	var today, tomorrow;
@@ -467,7 +469,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		task = unescape(task);
-                date = unescape(date);
+		date = unescape(date);
 		
 		$.jStorage.set(key, task+"@"+date);
 		reDraw();
@@ -616,8 +618,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	function checkForArgs() {
 		var k = getQueryVariable('k');
 		var t = getQueryVariable('t');
-              var d = getQueryVariable('d');
-		if(k && t){
+		var d = getQueryVariable('d');
+		if((k && t) && d){
 			argsAdd(k, t, d);
 			
 			var state = {
