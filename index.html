@@ -546,8 +546,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var key = $(this).find(".key").html();
 		var task = $(this).find(".task").html();
 		var date = $(this).find(".date").html();
-
-		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$.jStorage.set(key, task+","+date);
 		reDraw();
