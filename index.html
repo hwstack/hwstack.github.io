@@ -324,25 +324,28 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </tr>
 </table>
 
-<a title="Test" href='javascript:(function(){gen();})();
- '>Test Gen</a>
+<a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
 
 <script type="text/javascript">
-	var w;
-	//Work In Progress.
-	function gen(){
-		w = window.open("", "", "width=400,height=300");
+	//var w;
+	//function gen(){
+		/*w = window.open("", "", "width=400,height=300");
 		
     	var table = "<table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button>";
-    	w.document.write(table);
-    }
+    	w.document.write(table);*/
+    //}
     
-    function output(){
-        	var date=w.document.getElementById('date').value;
-        	var key=w.document.getElementById('class').value;
-        	var task=w.document.getElementById('task').value;
-        	w.document.getElementById('output').value='<div class="'+key+'"><span class="date">"'+date+'"</span>&nbsp;<span class="class">"'+key+'"</span><br /><span class="task">"'+task+'"</span></div>';
-	}
+    function gen(){
+        var date = prompt('When is this due?', tomorrow);
+        var task = prompt('What is the task?');
+        var key = prompt('For which class?');
+        if(!key) {
+ 			alert('Woops!  :I  Class must be specified!');
+ 			return;
+ 		}
+        var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
+        var foo = prompt('Copy & Paste into Doc:', code);
+    }
 	
 	//////////////////////////////////
 	var mySubs = [];
@@ -580,6 +583,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		//colors tasks due tomorrow
 		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		
+		$("#thestack-wrapper").css("background-color","#DDDDDD");
 	}
 	
 	////////////////////////////////////////////////////////////////////////
