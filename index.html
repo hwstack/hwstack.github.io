@@ -350,17 +350,17 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
         var foo = prompt('Copy & Paste into Doc:', code);
     }
 	
-	//////////////////////////////////
-	var mySubs = [];
+	///////////////////////////////////////////
 	
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
+	var mySubs = $.jStorage.get(mySubsKey);
 
-	function addToSub( key ){
+	function addSub( key ){
 		mySubs.push(key);
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	function deleteSub( i ){
+	function delSub( i ){
 		if(i=="all"){
 			mySubs == [];
 		}else{
@@ -370,7 +370,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	function subView( v ){
+	function viewSubs( v ){
 		//v is boolean
 		if(v){
 			for(i=0; i<mySubs.length; i++){
@@ -381,12 +381,36 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		}
 	}
 	
-	
-	
-	
 	//////////////////////////////////////////////////////////
 
 	function showClass( key ){
+		$("div").css("display","none");
+		$("hr").css("display","none");
+		
+		if(key == "mathk"){
+			$("div.mathk").css("display","");
+		}
+		if(key == "mathcw"){
+			$("div.mathcw").css("display","");
+		}
+		if(key == "humv"){
+			$("div.humv").css("display","");
+		}
+		if(key == "humc"){
+			$("div.humc").css("display","");
+		}
+		if(key == "span"){
+			$("div.span").css("display","");
+		}
+		if(key == "lat"){
+			$("div.lat").css("display","");
+		}
+		if(key == "sci"){
+			$("div.sci").css("display","");
+		}
+	}
+
+	function showJustClass( key ){
 		$("div").css("display","none");
 		$("hr").css("display","none");
 		
@@ -500,7 +524,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 
 	function flush_data(){
-		$.jStorage.flush();
+		for(i=0; i<$.jStorage.index().length; i++){
+			//makes sure not to delete any of mySubs
+			$.jStorage.deleteKey( $.jStorage.index()[i]!=mySubsKey ? $.jStorage.index()[i] );
+		}
 		reDraw();
 	}
 
