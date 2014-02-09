@@ -3,9 +3,8 @@ window.onload = function(){
 };
 
 function draw() {
-    var b=document.createElement("body");
-    document.appendChild(b);
-    document.body.write("<table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button>");
+    var html = "<table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button>";
+    document.write(html);
 }
 
 function output(){
