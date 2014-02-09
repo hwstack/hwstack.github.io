@@ -335,8 +335,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	//Work In Progress.
 	function gen(){
 		var myWindow = window.open("", "", "width=400,height=300");
-        	myWindow.document.write("<head><script src='https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js'></head>");
-        	myWindow.document.write("<body><table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button></body>");
+        	//myWindow.document.write("<head><script src='https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js'></head>");
+        	//myWindow.document.write("<body><table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button></body>");
+        	
+        	myWindow.onload = function(){this.document.body.innerHTML+="<head><script src='https://rawgithub.com/hwstack/hwstack.github.io/master/myStack.js'></head>";};
+        	myWindow.onload = function(){this.document.body.innerHTML+="<body><table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button></body>";};
         }
 	//////////////////////////////////
 	var mySubs = [];
