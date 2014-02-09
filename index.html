@@ -524,9 +524,11 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	}
 
 	function flush_data(){
+		var delKey;
 		for(i=0; i<$.jStorage.index().length; i++){
 			//makes sure not to delete any of mySubs
-			$.jStorage.deleteKey( $.jStorage.index()[i]!=mySubsKey ? $.jStorage.index()[i] );
+			delKey = $.jStorage.index()[i]!=mySubsKey ? $.jStorage.index()[i] : "cookies fo you";
+			$.jStorage.deleteKey( delKey );
 		}
 		reDraw();
 	}
