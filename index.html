@@ -324,10 +324,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </tr>
 </table>
 
-<a title="Test" href='javascript:
- 		(function(){
-        	gen();
-	 	})();
+<a title="Test" href='javascript:(function(){gen();})();
  '>Test Gen</a>
 
 <script type="text/javascript">
@@ -344,7 +341,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
         	var date=w.document.getElementById('date').value;
         	var key=w.document.getElementById('class').value;
         	var task=w.document.getElementById('task').value;
-        	w.document.getElementById('output').value='<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
+        	w.document.getElementById('output').value='<div class="'+key+'"><span class="date">"'+date+'"</span>&nbsp;<span class="class">"'+key+'"</span><br /><span class="task">"'+task+'"</span></div>';
 	}
 	
 	//////////////////////////////////
