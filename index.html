@@ -339,10 +339,13 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
         var date = prompt('When is this due?', tomorrow);
         var task = prompt('What is the task?');
         var key = prompt('For which class?');
+        
         if(!key) {
  			alert('Woops!  :I  Class must be specified!');
  			return;
  		}
+ 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+ 		
         var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
         var foo = prompt('Copy & Paste into Doc:', code);
     }
@@ -353,31 +356,29 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 
 	function addToSub( key ){
-		
 		mySubs.push(key);
 		$.jStorage.set(mySubsKey, mySubs);
-		
 	}
 	
 	function deleteSub( i ){
+		if(i=="all"){
+			mySubs == [];
+		}else{
+			delete mySubs[i];
+		}
 		
-		i=="all" ? mySubs = [] : delete mySubs[i];
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	function setSubView( s ){
-		
-		if (s.toString() == "1"){
-			
-			mySubs.forEach(showClass);
-			
-		}
-		else if (s.toString() == "0"){
-			
+	function subView( v ){
+		//v is boolean
+		if(v){
+			for(i=0; i<mySubs.length; i++){
+				showClass( mySubs[i] );
+			}
+		}else{
 			resetShowClass();
-			
 		}
-		
 	}
 	
 	
