@@ -479,7 +479,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		updateLayout();
 		
 		today = moment().format("M/D/YY");
-		tomorrow = today.replace( today.substr(2,1), ( Number(today.substr(2,1))+1 ).toString() );
+		todayDDay = moment().format("M/D/YY");
+		
+		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
 		$("#date").attr("placeholder", tomorrow);
 		
 		reDraw();
