@@ -12,7 +12,10 @@ Peace on earth!
 
 TODO:
 
-Add subscription stars & "Show Subs" between "About" and "Show Just This" on myStack
+"Subscribed" Tags -- Save Tag preferences as jStorage cookie, option to "Show All" or "Show Subscribed".
+Configurable default (subscribed vs all).
+
+I'm doing some reaserach on div tags, so hopefully i can implement this feature
 
 -->
 
@@ -373,7 +376,7 @@ Add subscription stars & "Show Subs" between "About" and "Show Just This" on myS
 	//TEMPORARILY REMOVED DUE TO ITS ABILITY TO BREAK THE CODE//
 	////////////////////////////////////////////////////////////
 	
-	
+	var all = "all"
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = new Array();
 	mySubs = $.jStorage.get(mySubsKey);
@@ -385,7 +388,7 @@ Add subscription stars & "Show Subs" between "About" and "Show Just This" on myS
 	
 	function delSub( i ){
 		if(i=="all"){
-			mySubs == [];
+			mySubs = [];
 		}else{
 			delete mySubs[i];
 		}
