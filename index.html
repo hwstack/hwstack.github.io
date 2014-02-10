@@ -377,7 +377,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	////////////////////////////////////////////////////////////
 	
 	
-	/*var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
+	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = new Array();
 
 	function addSub( key ){
@@ -404,7 +404,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		}else{
 			resetShowClass();
 		}
-	}*/
+	}
 	
 	//////////////////////////////////////////////////////////
 
@@ -581,15 +581,17 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			val = $.jStorage.get(key).toString().split("@");
-			task = unescape( val[0] );
-			date = unescape( val[1] );
+			if(key!="DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF"){
+				val = $.jStorage.get(key).toString().split("@");
+				task = unescape( val[0] );
+				date = unescape( val[1] );
 			
-			delHref = "javascript:delTask('"+key+"')";
-			editHref = "javascript:editTask('"+key+"')";
-			$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+				delHref = "javascript:delTask('"+key+"')";
+				editHref = "javascript:editTask('"+key+"')";
+				$row = $( "<tr><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 			
-			$( "#tasks" ).prepend( $row );
+				$( "#tasks" ).prepend( $row );
+			}
 		}
 		
 		colorizeEntries();
