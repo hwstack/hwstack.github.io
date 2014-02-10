@@ -379,6 +379,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = new Array();
+	mySubs = $.jStorage.get(mySubsKey);
 
 	function addSub( key ){
 		mySubs.push(key);
