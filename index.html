@@ -89,7 +89,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   	<span class="link-title">about</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a style="position:relative;bottom:12px;" target="_blank" href="javascript:viewSubs(true)">
+  <a id="sub-view" style="position:relative;bottom:12px;" target="_blank" href="javascript:viewSubs(true)">
   	<i class="fa fa-suitcase" style="font-size:1.3em"></i>&nbsp;&nbsp;
   	<span class="link-title">just subs</span>
   </a>
@@ -351,16 +351,9 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   </tr>
 </table>
 
-<a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
+<a style="display:;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
 
 <script type="text/javascript">
-	//var w;
-	//function gen(){
-		/*w = window.open("", "", "width=400,height=300");
-		
-    	var table = "<table><tr><td><input type='text' placeholder='due date' id='date'/></td><td rowspan='3'><textarea placeholder='output' rows='6' id='output'></textarea></td></tr><tr><td><input type='text' placeholder='class' id='class'/></td></tr><tr><td><textarea placeholder='task' id='task'></textarea></td></tr><tr><td colspan='2'><button onclick='output()'></button>";
-    	w.document.write(table);*/
-    //}
     
     function gen(){
         var date = prompt('When is this due?', tomorrow);
@@ -376,12 +369,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
         var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
         var foo = prompt('Copy & Paste into Doc:', code);
     }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 	
-	////////////////////////////////////////////////////////////
-	//TEMPORARILY REMOVED DUE TO ITS ABILITY TO BREAK THE CODE//
-	////////////////////////////////////////////////////////////
-	
-	var all = "all"
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = new Array();
 	mySubs = $.jStorage.get(mySubsKey);
@@ -401,27 +392,23 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	var viewingSubs = false;
-	
 	function viewSubs( v ){
-		//v is boolean
-		
 		$("div").css("display","none");
 		$("hr").css("display","none");
 		
 		if(v){
-
 			for(i=0; i<mySubs.length; i++){
 				showClass( mySubs[i] );
 			}
-			viewingSubs = true;
+			$("#sub-view").attr("href","javascript:viewSubs(false)");
+			$("#sub-view .link-title").html("reset view");
 		}else{
 			resetShowClass();
-			viewingSubs = false;
 		}
 	}
 	
-	//////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
 
 	function showClass( key ){
 		if(key == "mathk"){
@@ -499,7 +486,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		reDraw();
 		specificView( getQueryVariable("v") );
 		
-		colorizeEntries(today, tomorrow);
+		colorize();
 	}
 	
 	$(window).resize(function(){
@@ -518,8 +505,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
 		$("#wrapper").css("width", wrapperWidth);
 	}
-	
-	//$("#date").html(date);
 	
 	///////////////////////////////////////////////////////////////////////////////
 	
@@ -606,7 +591,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			}
 		}
 		
-		colorizeEntries();
+		colorize();
 	}
 	
 	function clearInputs(){
@@ -624,7 +609,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	////////////////////////////////////////////////////////////////////////
 	
-	function colorizeEntries(){
+	function colorize(){
 		//colors entry tags
 		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
 		$( "span:contains('#humc')" ).css( "color", "#4343E6" );
