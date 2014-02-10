@@ -397,7 +397,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 	function viewSubs( v ){
 		//v is boolean
+		
+		$("div").css("display","none");
+		$("hr").css("display","none");
+		
 		if(v){
+
 			for(i=0; i<mySubs.length; i++){
 				showClass( mySubs[i] );
 			}
@@ -409,9 +414,6 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	//////////////////////////////////////////////////////////
 
 	function showClass( key ){
-		$("div").css("display","none");
-		$("hr").css("display","none");
-		
 		if(key == "mathk"){
 			$("div.mathk").css("display","");
 		}
@@ -581,7 +583,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			if(key!="DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF"){
+			if(key!=mySubsKey){
 				val = $.jStorage.get(key).toString().split("@");
 				task = unescape( val[0] );
 				date = unescape( val[1] );
