@@ -89,9 +89,14 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   	<span class="link-title">about</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
+  <a style="position:relative;bottom:12px;" target="_blank" href="javascript:viewSubs(true)">
+  	<i class="fa fa-suitcase" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<span class="link-title">just subs</span>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <a id="sel-view-tS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=tS">
   	<i class="fa fa-user"></i>&nbsp;
-  	<span class="link-title">show just this</span>
+  	<span class="link-title">just this</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   
@@ -320,7 +325,7 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a id="sel-view-mS" style="position:relative;bottom:12px;" href="http://hwstack.github.io/?v=mS">
   	<i class="fa fa-user"></i>&nbsp;
-  	<span class="link-title">show just this</span>
+  	<span class="link-title">just this</span>
   </a>
   </nav>
   
@@ -396,6 +401,8 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
+	var viewingSubs = false;
+	
 	function viewSubs( v ){
 		//v is boolean
 		
@@ -407,8 +414,10 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 			for(i=0; i<mySubs.length; i++){
 				showClass( mySubs[i] );
 			}
+			viewingSubs = true;
 		}else{
 			resetShowClass();
+			viewingSubs = false;
 		}
 	}
 	
