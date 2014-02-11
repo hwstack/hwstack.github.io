@@ -107,11 +107,11 @@ Automatic subs utilities per entry
   
   </nav>
   
-  <div class="sci null">
+  <div class="sci">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#Sci</span><br />
     <span class="task">-</span>
   </div>
-  <div class="span null">
+  <div class="span">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#Span</span><br />
     <span class="task">-</span>
   </div>
@@ -419,7 +419,7 @@ Automatic subs utilities per entry
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	function remove(arr, what) {
+	function remove(arr, what){
     	var found = arr.indexOf(what);
 
     	while (found !== -1) {
@@ -671,12 +671,12 @@ Automatic subs utilities per entry
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 		
 		//colors entries due today
-		$("div[class!=null]:contains("+today+")").css("background-color","#EBD754");
+		$("div:contains("+today+")").css("background-color","#EBD754");
 		//colors tasks due today
 		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
 		
 		//colors entries due tomorrow
-		$("div[class!=null]:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		//colors tasks due tomorrow
 		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		
