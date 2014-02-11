@@ -12,10 +12,7 @@ Peace on earth!
 
 TODO:
 
-"Subscribed" Tags -- Save Tag preferences as jStorage cookie, option to "Show All" or "Show Subscribed".
-Configurable default (subscribed vs all).
-
-I'm doing some reaserach on div tags, so hopefully i can implement this feature
+Automatic subs utilities per entry
 
 -->
 
@@ -110,17 +107,17 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
   
   </nav>
   
-  <div class="sci">
+  <div class="sci null">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#Sci</span><br />
     <span class="task">-</span>
   </div>
-  <div class="span">
+  <div class="span null">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#Span</span><br />
     <span class="task">-</span>
   </div>
   <div class="mathk">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#MathKramer</span><br />
-    <span class="task">14.3 Practice (all)</span>
+    <span class="task">- 14.3 Practice (all)<br />- Chapter 12 Mid-Chapter Test (obviously <i>all</i>)</span>
   </div>
   <div class="humv">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
@@ -406,18 +403,29 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 	//mySubs = (mySubs ? [] : ["hohoho"])
 
 	function addSub( key ){
-		mySubs.push(key);
+		if( $.inArray(key, mySubs)==-1 ){
+			mySubs.push(key);
+		}
 		$.jStorage.set(mySubsKey, mySubs);
 	}
 	
-	function delSub( i ){
-		if(i=="all"){
+	function delSub( key ){
+		if(key=="all"){
 			mySubs = [];
 		}else{
-			delete mySubs[i];
+			remove(mySubs, key);
 		}
 		
 		$.jStorage.set(mySubsKey, mySubs);
+	}
+	
+	function remove(arr, what) {
+    	var found = arr.indexOf(what);
+
+    	while (found !== -1) {
+    	    arr.splice(found, 1);
+    		found = arr.indexOf(what);
+    	}
 	}
 	
 	function viewSubs( v ){
@@ -663,12 +671,12 @@ I'm doing some reaserach on div tags, so hopefully i can implement this feature
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 		
 		//colors entries due today
-		$("div:contains("+today+")").css("background-color","#EBD754");
+		$("div[class!=null]:contains("+today+")").css("background-color","#EBD754");
 		//colors tasks due today
 		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
 		
 		//colors entries due tomorrow
-		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		$("div[class!=null]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		//colors tasks due tomorrow
 		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		
