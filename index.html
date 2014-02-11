@@ -507,7 +507,9 @@ Automatic subs utilities per entry
 	
 	$("#sub .off").hover(
 		function(){
-			$(this).attr("class","fa fa-star off");
+			if( $(this).attr("class")=="fa fa-star-o off" ){
+				$(this).attr("class","fa fa-star off");
+			}
 		}, function(){
 			if( $(this).attr("class")=="fa fa-star off" ){
 				$(this).attr("class","fa fa-star-o off");
@@ -518,14 +520,14 @@ Automatic subs utilities per entry
 	$("#sub .off").click(function(){
 		$(this).attr("class","fa fa-star on");
 		var getOnClick = $(this).attr("onclick");
-		var newOnClick = getHref.replace("addSub","delSub");
+		var newOnClick = getOnClick.replace("addSub","delSub");
 		$(this).attr("onclick", newOnClick);
 	});
 	
 	$("#sub .on").click(function(){
 		$(this).attr("class","fa fa-star off");
 		var getOnClick = $(this).attr("onclick");
-		var newOnClick = getHref.replace("delSub","addSub");
+		var newOnClick = getOnClick.replace("delSub","addSub");
 		$(this).attr("onclick", newOnClick);
 	});
 	
