@@ -99,33 +99,33 @@ Automatic subs utilities per entry
   
   <!--subscription options-->
   <a id="sub" title="subscribe to #HumVaughan" style="color:#4B8AE3;">
-  	<i class="fa fa-star-o off" onclick="addSub('humv')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="humv-star"></i>&nbsp;
   </a>
   <a id="sub" title="subscribe to #HumCadigan" style="color:#4343E6;">
-  	<i class="fa fa-star-o off" onclick="addSub('humc')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="humc-star"></i>&nbsp;
   </a>
   
   <a id="sub" title="subscribe to #Span" style="color:#EB3921;">
-  	<i class="fa fa-star-o off" onclick="addSub('span')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="span-star" onclick="addSub('span')"></i>&nbsp;
   </a>
   
   <a id="sub" title="subscribe to #MathKramer" style="color:#C321EB;">
-  	<i class="fa fa-star-o off" onclick="addSub('mathk')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="mathk-star" onclick="addSub('mathk')"></i>&nbsp;
   </a>
   <a id="sub" title="subscribe to #MathCW" style="color:#369E19;">
-  	<i class="fa fa-star-o off" onclick="addSub('mathcw')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="mathcw-star" onclick="addSub('mathcw')"></i>&nbsp;
   </a>
   
   <a id="sub" title="subscribe to #Sci" style="color:#EB9721;">
-  	<i class="fa fa-star-o off" onclick="addSub('sci')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="sci-star" onclick="addSub('sci')"></i>&nbsp;
   </a>
   
   <a id="sub" title="subscribe to #Lat" style="color:#8A8A8A;">
-  	<i class="fa fa-star-o off" onclick="addSub('lat')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="lat-star" onclick="addSub('lat')"></i>&nbsp;
   </a>
   
   <a id="sub" title="subscribe to #MUN" style="color:#282828;">
-  	<i class="fa fa-star-o off" onclick="addSub('mun')"></i>&nbsp;
+  	<i class="fa fa-star-o off" id="mun-star" onclick="addSub('mun')"></i>&nbsp;
   </a>
   
   <!--
@@ -517,18 +517,16 @@ Automatic subs utilities per entry
 		}
 	);
 	
-	$("#sub .off").click(function(){
+	$("#humv-star.off").click(function(){
 		$(this).attr("class","fa fa-star on");
-		var getOnClick = $(this).attr("onclick");
-		var newOnClick = getOnClick.replace("addSub","delSub");
-		$(this).attr("onclick", newOnClick);
+		addSub("humv");
+		$(this).replaceWith('<i class="fa fa-star-o on" id="humv-star"></i>');
 	});
 	
-	$("#sub .on").click(function(){
+	$("#humv-star.on").click(function(){
 		$(this).attr("class","fa fa-star off");
-		var getOnClick = $(this).attr("onclick");
-		var newOnClick = getOnClick.replace("delSub","addSub");
-		$(this).attr("onclick", newOnClick);
+		delSub("humv");
+		$(this).replaceWith('<i class="fa fa-star-o off" id="humv-star"></i>');
 	});
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
