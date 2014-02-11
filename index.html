@@ -38,7 +38,7 @@ Automatic subs utilities per entry
   <!--<script src="http://gist-it.sudarmuthu.com/github/hwstack/hwstack.github.io/blob/master/index.html"></script>-->
   
   <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
-  <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
+  <script src="https://rawgithub.ctjom/andris9/jStorage/master/jstorage.min.js"></script>
   
   <!--<script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
@@ -401,6 +401,26 @@ Automatic subs utilities per entry
 	mySubs = $.jStorage.get(mySubsKey);
 	
 	//mySubs = (mySubs ? [] : ["hohoho"])
+	
+  <div class="mathk">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">- 14.3 Practice (all)<br />- Chapter 12 Mid-Chapter Test (obviously <i>all</i>)</span>
+  </div>
+	
+	function task(key, tag, task, date){
+		
+		(tag.substring(0,1) == "#") ? console.log("good tag") : tag = "#" + tag
+		
+		$(" /// ").append(
+		
+		'<div class="' + key + '">' + 
+		'<span class="date">' + date + '<span&nbsp;<span class="class">' + tag + '</span><br />' +
+		'<span class="task">' + task + '</span>' +
+		'</div>'
+		
+		);
+		
+	}
 
 	function addSub( key ){
 		if( $.inArray(key, mySubs)==-1 ){
