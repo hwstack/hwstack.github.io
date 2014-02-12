@@ -97,19 +97,14 @@ Automatic subs utilities per entry
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   
-  <select style="position:relative;bottom:12px;">
-	<option value="humv"></option>
-  </select>
   
-  
-  
-  <input type="checkbox" id="humv-box" />
-  <input type="checkbox" id="humc-box" />
-  <input type="checkbox" id="span-box" />
-  <input type="checkbox" id="mathcw-box" />
-  <input type="checkbox" id="sci-box" />
-  <input type="checkbox" id="lat-box" />
-  <input type="checkbox" id="mun-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="humv-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="humc-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="span-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="mathcw-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="sci-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="lat-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="mun-box" />
   
   <!--subscription options (EXPERIMENTAL)
   <a id="sub" title="subscribe to #HumVaughan" style="color:#4B8AE3;">
@@ -527,6 +522,66 @@ Automatic subs utilities per entry
 			delSub("humv");
 		}
 	});
+	$("#humc-box").click(function(){
+		if(this.checked){
+			addSub("humc");
+		}else{
+			delSub("humc");
+		}
+	});
+	$("#span-box").click(function(){
+		if(this.checked){
+			addSub("span");
+		}else{
+			delSub("span");
+		}
+	});
+	$("#mathk-box").click(function(){
+		if(this.checked){
+			addSub("mathk");
+		}else{
+			delSub("mathk");
+		}
+	});
+	$("#mathcw-box").click(function(){
+		if(this.checked){
+			addSub("mathcw");
+		}else{
+			delSub("mathcw");
+		}
+	});
+	$("#sci-box").click(function(){
+		if(this.checked){
+			addSub("sci");
+		}else{
+			delSub("sci");
+		}
+	});
+	$("#lat-box").click(function(){
+		if(this.checked){
+			addSub("lat");
+		}else{
+			delSub("lat");
+		}
+	});
+	$("#mun-box").click(function(){
+		if(this.checked){
+			addSub("mun");
+		}else{
+			delSub("mun");
+		}
+	});
+	
+	/*
+  humv	#4B8AE3
+  humc	#4343E6
+  span	#EB3921
+  mathk #C321EB
+  mathcw #369E19
+  sci 	#EB9721
+  lat	#8A8A8A
+  mun	#282828
+  	*/
 	
 	/*$("#sub .off").hover(
 		function(){
