@@ -515,6 +515,33 @@ Automatic subs utilities per entry
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
+	function initBoxes(){
+		if($.inArray("humv",mySubs)){
+			$("#humv-box").prop("checked",true);
+		}
+		if($.inArray("humc",mySubs)){
+			$("#humc-box").prop("checked",true);
+		}
+		if($.inArray("span",mySubs)){
+			$("#span-box").prop("checked",true);
+		}
+		if($.inArray("mathk",mySubs)){
+			$("#mathk-box").prop("checked",true);
+		}
+		if($.inArray("mathcw",mySubs)){
+			$("#mathcw-box").prop("checked",true);
+		}
+		if($.inArray("sci",mySubs)){
+			$("#sci-box").prop("checked",true);
+		}
+		if($.inArray("lat",mySubs)){
+			$("#lat-box").prop("checked",true);
+		}
+		if($.inArray("mun",mySubs)){
+			$("#mun-box").prop("checked",true);
+		}
+	}
+	
 	$("#humv-box").click(function(){
 		if(this.checked){
 			addSub("humv");
@@ -687,6 +714,8 @@ Automatic subs utilities per entry
 		specificView( getQueryVariable("v") );
 		
 		colorize();
+		
+		initBoxes();
 	}
 	
 	$(window).resize(function(){
