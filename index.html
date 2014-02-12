@@ -101,6 +101,7 @@ Automatic subs utilities per entry
   <input type="checkbox" style="position:relative;bottom:12px;" id="humv-box" />
   <input type="checkbox" style="position:relative;bottom:12px;" id="humc-box" />
   <input type="checkbox" style="position:relative;bottom:12px;" id="span-box" />
+  <input type="checkbox" style="position:relative;bottom:12px;" id="mathk-box" />
   <input type="checkbox" style="position:relative;bottom:12px;" id="mathcw-box" />
   <input type="checkbox" style="position:relative;bottom:12px;" id="sci-box" />
   <input type="checkbox" style="position:relative;bottom:12px;" id="lat-box" />
@@ -516,6 +517,8 @@ Automatic subs utilities per entry
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	function initBoxes(){
+		$("input[type=checkbox]").prop("checked",false);
+		
 		if($.inArray("humv",mySubs)){
 			$("#humv-box").prop("checked",true);
 		}
