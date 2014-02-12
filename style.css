@@ -81,3 +81,7 @@ hr {
   position: relative;
   bottom: 12px;
 }
+
+input[type=checkbox] {
+  width: 10px;
+}
