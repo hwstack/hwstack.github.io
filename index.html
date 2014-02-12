@@ -34,6 +34,7 @@ TODO:
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="http://cdn.craig.is/js/mousetrap/mousetrap.min.js"></script>
   
   <!--<script src="http://gist-it.sudarmuthu.com/github/hwstack/hwstack.github.io/blob/master/index.html"></script>-->
   
@@ -419,6 +420,10 @@ TODO:
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = new Array();
 	mySubs = $.jStorage.get(mySubsKey);
+	
+	Mousetrap.bind('command+shift+k', function(e) {
+    	showChat();
+	});
 	
 	//mySubs = (mySubs ? [] : ["hohoho"])
 	
