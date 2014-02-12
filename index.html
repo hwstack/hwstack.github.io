@@ -97,7 +97,21 @@ Automatic subs utilities per entry
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   
-  <!--subscription options-->
+  <select style="position:relative;bottom:12px;">
+	<option value="humv"></option>
+  </select>
+  
+  
+  
+  <input type="checkbox" id="humv-box" />
+  <input type="checkbox" id="humc-box" />
+  <input type="checkbox" id="span-box" />
+  <input type="checkbox" id="mathcw-box" />
+  <input type="checkbox" id="sci-box" />
+  <input type="checkbox" id="lat-box" />
+  <input type="checkbox" id="mun-box" />
+  
+  <!--subscription options (EXPERIMENTAL)
   <a id="sub" title="subscribe to #HumVaughan" style="color:#4B8AE3;">
   	<i class="fa fa-star-o off" id="humv-star"></i>&nbsp;
   </a>
@@ -127,6 +141,7 @@ Automatic subs utilities per entry
   <a id="sub" title="subscribe to #MUN" style="color:#282828;">
   	<i class="fa fa-star-o off" id="mun-star" onclick="addSub('mun')"></i>&nbsp;
   </a>
+  -->
   
   <!--
   humv	#4B8AE3
@@ -505,7 +520,15 @@ Automatic subs utilities per entry
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
-	$("#sub .off").hover(
+	$("#humv-box").click(function(){
+		if(this.checked){
+			addSub("humv");
+		}else{
+			delSub("humv");
+		}
+	});
+	
+	/*$("#sub .off").hover(
 		function(){
 			if( $(this).attr("class")=="fa fa-star-o off" ){
 				$(this).attr("class","fa fa-star off");
@@ -527,7 +550,7 @@ Automatic subs utilities per entry
 		$(this).attr("class","fa fa-star off");
 		delSub("humv");
 		$(this).replaceWith('<i class="fa fa-star-o off" id="humv-star"></i>');
-	});
+	});*/
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -593,14 +616,14 @@ Automatic subs utilities per entry
 		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
 	}
 	
-	var today, tomorrow;
+	var today, tomorrow, todayDDay;
 	
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
 		
 		today = moment().format("M/D/YY");
-		todayDDay = moment().format("M/D/YY");
+		todayDDay = moment().format("M/DD/YY");
 		
 		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
 		$("#date").attr("placeholder", tomorrow);
@@ -756,6 +779,9 @@ Automatic subs utilities per entry
 		$("div:contains("+today+")").css("background-color","#EBD754");
 		//colors tasks due today
 		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
+
+		$("div:contains("+todayDDay+")").css("background-color","#EBD754");
+		$("td[id!=mystack-wrapper]:contains("+todayDDay+")").css("background-color","#EBD754");
 		
 		//colors entries due tomorrow
 		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
