@@ -167,7 +167,7 @@ TODO:
   </div>
   <div class="humv">
     <span class="date">2/12/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
-    <span class="task">- <i>Comments</i> on the Notes #6 in ML2<br />- Finish and print Answers to Questions from the Packet</span>
+    <span class="task">- <i>Comments</i> on the Notes #6 in ML2 (p. 41)<br />- Finish and print Answers to Questions from the Packet</span>
   </div>
   
   <hr />
@@ -722,6 +722,8 @@ TODO:
 		initBoxes();
 	}
 	
+	jQuery.fn.exists = function(){return this.length>0;}
+	
 	$(window).resize(function(){
 		updateLayout();
 	});
@@ -730,10 +732,14 @@ TODO:
 		if ($(window).width() <= 1308){	
 			$( ".link-title" ).css( "display", "none" );
 			$( "#ribbon" ).css( "display", "none" );
-			$("#boxes").before("<br class='js-br' />");
 		}else{
 			$( ".link-title" ).css( "display", "" );
 			$( "#ribbon" ).css( "display", "" );
+		}
+		
+		if($(window).width() <= 1543){
+			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
+		}else{
 			$(".js-br").remove();
 		}
 		
