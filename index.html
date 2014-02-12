@@ -97,6 +97,7 @@ TODO:
   </a>
   &nbsp;&nbsp;
   
+  <span id="boxes">
   <input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" style="position:relative;bottom:12px;" id="humv-box" />
   <input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" style="position:relative;bottom:12px;" id="humc-box" />
   <input type="checkbox" title="subscribe/unsubscribe to #Span" style="position:relative;bottom:12px;" id="span-box" />
@@ -105,6 +106,7 @@ TODO:
   <input type="checkbox" title="subscribe/unsubscribe to #Sci" style="position:relative;bottom:12px;" id="sci-box" />
   <input type="checkbox" title="subscribe/unsubscribe to #Lat" style="position:relative;bottom:12px;" id="lat-box" />
   <input type="checkbox" title="subscribe/unsubscribe to #MUN" style="position:relative;bottom:12px;" id="mun-box" />
+  </span>
   
   <!--subscription options (EXPERIMENTAL)
   <a id="sub" title="subscribe to #HumVaughan" style="color:#4B8AE3;">
@@ -728,9 +730,11 @@ TODO:
 		if ($(window).width() <= 1308){	
 			$( ".link-title" ).css( "display", "none" );
 			$( "#ribbon" ).css( "display", "none" );
+			$("#boxes").before("<br class='js-br' />");
 		}else{
 			$( ".link-title" ).css( "display", "" );
 			$( "#ribbon" ).css( "display", "" );
+			$(".js-br").remove();
 		}
 		
 		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
