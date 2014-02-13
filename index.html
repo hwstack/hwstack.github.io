@@ -34,7 +34,6 @@ TODO:
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <script src="http://cdn.craig.is/js/mousetrap/mousetrap.min.js"></script>
   
   <!--<script src="http://gist-it.sudarmuthu.com/github/hwstack/hwstack.github.io/blob/master/index.html"></script>-->
   
@@ -43,6 +42,7 @@ TODO:
   
   <!--<script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -438,10 +438,6 @@ TODO:
 	var mySubs = new Array();
 	mySubs = $.jStorage.get(mySubsKey);
 	
-	Mousetrap.bind('command+shift+k', function(e) {
-    	showChat();
-	});
-	
 	//mySubs = (mySubs ? [] : ["hohoho"])
 	
 //	<div class="mathk">
@@ -467,6 +463,8 @@ TODO:
 		);
 		
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////
 
 	function addSub( key ){
 		if( $.inArray(key, mySubs)==-1 ){
@@ -486,12 +484,12 @@ TODO:
 	}
 	
 	function remove(arr, what){
-    	var found = arr.indexOf(what);
+    		var found = arr.indexOf(what);
 
-    	while (found !== -1) {
-    	    arr.splice(found, 1);
-    		found = arr.indexOf(what);
-    	}
+    		while (found !== -1) {
+    			arr.splice(found, 1);
+			    found = arr.indexOf(what);
+    		}
 	}
 	
 	function viewSubs( v ){
@@ -610,30 +608,6 @@ TODO:
   mun	#282828
   	*/
 	
-	/*$("#sub .off").hover(
-		function(){
-			if( $(this).attr("class")=="fa fa-star-o off" ){
-				$(this).attr("class","fa fa-star off");
-			}
-		}, function(){
-			if( $(this).attr("class")=="fa fa-star off" ){
-				$(this).attr("class","fa fa-star-o off");
-			}
-		}
-	);
-	
-	$("#humv-star.off").click(function(){
-		$(this).attr("class","fa fa-star on");
-		addSub("humv");
-		$(this).replaceWith('<i class="fa fa-star-o on" id="humv-star"></i>');
-	});
-	
-	$("#humv-star.on").click(function(){
-		$(this).attr("class","fa fa-star off");
-		delSub("humv");
-		$(this).replaceWith('<i class="fa fa-star-o off" id="humv-star"></i>');
-	});*/
-	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 
@@ -699,6 +673,7 @@ TODO:
 	}
 	
 	var today, tomorrow, todayDDay;
+	var listener = new window.keypress.Listener();
 	
 	function bodyOnload(){
 		checkForArgs();
@@ -716,6 +691,11 @@ TODO:
 		colorize();
 		
 		initBoxes();
+		
+		listener.counting_combo("control k", function(e, count) {
+    		showChat();
+		});
+
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
