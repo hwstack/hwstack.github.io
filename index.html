@@ -944,7 +944,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 		}
 		
 		var c = getQueryVariable('chat');
-		showChat(c);
+		if(c){ showChat(c); }
 	}
 	
 	function getQueryVariable( variable ){
