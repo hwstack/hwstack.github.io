@@ -43,6 +43,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
   <!--<script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
+  <script async src="http://tlk.io/embed.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -962,7 +963,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 	}
 	
 	function showChat( channel ){
-		$("body").replaceWith('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="width:100%;height:100%;"></div><script async src="http://tlk.io/embed.js"></script>');
+		$("body").replaceWith('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="width:100%;height:100%;"></div>');
 		var target_element	= document.getElementById('tlkio'),
 		custom_css_path		= target_element.getAttribute('data-theme'),
 		channel_name		= target_element.getAttribute('data-channel'),
