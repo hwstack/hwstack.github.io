@@ -18,7 +18,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 
 <!DOCTYPE html>
 <html>
-
+op
 <head>
   <title>hwStack v0.2beta</title>
   
@@ -455,10 +455,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
         var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
         var foo = prompt('Copy & Paste into Doc:', code);
     }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	var chatStepPass = "hwstack"
 	
 	var isViewSubsOn = new Boolean();
@@ -469,31 +466,12 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 		window.open("https://chatstep.com/#hwstack");
 		
 	}
-
 	
 	console.log("Stop screwing around in the console. We know who you are.");
-
-	
 	
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
 	var mySubs = [];
 	mySubs = $.jStorage.get(mySubsKey);
-	
-	var chatStepPass = "hwstack"
-  	
-  	function openChatStep(){
-  		
-		console.log("Password --- " + chatStepPass)
-  		window.open("https://chatstep.com/#hwstack");
-  		
-  	}
-	
-	//mySubs = (mySubs ? [] : ["hohoho"])
-	
-//	<div class="mathk">
-//	<span class="date">2/12/14</span>&nbsp;<span class="class">#MathKramer</span><br />
-//	<span class="task">- 14.3 Practice (all)<br />- Chapter 12 Mid-Chapter Test (obviously <i>all</i>)</span>
-//	</div>
 	
 	function task(key, tag, task, date){
 		
@@ -513,8 +491,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 		);
 		
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////
 
 	function addSub( key ){
 		if( $.inArray(key, mySubs)==-1 ){
@@ -558,8 +534,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 			$("#sub-view .link-title").html("just subs");
 		}
 	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	function initBoxes(){
 		$("input[type=checkbox]").prop("checked",false);
@@ -656,9 +630,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 //  sci 	#EB9721
 //  lat		#8A8A8A
 //  mun		#282828
-	
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////
 
 	function showClass( key ){
 		if(key == "mathk"){
@@ -780,8 +751,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 		$("#wrapper").css("width", wrapperWidth);
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////
-	
 	$.expr[":"].contains = $.expr.createPseudo(function(arg){
     	return function( elem ) {
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
@@ -881,8 +850,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
   		}
 	});
 	
-	////////////////////////////////////////////////////////////////////////
-	
 	function colorize(){
 		//colors entry tags
 		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
@@ -919,8 +886,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 		
 		$("#thestack-wrapper").css("background-color","#DDDDDD");
 	}
-	
-	////////////////////////////////////////////////////////////////////////
 	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
