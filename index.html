@@ -965,7 +965,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 	}
 	
 	function showChat( channel ){
-		$("#wrapper").replaceWith('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="width:100%;height:100%;"></div>');
+		$("body").replaceWith('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="width:100%;height:100%;"></div>');
 		
 		var target_element	= document.getElementById('tlkio'),
 		custom_css_path		= target_element.getAttribute('data-theme'),
