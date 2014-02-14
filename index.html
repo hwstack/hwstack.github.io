@@ -90,7 +90,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
   	<span class="link-title">about</span>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a id="sub-view" style="position:relative;bottom:12px;" target="_blank" href="javascript:viewSubs(true)">
+  <a id="sub-view" style="position:relative;bottom:12px;" target="_blank" href="javascript:isViewSubsOn=isViewSubsOn!;viewSubs(isViewSubsOn);">
   	<i class="fa fa-suitcase" style="font-size:1.3em"></i>&nbsp;&nbsp;
   	<span class="link-title">just subs</span>
   </a>
@@ -454,6 +454,7 @@ Add a happy image for when there are no tasks (model: google notification bell, 
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
 	
+	var isViewSubsOn = new Boolean();
 
 	
 	console.log("Stop screwing around in the console. We know who you are.");
