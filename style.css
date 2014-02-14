@@ -85,3 +85,9 @@ hr {
 input[type=checkbox] {
   width: 10px;
 }
+
+.tiny-header {
+    position: absolute;
+    margin-top: -100px;
+    margin-left: -100px;
+}
