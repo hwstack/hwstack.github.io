@@ -58,13 +58,16 @@ Add a happy image for when there are no tasks (model: google notification bell, 
 
 <section class="tiny-header">
 <small style="color:#ff0000">v0.2beta</small>
-<small><a title="Bookmarklet v0.2a :: Drag this into your bookmarks bar to save it!" href="javascript:
+<small><a title="Bookmarklet v0.1b :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
         	var date = prompt('When is this due?');
         	var task = prompt('What is your task?');
         	var key = prompt('For which class?');
  		if(!key) {
  			alert('Woops!  :I  Class must be specified!');
+ 			return;
+ 		}else if(!task){
+ 			alert('Whoops!  :I  Task must be specified!');
  			return;
  		}
  		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
@@ -442,10 +445,13 @@ Add a happy image for when there are no tasks (model: google notification bell, 
     function gen(){
         var date = prompt('When is this due?', tomorrow);
         var task = prompt('What is the task?');
-        var key = prompt('For which class?');
+        var key = prompt('What class?');
         
         if(!key) {
- 			alert('Woops!  :I  Class must be specified!');
+ 			alert('Whoops!  :I  Class must be specified!');
+ 			return;
+ 		}else if(!task){
+ 			alert('Whoops!  :I  Task must be specified!');
  			return;
  		}
  		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
@@ -455,8 +461,6 @@ Add a happy image for when there are no tasks (model: google notification bell, 
     }
 
 	var chatStepPass = "hwstack"
-	
-	var isViewSubsOn = new Boolean();
 	
 	function openChatStep(){
 		
