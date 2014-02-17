@@ -838,10 +838,10 @@ John Cobbett-Walden</pre></span>
 	}
 
 	function reDraw(){
-		$("#empty-img").remove();
-		$("#tasks:not(:has(tr))").append("<img id='empty-img' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' />");
-		
+				
 		var key, task, date, row, delHref, editHref, valArray;
+		
+		$("#empty-img").remove();
 
 		//clears old list before drawing new one
 		$("#tasks").empty();
@@ -862,6 +862,8 @@ John Cobbett-Walden</pre></span>
 		}
 		
 		colorize();
+		
+		$("#tasks:not(:has(tr))").append("<img id='empty-img' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' />");
 	}
 	
 	function clearInputs(){
