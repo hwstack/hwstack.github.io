@@ -479,7 +479,7 @@ John Cobbett-Walden</pre></span>
   </a>
   </nav>
   
-  <table width="100%" cellpadding="0px" cellspacing="0px" id="mystack-table">
+  <table width="100%" cellpadding="0px" cellspacing="0px">
   <tr>
   	<td style="width: 15%"><input type="text" id="date" name="date" value="" style="width: 100%" /></td>
  	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
@@ -494,8 +494,11 @@ John Cobbett-Walden</pre></span>
   <tbody id="tasks">
   	<!--tasks are plopped here-->
   </tbody>
-  
   </table>
+  
+  <section id="empty-img">
+  	
+  </section>
 </td>
 
   </tr>
@@ -879,7 +882,7 @@ John Cobbett-Walden</pre></span>
 				
 		var key, task, date, row, delHref, editHref, valArray;
 		
-		$("#empty-img").remove();
+		$("#empty-img").empty();
 
 		//clears old list before drawing new one
 		$("#tasks").empty();
@@ -901,7 +904,9 @@ John Cobbett-Walden</pre></span>
 		
 		colorize();
 		
-		$("#mystack-table:not(:has(.taskL))").append("<table id='empty-img'><tr><td><img style='position:relative;left:13%;margin-top:17%;zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
+		if( !($("#mystack-table:has(.taskL)").exists() ) ){
+			$("#empty-img").append("<table id='empty-img'><tr><td><img style='position:relative;left:13%;margin-top:17%;zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
+		}
 	}
 	
 	function clearInputs(){
