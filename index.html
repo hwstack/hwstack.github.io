@@ -479,7 +479,7 @@ John Cobbett-Walden</pre></span>
   </a>
   </nav>
   
-  <table width="100%" cellpadding="0px" cellspacing="0px">
+  <table width="100%" cellpadding="0px" cellspacing="0px" id="mystack-table">
   <tr>
   	<td style="width: 15%"><input type="text" id="date" name="date" value="" style="width: 100%" /></td>
  	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
@@ -523,12 +523,12 @@ John Cobbett-Walden</pre></span>
         var foo = prompt('Copy & Paste into Doc:', code);
     }
 
-	var chatStepPass = "hwstack"
-	var chatStepRoom = "hwstack"
+	var chatStepPass = "hwstack";
+	var chatStepRoom = "hwstack";
 	
 	function openChatStep(){
 		
-		console.log("Password for room " + chatStepRoom +" is " + chatStepPass)
+		console.log("Password for room " + chatStepRoom +" is " + chatStepPass);
 		window.open("https://chatstep.com/#hwstack");
 		
 	}
@@ -785,10 +785,6 @@ John Cobbett-Walden</pre></span>
 		listener.counting_combo("command shift c", function(e, count) {
 			showChat("hwstack");
 		});
-		
-		listener.counting_combo("control shift h", function(e, count) {
-			showChat("humStack");
-		});
 
 	}
 	
@@ -905,7 +901,7 @@ John Cobbett-Walden</pre></span>
 		
 		colorize();
 		
-		$("#tasks:not(:has(.taskL))").append("<tr><td colspan='4'><img id='empty-img' style='position:relative;left:13%;margin-top:17%;zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr>");
+		$("#mystack-table:not(:has(.taskL))").append("<table id='empty-img'><tr><td><img style='position:relative;left:13%;margin-top:17%;zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
 	}
 	
 	function clearInputs(){
