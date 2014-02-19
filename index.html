@@ -12,7 +12,7 @@ Peace on earth!
 
 TODO:
 
-Add a happy image for when there are no tasks (model: google notification bell, "All Caught Up!"
+Add functionality for moving around tasks.  :S
 
 -->
 
@@ -788,7 +788,8 @@ John Cobbett-Walden</pre></span>
 		listener.counting_combo("command shift c", function(e, count) {
 			showChat("hwstack");
 		});
-
+		
+		stylizeText();
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
@@ -822,6 +823,11 @@ John Cobbett-Walden</pre></span>
 		};
 	});
 	
+	/*var tasksKeys = $.jStorage.index();
+	tasksKeys = jQuery.grep(tasksKeys, function(value) {
+					return value != mySubsKey;
+				});*/
+	
 	function add(){
 		var key = $("#key").val();
 		var task = $("#task").val();
@@ -840,6 +846,7 @@ John Cobbett-Walden</pre></span>
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$.jStorage.set(key, task+"@"+date);
+		
 		reDraw();
 		$("#key").focus();
 	}
@@ -959,6 +966,10 @@ John Cobbett-Walden</pre></span>
 		$("#thestack-wrapper").css("background-color","#DDDDDD");
 	}
 	
+	function stylizeText(){
+		$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
+	}
+	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
 		return (!this.length) ? this : (this[0].outerHTML || (
@@ -1060,6 +1071,24 @@ John Cobbett-Walden</pre></span>
 		target_element.appendChild(iframe);
 	}
 	
+	Array.prototype.move = function (old_index, new_index){
+		if (new_index >= this.length) {
+			var k = new_index - this.length;
+			while ((k--) + 1) {
+				this.push(undefined);
+			}
+		}
+		this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+		return this; // for testing purposes
+	};
+	
+	//WIP
+	/*function moveTaskUp(key){
+		//var index = $.jStorage.index().indexOf(key);
+		val = $.jStorage.get(key).toString().split("@");
+		task = unescape( val[0] );
+		date = unescape( val[1] );
+	}*/
 
 </script>
 
