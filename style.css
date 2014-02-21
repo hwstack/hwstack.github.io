@@ -66,10 +66,6 @@ span:nth-of-type(3) {
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
-  
-  -moz-box-shadow:		2px 0 50px #000000;
-  -webkit-box-shadow:	2px 0 50px #000000;
-  box-shadow:					2px 0 50px #000000;
 }
 
 a:link, a:visited, a:hover, a:active {
