@@ -80,7 +80,7 @@ Add functionality for moving around tasks.  :S
 <small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
 <small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
 <small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>
-<small id="lastModified"></small>
+<small><abbr id="lastModified" class="timeago" title="">last updated</abbr></small>
 </section>
 
 <table id="wrapper">
@@ -838,7 +838,8 @@ John Cobbett-Walden</pre></span>
 		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
 		$("#date").attr("placeholder", tomorrow);
 		
-		jQuery("small#lastModified").timeago();
+		$("#lastModified").attr("title", document.lastModified);
+		jQuery("abbr.timeago").timeago();
 		
 		reDraw();
 		specificView( getQueryVariable("v") );
