@@ -78,6 +78,7 @@ Add functionality for moving around tasks.  :S
 <small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
 <small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
 <small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>
+<small id="lastModified"></small>
 </section>
 
 <table id="wrapper">
@@ -123,6 +124,47 @@ Add functionality for moving around tasks.  :S
   </nav>
   <span style="display:none;"> >> ///  << </span>
   
+  
+  <div class="humc">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumCadigan<sup>1</sup></span><br />
+    <span class="task">Pages 1-4 in the Transcendentalist Packet</span>
+  </div>
+  <div class="humc">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumCadigan<sup>2</sup></span><br />
+    <span class="task">Notes on <b>List 6</b> in the <i>WWW</i>.</span>
+  </div>
+  <div class="span">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Email:<br />
+<pre>Hola 7th grade, 
+
+Attached you will find a several page document that is your Spanish homework for Monday.  It deals w/ weather.  Please be sure to READ the first page and a half to review the weather terms (there may be a phrase or two that we didn't go over in class).  Then please complete the three activities, using complete sentences and reading the directions.  
+
+<u>As a challenge, please think about la geografía, and see if you can name the country where each city is located.</u>
+
+You do not need to print the file (unless you want to); it is fine to write your answers (complete sentences), on a separate lined paper.
+
+Gracias!
+Señorita Tanner</pre></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task">Current Event</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>3</sup></span><br />
+    <span class="task"><b>Understanding Concepts</b> in Packet</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 4 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  
+  <hr />
   <div class="lat">
     <span class="date">2/21/14</span>&nbsp;<span class="class">#Lat</span><br />
     <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HYXJkYTQ0QkRiSmM/edit">[Latin 7 Homework]</a></span>
@@ -810,6 +852,8 @@ John Cobbett-Walden</pre></span>
 		});
 		
 		stylizeText();
+		
+		$("#lastModified").text(document.lastModified);
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
