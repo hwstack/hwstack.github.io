@@ -793,6 +793,8 @@ John Cobbett-Walden</pre></span>
 		$("div").css("display","none");
 		$("hr").css("display","none");
 		
+		key = key.toLowerCase();
+		
 		if(key == "mathk"){
 			$("div.mathk").css("display","");
 			return;
@@ -857,7 +859,7 @@ John Cobbett-Walden</pre></span>
 			showChat("hwstack");
 		});
 		
-		//stylizeText();
+		stylizeText();
 		
 		//yucky format
 		//$("#lastModified").text("Last Updated"+document.lastModified);
@@ -1038,9 +1040,22 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	//.replaceText is not working for some reason... ?
-	/*function stylizeText(){
-		$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
-	}*/
+	function stylizeText(){
+		//$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
+		$("#mystack-table").autoLinks();
+	}
+	
+	$.fn.autoLinks = function() {
+		this.each(function() {
+			$(this).html(
+				$(this).html()
+					.replace(/((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi,'<a href="$1">$1</a>')
+					.replace(/(^|\s)#(\w+)/g,'$1<a href="javascript:showJustClass('+"'"+'$2'+"'"+')">#$2</a>')
+					//.replace(/(^|\s)@(\w+)/g,'$1<a href="http://twitter.com/$2">@$2</a>')
+			);
+		});
+		return $(this);
+	}
 	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
