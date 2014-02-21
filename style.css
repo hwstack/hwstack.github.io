@@ -34,10 +34,14 @@ span:nth-of-type(3) {
   width: 55%;
   background-color: #DDDDDD;
   
-  -moz-border-radius: 10px;
+     -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border-radius: 10px; /* future proofing */
-  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+          border-radius: 10px; /* future proofing */
+   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  
+  -webkit-box-shadow: -8px 0 6px -6px black;
+	   -moz-box-shadow: -8px 0 6px -6px black;
+	        box-shadow: -8px 0 6px -6px black;
 }
 
 #mystack-wrapper {
@@ -49,6 +53,10 @@ span:nth-of-type(3) {
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  
+  -webkit-box-shadow: 8px 0 6px -6px black;
+	   -moz-box-shadow: 8px 0 6px -6px black;
+	        box-shadow: 8px 0 6px -6px black;
 }
 
 #wrapper {
