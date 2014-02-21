@@ -1030,9 +1030,10 @@ John Cobbett-Walden</pre></span>
 		$("#thestack-wrapper").css("background-color","#DDDDDD");
 	}
 	
-	function stylizeText(){
+	//.replaceText is not working for some reason... ?
+	/*function stylizeText(){
 		$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
-	}
+	}*/
 	
 	$.fn.outerHTML = function(){
 		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
