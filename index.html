@@ -60,7 +60,7 @@ Add functionality for moving around tasks.  :S
 <label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
 
-<section id="tiny-header">
+<section id="tiny-header" style="position: absolute;">
 <small style="color:#ff0000">v0.2beta</small>&nbsp;|&nbsp;
 <small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;
 <small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
@@ -1151,7 +1151,7 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showChat( channel ){
-		$("#wrapper, #tiny-header, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
 		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
@@ -1180,7 +1180,7 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showPrivateChat(){
-		$("#wrapper, #tiny-header, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
