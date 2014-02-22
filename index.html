@@ -1134,6 +1134,9 @@ John Cobbett-Walden</pre></span>
 		
 		var c = getQueryVariable('chat');
 		if(c){ showChat(c); }
+		
+		var pc = getQueryVariable('pc');
+		if(pc){ showPrivateChat(); }
 	}
 	
 	function getQueryVariable( variable ){
@@ -1164,7 +1167,7 @@ John Cobbett-Walden</pre></span>
 		iframe.setAttribute('style', 'margin-bottom: -8px;');
 		
 		var current_style = target_element.getAttribute('style');
-		target_element.setAttribute('style', 'overflow: auto; -webkit-overflow-scrolling: touch;' + current_style);
+		target_element.setAttribute('style', 'overflow: none; -webkit-overflow-scrolling: touch;' + current_style);
 		
 		target_element.appendChild(iframe);
 	}
