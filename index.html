@@ -1151,7 +1151,7 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showChat( channel ){
-		$("#wrapper, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper, #tiny-header, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
 		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
@@ -1180,7 +1180,7 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showPrivateChat(){
-		$("#wrapper, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper, #tiny-header, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
