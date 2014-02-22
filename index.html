@@ -1171,8 +1171,10 @@ John Cobbett-Walden</pre></span>
 		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
 		
 		target_element.appendChild(iframe);
-		
 		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
 	}
 	
 	function showPrivateChat(){
@@ -1192,8 +1194,10 @@ John Cobbett-Walden</pre></span>
 		target_element.setAttribute('style', 'overflow:none;-webkit-overflow-scrolling:touch;' + current_style);
 		
 		target_element.appendChild(iframe);
-		
 		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
 	}
 	
 	Array.prototype.move = function (old_index, new_index){
