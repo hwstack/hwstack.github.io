@@ -47,6 +47,7 @@ Add functionality for moving around tasks.  :S
   
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
   <script async src="http://tlk.io/embed.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/enginkizil/FeedEk/master/js/FeedEk.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -853,7 +854,11 @@ John Cobbett-Walden</pre></span>
 		
 		initBoxes();
 		
-		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});'
+		var keyCombos;
+		
+		//listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});
+		
+		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
 		
 		stylizeText();
@@ -1147,7 +1152,7 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showChat( channel ){
-		$("#wrapper, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
 		
 		$("*[id$=-icon]").remove();
@@ -1177,12 +1182,10 @@ John Cobbett-Walden</pre></span>
 		
 		$("body").css("margin","0px");
 		bodyOnload();
-		
-		eval(keyCombos);
 	}
 	
 	function showPrivateChat(){
-		$("#wrapper, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		
 		$("*[id$=-icon]").remove();
@@ -1207,8 +1210,24 @@ John Cobbett-Walden</pre></span>
 		
 		$("body").css("margin","0px");
 		bodyOnload();
+	}
+	
+	function showMailFeed(){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#mail-feed").remove();
 		
-		eval(keyCombos);
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="mail-feed-icon" type="image/png" href="https://mail.google.com/mail/u/0/images/favicon.ico">');
+		$("body").append('<div id="mail-feed" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		$('#mail-feed').FeedEk({
+			FeedUrl : 'https://mail.google.com/mail/u/1/feed/atom',
+			ShowDesc : true,
+			ShowPubDate: true,
+			DescCharacterLimit: 100,
+			TitleLinkTarget: '_blank',
+			DateFormat: 'MM/DD/YYYY',
+		});
 	}
 	
 	Array.prototype.move = function (old_index, new_index){
