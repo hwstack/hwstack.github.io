@@ -1,3 +1,7 @@
 .header-icon {
   display: none;
 }
+
+body {
+  background-image: url(http://subtlepatterns.com/patterns/crossword.png);
+}
