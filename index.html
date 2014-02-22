@@ -1092,6 +1092,13 @@ John Cobbett-Walden</pre></span>
 		reDraw();
 	});
 	
+	$("div").hover(
+		function() {
+			$(this).css("background-color","#D1D1D1");
+		}, function() {
+			$(this).css("background-color","");
+  	});
+	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
 			$( "#thestack-wrapper" ).css( "display", "" );
