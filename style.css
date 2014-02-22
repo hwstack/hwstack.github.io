@@ -1,5 +1,5 @@
 body {
-  background-image: url();
+  background-image: url(http://subtlepatterns.com/patterns/crossword.png);
 }
 
 /* specific entry selector */
@@ -36,7 +36,7 @@ span:nth-of-type(3) {
 
 #thestack-wrapper {
   width: 55%;
-  background-image: url(http://subtlepatterns.com/patterns/crossword.png);
+  background-color: #CCCCCC;
   
      -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -51,7 +51,7 @@ span:nth-of-type(3) {
 #mystack-wrapper {
   width: 45%;
   vertical-align: top;
-  background-image: url(http://subtlepatterns.com/patterns/squared_metal.png);
+  background-color: #DDDDDD;
   
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
