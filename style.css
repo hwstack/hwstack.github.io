@@ -71,6 +71,9 @@ span:nth-of-type(3) {
   -webkit-border-radius: 10px;
   border-radius: 10px; /* future proofing */
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  
+  position: relative;
+  top: 23;
 }
 
 a:link, a:visited, a:hover, a:active {
