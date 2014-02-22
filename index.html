@@ -860,8 +860,12 @@ John Cobbett-Walden</pre></span>
 		
 		stylizeText();
 		
-		//yucky format
-		$("#lastModified").text(document.lastModified);
+		//yucky + borked (wtf?) format
+		/*var rD = new Date(document.lastModified);
+		var h = (rD.getHours()>12 ? rD.getHours()-12 : rD.getHours());
+		var hod = (rD.getHours()>12 ? "PM" : "AM");
+		var d = rD.getMonth()+rD.getDate();
+		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
