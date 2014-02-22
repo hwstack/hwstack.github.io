@@ -118,7 +118,7 @@ Add functionality for moving around tasks.  :S
   <input type="checkbox" title="subscribe/unsubscribe to #MUN" style="position:relative;bottom:12px;" id="mun-box" />
   </span><br />
   
-  <small align="center" style="display:block;font-family:'Alef','sans-serif';margin-bottom:-10px;position:relative;bottom:10px;">&nbsp;&nbsp;last updated <abbr id="lastModified" class="timeago" title="">last updated</abbr></small>
+  <small align="center" style="display:block;font-family:'Alef','sans-serif';margin-bottom:-10px;position:relative;bottom:10px;">&nbsp;&nbsp;last updated <abbr id="lastModified" class="timeago" title=""></abbr></small>
   
 <!--========================================================================================================-->
 <!--=============================================================================================================-->
@@ -127,7 +127,6 @@ Add functionality for moving around tasks.  :S
   </nav>
   <span style="display:none;"> >> ///  << </span>
   
-  fooooooooooooooooooooooooooooop
   <div class="humc">
     <span class="date">2/24/14</span>&nbsp;<span class="class">#HumCadigan<sup>1</sup></span><br />
     <span class="task">Pages 1-4 in the Transcendentalist Packet</span>
@@ -841,8 +840,8 @@ John Cobbett-Walden</pre></span>
 		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
 		$("#date").attr("placeholder", tomorrow);
 		
-		$("#lastModified").attr("title", document.lastModified);
-		jQuery("abbr.timeago").timeago();
+		//$("#lastModified").attr("title", document.lastModified);
+		//jQuery("abbr.timeago").timeago();
 		
 		reDraw();
 		specificView( getQueryVariable("v") );
@@ -862,7 +861,7 @@ John Cobbett-Walden</pre></span>
 		stylizeText();
 		
 		//yucky format
-		//$("#lastModified").text("Last Updated"+document.lastModified);
+		$("#lastModified").text(document.lastModified);
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
