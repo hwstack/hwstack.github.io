@@ -831,6 +831,8 @@ John Cobbett-Walden</pre></span>
 	var today, tomorrow, todayDDay;
 	var listener = new window.keypress.Listener();
 	
+	var keyCombos;
+	
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
@@ -851,21 +853,8 @@ John Cobbett-Walden</pre></span>
 		
 		initBoxes();
 		
-		listener.counting_combo("control shift c", function(e, count) {
-			showChat("hwstack");
-		});
-		
-		listener.counting_combo("command shift c", function(e, count) {
-			showChat("hwstack");
-		});
-		
-		listener.counting_combo("control shift p", function(e, count) {
-			showPrivateChat();
-		});
-		
-		listener.counting_combo("command shift p", function(e, count) {
-			showPrivateChat();
-		});
+		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});'
+		eval(keyCombos);
 		
 		stylizeText();
 		
@@ -1188,6 +1177,8 @@ John Cobbett-Walden</pre></span>
 		
 		$("body").css("margin","0px");
 		bodyOnload();
+		
+		eval(keyCombos);
 	}
 	
 	function showPrivateChat(){
@@ -1216,6 +1207,8 @@ John Cobbett-Walden</pre></span>
 		
 		$("body").css("margin","0px");
 		bodyOnload();
+		
+		eval(keyCombos);
 	}
 	
 	Array.prototype.move = function (old_index, new_index){
