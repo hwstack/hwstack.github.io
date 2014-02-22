@@ -73,7 +73,7 @@ span:nth-of-type(3) {
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
   
   position: relative;
-  top: 23;
+  top: 23px;
 }
 
 a:link, a:visited, a:hover, a:active {
