@@ -1,16 +1,17 @@
 body {
   background-image: url(http://subtlepatterns.com/patterns/crossword.png);
+  font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 /* specific entry selector */
 div, td {
   padding: 10px;
   background-color: #EEEEEE;
-  font-family: 'Alef', 'sans-serif';
+  font-family: 'Alef', sans-serif;
 }
 
 .amp {
-   font-family: 'Baskerville', 'Alef', 'sans-serif';
+   font-family: 'Baskerville', 'Alef', sans-serif;
    font-style: italic;
 }
 
