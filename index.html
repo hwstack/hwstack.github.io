@@ -1150,7 +1150,8 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function showChat( channel ){
-		$("body").replaceWith('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;"></div>');
+		$("#wrapper, #chatstep").fadeOut("fast",function(){/*Animation complete.*/});
+		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
 		var target_element	= document.getElementById('tlkio'),
 		custom_css_path		= target_element.getAttribute('data-theme'),
@@ -1170,10 +1171,13 @@ John Cobbett-Walden</pre></span>
 		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
 		
 		target_element.appendChild(iframe);
+		
+		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
 	}
 	
 	function showPrivateChat(){
-		$("body").replaceWith('<div id="chatstep" style="padding:0px;width:100%;height:100%;"></div>');
+		$("#wrapper, #tlkio").fadeOut("fast",function(){/*Animation complete.*/});
+		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
 		var target_element	= document.getElementById('chatstep'),
 		iframe				= document.createElement('iframe');
@@ -1188,6 +1192,8 @@ John Cobbett-Walden</pre></span>
 		target_element.setAttribute('style', 'overflow:none;-webkit-overflow-scrolling:touch;' + current_style);
 		
 		target_element.appendChild(iframe);
+		
+		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
 	}
 	
 	Array.prototype.move = function (old_index, new_index){
