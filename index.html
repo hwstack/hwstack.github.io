@@ -915,15 +915,9 @@ John Cobbett-Walden</pre></span>
 	function showBugReps(){
 		bugreps = true;
 		$("#bugreports-wrapper").show();
-		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 3000);
 		$("#wrapper").animate({width: "100%"}, 3000);
-		$("#bugreports-wrapper").animate({width: "80%"}, 500);
-		var delay = window.setTimeout(adjLayoutForBugReps, 600);
-	}
-	
-	function adjLayoutForBugReps(){
-		$("#wrapper").animate({top: "0px"}, 100);
-		$("#bugreports-wrapper").animate({top: "30px"}, 100);
+		$("#bugreports-wrapper").animate({width: "80%"}, 1000);
 	}
 	
 	/*var tasksKeys = $.jStorage.index();
@@ -1206,20 +1200,29 @@ John Cobbett-Walden</pre></span>
 	function runCmd( c ){
 		c = c.toString().toLowerCase();
 		
-		//command: chat [channel]
 		if(c.substr(0,5)=='chat '){
+			//command: chat [channel]
 			showChat(c.substr(5,696969));
 			return;
 		}else if(c.substr(0,4)=='chat'){
 			showChat('hwstack');
 			return;
-		}
-		
-		//command: pchat
-		if(c.substr(0,11)=='pchat'){
+		}else if(c.substr(0,11)=='pchat'){
+			//command: pchat
 			showPrivateChat();
 			return;
+		}else if(c.substring(0,3)=='do '){
+			//do command
+			doThis(c.substring(3))
+		}else{
+			alert("'" + c + "'" + " isn't supported yet! Sorry!")
 		}
+		
+	}
+	
+	function doThis(sexyArgs){
+		//function to use when we add stuff like games etc; a general usage function, code will be added when there's shit to do
+		console.log("You requested " + sexyArgs +", but this function isnt done");
 	}
 	
 	function showChat( channel ){
