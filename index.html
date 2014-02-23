@@ -31,6 +31,7 @@ Add functionality for moving around tasks.  :S
   <link href='http://fonts.googleapis.com/css?family=Alef|Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
   
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="https://raw2.github.com/gristmill/jquery-popbox/master/popbox.css" rel="stylesheet">
   
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -47,7 +48,7 @@ Add functionality for moving around tasks.  :S
   
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
   <script async src="http://tlk.io/embed.js"></script>
-  <script type="text/javascript" src="https://rawgithub.com/hwstack/FeedEk/master/js/FeedEk.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/gristmill/jquery-popbox/master/popbox.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -60,6 +61,18 @@ Add functionality for moving around tasks.  :S
 <!--<label for="1">id=1</label><input type="checkbox" name="1" id="1" onclick="doThing(1);"/><br />
 <label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
+
+<div class='popbox' width="0px" height="0px" style="position:absolute;top:0px;left:50%;">
+	<a class='open' href='#'></a>
+	<div class='collapse'>
+		<div class='box'>
+			<div class='arrow'></div>
+			<div class='arrow-border'></div>
+				<input type="text" placeholder="insert command..." /><button onclick="runCmd()"></button>
+			<a href="#" class="close">close</a>
+		</div>
+	</div>
+</div>
 
 <section id="tiny-header" style="position: absolute;">
 <small style="color:#ff0000">v0.2beta</small>&nbsp;|&nbsp;
@@ -861,6 +874,9 @@ John Cobbett-Walden</pre></span>
 		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
 		
+		listener.counting_combo("control shift e", function(e, count) {openCmd();});
+		listener.counting_combo("command shift e", function(e, count) {openCmd();});
+		
 		stylizeText();
 		
 		//yucky + borked (wtf?) format
@@ -1149,6 +1165,15 @@ John Cobbett-Walden</pre></span>
 			if(pair[0] == variable){return pair[1];}
 		}
 		return(false);
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	
+	function openCmd(){
+		$(".popbox").popbox();
+		$(".open").trigger("click");
 	}
 	
 	function showChat( channel ){
