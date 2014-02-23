@@ -917,8 +917,9 @@ John Cobbett-Walden</pre></span>
 		$("#bugreports-wrapper").show();
 		$("#wrapper").animate({width: "100%"}, 3000);
 		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
-		$("#bugreports-wrapper").animate({width: "80%"}, 500);
-		adjLayoutForBugReps();
+		$("#bugreports-wrapper").animate({width: "80%"}, 500, function(){
+			adjLayoutForBugReps();
+		});
 	}
 	
 	function adjLayoutForBugReps(){
