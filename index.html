@@ -873,6 +873,8 @@ John Cobbett-Walden</pre></span>
 		var hod = (rD.getHours()>12 ? "PM" : "AM");
 		var d = rD.getMonth()+rD.getDate();
 		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
+		
+		$("*[id^=apprise]").remove();
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
