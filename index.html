@@ -862,8 +862,7 @@ John Cobbett-Walden</pre></span>
 		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
 		
-		listener.counting_combo("control shift e", function(e, count) {openCmd();});
-		listener.counting_combo("command shift e", function(e, count) {openCmd();});
+		listener.counting_combo("alt c", function(e, count) {openCmd();});
 		
 		stylizeText();
 		
@@ -874,7 +873,7 @@ John Cobbett-Walden</pre></span>
 		var d = rD.getMonth()+rD.getDate();
 		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
 		
-		$("*[id^=apprise]").remove();
+		$("*[class^=apprise]").remove();
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
