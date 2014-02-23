@@ -64,6 +64,10 @@ span:nth-of-type(3) {
   box-shadow:					2px 0 50px #000000;
 }
 
+#bugreports-wrapper {
+  background-color: #000000;
+}
+
 #wrapper {
   margin: 0px auto;
   width: 60%;
