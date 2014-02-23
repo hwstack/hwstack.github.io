@@ -1162,7 +1162,8 @@ John Cobbett-Walden</pre></span>
 	
 	function openCmd(){
 		
-		var boxOptions = {
+		//not working :(
+		/*var boxOptions = {
 			buttons: {
 				confirm: {
 					text: 'run',
@@ -1177,7 +1178,9 @@ John Cobbett-Walden</pre></span>
 			input: true,
 		};
 		
-		Apprise('command', boxOptions);
+		Apprise('command', boxOptions);*/
+		
+		runCmd(prompt('Run Command...'));
 	}
 	
 	function runCmd( c ){
@@ -1187,16 +1190,13 @@ John Cobbett-Walden</pre></span>
 		if(c.substr(0,5)=='chat '){
 			showChat(c.substr(5,696969));
 			return;
-		}else if(c=='chat'){
+		}else if(c.substr(0,4)=='chat'){
 			showChat('hwstack');
 			return;
 		}
 		
-		//command: pchat [channel]
-		if(c.substr(0,12)=='pchat '){
-			showPrivateChat(c.substr(12,696969));
-			return;
-		}else if(c=='pchat'){
+		//command: pchat
+		if(c.substr(0,11)=='pchat'){
 			showPrivateChat();
 			return;
 		}
@@ -1205,6 +1205,7 @@ John Cobbett-Walden</pre></span>
 	function showChat( channel ){
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
+		$("#chatstep").remove();
 		
 		$("*[id$=-icon]").remove();
 		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="http://tlk.io/images/favicon.png">');
@@ -1235,9 +1236,10 @@ John Cobbett-Walden</pre></span>
 		bodyOnload();
 	}
 	
-	function showPrivateChat( channel ){
+	function showPrivateChat(){
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
+		$("#tlkio").remove();
 		
 		$("*[id$=-icon]").remove();
 		$("head").append('<link rel="icon" id="pchat-icon" type="image/png" href="https://chatstep.com/image/lock.png">');
@@ -1247,7 +1249,7 @@ John Cobbett-Walden</pre></span>
 		var target_element	= document.getElementById('chatstep'),
 		iframe				= document.createElement('iframe');
 		
-		iframe.setAttribute('src', 'https://chatstep.com/#'+channel);
+		iframe.setAttribute('src', 'https://chatstep.com/');
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
 		iframe.setAttribute('frameborder', '0');
