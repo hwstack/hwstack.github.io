@@ -578,6 +578,8 @@ John Cobbett-Walden</pre></span>
 
 <script type="text/javascript">
     
+    var bugreps = false;
+    
     function gen(){
         var date = prompt('When is this due?', tomorrow);
         var task = prompt('What is the task?');
@@ -882,7 +884,7 @@ John Cobbett-Walden</pre></span>
 	jQuery.fn.exists = function(){return this.length>0;}
 	
 	$(window).resize(function(){
-		updateLayout();
+		if(!bugreps){updateLayout();}
 	});
 	
 	function updateLayout(){
@@ -909,6 +911,13 @@ John Cobbett-Walden</pre></span>
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
 		};
 	});
+	
+	function showBugReps(){
+		$("#bugreports-wrapper").show();
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 3000);
+		$("#wrapper").animate({width: "100%"}, 3000);
+		$("#bugreports-wrapper").animate({width: "80%"}, 1000);
+	}
 	
 	/*var tasksKeys = $.jStorage.index();
 	tasksKeys = jQuery.grep(tasksKeys, function(value) {
