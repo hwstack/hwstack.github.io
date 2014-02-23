@@ -594,6 +594,19 @@ John Cobbett-Walden</pre></span>
         var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
         var foo = prompt('Copy & Paste into Doc:', code);
     }
+    
+    function showSubOptions(b){
+    	if(b==true){
+    		$('#boxes').hide()
+    	}else if(b==false){
+    		$('#boxes').show()
+    	}
+    }
+    
+    var showSubOptionsDefault = false
+    showSubOptions(showSubOptionsDefault);
+    
+    hideSubOptions
 
 	var chatStepPass = "hwstack";
 	var chatStepRoom = "hwstack";
