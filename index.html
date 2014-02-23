@@ -934,6 +934,17 @@ John Cobbett-Walden</pre></span>
 		
 		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
 		$("#tiny-header").fadeOut("fast");
+		
+		visualEffects();
+	}
+	
+	function visualEffects(){
+		for(i=0; i<20; i++){
+			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
+		}
+		$("#mystack-wrapper, #thestack-wrapper").effect("bounce");
+		$("body").attr("style","background-color: #D45D22");
+
 	}
 	
 	/*var tasksKeys = $.jStorage.index();
