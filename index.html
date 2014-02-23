@@ -21,7 +21,7 @@ Add functionality for moving around tasks.  :S
 <!DOCTYPE html>
 <html>
 <head>
-  <title>hwStack v0.2beta</title>
+  <title>hwStack v0.3beta</title>
   
   <meta name="viewport" content="width=935">
   
@@ -31,6 +31,7 @@ Add functionality for moving around tasks.  :S
   <link href='http://fonts.googleapis.com/css?family=Alef|Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
   
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="https://raw2.github.com/ThrivingKings/Apprise-v2/master/apprise-v2.css" rel="stylesheet" type="text/css">
   
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -47,6 +48,7 @@ Add functionality for moving around tasks.  :S
   
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
   <script async src="http://tlk.io/embed.js"></script>
+  <script type="text/javascript" src="https://rawgithub.com/ThrivingKings/Apprise-v2/master/apprise-v2.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -61,7 +63,7 @@ Add functionality for moving around tasks.  :S
 <label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
 
 <section id="tiny-header" style="position: absolute;">
-<small style="color:#ff0000">v0.2beta</small>&nbsp;|&nbsp;
+<small style="color:#ff0000">v0.3beta</small>&nbsp;|&nbsp;
 <small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;
 <small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
@@ -1159,7 +1161,45 @@ John Cobbett-Walden</pre></span>
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function openCmd(){
-		alert("WIP");
+		
+		var boxOptions = {
+			buttons: {
+				confirm: {
+					text: 'run',
+					className: 'run-command-button',
+					action: function(e) {
+						runCmd(e.input);
+						console.log(e.input);
+						Apprise('close');
+					}
+				},
+			},
+			input: true,
+		};
+		
+		Apprise('command', boxOptions);
+	}
+	
+	function runCmd( c ){
+		c = c.toString().toLowerCase();
+		
+		//command: chat [channel]
+		if(c.substr(0,5)=='chat '){
+			showChat(c.substr(5,696969));
+			return;
+		}else if(c=='chat'){
+			showChat('hwstack');
+			return;
+		}
+		
+		//command: pchat [channel]
+		if(c.substr(0,12)=='pchat '){
+			showPrivateChat(c.substr(12,696969));
+			return;
+		}else if(c=='pchat'){
+			showPrivateChat();
+			return;
+		}
 	}
 	
 	function showChat( channel ){
@@ -1195,7 +1235,7 @@ John Cobbett-Walden</pre></span>
 		bodyOnload();
 	}
 	
-	function showPrivateChat(){
+	function showPrivateChat( channel ){
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		
@@ -1207,7 +1247,7 @@ John Cobbett-Walden</pre></span>
 		var target_element	= document.getElementById('chatstep'),
 		iframe				= document.createElement('iframe');
 		
-		iframe.setAttribute('src', 'https://chatstep.com/');
+		iframe.setAttribute('src', 'https://chatstep.com/#'+channel);
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
 		iframe.setAttribute('frameborder', '0');
