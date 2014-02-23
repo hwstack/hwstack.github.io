@@ -1220,13 +1220,17 @@ John Cobbett-Walden</pre></span>
 		$("head").append('<link rel="icon" id="mail-feed-icon" type="image/png" href="https://mail.google.com/mail/u/0/images/favicon.ico">');
 		$("body").append('<div id="mail-feed" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
-		$('#mail-feed').FeedEk({
-			FeedUrl : 'https://mail.google.com/mail/u/1/feed/atom',
-			ShowDesc : true,
-			ShowPubDate: true,
-			DescCharacterLimit: 100,
-			TitleLinkTarget: '_blank',
-			DateFormat: 'MM/DD/YYYY',
+		$.ajax({
+			type: "GET",
+			url: "https://mail.google.com/mail/u/1/feed/atom",
+			dataType: "xml",
+			success: function(xml) {
+				$(xml).find('entry').each(function(){
+					var title = $(this).find('title').text();
+					var summary = $(this).find('summary').text();
+					$("#mail-feed").append("<div class='mail-entry'><h3>"+title+"</h3><p>"+summary+"</p></div>");
+				});
+			}
 		});
 	}
 	
