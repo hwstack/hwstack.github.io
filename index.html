@@ -915,11 +915,11 @@ John Cobbett-Walden</pre></span>
 	function showBugReps(){
 		bugreps = true;
 		$("#bugreports-wrapper").show();
-		$("#wrapper").animate({width: "100%"}, 3000);
-		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
-		$("#bugreports-wrapper").animate({width: "80%"}, 500, function(){
+		$("#wrapper").animate({width: "100%"}, 3000, function(){
 			adjLayoutForBugReps();
 		});
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
+		$("#bugreports-wrapper").animate({width: "80%"}, 700);
 	}
 	
 	function adjLayoutForBugReps(){
