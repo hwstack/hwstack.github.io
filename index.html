@@ -947,7 +947,16 @@ John Cobbett-Walden</pre></span>
 		}
 		$("#mystack-wrapper, #thestack-wrapper").effect("bounce");
 		$("body").attr("style","background: #D45D22");
-
+	
+		landingCrew();
+	}
+	
+	function landingCrew(){
+		$("#wrapper").animate({width: "60%"}, 3000, function(){
+			//next
+		});
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "30%"}, 100);
+		$("#bugreports-wrapper").animate({width: "0px"}, 700);
 	}
 	
 	/*var tasksKeys = $.jStorage.index();
