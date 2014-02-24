@@ -1249,13 +1249,151 @@ John Cobbett-Walden</pre></span>
 		}
 	}
 	
-	function totalrehab(){
-			console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
-	
-	var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer
-	
-	function dodrug(d, q, m){
+	function showChat( channel ){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#tlkio").remove();
+		$("#chatstep").remove();
 		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="http://tlk.io/images/favicon.png">');
+		
+		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		var target_element	= document.getElementById('tlkio'),
+		custom_css_path		= target_element.getAttribute('data-theme'),
+		channel_name		= target_element.getAttribute('data-channel'),
+		iframe				= document.createElement('iframe');
+		
+		var iframe_src = 'http://embed.tlk.io/' + channel_name;
+		iframe_src += ('?custom_css_path=' + custom_css_path);
+		
+		iframe.setAttribute('src', iframe_src);
+		iframe.setAttribute('width', '100%');
+		iframe.setAttribute('height', '100%');
+		iframe.setAttribute('frameborder', '0');
+		iframe.setAttribute('style', 'margin-bottom: -8px;');
+		
+		var current_style = target_element.getAttribute('style');
+		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
+		
+		target_element.appendChild(iframe);
+		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
+	}
+	
+	function showPrivateChat(){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#chatstep").remove();
+		$("#tlkio").remove();
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="pchat-icon" type="image/png" href="https://chatstep.com/image/lock.png">');
+		
+		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		var target_element	= document.getElementById('chatstep'),
+		iframe				= document.createElement('iframe');
+		
+		iframe.setAttribute('src', 'https://chatstep.com/');
+		iframe.setAttribute('width', '100%');
+		iframe.setAttribute('height', '100%');
+		iframe.setAttribute('frameborder', '0');
+		iframe.setAttribute('style', 'margin-bottom: -8px;');
+		
+		var current_style = target_element.getAttribute('style');
+		target_element.setAttribute('style', 'overflow:none;-webkit-overflow-scrolling:touch;' + current_style);
+		
+		target_element.appendChild(iframe);
+		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
+	}
+	
+	function showMailFeed(){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#mail-feed").remove();
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="mail-feed-icon" type="image/png" href="https://mail.google.com/mail/u/0/images/favicon.ico">');
+		$("body").append('<div id="mail-feed" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		$.ajax({
+			type: "GET",
+			url: "https://mail.google.com/mail/u/1/feed/atom",
+			dataType: "xml",
+			success: function(xml) {
+				$(xml).find('entry').each(function(){
+					var title = $(this).find('title').text();
+					var summary = $(this).find('summary').text();
+					$("#mail-feed").append("<div class='mail-entry'><h3>"+title+"</h3><p>"+summary+"</p></div>");
+				});
+			}
+		});
+	}
+	
+	function initStatus(){
+		$("#status").remove();
+		$("body").append('<div id="status" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/statusChatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		var target_element	= document.getElementById('status'),
+		custom_css_path		= target_element.getAttribute('data-theme'),
+		iframe				= document.createElement('iframe');
+		
+		var iframe_src = 'http://embed.tlk.io/xFNwG5rILV';
+		iframe_src += ('?custom_css_path=' + custom_css_path);
+		
+		iframe.setAttribute('src', iframe_src);
+		iframe.setAttribute('width', '100%');
+		iframe.setAttribute('height', '100%');
+		iframe.setAttribute('frameborder', '0');
+		iframe.setAttribute('style', 'margin-bottom: -8px;');
+		
+		var current_style = target_element.getAttribute('style');
+		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
+		
+		target_element.appendChild(iframe);
+		
+		$("body").css("margin","0px");
+		
+		$("#status").show();
+	}
+	
+	Array.prototype.move = function (old_index, new_index){
+		if (new_index >= this.length) {
+			var k = new_index - this.length;
+			while ((k--) + 1) {
+				this.push(undefined);
+			}
+		}
+		this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+		return this; // for testing purposes
+	};
+	
+	//WIP
+	/*function moveTaskUp(key){
+		//var index = $.jStorage.index().indexOf(key);
+		val = $.jStorage.get(key).toString().split("@");
+		task = unescape( val[0] );
+		date = unescape( val[1] );
+	}*/
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	function totalrehab(){
+		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
+		var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer;
+		//wtf? ; ; ; ; ; ;
+		//function dodrug(d, q, m){
 	}
 	
 	dealer={
@@ -1382,7 +1520,7 @@ John Cobbett-Walden</pre></span>
 				meth:[1,0],
 			},
 		},
-	}
+	};
 	
 	tx={
 		cocaine:[0,0,0,0],
@@ -1390,7 +1528,7 @@ John Cobbett-Walden</pre></span>
 		heroin:[0,0,0,0],
 		mdma:[0,0,0,0],
 		meth:[0,0,0,0],
-	}
+	};
 	
 	// transaction ledger --- each drug has an array like this [TransactionsBought, TransactionsSold, QuantityBought, QuantitySold]
 	
@@ -1731,140 +1869,7 @@ John Cobbett-Walden</pre></span>
 	function loadsavedstats(arg){
 		
 		console.log($.jStorage.get(arg))
-				
 	}
-	}
-	
-	function showChat( channel ){
-		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
-		$("#tlkio").remove();
-		$("#chatstep").remove();
-		
-		$("*[id$=-icon]").remove();
-		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="http://tlk.io/images/favicon.png">');
-		
-		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
-		
-		var target_element	= document.getElementById('tlkio'),
-		custom_css_path		= target_element.getAttribute('data-theme'),
-		channel_name		= target_element.getAttribute('data-channel'),
-		iframe				= document.createElement('iframe');
-		
-		var iframe_src = 'http://embed.tlk.io/' + channel_name;
-		iframe_src += ('?custom_css_path=' + custom_css_path);
-		
-		iframe.setAttribute('src', iframe_src);
-		iframe.setAttribute('width', '100%');
-		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('style', 'margin-bottom: -8px;');
-		
-		var current_style = target_element.getAttribute('style');
-		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
-		
-		target_element.appendChild(iframe);
-		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
-		
-		$("body").css("margin","0px");
-		bodyOnload();
-	}
-	
-	function showPrivateChat(){
-		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
-		$("#chatstep").remove();
-		$("#tlkio").remove();
-		
-		$("*[id$=-icon]").remove();
-		$("head").append('<link rel="icon" id="pchat-icon" type="image/png" href="https://chatstep.com/image/lock.png">');
-		
-		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></div>');
-		
-		var target_element	= document.getElementById('chatstep'),
-		iframe				= document.createElement('iframe');
-		
-		iframe.setAttribute('src', 'https://chatstep.com/');
-		iframe.setAttribute('width', '100%');
-		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('style', 'margin-bottom: -8px;');
-		
-		var current_style = target_element.getAttribute('style');
-		target_element.setAttribute('style', 'overflow:none;-webkit-overflow-scrolling:touch;' + current_style);
-		
-		target_element.appendChild(iframe);
-		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
-		
-		$("body").css("margin","0px");
-		bodyOnload();
-	}
-	
-	function showMailFeed(){
-		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
-		$("#mail-feed").remove();
-		
-		$("*[id$=-icon]").remove();
-		$("head").append('<link rel="icon" id="mail-feed-icon" type="image/png" href="https://mail.google.com/mail/u/0/images/favicon.ico">');
-		$("body").append('<div id="mail-feed" style="padding:0px;width:100%;height:100%;display:none;"></div>');
-		
-		$.ajax({
-			type: "GET",
-			url: "https://mail.google.com/mail/u/1/feed/atom",
-			dataType: "xml",
-			success: function(xml) {
-				$(xml).find('entry').each(function(){
-					var title = $(this).find('title').text();
-					var summary = $(this).find('summary').text();
-					$("#mail-feed").append("<div class='mail-entry'><h3>"+title+"</h3><p>"+summary+"</p></div>");
-				});
-			}
-		});
-	}
-	
-	function initStatus(){
-		$("#status").remove();
-		$("body").append('<div id="status" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/statusChatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
-		
-		var target_element	= document.getElementById('status'),
-		custom_css_path		= target_element.getAttribute('data-theme'),
-		iframe				= document.createElement('iframe');
-		
-		var iframe_src = 'http://embed.tlk.io/xFNwG5rILV';
-		iframe_src += ('?custom_css_path=' + custom_css_path);
-		
-		iframe.setAttribute('src', iframe_src);
-		iframe.setAttribute('width', '100%');
-		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('style', 'margin-bottom: -8px;');
-		
-		var current_style = target_element.getAttribute('style');
-		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
-		
-		target_element.appendChild(iframe);
-		
-		$("body").css("margin","0px");
-		
-		$("#status").show();
-	}
-	
-	Array.prototype.move = function (old_index, new_index){
-		if (new_index >= this.length) {
-			var k = new_index - this.length;
-			while ((k--) + 1) {
-				this.push(undefined);
-			}
-		}
-		this.splice(new_index, 0, this.splice(old_index, 1)[0]);
-		return this; // for testing purposes
-	};
-	
-	//WIP
-	/*function moveTaskUp(key){
-		//var index = $.jStorage.index().indexOf(key);
-		val = $.jStorage.get(key).toString().split("@");
-		task = unescape( val[0] );
-		date = unescape( val[1] );
-	}*/
 
 </script>
 
