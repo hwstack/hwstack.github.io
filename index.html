@@ -1380,14 +1380,14 @@ John Cobbett-Walden</pre></span>
 		date = unescape( val[1] );
 	}*/
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function totalrehab(){
 		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
@@ -1534,7 +1534,7 @@ John Cobbett-Walden</pre></span>
 	
 	function buy(drug, quantity, dealr){
 		if(dealer[dealr][drug]==0){
-			console.log("Illegit -- Dealer does not sell " + drug)
+			console.log("Illegit -- Dealer does not sell " + drug);
 		}else{
 			if(quantity<0.25){
 				console.log("too small amount");
@@ -1542,11 +1542,11 @@ John Cobbett-Walden</pre></span>
 			}else{
 				if(dealer[dealr][drug]!=0){
 					if(checkfunds(Math.abs(dealer[dealr][drug] * quantity)) == true){
-						quantity = round(quantity)
-						inv[drug] += quantity
-						money -= round((dealer[dealr].buyeffects[drug][0] * dealer[dealr][drug] * quantity) + dealer[dealr].buyeffects[drug][1])
-						++tx[drug][0]
-						tx[drug][2] += quantity
+						quantity = round(quantity);
+						inv[drug] += quantity;
+						money -= round((dealer[dealr].buyeffects[drug][0] * dealer[dealr][drug] * quantity) + dealer[dealr].buyeffects[drug][1]);
+						++tx[drug][0];
+						tx[drug][2] += quantity;
 						adjustPrices();
 					}else{
 						console.log("Not enough money to buy " + quantity + " grams of " + drug);
@@ -1612,7 +1612,7 @@ John Cobbett-Walden</pre></span>
 			ppg:250.0,
 		},
 		
-	}
+	};
 
 	//creates objects for each drug with values drugid, addictn, high and harm, as well as buy method
 
@@ -1622,13 +1622,13 @@ John Cobbett-Walden</pre></span>
 		heroin:[1,0],
 		mdma:[1,0],
 		meth:[1,0],
-	}
+	};
 	
 	// adds object buyeffects that records the effect on prices
 	
 	function adjustPrices(){
 		
-		var adjust = [0,0,0,0,0]
+		var adjust = [0,0,0,0,0];
 		
 		adjust[0] = Math.floor(tx.cocaine[3]/10);
 		adjust[1] = Math.floor(tx.cannabis[3]/12);
@@ -1636,10 +1636,10 @@ John Cobbett-Walden</pre></span>
 		adjust[3] = Math.floor(tx.meth[3]/15);
 		adjust[4] = Math.floor(tx.mdma[3]/12);
 		
-		var lode=Object.keys(dealer)
-		var lodel=lode.length
-		var lod=Object.keys(drugs)
-		var lodl=lod.length
+		var lode=Object.keys(dealer);
+		var lodel=lode.length;
+		var lod=Object.keys(drugs);
+		var lodl=lod.length;
 		for(var i=0;i<lodel;i++){
 			for(var e=0;e<lodl;e++){
 				dealer[lode[i]][lod[e]]=0
@@ -1650,7 +1650,7 @@ John Cobbett-Walden</pre></span>
 	
 	// adjust prices from data from tx ledger. buying more means prices are cheaper. some really really shitty code to prevent it from being OP, but ill clean that shit up l8r
 	
-	money = 0
+	money = 0;
 
 	// sets current cash, default 0 because we're broke as fuck
 	
@@ -1660,7 +1660,7 @@ John Cobbett-Walden</pre></span>
 		heroin:0.0,
 		mdma:0.0,
 		meth:0.0,
-	}
+	};
 
 	//sets inventory obj with vals for each drug
 
@@ -1672,11 +1672,11 @@ John Cobbett-Walden</pre></span>
 		methd:0,
 		high:0,
 		lp:10000,
-	}
+	};
 	
 	// dependency for each drug ( [drugname]d ) as well has current High and Life Points. High will be derived with some math shit and some resistance equation from the drug, the LP is derived from how much damage the drug does and how much u do it.
 	
-	mmyyyy = 1
+	mmyyyy = 1;
 	
 	//sets current month to 1.
 	
@@ -1776,34 +1776,34 @@ John Cobbett-Walden</pre></span>
 	function dealerdis(args, amt){
 		
 		if(Object.prototype.toString.apply(amt) != "[object Number]"){
-			console.log("invalid amount argument")
+			console.log("invalid amount argument");
 			return;
 		}
 		
 		if(args=='all'){
-			var i=0
-			var lodl = Object.keys(drugs).length
-			var lod = Object.keys(drugs)
+			var i=0;
+			var lodl = Object.keys(drugs).length;
+			var lod = Object.keys(drugs);
 			for(i;i<lodl;i++){
-				var lodi = lod[i]
-				buyeffects[lodi][0] += amt
+				var lodi = lod[i];
+				buyeffects[lodi][0] += amt;
 			}
 		}else{
-			buyeffects[args][0] += amt
+			buyeffects[args][0] += amt;
 		}
 	}
 	
 	function dealercl(args){
 		if(args=='all'){
-			var i=0
-			var lodl = Object.keys(drugs).length
-			var lod = Object.keys(drugs)
+			var i=0;
+			var lodl = Object.keys(drugs).length;
+			var lod = Object.keys(drugs);
 			for(i;i<lodl;i++){
-				var lodi = lod[i]
-				buyeffects[lodi][0] = 1
+				var lodi = lod[i];
+				buyeffects[lodi][0] = 1;
 			}
 		}else{
-			buyeffects[args][0] = 1
+			buyeffects[args][0] = 1;
 		}
 	}
 	
@@ -1867,8 +1867,7 @@ John Cobbett-Walden</pre></span>
 		// loads saved data
 	
 	function loadsavedstats(arg){
-		
-		console.log($.jStorage.get(arg))
+		console.log($.jStorage.get(arg));
 	}
 
 </script>
