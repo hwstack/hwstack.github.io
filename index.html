@@ -945,10 +945,10 @@ John Cobbett-Walden</pre></span>
 		for(i=0; i<20; i++){
 			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
 		}
-		$("#mystack-wrapper, #thestack-wrapper").effect("bounce");
+		$("#mystack-wrapper, #thestack-wrapper").effect("bounce", null, 400, function(){
+			landingCrew();
+		});
 		$("body").attr("style","background: #D45D22");
-	
-		landingCrew();
 	}
 	
 	function landingCrew(){
