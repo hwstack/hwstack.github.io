@@ -1281,43 +1281,24 @@ John Cobbett-Walden</pre></span>
 		}else if(c.substr(0,4)=='chat'){
 			showChat('hwstack');
 			return;
-		}
-		
-		//command: pchat
-		if(c.substr(0,11)=='pchat'){
+		}else if(c.substr(0,11)=='pchat'){
 			showPrivateChat();
 			return;
-		}
-		
-		if(c=='totalrehab'){
+		}else if(c=='totalrehab'){
 			totalrehab();
-		}
-		
-		if(c=='showbugreps'){
+		}else if(c=='showbugreps'){
 			showBugReps();
-		}
-		
-		if(c.substring(0,5)=='echo '){
+		}else if(c.substring(0,5)=='echo '){
 			alert(c.substring(5));
-		}
-		
-		if(c=='hwstack'){
+		}else if(c=='hwstack'){
 			return;
-		}
-		
-		if(c=='mytasks'){
+		}else if(c=='mytasks'){
 			alert('Fool, that is soooooooooo january');
-		}
-		
-		if(c=='command'){
+		}else if(c=='command'){
 			alert("Yep, that's what this window processes. Might want to execute one.");
-		}
-		
-		if(c=='shutdown'){
+		}else if(c=='shutdown'){
 			alert("Did you know you can't close a window with a script if the script didn't open it? It's quite a shame.");
-		}
-		
-		if(c=='easteregg'){
+		}else if(c=='easteregg'){
 			alert('Try running "showbugreps" in this command window.');
 		}
 	}
