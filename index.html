@@ -924,6 +924,8 @@ John Cobbett-Walden</pre></span>
 	}
 	
 	function adjLayoutForBugReps(){
+		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
+
 		$("#wrapper").animate({top: "0px"}, 100);
 		$("#bugreports-wrapper").css("left","10%");
 		$("#bugreports-wrapper").animate({top: "30px"}, 100);
@@ -933,7 +935,6 @@ John Cobbett-Walden</pre></span>
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
 		$("td").empty();
 		
-		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
 		$("#tiny-header").fadeOut("fast");
 		
 		visualEffects();
