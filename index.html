@@ -921,11 +921,12 @@ John Cobbett-Walden</pre></span>
 		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
 		$("#bugreports-wrapper").animate({width: "80%"}, 700);
 		console.log("YOU HAVE AWOKEN THE BEAST!!!!!!");
+		
+		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
+		$("#tiny-header").fadeOut("fast");
 	}
 	
 	function adjLayoutForBugReps(){
-		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
-
 		$("#wrapper").animate({top: "0px"}, 100);
 		$("#bugreports-wrapper").css("left","10%");
 		$("#bugreports-wrapper").animate({top: "30px"}, 100);
@@ -934,8 +935,6 @@ John Cobbett-Walden</pre></span>
 		$("#mystack-wrapper").css("right", "0px");
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
 		$("td").empty();
-		
-		$("#tiny-header").fadeOut("fast");
 		
 		visualEffects();
 	}
