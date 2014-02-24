@@ -1296,6 +1296,30 @@ John Cobbett-Walden</pre></span>
 		if(c=='showbugreps'){
 			showBugReps();
 		}
+		
+		if(c.substring(0,5)=='echo '){
+			alert(c.substring(5));
+		}
+		
+		if(c=='hwstack'){
+			return;
+		}
+		
+		if(c=='mytasks'){
+			alert('Fool, that is soooooooooo january');
+		}
+		
+		if(c=='command'){
+			alert("Yep, that's what this window processes. Might want to execute one.");
+		}
+		
+		if(c=='shutdown'||'end'){
+			alert("Did you know you can't close a window with a script if the script didn't open it? It's quite a shame.");
+		}
+		
+		if(c=='easteregg'){
+			alert('Try running "showbugreps" in this command window.');
+		}
 	}
 	
 	function showChat( channel ){
