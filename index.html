@@ -1093,9 +1093,6 @@ John Cobbett-Walden</pre></span>
 		$("#date").val( val[1] );
 		$("#task").focus();
 	}
-	
-	
-	$("a").click(function(){reDraw();});
 
 	function reDraw(){
 				
@@ -1111,6 +1108,8 @@ John Cobbett-Walden</pre></span>
 			if(key!=mySubsKey){
 				val = $.jStorage.get(key).toString().split("@");
 				task = unescape( val[0] );
+				task = task.replace('"',"'");
+				
 				date = unescape( val[1] );
 				checked = val[2];
 	
