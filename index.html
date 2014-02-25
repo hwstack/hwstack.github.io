@@ -7,7 +7,7 @@ Just don't say you made the original.
 Fool, that was our job.
 
 Peace on earth!
-humv
+
 --------------------------------
 
 TODO:
@@ -1108,6 +1108,7 @@ John Cobbett-Walden</pre></span>
 			if(key!=mySubsKey){
 				val = $.jStorage.get(key).toString().split("@");
 				task = unescape( val[0] );
+				task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
 				
 				date = unescape( val[1] );
 				checked = val[2];
