@@ -139,7 +139,7 @@ Add functionality for moving around tasks.  :S
   </div>
   <div class="lat">
     <span class="date">2/26/14</span>&nbsp;<span class="class">#Lat</span><br />
-    <span class="task">Study for Quiz.  <a href="https://drive.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HYV96MXBGLUlZcTA/edit">[Doc]</a></span>
+    <span class="task">Study for Quiz.  <a href='https://drive.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HYV96MXBGLUlZcTA/edit'>[Doc]</a></span>
   </div>
   <div class="span">
     <span class="date">2/26/14</span>&nbsp;<span class="class">#Span</span><br />
@@ -1108,7 +1108,6 @@ John Cobbett-Walden</pre></span>
 			if(key!=mySubsKey){
 				val = $.jStorage.get(key).toString().split("@");
 				task = unescape( val[0] );
-				task = task.replace('"',"'");
 				
 				date = unescape( val[1] );
 				checked = val[2];
