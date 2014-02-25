@@ -561,7 +561,7 @@ John Cobbett-Walden</pre></span>
 
 <!--bug reports column-->
 <td id="bugreports-wrapper" style="display:none;" >
-	YOU HAVE RELEASED THE MIGHTY BUG REPORTS WRAPPER!
+	
 </td>
 
 <td id="mystack-wrapper">
@@ -649,7 +649,7 @@ John Cobbett-Walden</pre></span>
 	var mySubs = [];
 	mySubs = $.jStorage.get(mySubsKey);
 	
-	function task(key, tag, task, date){
+	/*function task(key, tag, task, date){
 		
 		if(tag.substring(0,1) == "#"){
 			console.log("good tag");
@@ -666,7 +666,7 @@ John Cobbett-Walden</pre></span>
 		
 		);
 		
-	}
+	}*/
 
 	function addSub( key ){
 		if( $.inArray(key, mySubs)==-1 ){
@@ -999,6 +999,14 @@ John Cobbett-Walden</pre></span>
 					return value != mySubsKey;
 				});*/
 	
+	$(".unchecked").dblclick(function(){
+		$(this).attr("class","mystack-entry checked");
+	});
+
+	$(".checked").dblclick(function(){
+		$(this).attr("class","mystack-entry unchecked");
+	});
+
 	function add(){
 		var key = $("#key").val();
 		var task = $("#task").val();
@@ -1016,7 +1024,7 @@ John Cobbett-Walden</pre></span>
 		
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
-		$.jStorage.set(key, task+"@"+date);
+		$.jStorage.set(key, task+"@"+date+"@unchecked");
 		
 		reDraw();
 		$("#key").focus();
@@ -1058,7 +1066,7 @@ John Cobbett-Walden</pre></span>
 
 	function reDraw(){
 				
-		var key, task, date, row, delHref, editHref, valArray;
+		var key, task, date, checked, row, delHref, editHref, valArray;
 		
 		$("#empty-img").remove();
 
@@ -1071,10 +1079,11 @@ John Cobbett-Walden</pre></span>
 				val = $.jStorage.get(key).toString().split("@");
 				task = unescape( val[0] );
 				date = unescape( val[1] );
-			
+				checked = val[2];
+	
 				delHref = "javascript:delTask('"+key+"')";
 				editHref = "javascript:editTask('"+key+"')";
-				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry "+checked+"'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 			
 				$( "#tasks" ).prepend( $row );
 			}
