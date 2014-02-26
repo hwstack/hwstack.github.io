@@ -1024,17 +1024,12 @@ John Cobbett-Walden</pre></span>
 		$("#bugreports-wrapper").animate({width: "0px"}, 700);
 	}
 	
-	/*var tasksKeys = $.jStorage.index();
-	tasksKeys = jQuery.grep(tasksKeys, function(value) {
-					return value != mySubsKey;
-				});*/
-	
-	$(".unchecked").dblclick(function(){
-		$(this).attr("class","mystack-entry checked");
-	});
-
-	$(".checked").dblclick(function(){
-		$(this).attr("class","mystack-entry unchecked");
+	$(".mystack-entry").dblclick(function(){
+		if($(this).css("text-decoration")=="line-through"){
+			$(this).css("text-decoration","none");
+		}else{
+			$(this).css("text-decoration","line-through");
+		}
 	});
 
 	function add(){
@@ -1054,7 +1049,7 @@ John Cobbett-Walden</pre></span>
 		
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
-		$.jStorage.set(key, task+"@"+date+"@unchecked");
+		$.jStorage.set(key, task+"@"+dat);
 		
 		reDraw();
 		$("#key").focus();
@@ -1096,7 +1091,7 @@ John Cobbett-Walden</pre></span>
 
 	function reDraw(){
 				
-		var key, task, date, checked, row, delHref, editHref, valArray;
+		var key, task, date, row, delHref, editHref, valArray;
 		
 		$("#empty-img").remove();
 
@@ -1107,15 +1102,14 @@ John Cobbett-Walden</pre></span>
 			key = $.jStorage.index()[i];
 			if(key!=mySubsKey){
 				val = $.jStorage.get(key).toString().split("@");
+			
 				task = unescape( val[0] );
 				task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
-				
 				date = unescape( val[1] );
-				checked = val[2];
 	
 				delHref = "javascript:delTask('"+key+"')";
 				editHref = "javascript:editTask('"+key+"')";
-				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry "+checked+"'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 			
 				$( "#tasks" ).prepend( $row );
 			}
