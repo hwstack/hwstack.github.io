@@ -1023,14 +1023,17 @@ John Cobbett-Walden</pre></span>
 		$("#mystack-wrapper, #thestack-wrapper").animate({width: "30%"}, 100);
 		$("#bugreports-wrapper").animate({width: "0px"}, 700);
 	}
-	
+	/* borked :(
 	$(".mystack-entry").dblclick(function(){
-		if($(this).css("text-decoration")=="line-through"){
-			$(this).css("text-decoration","none");
-		}else{
-			$(this).css("text-decoration","line-through");
+		if( $(this).attr("style").contains("line-through") ){
+			$(this).attr("style","text-decoration: none");
 		}
-	});
+		if( $(this).attr("style").contains("none") ){
+			$(this).attr("style","text-decoration: line-through");
+		}
+	});*/
+	
+	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
 
 	function add(){
 		var key = $("#key").val();
