@@ -133,10 +133,24 @@ Add functionality for moving around tasks.  :S
   </nav>
   <span style="display:none;"> >> ///  << </span>
   
-  <div class="humc">
-    <span class="date">2/27/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
-    <span class="task">Read pp. 5-9, pp. 27-29, pp. 29-30, and answer Qs on p. 32 in your Transcendentalism Packet</span>
+  <div class="sci">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Chapter 20.3: TCN + Qs</span>
   </div>
+  <div class="humv">
+    <span class="date">2/28/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Comments on Notes for <b>List 7</b></span>
+  </div>
+  <div class="humc">
+    <span class="date">3/2/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">WWW 7 Cards<br />Book Report<br />Essay Revisions</span>
+  </div>
+    <div class="math">
+    <span class="date">2/28/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Quiz Corrections! :(</span>
+  </div>
+  
+  <hr />
   <div class="span">
     <span class="date">2/27/14</span>&nbsp;<span class="class">#Span</span><br />
     <span class="task">Reading Comp Worksheet (double-sided)</span>
@@ -694,14 +708,6 @@ John Cobbett-Walden</pre></span>
 		
 	}
 	
-	function moveTaskAfter(f,s){
-		$('#'+s).insertAfter('#'+f);
-	}
-	
-	function moveTaskBefore(f,s){
-		$('#'+s).prependTo('#'+f);
-	}
-	
 	console.log("Stop screwing around in the console. We know who you are.");
 	
 	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
@@ -1069,6 +1075,8 @@ John Cobbett-Walden</pre></span>
 		var key = $("#key").val();
 		var task = $("#task").val();
 		var date = $("#date").val();
+		
+		key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
