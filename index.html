@@ -667,7 +667,7 @@ John Cobbett-Walden</pre></span>
   </tbody>
   </table>
   
-  <section id="empty-img-sect">
+  <section id="empty-img-sect-disabled">
   	
   </section>
 </td>
@@ -678,6 +678,9 @@ John Cobbett-Walden</pre></span>
 <a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
 
 <script type="text/javascript">
+
+(function(){
+	
 function round(n) {
     return Math.round(n * 100) / 100;
 }
@@ -1934,6 +1937,8 @@ function classes(root) {
 }
 
 d3.select(self.frameElement).style("height", diameter + "px");*/
+
+})();
 
 </script>
 
