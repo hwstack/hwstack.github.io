@@ -943,7 +943,7 @@ var bugreps = false;
 	var today, tomorrow, todayDDay;
 	var listener = new window.keypress.Listener();
 	
-	var keyCombos, jason;
+	var keyCombos;
 	
 	function bodyOnload(){
 		checkForArgs();
@@ -984,22 +984,23 @@ var bugreps = false;
 		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
 		
 		//$("*[class^=apprise]").remove();
-		
-		var jason =
-		{	"name":"jason",
-			"children":
-			[
-				{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
-			]
-		};
 	}
+	
+	var jason =
+	{
+		"name":"jason",
+		"children":
+		[
+			{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
+		]
+	};
 	
 	jQuery.fn.exists = function(){return this.length>0;}
 	
