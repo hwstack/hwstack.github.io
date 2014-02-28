@@ -1,4 +1,4 @@
-var bugreps = false;
+	var bugreps = false;
     
     function gen(){
         var date = prompt('When is this due?', tomorrow);
@@ -16,7 +16,7 @@ var bugreps = false;
  		
         var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
         var foo = prompt('Copy & Paste into Doc:', code);
-    }
+    	}
 
 	var chatStepPass = "hwstack";
 	var chatStepRoom = "hwstack";
