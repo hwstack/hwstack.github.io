@@ -1123,8 +1123,6 @@ function bodyOnload() {
         var task = $("#task").val();
         var date = $("#date").val();
 
-        key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
-
         if (!key) {
             alert("Woops!  :I  Class must be specified!");
             $("#key").focus();
