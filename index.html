@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <!--
 
 This is free software. Feel free to use, copy, or modify it at your leisure.
@@ -18,7 +20,6 @@ Add functionality for moving around tasks.  :S
 
 -->
 
-<!DOCTYPE html>
 <html>
 <head>
   <title>hwStack v0.3beta</title>
@@ -31,13 +32,13 @@ Add functionality for moving around tasks.  :S
   <link href='http://fonts.googleapis.com/css?family=Alef|Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
   
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <link href="https://raw2.github.com/ThrivingKings/Apprise-v2/master/apprise-v2.css" rel="stylesheet" type="text/css">
+  <!--<link href="https://raw2.github.com/ThrivingKings/Apprise-v2/master/apprise-v2.css" rel="stylesheet" type="text/css">-->
   
   <!--supplementary JS scripts-->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   
-  <!--<script src="http://gist-it.sudarmuthu.com/github/hwstack/hwstack.github.io/blob/master/index.html"></script>-->
+  <script src="https://rawgithub.com/hwstack/hwstack.github.io/master/base.js"></script>
   
   <script src="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></script>
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
@@ -677,8 +678,901 @@ John Cobbett-Walden</pre></span>
 <a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
 
 <script type="text/javascript">
-    
-    var bugreps = false;
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	/*
+function totalrehab(){
+		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
+		var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer;
+		//wtf? ; ; ; ; ; ;
+		//function dodrug(d, q, m){
+	}
+	
+	dealer={
+		nelson:{
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:0,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		blake:{
+			cocaine:190,
+			cannabis:18,
+			heroin:260,
+			mdma:0,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		lorenzo:{
+			cocaine:185,
+			cannabis:0,
+			heroin:315,
+			mdma:45,
+			meth:400,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		keith:{
+			cocaine:0,
+			cannabis:0,
+			heroin:230,
+			mdma:0,
+			meth:320,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		jesse:{
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:0,
+			meth:290,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		thewalt:{
+			quality:{
+				cannabis:0.75,
+				mdma:0.2,
+			},
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:35,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		sizzle:{
+			cocaine:0,
+			cannabis:0,
+			heroin:0,
+			mdma:0,
+			meth:290,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+	};
+	
+	tx={
+		cocaine:[0,0,0,0],
+		cannabis:[0,0,0,0],
+		heroin:[0,0,0,0],
+		mdma:[0,0,0,0],
+		meth:[0,0,0,0],
+	};
+	
+	// transaction ledger --- each drug has an array like this [TransactionsBought, TransactionsSold, QuantityBought, QuantitySold]
+	
+	function buy(drug, quantity, dealr){
+		if(dealer[dealr][drug]==0){
+			console.log("Illegit -- Dealer does not sell " + drug);
+		}else{
+			if(quantity<0.25){
+				console.log("too small amount");
+				return;
+			}else{
+				if(dealer[dealr][drug]!=0){
+					if(checkfunds(Math.abs(dealer[dealr][drug] * quantity)) == true){
+						quantity = round(quantity);
+						inv[drug] += quantity;
+						money -= round((dealer[dealr].buyeffects[drug][0] * dealer[dealr][drug] * quantity) + dealer[dealr].buyeffects[drug][1]);
+						++tx[drug][0];
+						tx[drug][2] += quantity;
+						adjustPrices();
+					}else{
+						console.log("Not enough money to buy " + quantity + " grams of " + drug);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	function round(n){
+		return Math.round(n*100)/100;
+	}
+	
+<<<<<<< HEAD
+	function viewSubs( v ){
+		$("div").css("display","none");
+		$("hr").css("display","none");
+		
+		if(v){
+			for(i=0; i<mySubs.length; i++){
+				showClass( mySubs[i] );
+			}
+			$("#sub-view").attr("href","javascript:viewSubs(false)");
+			$("#sub-view .link-title").html("reset view");
+		}else{
+			resetShowClass();
+			$("#sub-view").attr("href","javascript:viewSubs(true)");
+			$("#sub-view .link-title").html("just subs");
+		}
+	}
+	
+	function initBoxes(){
+		$("input[type=checkbox]").prop("checked",false);
+		
+		if($.inArray("humv",mySubs)>-1){
+			$("#humv-box").prop("checked",true);
+		}
+		if($.inArray("humc",mySubs)>-1){
+			$("#humc-box").prop("checked",true);
+		}
+		if($.inArray("span",mySubs)>-1){
+			$("#span-box").prop("checked",true);
+		}
+		if($.inArray("mathk",mySubs)>-1){
+			$("#mathk-box").prop("checked",true);
+		}
+		if($.inArray("mathcw",mySubs)>-1){
+			$("#mathcw-box").prop("checked",true);
+		}
+		if($.inArray("sci",mySubs)>-1){
+			$("#sci-box").prop("checked",true);
+		}
+		if($.inArray("lat",mySubs)>-1){
+			$("#lat-box").prop("checked",true);
+		}
+		if($.inArray("mun",mySubs)>-1){
+			$("#mun-box").prop("checked",true);
+		}
+	}
+	
+	$("#humv-box").click(function(){
+		if(this.checked){
+			addSub("humv");
+		}else{
+			delSub("humv");
+		}
+	});
+	$("#humc-box").click(function(){
+		if(this.checked){
+			addSub("humc");
+		}else{
+			delSub("humc");
+		}
+	});
+	$("#span-box").click(function(){
+		if(this.checked){
+			addSub("span");
+		}else{
+			delSub("span");
+		}
+	});
+	$("#mathk-box").click(function(){
+		if(this.checked){
+			addSub("mathk");
+		}else{
+			delSub("mathk");
+		}
+	});
+	$("#mathcw-box").click(function(){
+		if(this.checked){
+			addSub("mathcw");
+		}else{
+			delSub("mathcw");
+		}
+	});
+	$("#sci-box").click(function(){
+		if(this.checked){
+			addSub("sci");
+		}else{
+			delSub("sci");
+		}
+	});
+	$("#lat-box").click(function(){
+		if(this.checked){
+			addSub("lat");
+		}else{
+			delSub("lat");
+		}
+	});
+	$("#mun-box").click(function(){
+		if(this.checked){
+			addSub("mun");
+		}else{
+			delSub("mun");
+		}
+	});
+	
+	
+//  humv	#4B8AE3
+//  humc	#4343E6
+//  span	#00007F
+//  mathk 	#C321EB
+//  mathc	 #369E19
+//  sci 	#EB9721
+//  lat		#B20000
+//  mun		#282828
+
+	function showClass( key ){
+		if(key == "mathk"){
+			$("div.mathk").css("display","");
+		}
+		if(key == "mathcw"){
+			$("div.mathcw").css("display","");
+		}
+		if(key == "humv"){
+			$("div.humv").css("display","");
+		}
+		if(key == "humc"){
+			$("div.humc").css("display","");
+		}
+		if(key == "span"){
+			$("div.span").css("display","");
+		}
+		if(key == "lat"){
+			$("div.lat").css("display","");
+		}
+		if(key == "sci"){
+			$("div.sci").css("display","");
+		}
+	}
+
+	function showJustClass( key ){
+		$("div").css("display","none");
+		$("hr").css("display","none");
+		
+		key = key.toLowerCase();
+		
+		if(key == "mathk"){
+			$("div.mathk").css("display","");
+			return;
+		}else if(key == "mathcw"){
+			$("div.mathcw").css("display","");
+			return;
+		}else if(key == "humv"){
+			$("div.humv").css("display","");
+			return;
+		}else if(key == "humc"){
+			$("div.humc").css("display","");
+			return;
+		}else if(key == "span"){
+			$("div.span").css("display","");
+			return;
+		}else if(key == "lat"){
+			$("div.lat").css("display","");
+			return;
+		}else if(key == "sci"){
+			$("div.sci").css("display","");
+			return;
+		}
+	}
+	
+	function resetShowClass(){
+		$("div").css("display","");
+		$("hr").css("display","");
+	}
+	
+	function popout(){
+		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
+	}
+	
+	var today, tomorrow, todayDDay;
+	var listener = new window.keypress.Listener();
+	
+	var keyCombos;
+	
+	function bodyOnload(){
+		checkForArgs();
+		updateLayout();
+		
+		today = moment().format("M/D/YY");
+		todayDDay = moment().format("M/DD/YY");
+		
+		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
+		$("#date").attr("placeholder", tomorrow);
+		
+		//$("#lastModified").attr("title", document.lastModified);
+		//jQuery("abbr.timeago").timeago();
+		
+		reDraw();
+		specificView( getQueryVariable("v") );
+		
+		colorize();
+		
+		initBoxes();
+		
+		var keyCombos;
+		
+		//listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});
+		
+		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
+		eval(keyCombos);
+		
+		listener.counting_combo("alt c", function(e, count) {openCmd();});
+		
+		stylizeText();
+		
+		//yucky + borked (wtf?) format
+		/*var rD = new Date(document.lastModified);
+		var h = (rD.getHours()>12 ? rD.getHours()-12 : rD.getHours());
+		var hod = (rD.getHours()>12 ? "PM" : "AM");
+		var d = rD.getMonth()+rD.getDate();
+		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
+		
+<<<<<<< HEAD
+		//$("*[class^=apprise]").remove();
+		
+		/*var jason =
+		{	"name":"flare",
+			"children":
+			[
+				{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
+			]
+		};*/
+=======
+		$("*[class^=apprise]").remove();
+	}
+>>>>>>> parent of 89568a5... Update index.html
+	
+	jQuery.fn.exists = function(){return this.length>0;}
+	
+	$(window).resize(function(){
+		if(!bugreps){updateLayout();}
+	});
+	
+	function updateLayout(){
+		if ($(window).width() <= 1308){	
+			$( ".link-title" ).css( "display", "none" );
+			$( "#ribbon" ).css( "display", "none" );
+		}else{
+			$( ".link-title" ).css( "display", "" );
+			$( "#ribbon" ).css( "display", "" );
+		}
+		
+		if($(window).width() <= 1543){
+			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
+		}else{
+			$(".js-br").remove();
+		}
+		
+		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
+		$("#wrapper").css("width", wrapperWidth);
+	}
+	
+	$.expr[":"].contains = $.expr.createPseudo(function(arg){
+    	return function( elem ) {
+        	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+		};
+	});
+	
+	function showBugReps(){
+		bugreps = true;
+		$("#bugreports-wrapper").show();
+		$("#wrapper").animate({width: "100%"}, 3000, function(){
+			adjLayoutForBugReps();
+		});
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
+		$("#bugreports-wrapper").animate({width: "80%"}, 700);
+		console.log("YOU HAVE AWOKEN THE BEAST!!!!!!");
+		
+		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
+		$("#tiny-header").fadeOut("fast");
+	}
+	
+	function adjLayoutForBugReps(){
+		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
+		$("#wrapper").animate({top: "0px"}, 100);
+		$("#bugreports-wrapper").css("left","10%");
+		$("#bugreports-wrapper").animate({top: "30px"}, 100);
+		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
+		$("#thestack-wrapper").css("left", "0px");
+		$("#mystack-wrapper").css("right", "0px");
+		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
+		$("td").empty();
+		
+		visualEffects();
+	}
+	
+	function visualEffects(){
+		$("body").attr("style","background: #D45D22");
+		for(i=0; i<20; i++){
+			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
+		}
+		$("#mystack-wrapper, #thestack-wrapper").effect("bounce", null, 400, function(){
+			landingCrew();
+		});
+		$("body").attr("style","background: #D45D22");
+	}
+	
+	function landingCrew(){
+		$("#wrapper").animate({width: "60%"}, 3000, function(){
+			//next
+		});
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "30%"}, 100);
+		$("#bugreports-wrapper").animate({width: "0px"}, 700);
+	}
+	/* borked :(
+	$(".mystack-entry").dblclick(function(){
+		if( $(this).attr("style").contains("line-through") ){
+			$(this).attr("style","text-decoration: none");
+		}
+		if( $(this).attr("style").contains("none") ){
+			$(this).attr("style","text-decoration: line-through");
+		}
+	});*/
+	
+	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
+
+	function add(){
+		var key = $("#key").val();
+		var task = $("#task").val();
+		var date = $("#date").val();
+		
+		key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+=======
+	drugs={
+		cocaine:{
+			name:'cocaine',
+			slang:['coke', 'crack', 'rocks'],
+			drugid:0,
+			addictn:70,
+			high:65,
+			harm:80,
+			ppg:155.0,
+		},
+>>>>>>> 45cc4a8741e8b519d7e11f368fe3292756beeb77
+		
+		cannabis:{
+			name:'cannabis',
+			slang:['weed', 'pot', 'mary jane', 'dope', 'bud', 'ganja', 'mj'],
+			drugid:1,
+			addictn:45,
+			high:50,
+			harm:30,
+			ppg:13.0,
+		},
+		
+		heroin:{
+			name:'heroin',
+			slang:['junk', 'dope', 'smack', 'shit', 'tar'],
+			drugid:2,
+			addictn:90,
+			high:75,
+			harm:85,
+			ppg:210.0,
+		},
+		
+		mdma:{
+			name:'mdma',
+			slang:['molly', 'ecstasy', 'm', 'mandy', 'x'],
+			drugid:3,
+			addictn:30,
+			high:50,
+			harm:30,
+			ppg:20.0,
+		},
+		
+		meth:{
+			name:'meth',
+			slang:['crystal', 'speed', 'ice', 'glass'],
+			drugid:4,
+			addictn:80,
+			high:70,
+			harm:85,
+			ppg:250.0,
+		},
+		
+	};
+
+	//creates objects for each drug with values drugid, addictn, high and harm, as well as buy method
+
+	buyeffects={
+		cocaine:[1,0],
+		cannabis:[1,0],
+		heroin:[1,0],
+		mdma:[1,0],
+		meth:[1,0],
+	};
+	
+	// adds object buyeffects that records the effect on prices
+	
+	function adjustPrices(){
+		
+		var adjust = [0,0,0,0,0];
+		
+		adjust[0] = Math.floor(tx.cocaine[3]/10);
+		adjust[1] = Math.floor(tx.cannabis[3]/12);
+		adjust[2] = Math.floor(tx.heroin[3]/13);
+		adjust[3] = Math.floor(tx.meth[3]/15);
+		adjust[4] = Math.floor(tx.mdma[3]/12);
+		
+		var lode=Object.keys(dealer);
+		var lodel=lode.length;
+		var lod=Object.keys(drugs);
+		var lodl=lod.length;
+		for(var i=0;i<lodel;i++){
+			for(var e=0;e<lodl;e++){
+				dealer[lode[i]][lod[e]]=0
+			}
+		}
+		
+	}
+	
+	// adjust prices from data from tx ledger. buying more means prices are cheaper. some really really shitty code to prevent it from being OP, but ill clean that shit up l8r
+	
+	money = 0;
+
+	// sets current cash, default 0 because we're broke as fuck
+	
+	inv = {
+		cocaine:0.0,
+		cannabis:0.0,
+		heroin:0.0,
+		mdma:0.0,
+		meth:0.0,
+	};
+
+	//sets inventory obj with vals for each drug
+
+	effects = {
+		cocained:0,
+		cannabisd:0,
+		heroind:0,
+		mdmad:0,
+		methd:0,
+		high:0,
+		lp:10000,
+	};
+	
+	// dependency for each drug ( [drugname]d ) as well has current High and Life Points. High will be derived with some math shit and some resistance equation from the drug, the LP is derived from how much damage the drug does and how much u do it.
+	
+	mmyyyy = 1;
+	
+	//sets current month to 1.
+	*/
+/*	time = setTimeout(tickTime, 60000);
+	
+	// sets a timer that executes tickTime() every minute
+	
+	function abortTickTime(){
+		clearTimeout(time);
+	}
+	
+	// force abort tickTime loop
+	
+	function tickTime(){
+		mmyyyy++
+		console.log("Ticked time by 1 month");
+		getRealTime();
+		doHunger();
+		time = setTimeout(tickTime, 60000)
+	}
+	
+	//adds 1 to mmyyyy
+	
+	function getRealTime(){
+		year = Math.floor((mmyyyy/12)) + 2012
+		month = mmyyyy%12
+		var monthstring
+		if(month==0){
+			monthstring = "December"
+		}else if(month==1){
+			monthstring = "January"
+		}else if(month==2){
+			monthstring = "February"
+		}else if(month==3){
+			monthstring = "March"
+		}else if(month==4){
+			monthstring = "April"
+		}else if(month==5){
+			monthstring = "May"
+		}else if(month==6){
+			monthstring = "June"
+		}else if(month==7){
+			monthstring = "July"
+		}else if(month=8){
+			monthstring = "August"
+		}else if(month=9){
+			monthstring = "September"
+		}else if(month=10){
+			monthstring = "October"
+		}else if(month=11){
+			monthstring = "November"
+		}else{
+			console.log("Error defining month.")
+		}
+		
+		console.log("Now it's " + monthstring + " " + year.toString())
+	}
+	
+	// works with mmyyyy in such a way that if mmyyyy==14, then it would turn into Feb 2013 (because this shit starts in 2012)
+	
+	foodprice = 300
+	
+	//defines cost of living for FOOD per month
+	
+	hungersurvive = 2
+	
+	function doHunger(){
+		
+		var doHungerStat
+		
+		if(money>foodprice){
+			doHungerStat = 'fed'
+			money -= foodprice
+		}else if(money>=0.5*foodprice){
+			doHungerStat = 'hungry'
+			money -= 0.5*foodprice
+		}else if(money<0.5*foodprice){
+			doHungerStat = 'starving'
+		}
+		
+		if(doHungerStat=='fed'){
+			hungersurvive += 0.5
+		}else if(doHungerStat=='hungry'){
+			--hungersurvive
+		}else if(doHungerStat=='starving'){
+			hungersurvive = 0
+		}
+		
+		if(hungersurvive>2){
+			hungersurvive = 2
+		}else if(hungersurvive<=0){
+			alert("You died!");
+		}
+		
+	} *//*
+	
+	function dealerdis(args, amt){
+		
+		if(Object.prototype.toString.apply(amt) != "[object Number]"){
+			console.log("invalid amount argument");
+			return;
+		}
+		
+		if(args=='all'){
+			var i=0;
+			var lodl = Object.keys(drugs).length;
+			var lod = Object.keys(drugs);
+			for(i;i<lodl;i++){
+				var lodi = lod[i];
+				buyeffects[lodi][0] += amt;
+			}
+		}else{
+			buyeffects[args][0] += amt;
+		}
+	}
+	
+	function dealercl(args){
+		if(args=='all'){
+			var i=0;
+			var lodl = Object.keys(drugs).length;
+			var lod = Object.keys(drugs);
+			for(i;i<lodl;i++){
+				var lodi = lod[i];
+				buyeffects[lodi][0] = 1;
+			}
+		}else{
+			buyeffects[args][0] = 1;
+		}
+	}
+	
+	function checkfunds(price){
+		if(money >= price){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	//returns true if args are payable
+	
+/*	function die(){
+		if(checkHunger() == 'fed'){
+			if(hungersurvive<2){
+				hungersurvive+=0.5
+			}
+		}else if(checkHunger() == 'hungry'){
+			if(hungersurvive==1){
+				--hungersurvive
+			}
+		}else if(checkHunger() == 'dead'){
+			hungersurvive = 0
+		}
+		
+		console.log("HUNGER: " + checkHunger() + " --- SURVIVE: " + hungersurvive);
+		
+		if(hungersurvive==0){
+			console.log("You died.");
+			if(confirm("Load Previous Save?")==true){
+				load();
+			}
+	}
+	} */
+
+/*	function save(){
+		$.jStorage.set('inv', inv);
+		$.jStorage.set('money', money);
+		$.jStorage.set('buyeffects', buyeffects);
+		$.jStorage.set('effects', effects);
+		$.jStorage.set('mmyyyy', mmyyyy);
+		$.jStorage.set('tx', tx);
+		$.jStorage.set('bought', bought);
+		$.jStorage.set('sold', sold);
+	}
+	
+	//saves relevant data
+
+	function load(){
+		inv = $.jStorage.get('inv');
+		buyeffects = $.jStorage.get('buyeffects');
+		money = $.jStorage.get('money');
+		effects = $.jStorage.get('effects');
+		mmyyyy = $.jStorage.get('mmyyyy');
+		tx = $.jStorage.get('tx');
+		bought = $.jStorage.get('bought');
+		sold = $.jStorage.get('sold');
+	}
+	
+		// loads saved data
+	
+	function loadsavedstats(arg){
+		console.log($.jStorage.get(arg));
+	}	
+	
+	
+	
+	
+*/
+	
+	
+	
+/*	
+var diameter = 960,
+    format = d3.format(",d"),
+    color = d3.scale.category20c();
+
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+
+d3.json("flare.json", function(error, root) {
+  var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+  node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });
+
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.packageName); });
+
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+});
+
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");*/
+
+var bugreps = false;
     
     function gen(){
         var date = prompt('When is this due?', tomorrow);
@@ -939,7 +1833,7 @@ John Cobbett-Walden</pre></span>
 	var today, tomorrow, todayDDay;
 	var listener = new window.keypress.Listener();
 	
-	var keyCombos;
+	var keyCombos, jason;
 	
 	function bodyOnload(){
 		checkForArgs();
@@ -961,6 +1855,177 @@ John Cobbett-Walden</pre></span>
 		
 		initBoxes();
 		
+<<<<<<< HEAD
+		$("#status").show();
+	}
+	
+	Array.prototype.move = function (old_index, new_index){
+		if (new_index >= this.length) {
+			var k = new_index - this.length;
+			while ((k--) + 1) {
+				this.push(undefined);
+			}
+		}
+		this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+		return this; // for testing purposes
+	};
+	
+	//WIP
+	/*function moveTaskUp(key){
+		//var index = $.jStorage.index().indexOf(key);
+		val = $.jStorage.get(key).toString().split("@");
+		task = unescape( val[0] );
+		date = unescape( val[1] );
+	}*/
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+function totalrehab(){
+		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
+		var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer;
+		//wtf? ; ; ; ; ; ;
+		//function dodrug(d, q, m){
+	}
+	
+	dealer={
+		nelson:{
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:0,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		blake:{
+			cocaine:190,
+			cannabis:18,
+			heroin:260,
+			mdma:0,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		lorenzo:{
+			cocaine:185,
+			cannabis:0,
+			heroin:315,
+			mdma:45,
+			meth:400,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		keith:{
+			cocaine:0,
+			cannabis:0,
+			heroin:230,
+			mdma:0,
+			meth:320,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		jesse:{
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:0,
+			meth:290,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		thewalt:{
+			quality:{
+				cannabis:0.75,
+				mdma:0.2,
+			},
+			cocaine:0,
+			cannabis:20,
+			heroin:0,
+			mdma:35,
+			meth:0,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+		sizzle:{
+			cocaine:0,
+			cannabis:0,
+			heroin:0,
+			mdma:0,
+			meth:290,
+			info:{
+				gang:0,
+			},
+			buyeffects:{
+				cocaine:[1,0],
+				cannabis:[1,0],
+				heroin:[1,0],
+				mdma:[1,0],
+				meth:[1,0],
+			},
+		},
+	};
+=======
 		var keyCombos;
 		
 		//listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});
@@ -979,7 +2044,6 @@ John Cobbett-Walden</pre></span>
 		var d = rD.getMonth()+rD.getDate();
 		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
 		
-<<<<<<< HEAD
 		//$("*[class^=apprise]").remove();
 		
 		/*var jason =
@@ -996,10 +2060,7 @@ John Cobbett-Walden</pre></span>
 				{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
 			]
 		};*/
-=======
-		$("*[class^=apprise]").remove();
-	}
->>>>>>> parent of 89568a5... Update index.html
+>>>>>>> 45cc4a8741e8b519d7e11f368fe3292756beeb77
 	
 	jQuery.fn.exists = function(){return this.length>0;}
 	
@@ -1526,506 +2587,7 @@ John Cobbett-Walden</pre></span>
 		return this; // for testing purposes
 	};
 	
-	//WIP
-	/*function moveTaskUp(key){
-		//var index = $.jStorage.index().indexOf(key);
-		val = $.jStorage.get(key).toString().split("@");
-		task = unescape( val[0] );
-		date = unescape( val[1] );
-	}*/
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	
-	
-	
-	
-	
-function totalrehab(){
-		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
-		var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer;
-		//wtf? ; ; ; ; ; ;
-		//function dodrug(d, q, m){
-	}
-	
-	dealer={
-		nelson:{
-			cocaine:0,
-			cannabis:20,
-			heroin:0,
-			mdma:0,
-			meth:0,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		blake:{
-			cocaine:190,
-			cannabis:18,
-			heroin:260,
-			mdma:0,
-			meth:0,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		lorenzo:{
-			cocaine:185,
-			cannabis:0,
-			heroin:315,
-			mdma:45,
-			meth:400,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		keith:{
-			cocaine:0,
-			cannabis:0,
-			heroin:230,
-			mdma:0,
-			meth:320,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		jesse:{
-			cocaine:0,
-			cannabis:20,
-			heroin:0,
-			mdma:0,
-			meth:290,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		thewalt:{
-			quality:{
-				cannabis:0.75,
-				mdma:0.2,
-			},
-			cocaine:0,
-			cannabis:20,
-			heroin:0,
-			mdma:35,
-			meth:0,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-		sizzle:{
-			cocaine:0,
-			cannabis:0,
-			heroin:0,
-			mdma:0,
-			meth:290,
-			info:{
-				gang:0,
-			},
-			buyeffects:{
-				cocaine:[1,0],
-				cannabis:[1,0],
-				heroin:[1,0],
-				mdma:[1,0],
-				meth:[1,0],
-			},
-		},
-	};
-	
-	tx={
-		cocaine:[0,0,0,0],
-		cannabis:[0,0,0,0],
-		heroin:[0,0,0,0],
-		mdma:[0,0,0,0],
-		meth:[0,0,0,0],
-	};
-	
-	// transaction ledger --- each drug has an array like this [TransactionsBought, TransactionsSold, QuantityBought, QuantitySold]
-	
-	function buy(drug, quantity, dealr){
-		if(dealer[dealr][drug]==0){
-			console.log("Illegit -- Dealer does not sell " + drug);
-		}else{
-			if(quantity<0.25){
-				console.log("too small amount");
-				return;
-			}else{
-				if(dealer[dealr][drug]!=0){
-					if(checkfunds(Math.abs(dealer[dealr][drug] * quantity)) == true){
-						quantity = round(quantity);
-						inv[drug] += quantity;
-						money -= round((dealer[dealr].buyeffects[drug][0] * dealer[dealr][drug] * quantity) + dealer[dealr].buyeffects[drug][1]);
-						++tx[drug][0];
-						tx[drug][2] += quantity;
-						adjustPrices();
-					}else{
-						console.log("Not enough money to buy " + quantity + " grams of " + drug);
-					}
-				}
-			}
-		}
-	}
-	
-	
-	function round(n){
-		return Math.round(n*100)/100;
-	}
-	
-	drugs={
-		cocaine:{
-			name:'cocaine',
-			slang:['coke', 'crack', 'rocks'],
-			drugid:0,
-			addictn:70,
-			high:65,
-			harm:80,
-			ppg:155.0,
-		},
-		
-		cannabis:{
-			name:'cannabis',
-			slang:['weed', 'pot', 'mary jane', 'dope', 'bud', 'ganja', 'mj'],
-			drugid:1,
-			addictn:45,
-			high:50,
-			harm:30,
-			ppg:13.0,
-		},
-		
-		heroin:{
-			name:'heroin',
-			slang:['junk', 'dope', 'smack', 'shit', 'tar'],
-			drugid:2,
-			addictn:90,
-			high:75,
-			harm:85,
-			ppg:210.0,
-		},
-		
-		mdma:{
-			name:'mdma',
-			slang:['molly', 'ecstasy', 'm', 'mandy', 'x'],
-			drugid:3,
-			addictn:30,
-			high:50,
-			harm:30,
-			ppg:20.0,
-		},
-		
-		meth:{
-			name:'meth',
-			slang:['crystal', 'speed', 'ice', 'glass'],
-			drugid:4,
-			addictn:80,
-			high:70,
-			harm:85,
-			ppg:250.0,
-		},
-		
-	};
-
-	//creates objects for each drug with values drugid, addictn, high and harm, as well as buy method
-
-	buyeffects={
-		cocaine:[1,0],
-		cannabis:[1,0],
-		heroin:[1,0],
-		mdma:[1,0],
-		meth:[1,0],
-	};
-	
-	// adds object buyeffects that records the effect on prices
-	
-	function adjustPrices(){
-		
-		var adjust = [0,0,0,0,0];
-		
-		adjust[0] = Math.floor(tx.cocaine[3]/10);
-		adjust[1] = Math.floor(tx.cannabis[3]/12);
-		adjust[2] = Math.floor(tx.heroin[3]/13);
-		adjust[3] = Math.floor(tx.meth[3]/15);
-		adjust[4] = Math.floor(tx.mdma[3]/12);
-		
-		var lode=Object.keys(dealer);
-		var lodel=lode.length;
-		var lod=Object.keys(drugs);
-		var lodl=lod.length;
-		for(var i=0;i<lodel;i++){
-			for(var e=0;e<lodl;e++){
-				dealer[lode[i]][lod[e]]=0
-			}
-		}
-		
-	}
-	
-	// adjust prices from data from tx ledger. buying more means prices are cheaper. some really really shitty code to prevent it from being OP, but ill clean that shit up l8r
-	
-	money = 0;
-
-	// sets current cash, default 0 because we're broke as fuck
-	
-	inv = {
-		cocaine:0.0,
-		cannabis:0.0,
-		heroin:0.0,
-		mdma:0.0,
-		meth:0.0,
-	};
-
-	//sets inventory obj with vals for each drug
-
-	effects = {
-		cocained:0,
-		cannabisd:0,
-		heroind:0,
-		mdmad:0,
-		methd:0,
-		high:0,
-		lp:10000,
-	};
-	
-	// dependency for each drug ( [drugname]d ) as well has current High and Life Points. High will be derived with some math shit and some resistance equation from the drug, the LP is derived from how much damage the drug does and how much u do it.
-	
-	mmyyyy = 1;
-	
-	//sets current month to 1.
-	
-/*	time = setTimeout(tickTime, 60000);
-	
-	// sets a timer that executes tickTime() every minute
-	
-	function abortTickTime(){
-		clearTimeout(time);
-	}
-	
-	// force abort tickTime loop
-	
-	function tickTime(){
-		mmyyyy++
-		console.log("Ticked time by 1 month");
-		getRealTime();
-		doHunger();
-		time = setTimeout(tickTime, 60000)
-	}
-	
-	//adds 1 to mmyyyy
-	
-	function getRealTime(){
-		year = Math.floor((mmyyyy/12)) + 2012
-		month = mmyyyy%12
-		var monthstring
-		if(month==0){
-			monthstring = "December"
-		}else if(month==1){
-			monthstring = "January"
-		}else if(month==2){
-			monthstring = "February"
-		}else if(month==3){
-			monthstring = "March"
-		}else if(month==4){
-			monthstring = "April"
-		}else if(month==5){
-			monthstring = "May"
-		}else if(month==6){
-			monthstring = "June"
-		}else if(month==7){
-			monthstring = "July"
-		}else if(month=8){
-			monthstring = "August"
-		}else if(month=9){
-			monthstring = "September"
-		}else if(month=10){
-			monthstring = "October"
-		}else if(month=11){
-			monthstring = "November"
-		}else{
-			console.log("Error defining month.")
-		}
-		
-		console.log("Now it's " + monthstring + " " + year.toString())
-	}
-	
-	// works with mmyyyy in such a way that if mmyyyy==14, then it would turn into Feb 2013 (because this shit starts in 2012)
-	
-	foodprice = 300
-	
-	//defines cost of living for FOOD per month
-	
-	hungersurvive = 2
-	
-	function doHunger(){
-		
-		var doHungerStat
-		
-		if(money>foodprice){
-			doHungerStat = 'fed'
-			money -= foodprice
-		}else if(money>=0.5*foodprice){
-			doHungerStat = 'hungry'
-			money -= 0.5*foodprice
-		}else if(money<0.5*foodprice){
-			doHungerStat = 'starving'
-		}
-		
-		if(doHungerStat=='fed'){
-			hungersurvive += 0.5
-		}else if(doHungerStat=='hungry'){
-			--hungersurvive
-		}else if(doHungerStat=='starving'){
-			hungersurvive = 0
-		}
-		
-		if(hungersurvive>2){
-			hungersurvive = 2
-		}else if(hungersurvive<=0){
-			alert("You died!");
-		}
-		
-	} */
-	
-	function dealerdis(args, amt){
-		
-		if(Object.prototype.toString.apply(amt) != "[object Number]"){
-			console.log("invalid amount argument");
-			return;
-		}
-		
-		if(args=='all'){
-			var i=0;
-			var lodl = Object.keys(drugs).length;
-			var lod = Object.keys(drugs);
-			for(i;i<lodl;i++){
-				var lodi = lod[i];
-				buyeffects[lodi][0] += amt;
-			}
-		}else{
-			buyeffects[args][0] += amt;
-		}
-	}
-	
-	function dealercl(args){
-		if(args=='all'){
-			var i=0;
-			var lodl = Object.keys(drugs).length;
-			var lod = Object.keys(drugs);
-			for(i;i<lodl;i++){
-				var lodi = lod[i];
-				buyeffects[lodi][0] = 1;
-			}
-		}else{
-			buyeffects[args][0] = 1;
-		}
-	}
-	
-	function checkfunds(price){
-		if(money >= price){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
-	//returns true if args are payable
-	
-/*	function die(){
-		if(checkHunger() == 'fed'){
-			if(hungersurvive<2){
-				hungersurvive+=0.5
-			}
-		}else if(checkHunger() == 'hungry'){
-			if(hungersurvive==1){
-				--hungersurvive
-			}
-		}else if(checkHunger() == 'dead'){
-			hungersurvive = 0
-		}
-		
-		console.log("HUNGER: " + checkHunger() + " --- SURVIVE: " + hungersurvive);
-		
-		if(hungersurvive==0){
-			console.log("You died.");
-			if(confirm("Load Previous Save?")==true){
-				load();
-			}
-	}
-	} */
-
-	function save(){
-		$.jStorage.set('inv', inv);
-		$.jStorage.set('money', money);
-		$.jStorage.set('buyeffects', buyeffects);
-		$.jStorage.set('effects', effects);
-		$.jStorage.set('mmyyyy', mmyyyy);
-		$.jStorage.set('tx', tx);
-		$.jStorage.set('bought', bought);
-		$.jStorage.set('sold', sold);
-	}
-	
-	//saves relevant data
-
-	function load(){
-		inv = $.jStorage.get('inv');
-		buyeffects = $.jStorage.get('buyeffects');
-		money = $.jStorage.get('money');
-		effects = $.jStorage.get('effects');
-		mmyyyy = $.jStorage.get('mmyyyy');
-		tx = $.jStorage.get('tx');
-		bought = $.jStorage.get('bought');
-		sold = $.jStorage.get('sold');
-	}
-	
-		// loads saved data
-	
+<<<<<<< HEAD
 	function loadsavedstats(arg){
 		console.log($.jStorage.get(arg));
 <<<<<<< HEAD
@@ -2091,6 +2653,16 @@ d3.select(self.frameElement).style("height", diameter + "px");*/
 =======
 	}
 >>>>>>> parent of 89568a5... Update index.html
+=======
+	//WIP
+	/*function moveTaskUp(key){
+		//var index = $.jStorage.index().indexOf(key);
+		val = $.jStorage.get(key).toString().split("@");
+		task = unescape( val[0] );
+		date = unescape( val[1] );
+	}*/
+
+>>>>>>> 45cc4a8741e8b519d7e11f368fe3292756beeb77
 
 </script>
 
