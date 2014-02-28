@@ -690,10 +690,6 @@ John Cobbett-Walden</pre></span>
 	
 	
 	
-	
-	
-	
-	/*
 function totalrehab(){
 		console.log("TOTAL REHAB | 2014 --- Sebastien Aurelien and Andrew McGuire");
 		var drugs, money, buy, inv, buyeffects, effects, time, mmyyyy, month, year, tx, bought, sold, round, foodprice, check, hungersurvive, loadstats, doHunger, dealer;
@@ -1319,8 +1315,8 @@ function totalrehab(){
 	mmyyyy = 1;
 	
 	//sets current month to 1.
-	*/
-/*	time = setTimeout(tickTime, 60000);
+	
+	time = setTimeout(tickTime, 60000);
 	
 	// sets a timer that executes tickTime() every minute
 	
@@ -1377,24 +1373,24 @@ function totalrehab(){
 	
 	// works with mmyyyy in such a way that if mmyyyy==14, then it would turn into Feb 2013 (because this shit starts in 2012)
 	
-	foodprice = 300
+	foodprice = 300;
 	
 	//defines cost of living for FOOD per month
 	
-	hungersurvive = 2
+	hungersurvive = 2;
 	
 	function doHunger(){
 		
 		var doHungerStat
 		
 		if(money>foodprice){
-			doHungerStat = 'fed'
-			money -= foodprice
+			doHungerStat = 'fed';
+			money -= foodprice;
 		}else if(money>=0.5*foodprice){
-			doHungerStat = 'hungry'
-			money -= 0.5*foodprice
+			doHungerStat = 'hungry';
+			money -= 0.5*foodprice;
 		}else if(money<0.5*foodprice){
-			doHungerStat = 'starving'
+			doHungerStat = 'starving';
 		}
 		
 		if(doHungerStat=='fed'){
