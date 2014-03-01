@@ -986,22 +986,6 @@ var bugreps = false;
 		//$("*[class^=apprise]").remove();
 	}
 	
-	var jason =
-	{
-		"name":"jason",
-		"children":
-		[
-			{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
-			{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
-		]
-	};
-	
 	jQuery.fn.exists = function(){return this.length>0;}
 	
 	$(window).resize(function(){
@@ -1550,26 +1534,40 @@ var svg = d3.select("body").append("svg")
     .attr("height", diameter)
     .attr("class", "bubble");
 
-d3.json(jason, function(error, root) {
-  var node = svg.selectAll(".node")
-      .data(bubble.nodes(classes(root))
-      .filter(function(d) { return !d.children; }))
-    .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+var jason =
+	{
+		"name":"jason",
+		"children":
+		[
+			{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
+			{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
+		]
+	};
 
-  node.append("title")
-      .text(function(d) { return d.className + ": " + format(d.value); });
+var node = svg.selectAll(".node")
+    .data(bubble.nodes(classes(jason))
+    .filter(function(d) { return !d.children; }))
+  .enter().append("g")
+    .attr("class", "node")
+    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-  node.append("circle")
-      .attr("r", function(d) { return d.r; })
-      .style("fill", function(d) { return color(d.packageName); });
+node.append("title")
+    .text(function(d) { return d.className + ": " + format(d.value); });
 
-  node.append("text")
-      .attr("dy", ".3em")
-      .style("text-anchor", "middle")
-      .text(function(d) { return d.className.substring(0, d.r / 3); });
-});
+node.append("circle")
+    .attr("r", function(d) { return d.r; })
+    .style("fill", function(d) { return color(d.packageName); });
+
+node.append("text")
+    .attr("dy", ".3em")
+    .style("text-anchor", "middle")
+    .text(function(d) { return d.className.substring(0, d.r / 3); });
 
 // Returns a flattened hierarchy containing all leaf nodes under the root.
 function classes(root) {
