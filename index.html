@@ -964,7 +964,7 @@ var bugreps = false;
 		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
 	}
 	
-	var today, tomorrow, todayDDay;
+	var today, tomorrow, todayDDay, nextClass;
 	var listener = new window.keypress.Listener();
 	
 	var keyCombos;
@@ -978,7 +978,16 @@ var bugreps = false;
 		
 		var rawDate = new Date();
 		tomorrow = moment().format("M/"+(Number(rawDate.getDate())+1)+"/YY");
-		$("#date").attr("placeholder", tomorrow);
+		
+		//sunday to thursday
+		if(Number(moment().format("d"))<5){
+			nextClass = moment(Date.parse("tomorrow")).format("M/D/YY");
+		//friday to saturday
+		}else{
+			nextClass = moment(Date.parse("next monday")).format("M/D/YY");
+		}
+		
+		$("#date").attr("placeholder", nextClass);
 		
 		//$("#lastModified").attr("title", document.lastModified);
 		//jQuery("abbr.timeago").timeago();
@@ -1150,6 +1159,16 @@ var bugreps = false;
 		date = unescape(date);
 		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
 			date = moment(Date.parse(date)).format("M/D/YY");
+		}
+		date = (date.contains("on the morrow") ? "tomorrow" : date);
+		if(date.contains("next class")){
+			//sunday to thursday
+			if(Number(moment().format("d"))<5){
+				date = "tomorrow";
+			//friday to saturday
+			}else{
+				date = "next monday";
+			}
 		}
 		
 		$.jStorage.set(key, task+"@"+date);
