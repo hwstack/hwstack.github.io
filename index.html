@@ -1507,7 +1507,7 @@ function showStats(){
 	
 }
 
-$(".showToday").clicked(function(){
+$(".showToday").click(function(){
 	$("[data-entry-type=today]").remove();
 	$("div, hr").show();
 	
@@ -1515,7 +1515,7 @@ $(".showToday").clicked(function(){
 	$(this).attr("class","pure-button showFeed");
 });
 
-$(".showFeed").clicked(function(){
+$(".showFeed").click(function(){
 	$("div, hr").hide();
 	
 	var tList = $("hr:first").prevAll("div");
