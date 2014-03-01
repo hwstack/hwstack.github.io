@@ -37,17 +37,13 @@ Add functionality for moving around tasks.  :S
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet"></link>
   
-  <!--<script src="https://rawgithub.com/hwstack/hwstack.github.io/master/base.js"></script>-->
-  
   <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
   
-  <!--<script src="https://rawgithub.com/pklauzinski/jscroll/master/jquery.jscroll.js"></script>-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   <script src="http://timeago.yarp.com/jquery.timeago.js"></script>
+  <script src="https://rawgithub.com/hwstack/hwstack.github.io/master/date.js"></script>
   
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
-  <!--<script async src="http://tlk.io/embed.js"></script>-->
-  <!--<script type="text/javascript" src="https://rawgithub.com/ThrivingKings/Apprise-v2/master/apprise-v2.js"></script>-->
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://rawgithub.com/hwstack/oriDomi/master/oridomi.js"></script>
   
@@ -1103,6 +1099,7 @@ var bugreps = false;
 		var key = $("#key").val();
 		var task = $("#task").val();
 		var date = $("#date").val();
+		date = Date.parse(date);
 		
 		key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		
@@ -1130,6 +1127,7 @@ var bugreps = false;
 		
 		task = unescape(task);
 		date = unescape(date);
+		date = Date.parse(date);
 		
 		$.jStorage.set(key, task+"@"+date);
 		reDraw();
