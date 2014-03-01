@@ -677,7 +677,7 @@ John Cobbett-Walden</pre></span>
 
 <a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
 
-<script type="text/javascript">
+<script type="text/javascript" id="js">
 	
 function round(n) {
     return Math.round(n * 100) / 100;
@@ -1350,27 +1350,36 @@ var bugreps = false;
 			return;
 		}else if(c=='totalrehab'){
 			totalrehab();
+			return;
 		}else if(c=='showbugreps'){
 			showBugReps();
+			return;
 		}else if(c.substring(0,5)=='echo '){
 			alert(c.substring(5,696969));
+			return;
 		}else if(c=='hwstack'){
 			return;
 		}else if(c=='mytasks'){
 			alert('Fool, that is soooooooooo january');
+			return;
 		}else if(c=='command'){
 			alert("Yep, that's what this window processes. Might want to execute one.");
+			return;
 		}else if(c=='easteregg'){
 			alert('Try running "showbugreps" in this command window.');
+			return;
 		}else if(c.substring(0,5)=='flush'){
-			flush_data();
+			var umad = confirm("umadbro?");
+			if(!umadbro){flush_data();}
+			return;
 		}else{
-			alert('"' + c + '"is not recognized as an internal or external command, operable program or batch file."');
+			alert('"'+c+'" is not recognized as an internal or external command, operable program or batch file."');
 		}
 	}
 	
 	function showChat( channel ){
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		var $js = $("#js");
 		$("#tlkio").remove();
 		$("#chatstep").remove();
 		
@@ -1379,7 +1388,13 @@ var bugreps = false;
 		
 		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
 		
-		var target_element	= document.getElementById('tlkio'),
+		var tlkio = $("#tlkio"),
+		css_path = tlkio.attr("data-theme"),
+		channel_name = tlkio.attr("data-channel");
+		
+		tlkio.append("<iframe src='http://embed.tlk.io/"+channel_name+"' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;"+tlkio.attr("style")+"'></iframe>");
+		
+		/*var target_element	= document.getElementById('tlkio'),
 		custom_css_path		= target_element.getAttribute('data-theme'),
 		channel_name		= target_element.getAttribute('data-channel'),
 		iframe				= document.createElement('iframe');
@@ -1397,6 +1412,7 @@ var bugreps = false;
 		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
 	
 		target_element.appendChild(iframe);
+		$("")*/
 		
 		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
 		
@@ -1414,7 +1430,11 @@ var bugreps = false;
 		
 		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></table>');
 		
-		var target_element	= document.getElementById('chatstep'),
+		var chatstep = $("#chatstep");
+		
+		chatstep.append("<iframe src='http://chatstep.com' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;"+chatstep.attr("style")+"'></iframe>");
+		
+		/*var target_element	= document.getElementById('chatstep'),
 		iframe				= document.createElement('iframe');
 		
 		iframe.setAttribute('src', 'https://chatstep.com/');
@@ -1426,7 +1446,8 @@ var bugreps = false;
 		var current_style = target_element.getAttribute('style');
 		target_element.setAttribute('style', 'overflow:none;-webkit-overflow-scrolling:touch;' + current_style);
 		
-		target_element.appendChild(iframe);
+		target_element.appendChild(iframe);*/
+		
 		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
 		
 		$("body").css("margin","0px");
@@ -1455,33 +1476,6 @@ var bugreps = false;
 				});
 			}
 		});
-	}
-	
-	function initStatus(){
-		$("#status").remove();
-		$("body").append('<div id="status" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/statusChatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
-		
-		var target_element	= document.getElementById('status'),
-		custom_css_path		= target_element.getAttribute('data-theme'),
-		iframe				= document.createElement('iframe');
-		
-		var iframe_src = 'http://embed.tlk.io/xFNwG5rILV';
-		iframe_src += ('?custom_css_path=' + custom_css_path);
-		
-		iframe.setAttribute('src', iframe_src);
-		iframe.setAttribute('width', '100%');
-		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('frameborder', '0');
-		iframe.setAttribute('style', 'margin-bottom: -8px;');
-		
-		var current_style = target_element.getAttribute('style');
-		target_element.setAttribute('style', 'overflow: none;-webkit-overflow-scrolling:touch;' + current_style);
-		
-		target_element.appendChild(iframe);
-		
-		$("body").css("margin","0px");
-		
-		$("#status").show();
 	}
 	
 	Array.prototype.move = function (old_index, new_index){
