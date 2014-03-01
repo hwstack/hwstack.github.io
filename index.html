@@ -1099,7 +1099,9 @@ var bugreps = false;
 		var key = $("#key").val();
 		var task = $("#task").val();
 		var date = $("#date").val();
-		date = Date.parse(date);
+		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
+			date = moment(Date.parse(date)).format("M/D/YY");
+		}
 		
 		key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		
@@ -1127,7 +1129,9 @@ var bugreps = false;
 		
 		task = unescape(task);
 		date = unescape(date);
-		date = Date.parse(date);
+		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
+			date = moment(Date.parse(date)).format("M/D/YY");
+		}
 		
 		$.jStorage.set(key, task+"@"+date);
 		reDraw();
