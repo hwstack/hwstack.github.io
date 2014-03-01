@@ -1380,8 +1380,6 @@ var bugreps = false;
 	}
 	
 	function showChat( channel ){
-		var js = $("#command-scripts").text();
-		
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
 		$("#chatstep").remove();
@@ -1398,15 +1396,12 @@ var bugreps = false;
 		tlkio.append("<iframe src='http://embed.tlk.io/"+channel_name+"?custom_css_path="+css_path+"' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;padding:0px;'></iframe>");
 		
 		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
-		$("script").append(js);
 		
 		$("body").css("margin","0px");
 		bodyOnload();
 	}
 	
 	function showPrivateChat(){
-		var js = $("#command-scripts").text();
-		
 		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		$("#tlkio").remove();
@@ -1421,7 +1416,6 @@ var bugreps = false;
 		chatstep.append("<iframe src='http://chatstep.com' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;padding:0px;'></iframe>");
 		
 		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
-		$("script").append(js);
 		
 		$("body").css("margin","0px");
 		bodyOnload();
