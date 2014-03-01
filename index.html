@@ -1105,10 +1105,6 @@ var bugreps = false;
 		var task = $("#task").val();
 		var date = $("#date").val();
 		
-		key = (key.contains("on the morrow") ? "tomorrow" : key);
-		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
-			date = moment(Date.parse(date)).format("M/D/YY");
-		}
 		if(key.contains("^")){
 			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		}
@@ -1118,6 +1114,11 @@ var bugreps = false;
 			return;
 		}
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+		
+		date = (date.contains("on the morrow") ? "tomorrow" : date);
+		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
+			date = moment(Date.parse(date)).format("M/D/YY");
+		}
 		
 		$("#key").val('');
 		$("#task").val('');
