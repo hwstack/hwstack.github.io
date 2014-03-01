@@ -129,19 +129,22 @@ pre {
 }
 
 .checked {
-	text-decoration: line-through;
+ text-decoration: line-through;
 }
 
 #stats-wrapper {
-	background-color:#575757;
-	
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-	/* IE 5-7 */
-	filter: alpha(opacity=50);
-	/* Netscape */
-	-moz-opacity: 0.5;
-	/* Safari 1.x */
-	-khtml-opacity: 0.5;
-	/* Good browsers */
-	opacity: 0.5;
+	width: 100%;
+}
+
+#stats {
+    position: absolute;
+    background-color: #575757;
+    width: 50%;
+    height: 400px;
+    left: 25%;
+    
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* future proofing */
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
 }
