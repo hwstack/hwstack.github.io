@@ -1331,26 +1331,8 @@ var bugreps = false;
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function openCmd(){
-		
-		//not working :(
-		/*var boxOptions = {
-			buttons: {
-				confirm: {
-					text: 'run',
-					className: 'run-command-button',
-					action: function(e) {
-						runCmd(e.input);
-						console.log(e.input);
-						Apprise('close');
-					}
-				},
-			},
-			input: true,
-		};
-		
-		Apprise('command', boxOptions);*/
-		
-		runCmd(prompt("Run Command..."));
+		var command = prompt("Run Command...");
+		if(command!=""){runCmd();}
 	}
 	
 	function runCmd( c ){
