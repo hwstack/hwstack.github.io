@@ -1,6 +1,6 @@
 User-Friendly Date
 ==================
-When adding tasks, you actually don't have to input the date in the format, `MM/D/YY`.
+When adding tasks, you actually don't have to input the date in the format, `M/D/YY`.
 
 Try:
 
