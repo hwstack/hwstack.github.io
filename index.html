@@ -1103,7 +1103,9 @@ var bugreps = false;
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
 		
-		key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+		if(key.contains("^")){
+			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+		}
 		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
@@ -1126,6 +1128,9 @@ var bugreps = false;
 	function argsAdd( key, task, date ){
 		key = unescape(key);
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+		if(key.contains("^")){
+			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+		}
 		
 		task = unescape(task);
 		date = unescape(date);
