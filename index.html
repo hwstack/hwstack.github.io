@@ -953,7 +953,8 @@ var bugreps = false;
 		today = moment().format("M/D/YY");
 		todayDDay = moment().format("M/DD/YY");
 		
-		tomorrow = todayDDay.replace( todayDDay.substr(2,2), ( Number(today.substr(2,2))+1 ).toString() );
+		var rawDate = new Date();
+		tomorrow = moment().format("M/"+rawDate.getDate()+"/YY");
 		$("#date").attr("placeholder", tomorrow);
 		
 		//$("#lastModified").attr("title", document.lastModified);
