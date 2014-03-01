@@ -4,10 +4,10 @@ When adding tasks, you actually don't have to input the date in the format, `M/D
 
 Try:
 
-    today         tomorrow    July 2008
-    next friday   last April  2004.08.07
-    6/4/2005      8:15 PM     22:30:45
-    +5years 
+    today           tomorrow    next class
+    on the morrow   July 2008   +5years 
+    next friday     last April  2004.08.07
+    6/4/2005        8:15 PM     22:30:45
 
 Here is a complete list of the patterns:
 
