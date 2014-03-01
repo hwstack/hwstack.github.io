@@ -1104,25 +1104,24 @@ var bugreps = false;
 		var key = $("#key").val();
 		var task = $("#task").val();
 		var date = $("#date").val();
+		
+		key = (key.contains("on the morrow") ? "tomorrow" : key);
 		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
-		
 		if(key.contains("^")){
 			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		}
-		
 		if(!key){
 			alert("Woops!  :I  Class must be specified!");
 			$("#key").focus();
 			return;
 		}
+		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$("#key").val('');
 		$("#task").val('');
 		$("#date").val('');
-		
-		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		$.jStorage.set(key, task+"@"+date);
 		
