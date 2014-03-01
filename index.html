@@ -1116,6 +1116,15 @@ var bugreps = false;
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
 		date = (date.contains("on the morrow") ? "tomorrow" : date);
+		if(date.contains("next class")){
+			//sunday to thursday
+			if(Number(moment().format("d"))<5){
+				date = "tomorrow";
+			//friday to saturday
+			}else{
+				date = "next monday";
+			}
+		}
 		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
