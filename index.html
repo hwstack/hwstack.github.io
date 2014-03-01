@@ -1329,7 +1329,9 @@ var bugreps = false;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////
+	</script>
 	
+	<script type="text/javascript" id="command-scripts">
 	function openCmd(){
 		var command = prompt("Run Command...");
 		if(command!=""){runCmd(command);}
@@ -1378,9 +1380,9 @@ var bugreps = false;
 	}
 	
 	function showChat( channel ){
-		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
-		var js = $("#js").text();
+		var js = $("#command-scripts").text();
 		
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#tlkio").remove();
 		$("#chatstep").remove();
 		
@@ -1403,9 +1405,9 @@ var bugreps = false;
 	}
 	
 	function showPrivateChat(){
-		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
-		var js = $("#js").text();
+		var js = $("#command-scripts").text();
 		
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
 		$("#chatstep").remove();
 		$("#tlkio").remove();
 		
@@ -1448,6 +1450,9 @@ var bugreps = false;
 			}
 		});
 	}
+	</script>
+	
+	<script type="text/javascript">
 	
 	Array.prototype.move = function (old_index, new_index){
 		if (new_index >= this.length) {
