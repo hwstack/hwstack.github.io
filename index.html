@@ -1054,6 +1054,7 @@ var bugreps = false;
 	function showBugReps(){
 		bugreps = true;
 		
+		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
 		$("td").contents().fadeOut();
 		$("td").empty();
 		$("#bugreports-wrapper").show();
@@ -1074,7 +1075,6 @@ var bugreps = false;
 		$("#wrapper").animate({top: "0px"}, 100);
 		$("#bugreports-wrapper").css("left","10%");
 		$("#bugreports-wrapper").animate({top: "30px"}, 100);
-		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
 		$("#thestack-wrapper").css("left", "0px");
 		$("#mystack-wrapper").css("right", "0px");
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
