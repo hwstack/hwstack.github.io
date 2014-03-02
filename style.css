@@ -151,5 +151,6 @@ pre {
 
 #cube {
 	height: 600px;
-	width: 80%;
+	width: 100%;
+	position: relative;
 }
