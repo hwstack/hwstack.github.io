@@ -149,3 +149,7 @@ pre {
 	-khtml-border-radius: 10px; /* for old Konqueror browsers */
 }
 
+#cube {
+	height: 600px;
+	width: 80%;
+}
