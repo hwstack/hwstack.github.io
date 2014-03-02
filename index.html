@@ -1053,6 +1053,9 @@ var bugreps = false;
 	
 	function showBugReps(){
 		bugreps = true;
+		
+		$("td").contents().fadeOut();
+		$("td").empty();
 		$("#bugreports-wrapper").show();
 		$("#wrapper").animate({width: "100%"}, 3000, function(){
 			adjLayoutForBugReps();
@@ -1075,7 +1078,6 @@ var bugreps = false;
 		$("#thestack-wrapper").css("left", "0px");
 		$("#mystack-wrapper").css("right", "0px");
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
-		$("td").empty();
 		
 		takeOff();
 	}
