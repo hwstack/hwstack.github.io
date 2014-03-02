@@ -1083,10 +1083,13 @@ var bugreps = false;
 	}
 	
 	function takeOff(){
+		$("body").append('<audio autoplay id="rocket-sound"><source src="https://dl.dropboxusercontent.com/s/ea4hwius6flfu2y/rocket_sound.mp3" type="audio/mpeg"></audio>');
 		for(i=0; i<20; i++){
 			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
 		}
 		$("#mystack-wrapper, #thestack-wrapper").effect("bounce", null, 400, function(){
+			$("#rocket-sound").animate({volume: '0'}, 500);
+			$("#rocket-sound").remove();
 			landingCrew();
 		});
 	}
