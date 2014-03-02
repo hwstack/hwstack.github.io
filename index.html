@@ -1075,10 +1075,12 @@ var bugreps = false;
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
 		$("td").empty();
 		
-		visualEffects();
+		$("#bugreports-wrapper").append("<iframe src='cube.html' seamless='seamless' frameborder='0' id='cube'></iframe>");
+		
+		takeOff();
 	}
 	
-	function visualEffects(){
+	function takeOff(){
 		for(i=0; i<20; i++){
 			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
 		}
