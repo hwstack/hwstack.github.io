@@ -1058,7 +1058,9 @@ var bugreps = false;
 			adjLayoutForBugReps();
 		});
 		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
-		$("#bugreports-wrapper").animate({width: "80%"}, 700);
+		$("#bugreports-wrapper").animate({width: "80%"}, 700, function(){
+			$("#bugreports-wrapper").append("<iframe src='cube.html' seamless='seamless' frameborder='0' id='cube'></iframe>");
+		});
 		console.log("YOU HAVE AWOKEN THE BEAST!!!!!!");
 		
 		$("body").css("background","#999999 url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif) no-repeat fixed center");
@@ -1074,8 +1076,6 @@ var bugreps = false;
 		$("#mystack-wrapper").css("right", "0px");
 		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
 		$("td").empty();
-		
-		$("#bugreports-wrapper").append("<iframe src='cube.html' seamless='seamless' frameborder='0' id='cube'></iframe>");
 		
 		takeOff();
 	}
