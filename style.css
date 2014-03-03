@@ -159,7 +159,10 @@ pre {
 	width: 100%;
 	text-align: center;
 	font-family: "Consolas", "Courier New", "Courier", "Monospace";
+	font-size: 2em;
 	color: #fff;
-	height: 19px;
-	max-height: 19px;
+	height: 2em;
+	max-height: 2em;
+	position: relative;
+	top: 50px;
 }
