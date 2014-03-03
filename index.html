@@ -46,6 +46,7 @@ Add functionality for moving around tasks.  :S
   <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://rawgithub.com/hwstack/oriDomi/master/oridomi.js"></script>
+  <script src="https://rawgithub.com/mattboldt/typed.js/master/js/typed.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -1089,10 +1090,18 @@ var bugreps = false;
 		}
 		$("#mystack-wrapper, #thestack-wrapper").effect("bounce", null, 400, function(){
 			$("#rocket-sound").animate({volume: '0'}, 1000, function(){
-				$("#rocket-sound").remove();	
+				$("#rocket-sound").remove();
+				$("#cube").animate({height:'460px', top:'140px'}, 1000, function(){
+					playIntro();
+				});
 			});
-			
-			//landingCrew();
+		});
+	}
+	
+	function playIntro(){
+		$("#bugreports-wrapper").typed({
+			strings: ["Hello.", "This is not Kansas anymore, evidently."],
+			typeSpeed: 0
 		});
 	}
 	
