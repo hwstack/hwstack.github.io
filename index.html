@@ -1057,7 +1057,7 @@ var bugreps = false;
 		
 		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
 		$("td").contents().fadeOut();
-		$("td").empty();
+		$("td:not([id=bugreports-wrapper])").empty();
 		$("#bugreports-wrapper").show();
 		$("#wrapper").animate({width: "100%"}, 3000, function(){
 			adjLayoutForBugReps();
