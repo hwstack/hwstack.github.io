@@ -1099,11 +1099,13 @@ var bugreps = false;
 	}
 	
 	function playIntro(){
-		$("#titles").typed({
-			strings: ["Hello.", "This is not Kansas anymore, evidently."],
-			typeSpeed: 0,
-			backDelay: 1000,
-			callback: function(){/*continue*/}
+		$("#titles").fadeIn(400, function(){
+			$("#titles").typed({
+				strings: ["Hello.", "This is not Kansas anymore, evidently."],
+				typeSpeed: 0,
+				backDelay: 1000,
+				callback: function(){/*continue*/}
+			});
 		});
 	}
 	
