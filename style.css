@@ -166,3 +166,15 @@ pre {
 	position: absolute;
 	top: 50px;
 }
+
+#typed-cursor{
+  opacity: 1;
+  font-weight: 100;
+  animation: blink 0.7s infinite;
+}
+
+@-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
