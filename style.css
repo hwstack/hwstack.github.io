@@ -160,4 +160,6 @@ pre {
 	text-align: center;
 	font-family: "Consolas", "Courier New", "Courier", "Monospace";
 	color: #fff;
+	height: 19px;
+	max-height: 19px;
 }
