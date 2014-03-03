@@ -648,7 +648,7 @@ John Cobbett-Walden</pre></span>
 
 <!--bug reports column-->
 <td id="bugreports-wrapper" style="display:none;" >
-	
+	<section id="titles"></section>
 </td>
 
 <td id="mystack-wrapper">
@@ -1099,9 +1099,11 @@ var bugreps = false;
 	}
 	
 	function playIntro(){
-		$("#bugreports-wrapper").typed({
+		$("#titles").typed({
 			strings: ["Hello.", "This is not Kansas anymore, evidently."],
-			typeSpeed: 0
+			typeSpeed: 0,
+			backDelay: 1000,
+			callback = function(){/*continue*/}
 		});
 	}
 	
