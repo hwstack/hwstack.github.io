@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -46,8 +45,6 @@
 
 		<script>
 
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-
 			var container, stats;
 
 			var camera, scene, renderer;
@@ -61,6 +58,18 @@
 
 				container = document.getElementById( 'container' );
 
+				//
+				
+				if ( ! Detector.webgl ){
+					//Detector.addGetWebGLMessage();
+					console.log("error");
+					var errorMessage = document.createElement("img")
+						.setAttribute("src","https://dl.dropboxusercontent.com/s/kuqytpfelj6yfni/spinning%20cube.gif")
+						.setAttribute("style","width:100%;height:100%;");
+					container.appendChild(errorMessage);
+					
+				}
+				
 				//
 
 				camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
