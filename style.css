@@ -163,6 +163,6 @@ pre {
 	color: #fff;
 	height: 2em;
 	max-height: 2em;
-	position: relative;
+	position: absolute;
 	top: 50px;
 }
