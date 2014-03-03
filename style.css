@@ -39,10 +39,10 @@ span:nth-of-type(3) {
   width: 55%;
   background-color: #CCCCCC;
   
-     -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-          border-radius: 10px; /* future proofing */
-   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+     -moz-border-radius: 100px 10px 0 0;
+  -webkit-border-radius: 100px 10px 0 0;
+          border-radius: 100px 10px 0 0; /* future proofing */
+   -khtml-border-radius: 100px 10px 0 0; /* for old Konqueror browsers */
   
   -moz-box-shadow:		2px 0 50px #000000;
   -webkit-box-shadow:	2px 0 50px #000000;
@@ -54,10 +54,10 @@ span:nth-of-type(3) {
   vertical-align: top;
   background-color: #DDDDDD;
   
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px; /* future proofing */
-  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  -moz-border-radius: 10px 100px 0 0;
+  -webkit-border-radius: 10px 100px 0 0;
+  border-radius: 10px 100px 0 0; /* future proofing */
+  -khtml-border-radius: 10px 100px 0 0; /* for old Konqueror browsers */
   
   -moz-box-shadow:		2px 0 50px #000000;
   -webkit-box-shadow:	2px 0 50px #000000;
