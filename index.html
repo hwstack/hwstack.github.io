@@ -1120,7 +1120,8 @@ function parseInfo(){
 		$("#bugreports-wrapper").animate({width: "80%"}, 700, function(){
 			$("#bugreports-wrapper").append("<iframe src='cube.html' seamless='seamless' frameborder='0' id='cube'></iframe>");
 		});
-		console.log("YOU HAVE AWOKEN THE BEAST!!!!!!");
+		
+		console.log("bug reports?");
 		
 		$("body").css("background","#10021F url(http://www.lisamylee.com/online%20portfolio/backgrounds/stars.gif)");
 		$("#tiny-header").fadeOut("fast");
@@ -1198,33 +1199,38 @@ function parseInfo(){
 		
 		createOverlay();
 		
-		$("#thestack-wrapper").css("border-radius","400px 10px 10px 400px");
-		$("#thestack-wrapper").css("-moz-border-radius","400px 10px 10px 400px");
-		$("#thestack-wrapper").css("-webkit-border-radius","400px 10px 10px 400px");
-		$("#thestack-wrapper").css("-khtml-border-radius","400px 10px 10px 400px");
+		setTimeout(function(){
 		
-		$("#mystack-wrapper").css("border-radius","10px 400px 400px 10px");
-		$("#mystack-wrapper").css("-moz-border-radius","10px 400px 400px 10px");
-		$("#mystack-wrapper").css("-webkit-border-radius","10px 400px 400px 10px");
-		$("#mystack-wrapper").css("-khtml-border-radius","10px 400px 400px 10px");
-		
-		
-		
-		removeOverlay();
-		
-		$("#titles-station").fadeIn(400, function(){
-			$("#titles-station").typed({
-				strings: [
-				
-				"Do you like it?"
-				
-				],
-				backDelay: 1500,
-				callback: function(){
-					//narrLink("")
-				}
+			$("#thestack-wrapper").css("border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-moz-border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-webkit-border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-khtml-border-radius","400px 10px 10px 400px");
+			
+			$("#mystack-wrapper").css("border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-moz-border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-webkit-border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-khtml-border-radius","10px 400px 400px 10px");
+			
+			$("#wrapper").css("width","90%");
+			$("#bugreports-wrapper").attr("style","width: 80%; height: 700px; position: relative;");
+			$("#thestack-wrapper, #mystack-wrapper").css("background-color: #474747");
+			
+			removeOverlay();
+			
+			$("#titles-station").fadeIn(400, function(){
+				$("#titles-station").typed({
+					strings: [
+					
+					"Do you like it?"
+					
+					],
+					backDelay: 1500,
+					callback: function(){
+						//narrLink("")
+					}
+				});
 			});
-		});
+		},400);
 	}
 	
 	function landingCrew(){
