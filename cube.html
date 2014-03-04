@@ -57,7 +57,7 @@
 
 				//
 				
-				if ( /*!*/ Detector.webgl ){
+				if ( !Detector.webgl ){
 					//Detector.addGetWebGLMessage();
 					console.log("error");
 					$("#container").append("<img src='https://dl.dropboxusercontent.com/s/kuqytpfelj6yfni/spinning%20cube.gif' />");
@@ -66,7 +66,7 @@
 				
 				//
 
-				/*camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
+				camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 1, 3500 );
 				camera.position.z = 2750;
 
 				scene = new THREE.Scene();
@@ -287,7 +287,7 @@
 				mesh.rotation.y = time * 0.5;
 
 				renderer.render( scene, camera );
-*/
+
 			}
 
 		</script>
