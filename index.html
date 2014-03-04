@@ -737,6 +737,30 @@ function round(n) {
 }
 
 var bugreps = false;
+
+var infoKey = "7834749305";
+var infoArray = ["font:"];
+
+function updateInfo(){
+	$.jStorage.set(infoKey, infoArray);
+}
+
+function getInfo(){
+	infoArray = $.jStorage.get(infoKey);
+}
+
+function parseInfo(){
+	var tmp;
+	
+	infoAray.forEach(function(){
+		tmp = this.split(":");
+		
+		if(tmp[0]=="font"){
+			$("*").css("font-family",tmp[1]);
+			$(".fa").css("font-family","");
+		}
+	});
+}
     
     function gen(){
         var date = prompt('When is this due?', tomorrow);
@@ -1309,7 +1333,7 @@ var bugreps = false;
 	
 		for(i=0; i<($.jStorage.index().length); i++){
 			key = $.jStorage.index()[i];
-			if(key!=mySubsKey){
+			if(key!=mySubsKey && key!=infoKey){
 				val = $.jStorage.get(key).toString().split("@");
 			
 				task = unescape( val[0] );
