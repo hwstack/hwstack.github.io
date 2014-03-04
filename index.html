@@ -1126,25 +1126,35 @@ var bugreps = false;
 				'And by "here", I mean the universe.',
 				"No, I'm not God.",
 				"I see him at reunions, though.",
-				"You know what you might like?",
-				"I usually don't encounter kids poking around on a middle school homework website.",
-				"But now that I have, I know something you might be interested in.",
-				"A spaceship.",
-				"Like a big spaceship.",
-				"Spaceships are lots of fun, you know.",
-				"I'm not really sure how they work.  I just get other people to figure that out for me.",
-				"But they're pretty cool.",
+				"I know what you'd like.",
+				"I usually don't encounter kids poking around on a middle school homework website,",
+				"but now that I have, I know something you might be interested in.",
+				"A space station.",
+				"Like a big space station.",
+				"Space stations are lots of fun, you know.",
+				"I'm not really sure what to use it for.  I just get other people to use it for me.",
+				"Does a pest like you know what to do with it?",
+				"       ",
+				"Hm?",
 				"Seriously.",
-				"Get on my spaceship."
+				"Get in here, you fool."
 				
 				],
 				typeSpeed: 0,
 				backDelay: 1500,
-				callback: function(){/*continue*/}
+				callback: function(){
+					narrLink("enterStation()");
+				}
 			});
 		});
+	}
+	
+	function enterStation(){ //should look like the deathstar
+		//animate the color change to dark, dark grey (match the death star) of #thestack-wrapper and #mystack-wrapper
+		//animate the "extreme" rounding of the corners of #thestack-wrapper and #mystack-wrapper
+		//animate the slight contraction of #bugreports-wrapper, keep #cube completely in view, able to spin freely
 		
-		//enterSpaceship();
+		//NOTE: have the bounding box of the elements be square, with reponsive values (use percentages)
 	}
 	
 	function landingCrew(){
@@ -1157,6 +1167,22 @@ var bugreps = false;
 			$("#bugreports-wrapper").animate({width: "0px"}, 700);
 		},500);
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	
+	function narrLink( js ){
+		$("#bugreports-wrapper").css("cursor","pointer");
+		$("#bugreports-wrapper").attr("onclick", js+";resetNarrLink()" );
+		$("#titles").css("text-decoration","underline");
+	}
+	
+	function resetNarrLink(){
+		$("#bugreports-wrapper").css("cursor","");
+		$("#bugreports-wrapper").attr("onclick","");
+		$("#titles").css("text-decoration","");
+	}
+	
 	/* borked :(
 	$(".mystack-entry").dblclick(function(){
 		if( $(this).attr("style").contains("line-through") ){
