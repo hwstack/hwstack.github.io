@@ -1049,6 +1049,7 @@ function parseInfo(){
 		reDraw();
 		specificView( getQueryVariable("v") );
 		
+		writeClassTags();
 		colorize();
 		
 		initBoxes();
@@ -1182,9 +1183,7 @@ function parseInfo(){
 				],
 				backDelay: 1500,
 				callback: function(){
-					$("#titles-intro").fadeOut(400, function(){
-						narrLink("enterStation()");
-					});
+					narrLink("enterStation()");
 				}
 			});
 		});
@@ -1197,18 +1196,32 @@ function parseInfo(){
 		
 		//NOTE: have the bounding box of the elements be square, with reponsive values (use percentages)
 		
+		createOverlay();
+		
+		$("#thestack-wrapper").css("border-radius","400px 10px 10px 400px");
+		$("#thestack-wrapper").css("-moz-border-radius","400px 10px 10px 400px");
+		$("#thestack-wrapper").css("-webkit-border-radius","400px 10px 10px 400px");
+		$("#thestack-wrapper").css("-khtml-border-radius","400px 10px 10px 400px");
+		
+		$("#mystack-wrapper").css("border-radius","10px 400px 400px 10px");
+		$("#mystack-wrapper").css("-moz-border-radius","10px 400px 400px 10px");
+		$("#mystack-wrapper").css("-webkit-border-radius","10px 400px 400px 10px");
+		$("#mystack-wrapper").css("-khtml-border-radius","10px 400px 400px 10px");
+		
+		
+		
+		removeOverlay();
+		
 		$("#titles-station").fadeIn(400, function(){
 			$("#titles-station").typed({
 				strings: [
 				
-				"Welcome, friend."
+				"Do you like it?"
 				
 				],
 				backDelay: 1500,
 				callback: function(){
-					$("#titles-station").fadeOut(400, function(){
-						//narrLink("");
-					});
+					//narrLink("")
 				}
 			});
 		});
@@ -1230,7 +1243,7 @@ function parseInfo(){
 	
 	function narrLink( js ){
 		$("#bugreports-wrapper").css("cursor","pointer");
-		$("#bugreports-wrapper").attr("onclick", js+";resetNarrLink()" );
+		$("#bugreports-wrapper").attr("onclick", js+";resetNarrLink();$('.titles').fadeOut(400);" );
 		$(".titles").css("text-decoration","underline");
 	}
 	
@@ -1239,6 +1252,16 @@ function parseInfo(){
 		$("#bugreports-wrapper").attr("onclick","");
 		$(".titles").css("text-decoration","");
 		
+	}
+	
+	function createOverlay(){
+		$("body").append("<section id='overlay' style='display: none;'></section>");
+		$("#overlay").fadeIn(400);
+	}
+	
+	function removeOverlay(){
+		$("#overlay").fadeOut(400);
+		$("#overlay").remove();
 	}
 	
 	/* borked :(
@@ -1388,6 +1411,28 @@ function parseInfo(){
   		}
 	});
 	
+	function writeClassTags(){
+		$("div").each(function(){
+			if( !$(this).find(".class").exists() ){
+				$(this).append('<span class="class"></span>');
+			}
+		});
+		
+		$(".humv").find(".class").text("#HumVaughan");
+		$(".humc").find(".class").text("#HumCadigan");
+		$(".span").find(".class").text("#Span");
+		$(".mathk").find(".class").text("#MathKramer");
+		
+		$(".mathcw").find(".class").text("#MathCW");
+		$(".mathc").find(".class").text("#MathCW");
+		
+		$(".sci").find(".class").text("#Sci");
+		$(".lat").find(".class").text("#Lat");
+		$(".mun").find(".class").text("#MUN");
+		
+		colorize();
+	}
+	
 	function colorize(){
 		//colors entry tags
 		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
@@ -1424,6 +1469,8 @@ function parseInfo(){
 		
 		$("#thestack-wrapper").css("background-color","#DDDDDD");
 	}
+	
+	
 	
 	//.replaceText is not working for some reason... ?
 	function stylizeText(){
