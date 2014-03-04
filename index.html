@@ -1260,8 +1260,7 @@ function parseInfo(){
 	}
 	
 	function removeOverlay(){
-		$("#overlay").fadeOut(400);
-		$("#overlay").remove();
+		$("#overlay").fadeOut(400, function(){$("#overlay").remove();});
 	}
 	
 	/* borked :(
