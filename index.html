@@ -676,7 +676,8 @@ John Cobbett-Walden</pre></span>
 
 <!--bug reports column-->
 <td id="bugreports-wrapper" style="display:none;" >
-	<section id="titles"></section>
+	<section id="titles-intro" class="titles"></section>
+	<section id="titles-station" class="titles"></section>
 </td>
 
 <td id="mystack-wrapper">
@@ -1144,6 +1145,7 @@ function parseInfo(){
 			$("#rocket-sound").animate({volume: '0'}, 1000, function(){
 				$("#rocket-sound").remove();
 				$("#cube").animate({height:'460px', top:'140px'}, 1000, function(){
+					$(".titles").hide();
 					playIntro();
 				});
 			});
@@ -1151,8 +1153,8 @@ function parseInfo(){
 	}
 	
 	function playIntro(){
-		$("#titles").fadeIn(400, function(){
-			$("#titles").typed({
+		$("#titles-intro").fadeIn(400, function(){
+			$("#titles-intro").typed({
 				strings: [
 				
 				"Hello.",
@@ -1175,13 +1177,14 @@ function parseInfo(){
 				"       ",
 				"Hm?",
 				"Seriously.",
-				"Get in here, you fool."
+				"Fool, get in here."
 				
 				],
-				typeSpeed: 0,
 				backDelay: 1500,
 				callback: function(){
-					narrLink("enterStation()");
+					$("#titles-intro").fadeOut(400, function(){
+						narrLink("enterStation()");
+					});
 				}
 			});
 		});
@@ -1193,6 +1196,22 @@ function parseInfo(){
 		//animate the slight contraction of #bugreports-wrapper, keep #cube completely in view, able to spin freely
 		
 		//NOTE: have the bounding box of the elements be square, with reponsive values (use percentages)
+		
+		$("#titles-station").fadeIn(400, function(){
+			$("#titles-station").typed({
+				strings: [
+				
+				"Welcome, friend."
+				
+				],
+				backDelay: 1500,
+				callback: function(){
+					$("#titles-station").fadeOut(400, function(){
+						//narrLink("");
+					});
+				}
+			});
+		});
 	}
 	
 	function landingCrew(){
@@ -1212,13 +1231,14 @@ function parseInfo(){
 	function narrLink( js ){
 		$("#bugreports-wrapper").css("cursor","pointer");
 		$("#bugreports-wrapper").attr("onclick", js+";resetNarrLink()" );
-		$("#titles").css("text-decoration","underline");
+		$(".titles").css("text-decoration","underline");
 	}
 	
 	function resetNarrLink(){
 		$("#bugreports-wrapper").css("cursor","");
 		$("#bugreports-wrapper").attr("onclick","");
-		$("#titles").css("text-decoration","");
+		$(".titles").css("text-decoration","");
+		
 	}
 	
 	/* borked :(
