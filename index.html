@@ -1200,7 +1200,8 @@ function parseInfo(){
 		createOverlay();
 		
 		setTimeout(function(){
-		
+			$("body").css("background","#000 url(http://hdwallpapersdesign.com/wp-content/uploads/2013/05/star-wars-wallpaper-73.jpg)");
+			
 			$("#thestack-wrapper").css("border-radius","400px 10px 10px 400px");
 			$("#thestack-wrapper").css("-moz-border-radius","400px 10px 10px 400px");
 			$("#thestack-wrapper").css("-webkit-border-radius","400px 10px 10px 400px");
@@ -1211,9 +1212,10 @@ function parseInfo(){
 			$("#mystack-wrapper").css("-webkit-border-radius","10px 400px 400px 10px");
 			$("#mystack-wrapper").css("-khtml-border-radius","10px 400px 400px 10px");
 			
-			$("#wrapper").css("width","90%");
+			$("#wrapper").css("width","60%");
 			$("#bugreports-wrapper").attr("style","width: 80%; height: 700px; position: relative;");
-			$("#thestack-wrapper, #mystack-wrapper").css("background-color: #474747");
+			
+			$("#thestack-wrapper, #mystack-wrapper").css("background-color","#292929");
 			
 			removeOverlay();
 			
@@ -1230,7 +1232,7 @@ function parseInfo(){
 					}
 				});
 			});
-		},400);
+		},2500);
 	}
 	
 	function landingCrew(){
