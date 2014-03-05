@@ -132,6 +132,24 @@ Add functionality for moving around tasks.  :S
   </nav>
   <span style="display:none;"> >> ///  << </span>
   
+  <div class="sci">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Ch 20: pp. 626-629</span>
+  </div>
+  <div class="humv">
+    <span class="date">3/6/14</span><br />
+    <span class="task"><b>Constitution Test</b></span>
+  </div>
+  <div class="mathk">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Read 1.1 Packet<br />Complete Study Guide</span>
+  </div>
+  <div class="mathcw">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Make Graphs</span>
+  </div>
+  
+  <hr />
   <div class="lat">
     <span class="date">3/5/14</span>&nbsp;<span class="class">#Lat</span><br />
     <span class="task"><i>See Email</i>&nbsp;&nbsp;<a target="_blank" href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HWVMzMnVBX0wyWnM/edit">[PDF]</a></span>
@@ -1421,7 +1439,7 @@ function parseInfo(){
 	function writeClassTags(){
 		$("div").each(function(){
 			if( !$(this).find(".class").exists() ){
-				$(this).append('<span class="class"></span>');
+				$(this).find(".date").after('&nbsp;<span class="class"></span>');
 			}
 		});
 		
