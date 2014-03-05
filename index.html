@@ -726,7 +726,7 @@ John Cobbett-Walden</pre></span>
   <tr>
   	<td style="width: 15%"><input type="text" id="date" name="date" value="" style="width: 100%" /></td>
  	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
-	<td style="width: 65%"><input type="text" id="task" name="task" value="" placeholder="task" style="width: 100%" /></td>
+	<td style="width: 65%"><textarea type="text" id="task" name="task" value="" placeholder="task" style="width: 100%"></textarea></td>
 	
 	<td>
 		<a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-circle"></i></a><br />
@@ -1091,8 +1091,6 @@ function parseInfo(){
 		$("#lastModified").text( h+":"+rD.getMinutes()+" "+hod+" on "+d);*/
 		
 		//$("*[class^=apprise]").remove();
-		
-		$("#task").resizable({ minHeight: 22, minWidth: 200 });
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
