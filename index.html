@@ -1425,7 +1425,18 @@ function parseInfo(){
 			$("#empty-img-sect").append("<table id='empty-img'><tr><td><img style='zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
 		}
 		
-		bodyOnload();
+		$(".mystack-entry").click(function(){
+			if( $(this).attr("style").contains("line-through") ){
+				$(this).attr("style","text-decoration: none");
+				colorize();
+				return;
+			}else{
+				$(this).attr("style","text-decoration: line-through");
+				$(this).css("background","#BFBFBF");
+				colorize(true);
+				return;
+			}
+		});
 	}
 	
 	function clearInputs(){
