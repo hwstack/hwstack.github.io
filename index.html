@@ -1360,7 +1360,7 @@ function parseInfo(){
 		
 		$.jStorage.set(key, task+"@"+date);
 		
-		var val = $.jStorage.get(key).toString().split("@");
+		/*var val = $.jStorage.get(key).toString().split("@");
 		
 		var task = unescape( val[0] );
 		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
@@ -1370,7 +1370,9 @@ function parseInfo(){
 		var editHref = "javascript:editTask('"+key+"')";
 		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 		
-		$( "#tasks" ).prepend( $row );
+		$( "#tasks" ).prepend( $row );*/
+		
+		reDraw();
 		
 		$("#key").focus();
 	}
@@ -1400,7 +1402,7 @@ function parseInfo(){
 		
 		$.jStorage.set(key, task+"@"+date);
 		
-		var val = $.jStorage.get(key).toString().split("@");
+		/*var val = $.jStorage.get(key).toString().split("@");
 		
 		var task = unescape( val[0] );
 		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
@@ -1410,7 +1412,9 @@ function parseInfo(){
 		var editHref = "javascript:editTask('"+key+"')";
 		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 		
-		$( "#tasks" ).prepend( $row );
+		$( "#tasks" ).prepend( $row );*/
+		
+		reDraw();
 	}
 
 	function flush_data(){
@@ -1601,7 +1605,7 @@ function parseInfo(){
 		var val = task+"@"+date;
 		
 		$.jStorage.set( key, val );
-		argsAdd(key, val);
+		reDraw();
 	});
 	
 	$("div").hover(
