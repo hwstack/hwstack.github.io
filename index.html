@@ -1095,12 +1095,9 @@ function parseInfo(){
 		$(".mystack-entry").click(function(){
 			if( $(this).attr("style").contains("line-through") ){
 				$(this).attr("style","text-decoration: none");
-				colorize();
 				return;
 			}else{
 				$(this).attr("style","text-decoration: line-through");
-				$(this).css("background","#BFBFBF");
-				colorize(true);
 				return;
 			}
 		});
@@ -1428,12 +1425,9 @@ function parseInfo(){
 		$(".mystack-entry").click(function(){
 			if( $(this).attr("style").contains("line-through") ){
 				$(this).attr("style","text-decoration: none");
-				colorize();
 				return;
 			}else{
 				$(this).attr("style","text-decoration: line-through");
-				$(this).css("background","#BFBFBF");
-				colorize(true);
 				return;
 			}
 		});
@@ -1474,7 +1468,7 @@ function parseInfo(){
 		colorize();
 	}
 	
-	function colorize(ovBg){
+	function colorize(){
 		//colors entry tags
 		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
 		$( "span:contains('#humc')" ).css( "color", "#4343E6" );
@@ -1495,22 +1489,24 @@ function parseInfo(){
 		$( ".class:contains('#lat')" ).css( "color", "#B20000" );
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 		
-		if(!ovBg){
-			//colors entries due today
-			$("div:contains("+today+")").css("background-color","#EBD754");
-			//colors tasks due today
-			$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
+		//colors entries due today
+		$("div:contains("+today+")").css("background-color","#EBD754");
+		//colors tasks due today
+		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
 
-			$("div:contains("+todayDDay+")").css("background-color","#EBD754");
-			$("td[id!=mystack-wrapper]:contains("+todayDDay+")").css("background-color","#EBD754");
+		$("div:contains("+todayDDay+")").css("background-color","#EBD754");
+		$("td[id!=mystack-wrapper]:contains("+todayDDay+")").css("background-color","#EBD754");
+	
+		//colors entries due tomorrow
+		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		//colors tasks due tomorrow
+		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
+	
+		$("#thestack-wrapper").css("background-color","#DDDDDD");
 		
-			//colors entries due tomorrow
-			$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
-			//colors tasks due tomorrow
-			$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
-		
-			$("#thestack-wrapper").css("background-color","#DDDDDD");
-		}
+		$(".mystack-entry").each(function(){
+			if( $(this).attr("style").contains("line-through") ){ $(this).css("background-color","#BFBFBF"); }
+		});
 	}
 	
 	
