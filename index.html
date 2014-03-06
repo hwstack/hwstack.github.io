@@ -1095,12 +1095,12 @@ function parseInfo(){
 		$(".mystack-entry").click(function(){
 			if( $(this).attr("style").contains("line-through") ){
 				$(this).attr("style","text-decoration: none");
-				$(this).css("background","#BFBFBF");
-				colorize(true);
+				colorize();
 				return;
 			}else{
 				$(this).attr("style","text-decoration: line-through");
-				colorize();
+				$(this).css("background","#BFBFBF");
+				colorize(true);
 				return;
 			}
 		});
@@ -1424,6 +1424,8 @@ function parseInfo(){
 		if( !($("#mystack-table:has(.taskL)").exists() ) ){
 			$("#empty-img-sect").append("<table id='empty-img'><tr><td><img style='zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
 		}
+		
+		bodyOnload();
 	}
 	
 	function clearInputs(){
