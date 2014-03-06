@@ -24,6 +24,7 @@ Add functionality for moving around tasks.  :S
   <title>hwStack v0.3beta</title>
   
   <meta name="viewport" content="width=935">
+  <base target="_blank">
   
   <link rel="stylesheet" type="text/css" href="style.css">
   
@@ -1061,6 +1062,8 @@ function parseInfo(){
 	
 	var keyCombos;
 	
+	var aClicked = false;
+	
 	function bodyOnload(){
 		checkForArgs();
 		updateLayout();
@@ -1092,7 +1095,7 @@ function parseInfo(){
 		
 		initBoxes();
 		
-		var keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
+		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
 		
 		listener.counting_combo("alt c", function(e, count) {openCmd();});
@@ -1108,15 +1111,7 @@ function parseInfo(){
 		
 		//$("*[class^=apprise]").remove();
 		
-		$(".mystack-entry").click(function(){
-			if( $(this).attr("style").contains("line-through") ){
-				$(this).attr("style","text-decoration: none");
-				return;
-			}else{
-				$(this).attr("style","text-decoration: line-through");
-				return;
-			}
-		});
+		initStrikes();
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
@@ -1124,6 +1119,30 @@ function parseInfo(){
 	$(window).resize(function(){
 		if(!bugreps){updateLayout();}
 	});
+	
+	function initStrikes(){
+		$("a")
+		.mouseup(function(){
+			aClicked = false;
+		})
+		.mousedown(function(){
+			aClicked = true;
+		});
+		
+		$(".mystack-entry").click(function(){
+			if(!aClicked){
+				if( $(this).css("text-decoration")=="line-through" ){
+					$(this).css("text-decoration","none");
+					colorize();
+					return;
+				}else{
+					$(this).css("text-decoration","line-through");
+					colorize();
+					return;
+				}
+			}
+		});
+	}
 	
 	function updateLayout(){
 		if ($(window).width() <= 1412){	
@@ -1471,18 +1490,6 @@ function parseInfo(){
 		/*if( !($("#mystack-table:has(.taskL)").exists() ) ){
 			$("#empty-img-sect").append("<table id='empty-img'><tr><td><img style='zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
 		}*/
-		
-		$(".mystack-entry").click(function(){
-			if( $(this).css("text-decoration")=="line-through" ){
-				$(this).css("text-decoration","none");
-				colorize();
-				return;
-			}else{
-				$(this).css("text-decoration","line-through");
-				colorize();
-				return;
-			}
-		});
 	}
 	
 	function clearInputs(){
