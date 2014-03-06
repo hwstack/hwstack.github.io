@@ -142,7 +142,7 @@ Add functionality for moving around tasks.  :S
   </div>
   <div class="mathk">
     <span class="date">3/6/14</span><br />
-    <span class="task">Read 1.1 Packet<br />Complete Study Guide</span>
+    <span class="task">Read Packet<br />Complete Outline</span>
   </div>
   <div class="mathcw">
     <span class="date">3/6/14</span><br />
@@ -1336,7 +1336,18 @@ function parseInfo(){
 		
 		$.jStorage.set(key, task+"@"+date);
 		
-		reDraw();
+		var val = $.jStorage.get(key).toString().split("@");
+		
+		var task = unescape( val[0] );
+		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
+		var date = unescape( val[1] );
+		
+		var delHref = "javascript:delTask('"+key+"')";
+		var editHref = "javascript:editTask('"+key+"')";
+		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+		
+		$( "#tasks" ).prepend( $row );
+		
 		$("#key").focus();
 	}
 	
@@ -1394,7 +1405,7 @@ function parseInfo(){
 				
 		var key, task, date, row, delHref, editHref, valArray;
 		
-		$("#empty-img").remove();
+		//$("#empty-img").remove();
 
 		//clears old list before drawing new one
 		$("#tasks").empty();
