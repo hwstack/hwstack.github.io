@@ -1482,7 +1482,7 @@ function parseInfo(){
 		$( ".class:contains('#lat')" ).css( "color", "#B20000" );
 		$( ".class:contains('#mun')" ).css( "color", "#282828");
 		
-		if(ovBg){
+		if(!ovBg){
 			//colors entries due today
 			$("div:contains("+today+")").css("background-color","#EBD754");
 			//colors tasks due today
