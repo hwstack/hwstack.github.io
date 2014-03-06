@@ -1289,15 +1289,13 @@ function parseInfo(){
 		$("#overlay").fadeOut(400, function(){$("#overlay").remove();});
 	}
 	
-	/* borked :(
 	$(".mystack-entry").dblclick(function(){
 		if( $(this).attr("style").contains("line-through") ){
 			$(this).attr("style","text-decoration: none");
-		}
-		if( $(this).attr("style").contains("none") ){
+		}else{
 			$(this).attr("style","text-decoration: line-through");
 		}
-	});*/
+	});
 	
 	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
 
