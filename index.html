@@ -1418,16 +1418,19 @@ function parseInfo(){
 		
 		colorize();
 		
-		if( !($("#mystack-table:has(.taskL)").exists() ) ){
+		//UGLY
+		/*if( !($("#mystack-table:has(.taskL)").exists() ) ){
 			$("#empty-img-sect").append("<table id='empty-img'><tr><td><img style='zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
-		}
+		}*/
 		
 		$(".mystack-entry").click(function(){
 			if( $(this).attr("style").contains("line-through") ){
 				$(this).attr("style","text-decoration: none");
+				colorize();
 				return;
 			}else{
 				$(this).attr("style","text-decoration: line-through");
+				colorize();
 				return;
 			}
 		});
