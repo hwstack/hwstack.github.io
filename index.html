@@ -1095,8 +1095,10 @@ function parseInfo(){
 		$(".mystack-entry").click(function(){
 			if( $(this).attr("style").contains("line-through") ){
 				$(this).attr("style","text-decoration: none");
+				$(this).css("background","#BFBFBF");
 			}else{
 				$(this).attr("style","text-decoration: line-through");
+				$(this).css("background","");
 			}
 			colorize();
 		});
