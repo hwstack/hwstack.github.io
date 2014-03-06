@@ -1375,7 +1375,18 @@ function parseInfo(){
 		}
 		
 		$.jStorage.set(key, task+"@"+date);
-		reDraw();
+		
+		var val = $.jStorage.get(key).toString().split("@");
+		
+		var task = unescape( val[0] );
+		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
+		var date = unescape( val[1] );
+		
+		var delHref = "javascript:delTask('"+key+"')";
+		var editHref = "javascript:editTask('"+key+"')";
+		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+		
+		$( "#tasks" ).prepend( $row );
 	}
 
 	function flush_data(){
@@ -1391,6 +1402,9 @@ function parseInfo(){
 	function delTask( key ){
 		$.jStorage.deleteKey( key.toString() );
 		reDraw();
+		
+		//WIP: eliminate need for reDraw() in cases like this
+		//$(".mystack-entry:contains("+key+")")
 	}
 	
 	function editTask ( key ){
@@ -1563,7 +1577,7 @@ function parseInfo(){
 		var val = task+"@"+date;
 		
 		$.jStorage.set( key, val );
-		reDraw();
+		argsAdd(key, val);
 	});
 	
 	$("div").hover(
