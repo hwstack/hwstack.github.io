@@ -1137,6 +1137,10 @@ function parseInfo(){
 	function showBugReps(){
 		bugreps = true;
 		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA60lEQVQ4T2O0dfX97/BkKQMMHPlaB2bacDfBxbAxDshEg4UZQQaAGOiGwAzAZyDIELgB2AxBdgnIIJihMNtRXMByU5nhj/pdFJeAFMA0ohsAcjGKC0ACIEXYDEEPA5BGkIX7H01gRPECSBA58JBtRTYEZACGC/AFJDYXwMSwBiK2AIPFEnIAHt69GdULMEXoToc5GWQrzACQZke5gv8YLsDmb2RNyOmm+TofpgtwBRy67TCDCIYBriiERTdRXoAZAvMKLNGhpETkaIR5AznEYYbA4h/ExxsLIAUgZ+IDIMPwZiZ0A2BRBxMH8QEi/sN9xNVAQAAAAABJRU5ErkJggg==">');
+
+		
 		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
 		$("td").contents().fadeOut();
 		$("td:not([id=bugreports-wrapper])").empty();
