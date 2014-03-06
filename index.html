@@ -1092,11 +1092,7 @@ function parseInfo(){
 		
 		initBoxes();
 		
-		var keyCombos;
-		
-		//listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});
-		
-		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
+		var keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
 		
 		listener.counting_combo("alt c", function(e, count) {openCmd();});
@@ -1477,12 +1473,12 @@ function parseInfo(){
 		}*/
 		
 		$(".mystack-entry").click(function(){
-			if( $(this).attr("style").contains("line-through") ){
-				$(this).attr("style","text-decoration: none");
+			if( $(this).css("text-decoration")=="line-through" ){
+				$(this).css("text-decoration","none");
 				colorize();
 				return;
 			}else{
-				$(this).attr("style","text-decoration: line-through");
+				$(this).css("text-decoration","line-through");
 				colorize();
 				return;
 			}
