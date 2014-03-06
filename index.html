@@ -1112,6 +1112,24 @@ function parseInfo(){
 		if(!bugreps){updateLayout();}
 	});
 	
+	$("div").click(function(){
+		var key = $(this).find(".class").html();
+		var task = $(this).find(".task").html();
+		var date = $(this).find(".date").html();
+		
+		var val = task+"@"+date;
+		if(!aClicked){ $.jStorage.set( key, val ); }
+		reDraw();
+	});
+	
+	$("div").hover(
+		function() {
+			$(this).css("background-color","#D1D1D1");
+		}, function() {
+			$(this).css("background-color","");
+			colorize();
+  	});
+	
 	function initStrikes(){
 		
 		$(".mystack-entry").click(function(){
@@ -1592,24 +1610,6 @@ function parseInfo(){
 			return contents;
 		})(this[0]));
 	};
-	
-	$("div").click(function(){
-		var key = $(this).find(".class").html();
-		var task = $(this).find(".task").html();
-		var date = $(this).find(".date").html();
-		
-		var val = task+"@"+date;
-		if(!aClicked){ $.jStorage.set( key, val ); }
-		reDraw();
-	});
-	
-	$("div").hover(
-		function() {
-			$(this).css("background-color","#D1D1D1");
-		}, function() {
-			$(this).css("background-color","");
-			colorize();
-  	});
 	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
