@@ -1482,10 +1482,14 @@ function parseInfo(){
 			key = $.jStorage.index()[i];
 			if(key!=mySubsKey && key!=infoKey){
 				val = $.jStorage.get(key).toString().split("@");
-			
+				
 				task = unescape( val[0] );
 				task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
 				date = unescape( val[1] );
+				
+				//markdown support
+				task = task.replace( bold, '<strong>$1</strong>' );
+				task = task.replace( bold, '<strong>$1</strong>' );
 	
 				delHref = "javascript:delTask('"+key+"')";
 				editHref = "javascript:editTask('"+key+"')";
@@ -1585,6 +1589,13 @@ function parseInfo(){
 	function stylizeText(){
 		//$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
 		$("#mystack-table").autoLinks();
+		
+		$(".task").each(function(){
+			$(this).text($(this).text().replace( /\*\*(\S(.*?\S)?)\*\*/gm, '<bold>$1</bold>' ));
+			$(this).text($(this).text().replace( /__(\S(.*?\S)?)__/gm, '<italics>$1</italics>' ));
+			$(this).text($(this).text().replace( /_(\S(.*?\S)?)_/gm, '<bold>$1</bold>' ))
+			$(this).text($(this).text().replace( /\*(\S(.*?\S)?)\*/gm, '<italics>$1</italics>' ));
+		});
 	}
 	
 	$.fn.autoLinks = function() {
