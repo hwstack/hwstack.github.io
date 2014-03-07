@@ -1497,7 +1497,7 @@ function parseInfo(){
 				val = $.jStorage.get(key).toString().split("@");
 				
 				task = unescape( val[0] );
-				task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
+				//task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
 				date = unescape( val[1] );
 	
 				delHref = "javascript:delTask('"+key+"')";
