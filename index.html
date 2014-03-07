@@ -1369,7 +1369,7 @@ function parseInfo(){
 		//markdown support
 		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
   		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
- -		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
+		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
 		//
 		
 		date = (date.contains("on the morrow") ? "tomorrow" : date);
