@@ -1411,7 +1411,7 @@ function parseInfo(){
 		//markdown support
 		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
 		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
-		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
+		task = task.replace(/<a href="(\S+)">(\S+)*<\/a>/, '[$2]($1)');
 		
 		task = unescape(task);
 		date = unescape(date);
@@ -1458,9 +1458,9 @@ function parseInfo(){
 		
 		//markdown support
 		var task = val[0];
-		task = task.replace( /<b>(\S+)[^<]*<\/b>/, '*$1*' );
-		task = task.replace( /<i>(\S+)[^<]*<\/i>/, '_$1_' );
-		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
+		task = task.replace( /<b>(\S+)<\/b>/, '*$1*' );
+		task = task.replace( /<i>(\S+)<\/i>/, '_$1_' );
+		task = task.replace(/<a href="(\S+)">(\S+)<\/a>/, '[$2]($1)');
 		
 		$("#task").val( task );
 		$("#date").val( val[1] );
