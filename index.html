@@ -1486,10 +1486,6 @@ function parseInfo(){
 				task = unescape( val[0] );
 				task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
 				date = unescape( val[1] );
-				
-				//markdown support
-				task = task.replace( bold, '<strong>$1</strong>' );
-				task = task.replace( bold, '<strong>$1</strong>' );
 	
 				delHref = "javascript:delTask('"+key+"')";
 				editHref = "javascript:editTask('"+key+"')";
