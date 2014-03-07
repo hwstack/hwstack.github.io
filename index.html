@@ -1390,19 +1390,11 @@ function parseInfo(){
 		$("#task").val('');
 		$("#date").val('');
 		
+		//markdown support
+		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
+		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
+		
 		$.jStorage.set(key, task+"@"+date);
-		
-		/*var val = $.jStorage.get(key).toString().split("@");
-		
-		var task = unescape( val[0] );
-		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
-		var date = unescape( val[1] );
-		
-		var delHref = "javascript:delTask('"+key+"')";
-		var editHref = "javascript:editTask('"+key+"')";
-		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
-		
-		$( "#tasks" ).prepend( $row );*/
 		
 		reDraw();
 		
@@ -1415,6 +1407,11 @@ function parseInfo(){
 		if(key.contains("^")){
 			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
 		}
+		
+		//markdown support
+		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
+		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
+		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
 		
 		task = unescape(task);
 		date = unescape(date);
@@ -1433,18 +1430,6 @@ function parseInfo(){
 		}
 		
 		$.jStorage.set(key, task+"@"+date);
-		
-		/*var val = $.jStorage.get(key).toString().split("@");
-		
-		var task = unescape( val[0] );
-		task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
-		var date = unescape( val[1] );
-		
-		var delHref = "javascript:delTask('"+key+"')";
-		var editHref = "javascript:editTask('"+key+"')";
-		var $row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
-		
-		$( "#tasks" ).prepend( $row );*/
 		
 		reDraw();
 	}
@@ -1497,7 +1482,7 @@ function parseInfo(){
 				val = $.jStorage.get(key).toString().split("@");
 				
 				task = unescape( val[0] );
-				//task = task.replace(/<a [^>]+>[^<]*<\/a>/, '');
+				task = task.replace(/\[(\S+)]\((\S+)\)/, "<a href='$2'>$1</a>");
 				date = unescape( val[1] );
 	
 				delHref = "javascript:delTask('"+key+"')";
