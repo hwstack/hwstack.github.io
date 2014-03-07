@@ -1410,10 +1410,11 @@ function parseInfo(){
 		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>'+$.trim('$1')+'</b>' );
 		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>'+$.trim('$1')+'</i>' );
 		task = task.replace(/<a href="(\S+)">(\S+)*[^<]<\/a>/gm, '[$2]($1)');
-		//
-		task = task.replace( /<b>(\S(.*?\S)?)<\/b>/gm, '<b>'+$.trim('$1')+'</b>' );
-		task = task.replace( /<i>(\S(.*?\S)?)<\/i>/gm, '<i>'+$.trim('$1')+'</i>' );
-		//
+		//WIP
+		/*
+		task = task.replace( /<b>(.*)<\/b>/gm, '<b>'+$.trim('$1')+'</b>' );
+		task = task.replace( /<i>(.*)<\/i>/gm, '<i>'+$.trim('$1')+'</i>' );
+		//*/
 		
 		task = unescape(task);
 		date = unescape(date);
