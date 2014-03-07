@@ -1366,6 +1366,11 @@ function parseInfo(){
 		}
 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
 		
+		//markdown support
+		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
+		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
+		//
+		
 		date = (date.contains("on the morrow") ? "tomorrow" : date);
 		if(date.contains("next class")){
 			//sunday to thursday
@@ -1464,7 +1469,13 @@ function parseInfo(){
 	function editTask ( key ){
 		$("#key").val( key );
 		var val = $.jStorage.get(key).split("@");
-		$("#task").val( val[0] );
+		
+		//markdown support
+		var task = val[0];
+		task = task.replace( /<b>(\S+)[^<]*<\/b>/, '*$1*' );
+		task = task.replace( /<i>(\S+)[^<]*<\/i>/, '_$1_' );
+		
+		$("#task").val( task );
 		$("#date").val( val[1] );
 		$("#task").focus();
 	}
@@ -1585,13 +1596,6 @@ function parseInfo(){
 	function stylizeText(){
 		//$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
 		$("#mystack-table").autoLinks();
-		
-		$(".task").each(function(){
-			$(this).text($(this).text().replace( /\*\*(\S(.*?\S)?)\*\*/gm, '<bold>$1</bold>' ));
-			$(this).text($(this).text().replace( /__(\S(.*?\S)?)__/gm, '<italics>$1</italics>' ));
-			$(this).text($(this).text().replace( /_(\S(.*?\S)?)_/gm, '<bold>$1</bold>' ))
-			$(this).text($(this).text().replace( /\*(\S(.*?\S)?)\*/gm, '<italics>$1</italics>' ));
-		});
 	}
 	
 	$.fn.autoLinks = function() {
