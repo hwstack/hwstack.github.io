@@ -1117,6 +1117,8 @@ function parseInfo(){
 		var task = $(this).find(".task").html();
 		var date = $(this).find(".date").html();
 		
+		task = $.trim(task);
+		
 		var val = task+"@"+date;
 		if(!aClicked){ $.jStorage.set( key, val ); }
 		reDraw();
@@ -1369,7 +1371,7 @@ function parseInfo(){
 		//markdown support
 		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
   		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
-		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/, '[$2]($1)');
+		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/gm, '[$2]($1)');
 		//
 		
 		date = (date.contains("on the morrow") ? "tomorrow" : date);
@@ -1407,7 +1409,7 @@ function parseInfo(){
 		//markdown support
 		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
 		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
-		task = task.replace(/<a href="(\S+)">(\S+)*[^<]<\/a>/, '[$2]($1)');
+		task = task.replace(/<a href="(\S+)">(\S+)*[^<]<\/a>/gm, '[$2]($1)');
 		
 		task = unescape(task);
 		date = unescape(date);
@@ -1454,9 +1456,9 @@ function parseInfo(){
 		
 		//markdown support
 		var task = val[0];
-		task = task.replace( /<b>(.+)[^<]*<\/b>/, '*$1*' );
-		task = task.replace( /<i>(.+)[^<]*<\/i>/, '_$1_' );
-		task = task.replace( /<a href="(.+)">(.+)[^<]*<\/a>/, '[$2]($1)' );
+		task = task.replace( /<b>(\S(.*?\S)?)<\/b>/gm, '*$1*' );
+		task = task.replace( /<i>(\S(.*?\S)?)<\/i>/gm, '_$1_' );
+		task = task.replace( /<a href="(\S+)">(.+)[^<]*<\/a>/gm, '[$2]($1)' );
 		
 		$("#task").val( task );
 		$("#date").val( val[1] );
