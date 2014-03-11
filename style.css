@@ -192,3 +192,10 @@ pre {
 	
 	background-color: #000;
 }
+
+.emoji {
+	width: 1.2em;
+	height: 1.2em;
+	display: inline-block;
+	margin-bottom: 0.1em;
+}
