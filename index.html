@@ -48,6 +48,7 @@ Add functionality for moving around tasks.  :S
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://rawgithub.com/hwstack/oriDomi/master/oridomi.js"></script>
   <script src="https://rawgithub.com/mattboldt/typed.js/master/js/typed.js"></script>
+  <script src="https://rawgithub.com/hassankhan/emojify.js/master/emojify.js"></script>
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -1465,6 +1466,9 @@ function parseInfo(){
 		task = task.replace( /<i>(\S(.*?\S)?)<\/i>/gm, '_$1_' );
 		task = task.replace( /<a href="(\S+)">(.+)[^<]*<\/a>/gm, '[$2]($1)' );
 		
+		//emoji support
+		task = task.replace( /<img title="(.+)" class="emoji".+><\/img>/, '$1' );
+		
 		$("#task").val( task );
 		$("#date").val( val[1] );
 		$("#task").focus();
@@ -1497,6 +1501,7 @@ function parseInfo(){
 		}
 		
 		colorize();
+		runEmojify();
 		
 		//UGLY
 		/*if( !($("#mystack-table:has(.taskL)").exists() ) ){
@@ -1580,7 +1585,21 @@ function parseInfo(){
 		});*/
 	}
 	
-	
+	function runEmojify(){
+		emojify.setConfig({
+			emojify_tag_type : 'html',
+			only_crawl_id    : null,
+			img_dir          : 'http://hassankhan.github.io/emojify.js/images/emoji/',
+			ignored_tags     : {
+				'SCRIPT'  : 1,
+				'TEXTAREA': 1,
+				'INPUT'   : 1,
+				'PRE'     : 1,
+				'CODE'    : 1
+			}
+		});
+		emojify.run();
+	}
 	
 	//.replaceText is not working for some reason... ?
 	function stylizeText(){
