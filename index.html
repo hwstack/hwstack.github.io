@@ -1123,21 +1123,24 @@ function parseInfo(){
 		var val = task+"@"+date;
 		
 		//create ghost
-		var id = $(this).attr("class");
-		$('<div class="ghost" data-id="'+id+'"></div>').css({
+		$('<div class="ghost"></div>').css({
 			"left"   : $(this).offset().left,
-			"top"    : $("div:first").offset().top,
-			"width"  : $("div:first").width(),
-			"height" : $("div:first").height(),
+			"top"    : $(this).offset().top,
+			"width"  : $(this).width(),
+			"height" : $(this).height(),
 		}).appendTo("body");
 		
-		//animate ghost to after last row that is not the wrapper row
-		$(".ghost[data-id="+id+"]").animate({
+		//animate ghost to after last row
+		var thisTag = $(this).find(".class").text();
+		$(".ghost").animate({
 			left     : $("tr:last").offset().left,
-			top      : $("tr:last").offset.top+$("tr:last").height(),
+			top      : $(".taskL:contains('"+ thisTag +"')").exists() ? $("tr:contains('"+ thisTag +"')").offset().top : $("tr:last").offset().top,
 			width    : $("tr:last").width(),
 			height   : $("tr:last").height()
 		}, 650);
+		
+		$(".ghost").fadeOut();
+		$(".ghost").remove();
 		
 		if(!aClicked){ $.jStorage.set( key, val ); }
 		reDraw();
