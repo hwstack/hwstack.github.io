@@ -1397,7 +1397,7 @@ function parseInfo(){
 		//
 		
 		date = (date.contains("on the morrow") ? "tomorrow" : date);
-		if(date.contains("next class")){
+		if(date.contains("next weekday")){
 			//sunday to thursday
 			if(Number(moment().format("d"))<5){
 				date = "tomorrow";
