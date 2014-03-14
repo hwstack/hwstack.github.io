@@ -8,6 +8,7 @@ div, td {
   padding: 10px;
   background-color: #fff;
   font-family: 'Alef', sans-serif;
+  word-wrap: normal;
 }
 
 div {
