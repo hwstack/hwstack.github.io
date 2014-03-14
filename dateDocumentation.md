@@ -9,7 +9,7 @@ Try:
     next friday     last April  2004.08.07
     6/4/2005        8:15 PM     22:30:45
 
-Here’s a complete list of the patterns:
+Here’s a list of some of the patterns:
 
     jan: /^jan(uary)?/i,
     feb: /^feb(ruary)?/i,
