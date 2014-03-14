@@ -162,8 +162,11 @@ pre {
 
 #circularG {
     position: relative;
+    margin: 0px auto;
+    
     width: 32px;
     height: 32px;
+    margin-bottom: 30px;
 }
 
 .circularG {
