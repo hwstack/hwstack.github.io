@@ -96,6 +96,16 @@ Add functionality for moving around tasks.  :S
   
   <section id="entries">
   	<!--entries are written here-->
+  	<section id="circularG">
+		<section id="circularG_1" class="circularG"></section>
+		<section id="circularG_2" class="circularG"></section>
+		<section id="circularG_3" class="circularG"></section>
+		<section id="circularG_4" class="circularG"></section>
+		<section id="circularG_5" class="circularG"></section>
+		<section id="circularG_6" class="circularG"></section>
+		<section id="circularG_7" class="circularG"></section>
+		<section id="circularG_8" class="circularG"></section>
+	</section>
   </section>
   
   <hr />
@@ -186,6 +196,7 @@ function drawEntries(url, dataType){
 				var task = $(this).find('task').text();
 				$("#entries").append('<div class='+key.replace("#","")+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
 			});
+			$("#circularG").remove();
 			init();
 		},
 	});
