@@ -1,12 +1,12 @@
 body {
   font-family: 'Alegreya Sans SC', sans-serif;
-  background-color: rgb(221, 221, 221);
+  background-color: #fff;
 }
 
 /* specific entry selector */
 div, td {
   padding: 10px;
-  background-color: #EEEEEE;
+  background-color: #fff;
   font-family: 'Alef', sans-serif;
 }
 
@@ -32,17 +32,17 @@ span:nth-of-type(3) {
 
 #thestack-wrapper {
   width: 55%;
-  background-color: rgb(221, 221, 221);
+  background-color: #fff;
 }
 
 #mystack-wrapper {
   width: 45%;
   vertical-align: top;
-  background-color: #DDDDDD;
+  background-color: #fff;
 }
 
 #bugreports-wrapper {
-  background-color: #000000;
+  background-color: #fff;
   position: absolute;
   min-height: 600px;
   z-index: -1;
