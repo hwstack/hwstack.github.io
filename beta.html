@@ -148,7 +148,7 @@ Add functionality for moving around tasks.  :S
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/dateDocumentation.md">
-  	<i class="fa fa-calendar-o" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<i class="fa fa-calendar-o" style="font-size:1.3em"></i>&nbsp;custom dates&nbsp;
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="javascript:flush_data()">
@@ -1066,24 +1066,16 @@ function parseInfo(){
 		})(this[0]));
 	};
 	
-	function updateLayout(){
+	/*function updateLayout(){
 		if ($(window).width() <= 1412){	
 			$( ".link-title" ).css( "display", "none" );
-			$( "#ribbon" ).css( "display", "none" );
 		}else{
 			$( ".link-title" ).css( "display", "" );
-			$( "#ribbon" ).css( "display", "" );
-		}
-		
-		if($(window).width() <= 1543){
-			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
-		}else{
-			$(".js-br").remove();
 		}
 		
 		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 100)+"%";
 		$("#wrapper").css("width", wrapperWidth);
-	}
+	}*/
 	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
