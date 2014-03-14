@@ -43,7 +43,7 @@ span:nth-of-type(3) {
 }
 
 #bugreports-wrapper {
-  background-color: #fff;
+  background-color: #000;
   position: absolute;
   min-height: 600px;
   z-index: -1;
