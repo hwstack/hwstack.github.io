@@ -568,7 +568,9 @@ function parseInfo(){
 			}, function() {
 				$(this).animate({
 					"background-color": "#FFFFFF"
-				},100);
+				},100,function(){
+					$(this).finish();
+				});
 				colorize();
 	  		}
 	  	);
