@@ -626,25 +626,6 @@ function parseInfo(){
 		});
 	}
 	
-	function updateLayout(){
-		if ($(window).width() <= 1412){	
-			$( ".link-title" ).css( "display", "none" );
-			$( "#ribbon" ).css( "display", "none" );
-		}else{
-			$( ".link-title" ).css( "display", "" );
-			$( "#ribbon" ).css( "display", "" );
-		}
-		
-		if($(window).width() <= 1543){
-			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
-		}else{
-			$(".js-br").remove();
-		}
-		
-		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
-		$("#wrapper").css("width", wrapperWidth);
-	}
-	
 	$.expr[":"].contains = $.expr.createPseudo(function(arg){
     	return function( elem ) {
         	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
