@@ -1123,7 +1123,7 @@ function parseInfo(){
 		var val = task+"@"+date;
 		
 		//create ghost
-		$('<div class="ghost"></div>').css({
+		/*$('<div class="ghost"></div>').css({
 			"left"   : $(this).offset().left,
 			"top"    : $(this).offset().top,
 			"width"  : $(this).width(),
@@ -1140,7 +1140,7 @@ function parseInfo(){
 			$(".ghost").fadeOut(function(){
 				$(".ghost").remove();
 			});
-		});
+		});*/
 
 		if(!aClicked){ $.jStorage.set( key, val ); }
 		reDraw();
