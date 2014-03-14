@@ -538,6 +538,7 @@ function parseInfo(){
 		colorize();
 		stylizeText();
 	
+		initTransfers();
 		initBoxes();
 		initStrikes();
 		initLinkDetector();	
@@ -556,46 +557,48 @@ function parseInfo(){
 		if(!bugreps){updateLayout();}
 	});
 	
-	$("div").click(function(){
-		var key = $(this).find(".class").html();
-		var task = $(this).find(".task").html();
-		var date = $(this).find(".date").html();
-		
-		task = $.trim(task);
-		
-		var val = task+"@"+date;
-		
-		//create ghost
-		/*$('<div class="ghost"></div>').css({
-			"left"   : $(this).offset().left,
-			"top"    : $(this).offset().top,
-			"width"  : $(this).width(),
-			"height" : $(this).height(),
-		}).appendTo("body");
-		
-		//animate ghost to after last row
-		$(".ghost").animate({
-			left     : $("tr:last").offset().left,
-			top      : $(".taskL:first").offset().top,
-			width    : $("tr:last").width(),
-			height   : $("tr:last").height()
-		}, 300, function(){
-			$(".ghost").fadeOut(function(){
-				$(".ghost").remove();
-			});
-		});*/
-
-		if(!aClicked){ $.jStorage.set( key, val ); }
-		reDraw();
-	});
+	function initTransfers(){
+		$("div").click(function(){
+			var key = $(this).find(".class").html();
+			var task = $(this).find(".task").html();
+			var date = $(this).find(".date").html();
+			
+			task = $.trim(task);
+			
+			var val = task+"@"+date;
+			
+			//create ghost
+			/*$('<div class="ghost"></div>').css({
+				"left"   : $(this).offset().left,
+				"top"    : $(this).offset().top,
+				"width"  : $(this).width(),
+				"height" : $(this).height(),
+			}).appendTo("body");
+			
+			//animate ghost to after last row
+			$(".ghost").animate({
+				left     : $("tr:last").offset().left,
+				top      : $(".taskL:first").offset().top,
+				width    : $("tr:last").width(),
+				height   : $("tr:last").height()
+			}, 300, function(){
+				$(".ghost").fadeOut(function(){
+					$(".ghost").remove();
+				});
+			});*/
 	
-	$("div").hover(
-		function() {
-			$(this).css("background-color","#D1D1D1");
-		}, function() {
-			$(this).css("background-color","");
-			colorize();
-  	});
+			if(!aClicked){ $.jStorage.set( key, val ); }
+			reDraw();
+		});
+		
+		$("div").hover(
+			function() {
+				$(this).css("background-color","#D1D1D1");
+			}, function() {
+				$(this).css("background-color","");
+				colorize();
+	  	});
+	}
 	
 	function initStrikes(){
 		
