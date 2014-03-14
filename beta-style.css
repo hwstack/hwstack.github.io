@@ -87,6 +87,12 @@ input[type=checkbox] {
   width: 10px;
 }
 
+input {
+  height: 40px;
+  border: none;
+  outline: none;
+}
+
 /*.tiny-header {
     position: absolute;
     top: 0px;
