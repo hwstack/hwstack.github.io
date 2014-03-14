@@ -213,7 +213,7 @@ function drawData(url, dataType){
 				var task = $(this).find('task').text();
 				$("#entries").append('<div class="lat"><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
 			});
-			bodyOnload();
+			init();
 		}
 	});
 }
@@ -511,6 +511,11 @@ function parseInfo(){
 	var aClicked = false;
 	
 	function bodyOnload(){
+		drawData('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
+		init();
+	}
+	
+	function init(){
 		checkForArgs();
 		updateLayout();
 		
@@ -530,10 +535,6 @@ function parseInfo(){
 		
 		$("#date").attr("placeholder", nextClass);
 		
-		//$("#lastModified").attr("title", document.lastModified);
-		//jQuery("abbr.timeago").timeago();
-		
-		drawData('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
 		reDraw();
 		specificView( getQueryVariable("v") );
 		
