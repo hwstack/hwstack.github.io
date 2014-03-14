@@ -562,11 +562,16 @@ function parseInfo(){
 		
 		$("div").hover(
 			function() {
-				$(this).css("background-color","#D1D1D1");
+				$(this).animate({
+					"background-color": "#D1D1D1"
+				},100);
 			}, function() {
-				$(this).css("background-color","");
+				$(this).animate({
+					"background-color": "#FFFFFF"
+				},100);
 				colorize();
-	  	});
+	  		}
+	  	);
 	}
 	
 	function initStrikes(){
@@ -994,12 +999,6 @@ function parseInfo(){
 		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
 		//colors tasks due tomorrow
 		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
-	
-		$("#thestack-wrapper").css("background-color","#DDDDDD");
-		
-		/*$(".mystack-entry").each(function(){
-			if( $(this).attr("style").contains("line-through") ){ $(this).css("background-color","#BFBFBF"); }
-		});*/
 	}
 	
 	function runEmojify(){
