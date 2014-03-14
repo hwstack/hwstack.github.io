@@ -215,11 +215,8 @@ function drawData(url, dataType){
 			});
 			init();
 		},
-		async: false
 	});
 }
-
-$( document ).ajaxComplete(function(){
 
 var bugreps = false;
 
@@ -321,7 +318,7 @@ function parseInfo(){
 	function remove(arr, what){
     		var found = arr.indexOf(what);
 
-    		while (found !== -1) {
+    		while (found !== -1){
     			arr.splice(found, 1);
 			    found = arr.indexOf(what);
     		}
@@ -1159,6 +1156,7 @@ function parseInfo(){
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////
+	
 	function openCmd(){
 		var command = prompt("Run Command...");
 		if(command!=""){runCmd(command);}
