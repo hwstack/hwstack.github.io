@@ -537,6 +537,13 @@ function parseInfo(){
 		
 		listener.counting_combo("alt c", function(e, count) {openCmd();});
 		
+		$("#task, #key, #date").keypress(function(e){
+  			if(e.which==13){
+  				add();
+  				return false;
+  			}
+		});
+		
 		reDraw();
 	}
 	
@@ -958,13 +965,6 @@ function parseInfo(){
 		$("#task").val('');
 		$("#date").val('');
 	}
-	
-	$("#task, #key, #date").keypress(function(e){
-  		if(e.which==13){
-  			add();
-  			return false;
-  		}
-	});
 	
 	function writeClassTags(){
 		$("div").each(function(){
