@@ -200,7 +200,7 @@ Add functionality for moving around tasks.  :S
 <script type="text/javascript" id="js">
 
 //read xml doc
-function drawData(url, dataType){
+function drawEntries(url, dataType){
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -211,7 +211,7 @@ function drawData(url, dataType){
 				var date = $(this).find('date').text();
 				var key = $(this).find('class').text();
 				var task = $(this).find('task').text();
-				$("#entries").append('<div class="lat"><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
+				$("#entries").append('<div class='+key.replace("#","")+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
 			});
 			init();
 		},
@@ -507,7 +507,7 @@ function parseInfo(){
 	var aClicked = false;
 	
 	function bodyOnload(){
-		drawData('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
+		drawEntries('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
 		init();
 	}
 	
