@@ -4,7 +4,7 @@ When adding tasks, you actually don't have to input the date in the format, `M/D
 
 Try:
 
-    today           tomorrow    next class
+    today           tomorrow    next weekday
     on the morrow   July 2008   +5years 
     next friday     last April  2004.08.07
     6/4/2005        8:15 PM     22:30:45
