@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<!--
+
+This is free software. Feel free to use, copy, or modify it at your leisure.
+
+Just don't say you made the original.
+
+Fool, that was our job.
+
+Peace on earth!
+
+--------------------------------
+
+TODO:
+
+Subscriptions also auto-add subscribed tasks to myStack
+
+Add functionality for moving around tasks.  :S
+
+-->
+
+<html>
+<head>
+  <title>hwStack v0.3beta</title>
+  
+  <meta name="viewport" content="width=935">
+  <base target="_blank">
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <!--supplementary CSS libaries-->
+  <link href='http://fonts.googleapis.com/css?family=Alef|Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
+  
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+  <!--supplementary JS scripts-->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet"></link>
+  
+  <script src="https://rawgithub.com/andris9/jStorage/master/jstorage.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="http://timeago.yarp.com/jquery.timeago.js"></script>
+  <script src="https://rawgithub.com/hwstack/hwstack.github.io/master/date.js"></script>
+  
+  <script src="https://rawgithub.com/dmauro/Keypress/development/keypress.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://rawgithub.com/hwstack/oriDomi/master/oridomi.js"></script>
+  <script src="https://rawgithub.com/mattboldt/typed.js/master/js/typed.js"></script>
+  <script src="https://rawgithub.com/hassankhan/emojify.js/master/emojify.js"></script>
+  
+  <!--favicon-->
+  <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
+</head>
+<body onload="bodyOnload();">
+
+<!--"fork me on github" ribbon-->
+<a href="https://github.com/hwstack/hwstack.github.io" target="_blank" id="ribbon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<!--<label for="1">id=1</label><input type="checkbox" name="1" id="1" onclick="doThing(1);"/><br />
+<label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
+<label for="3">id=3</label><input type="checkbox" name="3" id="3" onclick="doThing(3);"/><br />-->
+
+<section id="tiny-header" style="position: absolute;">
+<small style="color:#ff0000">v0.3beta</small>&nbsp;|&nbsp;
+<small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;
+<small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
+ 		(function(){
+        	var date = prompt('When is this due?');
+        	var task = prompt('What is your task?');
+        	var key = prompt('For which class?');
+ 		if(!task) {
+ 			alert('Woops!  :I  Task must be specified!');
+ 			return;
+ 		}else if(!key){
+ 			alert('Whoops!  :I  Class must be specified!');
+ 			return;
+ 		}
+ 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
+ 		})();
+ ">Add Task</a></small>&nbsp;|&nbsp;
+<small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
+<small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
+<small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
+<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
+	
+</section>
+
+<table id="wrapper">
+  <tr>
+  
+<td id="thestack-wrapper">
+<h2 align="center">theStack</h2>
+
+<br />
+  
+  <!--nav-->
+  <nav align="center" style="position:relative;bottom:12px;">
+  
+  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
+  	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<span class="link-title">about</span>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="sub-view" target="_blank" href="javascript:viewSubs(true)">
+  	<i class="fa fa-suitcase" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<span class="link-title">just subs</span>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="sel-view-tS" href="http://hwstack.github.io/?v=tS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	<span class="link-title">just this</span>
+  </a>
+  &nbsp;&nbsp;
+  
+  <span id="boxes">
+  <input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" id="humv-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" id="humc-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #Span" id="span-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #MathKramer" id="mathk-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #MathCW" id="mathcw-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #Sci" id="sci-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
+  <input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
+  </span><br />
+  
+  <small align="center" style="display:none;font-family:'Alef','sans-serif';margin-bottom:-10px;position:relative;bottom:10px;">&nbsp;&nbsp;last updated <abbr id="lastModified" class="timeago" title=""></abbr></small>
+  
+<!--========================================================================================================-->
+<!--=============================================================================================================-->
+<!--==================================================================================================================-->
+  
+  </nav>
+  <span style="display:none;"> >> ///  << </span>
+  
+  <div class="lat">
+    <span class="date">3/7/14
+    </span><br />
+    <span class="task">Finish Sentence <i>(See Email)</i> <a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HVmc0RW5zU2htd0k/edit">[PDF]</a>
+    </span>
+  </div>
+  <div class="mathk">
+    <span class="date">3/7/14
+    </span><br />
+    <span class="task">Do some research on the <i>Euler Line</i>, Finish diagram
+    </span>
+  </div>
+  <div class="humv">
+    <span class="date">3/7/14
+    </span><br />
+    <span class="task"><b>WWW Test </b> (Lists 1-7)
+    </span>
+  </div>
+  
+  <hr />
+  <div class="sci">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Ch 20: pp. 626-629</span>
+  </div>
+  <div class="humv">
+    <span class="date">3/6/14</span><br />
+    <span class="task"><b>Constitution Test</b></span>
+  </div>
+  <div class="mathk">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Read Packet<br />Complete Outline</span>
+  </div>
+  <div class="mathcw">
+    <span class="date">3/6/14</span><br />
+    <span class="task">Make Graphs</span>
+  </div>
+  
+  <hr />
+  <div class="lat">
+    <span class="date">3/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><i>See Email</i>&nbsp;&nbsp;<a target="_blank" href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HWVMzMnVBX0wyWnM/edit">[PDF]</a></span>
+  </div>
+  <div class="sci">
+    <span class="date">3/6/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Ch 20: pp. 626-629</span>
+  </div>
+  <div class="mathk">
+    <span class="date">3/5/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Finish Constructing Geometries</span>
+  </div>
+  
+  <hr />
+  <div class="mathk">
+    <span class="date">3/4/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Work on on <u>Quiz Corrections</u> for <b>Second Semester Test</b></span>
+  </div>
+  <div class="humv">
+    <span class="date">3/4/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Complete Checks & Balances Chart<br />Book Card</span>
+  </div>
+  <div class="humc">
+    <span class="date">3/4/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">WWW p47 (analogies)<br />List keywords and write thesis for research paper</span>
+  </div>
+  
+  <hr />
+  <div class="sci">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Chapter 20.3: TCN + Qs</span>
+  </div>
+  <div class="mathk">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Spend <i>45 min</i> on <u>Quiz Corrections</u> for <b>Second Semester Test</b></span>
+  </div>
+  <div class="mathcw">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Come up with 10 Survey Questions</span>
+  </div>
+  <div class="humv">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 6 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  <div class="humc">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">WWW 7 Cards<br />Book Report<br />Essay Revisions</span>
+  </div>
+  
+  <hr />
+  <div class="sci">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Chapter 20.3: TCN + Qs</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/28/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Comments on Notes for <b>List 7</b></span>
+  </div>
+  <div class="humc">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">WWW 7 Cards<br />Book Report<br />Essay Revisions</span>
+  </div>
+    <div class="mathk">
+    <span class="date">2/28/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Quiz Corrections!</span>
+  </div>
+  
+  <hr />
+  <div class="span">
+    <span class="date">2/27/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Reading Comp Worksheet (double-sided)</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/27/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Make Flash cards and do Word Analogies for List 7 (List Definitions of words in Word Analogies)</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/27/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Chapter 20.1: TCN + Qs, and 20.2: TCN + Qs</span>
+  </div>
+  <div class="lat">
+    <span class="date">3/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><i>See Email</i></span>
+  </div>
+  
+  <hr />
+  <div class="humc">
+    <span class="date">2/26/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Reflect on Quotes 3 & 4 (preparation for Socratic Seminar)</span>
+  </div>
+  <div class="lat">
+    <span class="date">2/26/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task">Study for Quiz.  <a href='https://drive.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HYV96MXBGLUlZcTA/edit'>[Doc]</a></span>
+  </div>
+  <div class="span">
+    <span class="date">2/26/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Worksheet.  <i>Read & Answer Questions</i></span>
+  </div>
+  <div class="humv">
+    <span class="date">2/26/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 5 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/27/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task">Chapter 20.1: TCN + Qs, and 20.2: TCN + Qs</span>
+  </div>
+  <div class="sci">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#Sci<sup>3</sup></span><br />
+    <span class="task">Chapter 20.3: TCN + Qs</span>
+  </div>
+  
+  <hr />
+  <div class="span">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Crossword Puzzle</span>
+  </div>
+  <div class="mathk">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">NEMLs</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/27/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task">Chapter 20.1: TCN + Qs, and 20.2: TCN + Qs</span>
+  </div>
+  <div class="sci">
+    <span class="date">3/3/14</span>&nbsp;<span class="class">#Sci<sup>3</sup></span><br />
+    <span class="task">Chapter 20.3: TCN + Qs</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Essay Revision, staple new draft to top</span>
+  </div>
+  
+  <hr />
+  <div class="humc">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumCadigan<sup>1</sup></span><br />
+    <span class="task">Pages 1-4 in the Transcendentalist Packet</span>
+  </div>
+    <div class="span">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Span<sup>1</sup></span><br />
+    <span class="task">Crossword Puzzle (<i>Crucigrama</i>)</span>
+  </div>
+    <div class="humc">
+    <span class="date">2/28/14</span>&nbsp;<span class="class">#HumCadigan<sup>1</sup></span><br />
+    <span class="task">Choose your Reserach Paper Topi cand bring in 50 Note Cards!</span>
+  </div>
+  <div class="humc">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumCadigan<sup>2</sup></span><br />
+    <span class="task">Notes on <b>List 6</b> in the <i>WWW</i>.</span>
+  </div>
+  <div class="span">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Email:<br />
+<pre>Hola 7th grade, 
+
+Attached you will find a several page document that is your Spanish homework for Monday.  It deals w/ weather.  Please be sure to READ the first page and a half to review the weather terms (there may be a phrase or two that we didn't go over in class).  Then please complete the three activities, using complete sentences and reading the directions.  
+
+<u>As a challenge, please think about la geografÃ­a, and see if you can name the country where each city is located.</u>
+
+You do not need to print the file (unless you want to); it is fine to write your answers (complete sentences), on a separate lined paper.
+
+Gracias!
+SeÃ±orita Tanner</pre></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task">Current Event</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>3</sup></span><br />
+    <span class="task"><b>Understanding Concepts</b> in Packet</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 4 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  
+  <hr />
+  <div class="lat">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HYXJkYTQ0QkRiSmM/edit">[Latin 7 Homework]</a></span>
+  </div>
+  <div class="humv">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 3 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task"><b>Understanding Concepts</b> in Packet</span>
+  </div>
+  
+  <hr />
+  <div class="mathcw">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Take-home test due!</span>
+  </div>
+  
+  <div class="humc">
+    <span class="date">2/20/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task"><b>Email from Ms. Cadigan:</b><br /><pre>
+Dear All,
+
+Because of illnesses last week, many of you are still catching up.  Please work hard tonight to do so.  To clarify, your homework is to write grammar corrections on your test (please do it in a different color), and to work on your essay.  The following is due tomorrow:
+
+Graphic Organizer - Shubhum 
+Outline - Caitlin
+First Draft - Sebastien, Adam, Shaan
+Second Draft - Andrew, Olivia, Evie, Jack, Ashleigh
+
+Sincerely,
+
+Ms. C.
+</pre></span>
+  </div>
+  
+  <div class="humv">
+    <span class="date">2/20/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task"><i>See Day 2 in the Graphic Adaptation of the Constitution Packet</i></span>
+  </div>
+  
+  <div class="sci">
+    <span class="date">2/25/14</span>&nbsp;<span class="class">#Sci<sup>1</sup></span><br />
+    <span class="task"><b>The Mole</b> in Packet</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>2</sup></span><br />
+    <span class="task">Current Event</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/24/14</span>&nbsp;<span class="class">#Sci<sup>3</sup></span><br />
+    <span class="task"><b>Understanding Concepts</b> in Packet</span>
+  </div>
+  
+  <hr />
+  <div class="mathcw">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Study for Test.</span>
+  </div>
+  <div class="humc">
+    <span class="date">2/19/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">See Email!</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">From Mr. CW:<br /><pre>
+You do not have a current event this weekend.  
+You need to watch these three videos:
+(in order)
+Discovering the Elements
+The Order of the Elements
+The Power of the Elements
+
+<a href="http://vimeo.com/user7126995/videos">[Link]</a>
+
+This is about 3 hours of video, so do not wait until Thursday!
+
+Regards, 
+John Cobbett-Walden</pre></span>
+  </div>
+  <div class="humv">
+    <span class="date">2/19/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Day 1, Constitution Plan Packet</span>
+  </div> 
+  
+  <hr />
+  <div class="mathk">
+    <span class="date">2/14/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">- Finish Chapter 14 Form 2C<br />- Chapter 13 Form 2C</span>
+  </div>  
+  <div class="sci">
+    <span class="date">2/21/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">- Watch Videos (See Email)</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/14/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Study for Vocab Test (WWW Lists 1-6)</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/14/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Read Chapter 19</span>
+  </div>
+  
+  <hr />
+  <div class="humv">
+    <span class="date">2/13/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Read Doc Online (see email)</span>
+  </div>
+  <div class="mathk">
+    <span class="date">2/13/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 14.4 (all)</span>
+  </div>
+  <div class="span">
+    <span class="date">2/13/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Use pp. 354-355 to Study for the <b>Test on Chapter 10</b></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/13/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Read Chapter 17</span>
+  </div>
+  
+  <hr />
+  <div class="lat">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://drive.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HNGMxZHBrSmxxT2c/edit">PDF</a></span>
+  </div>
+  <div class="sci">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">-</span>
+  </div>
+  <div class="span">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">-</span>
+  </div>
+  <div class="mathk">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">- 14.3 Practice (all)<br />- Chapter 12 Mid-Chapter Test (obviously <i>all</i>)</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">- <i>Comments</i> on the Notes #6 in ML2 (p. 41)<br />- Finish and print Answers to Questions from the Packet</span>
+  </div>
+  
+  <hr />
+  <div class="mathcw">
+    <span class="date">2/14/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">XtraPractice p. 587, 10-1 to 11-6, skip 10-3</span>
+  </div>
+  <div class="mathcw">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">p. 587 #10-22</span>
+  </div>
+  <div class="span">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Textbook pp. 352-353</span>
+  </div>
+  <div class="mathk">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">14.2 (all) + Quiz Qorrections</span>
+  </div>
+  <div class="humc">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Study for Grammar Test</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Essay Draft #2</span>
+  </div>
+  <div class="sci">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Presentation Due</span>
+  </div>
+  
+  <hr />
+  <div class="sci">
+    <span class="date">2/11/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Presentation Due</span>
+  </div>
+    <div class="mathk">
+    <span class="date">2/10/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">14.1 Practice All, do 13.5 at some point		</span>
+  </div>    
+  <div class="humc">
+    <span class="date">2/10/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Graphic Organizer :)</span>
+  </div>
+  <div class="humv">
+    <span class="date">2/10/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Essay, if needed still.  Grammar test corrections-be sure to follow the directions <u>exactly</u>.  See the instruction sheet.  Actively read the handout on Sumner, Garrison, and Stowe.</span>
+  </div>
+  <div class="mathcw">
+    <span class="date">2/10/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Problem sets:<br />p 576 #9-23 all,<br />p 580 #7-22 all,<br />p 580 #26-28 all</span>
+  </div>
+    <div class="lat">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task">Olympic WS</span>
+  </div>
+  <div class="mathcw">
+    <span class="date">2/12/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Problem sets:<br />p 587 #10-22</span>
+  </div>
+  
+  <hr />
+  <div class="span">
+    <span>2/7/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Prepare to present yer skitz!</span>
+  </div>
+  <div class="humc">
+    <span>2/7/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Magic Lens Review Packet (see email)</span>
+  </div>
+  <div class="humv">
+    <span>2/7/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Grammar Test Corrections (see handout)</span>
+  </div>
+  <div class="sci">
+    <span>2/7/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Work on Element Presentation</span>
+  </div>
+  <div class="mathk">
+    <span>2/7/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Finish and Correct Pop Test on Chapter 12!</span>
+  </div>
+  
+  <hr />
+  <div class="mathcw">
+    <span>2/6/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Problem Sets:<br />p. 559: #9-16 (all), #22-25<br />p. 566: #11-25 (all), #29<br />p. 571: #10-24 (all), #26</span>
+  </div>
+  <div class ="mathk">
+    <span>2/5/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">13.4 Practice (all)<br />13.4 Enrichment</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HaHQ5YVYzOE9WeTA/edit" target="_blank">HwDoc</a></span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Y'all is presentin' ye skit on Friday!  Make dem edits necessarios y memoriza!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Finish the <i>Narrative</i> and Reflect.</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Finish yo Final! Good luck to those who left it all for t'night!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Fix up yo List 6 Analogies in the <i>WWW</i> (if you need to).  1st draft of essay due Thursday.</span>
+  </div>
+  
+  <hr />
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.3 (all)</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">p. 559: #9-16 (all), #22-25</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">1. Present skit on <i>Thursday</i> (memorize).<br />2. <b>Reading Comprehension</b> worksheet</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Read Chapters 9 & 10 and reflect in journal.</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Complete the flash cards and word analogies for list 6.  Study for Grammar test.   Bring list 1-6 flash cards to class on Tuesday.</span>
+  </div>
+  <div>
+    <span>2/3/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Informal Writing Worksheet</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Lat</span><br />
+    <span class="task"><a href="https://docs.google.com/a/sageschool.org/file/d/0B91xjnpFMM7HaHQ5YVYzOE9WeTA/edit" target="_blank">HwDoc</a></span>
+  </div>
+  <div>
+    <span>2/3/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.2 (all)</span>
+  </div>
+  <div>
+    <span>2/4/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Be sure to have all flash cards for lists 1-5 on Tuesday.  Study for Grammar Test.  Complete any missing work.</span>
+  </div>
+  <div>
+    <span>2/1/14</span>&nbsp;<span class="class">#MUN&nbsp;</span><br />
+    <span class="task">BUAMUN!</span>
+  </div>
+  <hr />
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Hum&nbsp;</span><br />
+    <span class="task">Book Card!</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">W.B. 10.11-10.12</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Practice 13.1(all)</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Outline Essay</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Choose the top 3 elements you want to create a 10min presentation on, later on. Only chemical symbols in your first or last name may be used.<br /><b>Resource:</b><br /><a href="http://ptable.com" target="_blank">Ptable</a></span>
+  </div>
+   <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#HumCadigan</span><br />
+    <span class="task">Prepare for Crisis #4<br />Study WWW Lists 1-5</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#Span</span><br />
+    <span class="task">Informal Writing Worksheet</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#MathKramer</span><br />
+    <span class="task">Study for Chapter 12 test.</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#MathCW</span><br />
+    <span class="task">Textbook: pg 524 #7-24 odd, #24-29 all; pg 530 #9-31 odd, #34; pg 536 #11-25 odd, #35, #39-46 all</span>
+  </div>
+  <div>
+    <span>1/30/14</span>&nbsp;<span class="class">#HumVaughan</span><br />
+    <span class="task">Study for your grammar test.  Make any necessary edits to your short story.</span>
+  </div>
+  <div>
+    <span>1/31/14</span>&nbsp;<span class="class">#Latin</span><br />
+    <span class="task">January project due!</span>
+  </div>
+  <div>
+    <span>2/5/14</span>&nbsp;<span class="class">#Sci</span><br />
+    <span class="task">Final Due!</span>
+  </div>
+</td>
+
+<!--bug reports column-->
+<td id="bugreports-wrapper" style="display:none;" >
+	<section id="titles-intro" class="titles"></section>
+	<section id="titles-station" class="titles"></section>
+</td>
+
+<td id="mystack-wrapper">
+  <h2 align="center">myStack</h2><br />
+  
+  <nav align="center" style="position:relative;bottom:12px;">
+  <a href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
+  	<i class="fa fa-info" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  	<span class="link-title">about</span>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/dateDocumentation.md">
+  	<i class="fa fa-calendar-o" style="font-size:1.3em"></i>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="javascript:flush_data()">
+  	<i class="fa fa-fire"></i>&nbsp;
+  	<span class="link-title">clear tasks</span>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="sel-view-mS" href="http://hwstack.github.io/?v=mS">
+  	<i class="fa fa-user"></i>&nbsp;
+  	<span class="link-title">just this</span>
+  </a>
+  </nav>
+  
+  <table width="100%" cellpadding="0px" cellspacing="0px" id="mystack-table">
+  <tr>
+  	<td style="width: 15%"><input type="text" id="date" name="date" value="" style="width: 100%" /></td>
+ 	<td style="width: 20%"><input type="text" id="key" name="key" value="" placeholder="#class" style="width: 100%" /></td>
+	<td style="width: 65%"><textarea type="text" id="task" name="task" value="" placeholder="task" style="width: 100%"></textarea></td>
+	
+	<td>
+		<a href="javascript:add()"><i title="add task" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-plus-circle"></i></a><br />
+		<a href="javascript:clearInputs()"><i title="clear inputs" style="position:relative;top:3px;font-size:1.2em;" class="fa fa-times-circle"></i></a><br />
+	</td>
+  </tr>
+  
+  <tbody id="tasks">
+  	<!--tasks are plopped here-->
+  </tbody>
+  </table>
+  
+  <section id="empty-img-sect-disabled">
+  	
+  </section>
+</td>
+
+  </tr>
+</table>
+
+<a style="display:none;" title="For Devs" href='javascript:(function(){gen();})();'>Gen</a>
+
+<script type="text/javascript" id="js">
+	
+function round(n) {
+    return Math.round(n * 100) / 100;
+}
+
+var bugreps = false;
+
+var infoKey = "7834749305";
+var infoArray = ["font:"];
+
+function updateInfo(){
+	$.jStorage.set(infoKey, infoArray);
+}
+
+function getInfo(){
+	infoArray = $.jStorage.get(infoKey);
+}
+
+function parseInfo(){
+	var tmp;
+	
+	infoAray.forEach(function(){
+		tmp = this.split(":");
+		
+		if(tmp[0]=="font"){
+			$("*").css("font-family",tmp[1]);
+			$(".fa").css("font-family","");
+		}
+	});
+}
+    
+    function gen(){
+        var date = prompt('When is this due?', tomorrow);
+        var task = prompt('What is the task?');
+        var key = prompt('What class?');
+        
+        if(!key) {
+ 			alert('Whoops!  :I  Class must be specified!');
+ 			return;
+ 		}else if(!task){
+ 			alert('Whoops!  :I  Task must be specified!');
+ 			return;
+ 		}
+ 		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+ 		
+        var code = '<div class='+key+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br /><span class="task">'+task+'</span></div>';
+        var foo = prompt('Copy & Paste into Doc:', code);
+    }
+
+	var chatStepPass = "hwstack";
+	var chatStepRoom = "hwstack";
+	
+	function openChatStep(){
+		
+		console.log("Password for room " + chatStepRoom +" is " + chatStepPass);
+		window.open("https://chatstep.com/#hwstack");
+		
+	}
+	
+	console.log("Stop screwing around in the console. We know who you are.");
+	
+	var mySubsKey = "DONT-USE-THIS-KEY-PLEASE-NEVER-DO-NEVER-OPPLSNERF";
+	
+	var mySubs = [];
+	mySubs = $.jStorage.get(mySubsKey);
+	
+	/*function task(key, tag, task, date){
+		
+		if(tag.substring(0,1) == "#"){
+			console.log("good tag");
+		}else{
+			tag = "#" + tag;
+		}
+		
+		$(" /// ").append(
+		
+		'<div class="' + key + '">' + 
+		'<span class="date">' + date + '<span&nbsp;<span class="class">' + tag + '</span><br />' +
+		'<span class="task">' + task + '</span>' +
+		'</div>'
+		
+		);
+		
+	}*/
+
+	function addSub( key ){
+		if( $.inArray(key, mySubs)==-1 ){
+			mySubs.push(key);
+		}
+		$.jStorage.set(mySubsKey, mySubs);
+	}
+	
+	function delSub( key ){
+		if(key=="all"){
+			mySubs = [];
+		}else{
+			remove(mySubs, key);
+		}
+		
+		$.jStorage.set(mySubsKey, mySubs);
+	}
+	
+	function remove(arr, what){
+    		var found = arr.indexOf(what);
+
+    		while (found !== -1) {
+    			arr.splice(found, 1);
+			    found = arr.indexOf(what);
+    		}
+	}
+	
+	function viewSubs( v ){
+		$("div").css("display","none");
+		
+		if(v){
+			for(i=0; i<mySubs.length; i++){
+				showClass( mySubs[i] );
+			}
+			$("#sub-view").attr("href","javascript:viewSubs(false)");
+			$("#sub-view .link-title").html("reset view");
+		}else{
+			resetShowClass();
+			$("#sub-view").attr("href","javascript:viewSubs(true)");
+			$("#sub-view .link-title").html("just subs");
+		}
+	}
+	
+	function initBoxes(){
+		$("input[type=checkbox]").prop("checked",false);
+		
+		if($.inArray("humv",mySubs)>-1){
+			$("#humv-box").prop("checked",true);
+		}
+		if($.inArray("humc",mySubs)>-1){
+			$("#humc-box").prop("checked",true);
+		}
+		if($.inArray("span",mySubs)>-1){
+			$("#span-box").prop("checked",true);
+		}
+		if($.inArray("mathk",mySubs)>-1){
+			$("#mathk-box").prop("checked",true);
+		}
+		if($.inArray("mathcw",mySubs)>-1){
+			$("#mathcw-box").prop("checked",true);
+		}
+		if($.inArray("sci",mySubs)>-1){
+			$("#sci-box").prop("checked",true);
+		}
+		if($.inArray("lat",mySubs)>-1){
+			$("#lat-box").prop("checked",true);
+		}
+		if($.inArray("mun",mySubs)>-1){
+			$("#mun-box").prop("checked",true);
+		}
+	}
+	
+	$("#humv-box").click(function(){
+		if(this.checked){
+			addSub("humv");
+		}else{
+			delSub("humv");
+		}
+	});
+	$("#humc-box").click(function(){
+		if(this.checked){
+			addSub("humc");
+		}else{
+			delSub("humc");
+		}
+	});
+	$("#span-box").click(function(){
+		if(this.checked){
+			addSub("span");
+		}else{
+			delSub("span");
+		}
+	});
+	$("#mathk-box").click(function(){
+		if(this.checked){
+			addSub("mathk");
+		}else{
+			delSub("mathk");
+		}
+	});
+	$("#mathcw-box").click(function(){
+		if(this.checked){
+			addSub("mathcw");
+		}else{
+			delSub("mathcw");
+		}
+	});
+	$("#sci-box").click(function(){
+		if(this.checked){
+			addSub("sci");
+		}else{
+			delSub("sci");
+		}
+	});
+	$("#lat-box").click(function(){
+		if(this.checked){
+			addSub("lat");
+		}else{
+			delSub("lat");
+		}
+	});
+	$("#mun-box").click(function(){
+		if(this.checked){
+			addSub("mun");
+		}else{
+			delSub("mun");
+		}
+	});
+	
+	
+//  humv	#4B8AE3
+//  humc	#4343E6
+//  span	#00007F
+//  mathk 	#C321EB
+//  mathc	 #369E19
+//  sci 	#EB9721
+//  lat		#B20000
+//  mun		#282828
+
+	function showClass( key ){
+		if(key == "mathk"){
+			$("div.mathk").css("display","");
+		}
+		if(key == "mathcw"){
+			$("div.mathcw").css("display","");
+		}
+		if(key == "humv"){
+			$("div.humv").css("display","");
+		}
+		if(key == "humc"){
+			$("div.humc").css("display","");
+		}
+		if(key == "span"){
+			$("div.span").css("display","");
+		}
+		if(key == "lat"){
+			$("div.lat").css("display","");
+		}
+		if(key == "sci"){
+			$("div.sci").css("display","");
+		}
+	}
+
+	function showJustClass( key ){
+		$("div").css("display","none");
+		$("hr").css("display","none");
+		
+		key = key.toLowerCase();
+		
+		if(key == "mathk"){
+			$("div.mathk").css("display","");
+			return;
+		}else if(key == "mathcw"){
+			$("div.mathcw").css("display","");
+			return;
+		}else if(key == "humv"){
+			$("div.humv").css("display","");
+			return;
+		}else if(key == "humc"){
+			$("div.humc").css("display","");
+			return;
+		}else if(key == "span"){
+			$("div.span").css("display","");
+			return;
+		}else if(key == "lat"){
+			$("div.lat").css("display","");
+			return;
+		}else if(key == "sci"){
+			$("div.sci").css("display","");
+			return;
+		}
+	}
+	
+	function resetShowClass(){
+		$("div").css("display","");
+		$("hr").css("display","");
+	}
+	
+	function popout(){
+		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
+	}
+	
+	var today, tomorrow, todayDDay, nextClass;
+	var listener = new window.keypress.Listener();
+	
+	var keyCombos;
+	
+	var aClicked = false;
+	
+	function bodyOnload(){
+		checkForArgs();
+		updateLayout();
+		
+		today = moment().format("M/D/YY");
+		todayDDay = moment().format("M/DD/YY");
+		
+		var rawDate = new Date();
+		tomorrow = moment().format("M/"+(Number(rawDate.getDate())+1)+"/YY");
+		
+		//sunday to thursday
+		if(Number(moment().format("d"))<5){
+			nextClass = moment(Date.parse("tomorrow")).format("M/D/YY");
+		//friday to saturday
+		}else{
+			nextClass = moment(Date.parse("next monday")).format("M/D/YY");
+		}
+		
+		$("#date").attr("placeholder", nextClass);
+		
+		//$("#lastModified").attr("title", document.lastModified);
+		//jQuery("abbr.timeago").timeago();
+		
+		reDraw();
+		specificView( getQueryVariable("v") );
+		
+		writeClassTags();
+		colorize();
+		stylizeText();
+	
+		initBoxes();
+		initStrikes();
+		initLinkDetector();	
+		
+		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
+		eval(keyCombos);
+		
+		listener.counting_combo("alt c", function(e, count) {openCmd();});
+		
+		reDraw();
+	}
+	
+	jQuery.fn.exists = function(){return this.length>0;}
+	
+	$(window).resize(function(){
+		if(!bugreps){updateLayout();}
+	});
+	
+	$("div").click(function(){
+		var key = $(this).find(".class").html();
+		var task = $(this).find(".task").html();
+		var date = $(this).find(".date").html();
+		
+		task = $.trim(task);
+		
+		var val = task+"@"+date;
+		
+		//create ghost
+		$('<div class="ghost"></div>').css({
+			"left"   : $(this).offset().left,
+			"top"    : $(this).offset().top,
+			"width"  : $(this).width(),
+			"height" : $(this).height(),
+		}).appendTo("body");
+		
+		//animate ghost to after last row
+		$(".ghost").animate({
+			left     : $("tr:last").offset().left,
+			top      : $(".taskL:first").offset().top,
+			width    : $("tr:last").width(),
+			height   : $("tr:last").height()
+		}, 300, function(){
+			$(".ghost").fadeOut(function(){
+				$(".ghost").remove();
+			});
+		});
+
+		if(!aClicked){ $.jStorage.set( key, val ); }
+		reDraw();
+	});
+	
+	$("div").hover(
+		function() {
+			$(this).css("background-color","#D1D1D1");
+		}, function() {
+			$(this).css("background-color","");
+			colorize();
+  	});
+	
+	function initStrikes(){
+		
+		$(".mystack-entry").click(function(){
+			if( $(this).css("text-decoration")=="line-through" ){
+				$(this).css("text-decoration","none");
+				colorize();
+				return;
+			}else{
+				$(this).css("text-decoration","line-through");
+				colorize();
+				return;
+			}
+		});
+	}
+	
+	function initLinkDetector(){
+		$("a")
+		.mouseout(function(){
+			aClicked = false;
+		})
+		.mousedown(function(){
+			aClicked = true;
+		});
+	}
+	
+	function updateLayout(){
+		if ($(window).width() <= 1412){	
+			$( ".link-title" ).css( "display", "none" );
+			$( "#ribbon" ).css( "display", "none" );
+		}else{
+			$( ".link-title" ).css( "display", "" );
+			$( "#ribbon" ).css( "display", "" );
+		}
+		
+		if($(window).width() <= 1543){
+			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
+		}else{
+			$(".js-br").remove();
+		}
+		
+		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 60)+"%";
+		$("#wrapper").css("width", wrapperWidth);
+	}
+	
+	$.expr[":"].contains = $.expr.createPseudo(function(arg){
+    	return function( elem ) {
+        	return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+		};
+	});
+	
+	function showBugReps(){
+		bugreps = true;
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA60lEQVQ4T2O0dfX97/BkKQMMHPlaB2bacDfBxbAxDshEg4UZQQaAGOiGwAzAZyDIELgB2AxBdgnIIJihMNtRXMByU5nhj/pdFJeAFMA0ohsAcjGKC0ACIEXYDEEPA5BGkIX7H01gRPECSBA58JBtRTYEZACGC/AFJDYXwMSwBiK2AIPFEnIAHt69GdULMEXoToc5GWQrzACQZke5gv8YLsDmb2RNyOmm+TofpgtwBRy67TCDCIYBriiERTdRXoAZAvMKLNGhpETkaIR5AznEYYbA4h/ExxsLIAUgZ+IDIMPwZiZ0A2BRBxMH8QEi/sN9xNVAQAAAAABJRU5ErkJggg==">');
+
+		
+		$("#mystack-wrapper, #thestack-wrapper").css("height", "710px");
+		$("td").contents().fadeOut();
+		$("td:not([id=bugreports-wrapper])").empty();
+		$("#bugreports-wrapper").show();
+		$("#wrapper").animate({width: "100%"}, 3000, function(){
+			adjLayoutForBugReps();
+		});
+		$("#mystack-wrapper, #thestack-wrapper").animate({width: "10%"}, 100);
+		$("#bugreports-wrapper").animate({width: "80%"}, 700, function(){
+			$("#bugreports-wrapper").append("<iframe src='cube.html' seamless='seamless' frameborder='0' id='cube'></iframe>");
+		});
+		
+		console.log("bug reports?");
+		
+		$("body").css("background","#10021F url(https://31.media.tumblr.com/e687c9bb9f09db0593437974939cc01b/tumblr_myozmfXS8E1spy7ono1_1280.gif)");
+		$("#tiny-header").fadeOut("fast");
+	}
+	
+	function adjLayoutForBugReps(){
+		$("#wrapper").animate({top: "0px"}, 100);
+		$("#bugreports-wrapper").css("left","10%");
+		$("#bugreports-wrapper").animate({top: "30px"}, 100);
+		$("#thestack-wrapper").css("left", "0px");
+		$("#mystack-wrapper").css("right", "0px");
+		$("#mystack-wrapper, #thestack-wrapper").css("position", "absolute");
+		
+		takeOff();
+	}
+	
+	function takeOff(){
+		$("body").append('<audio autoplay id="rocket-sound"><source src="https://dl.dropboxusercontent.com/s/ea4hwius6flfu2y/rocket_sound.mp3" type="audio/mpeg"></audio>');
+		for(i=0; i<20; i++){
+			$("#mystack-wrapper, #thestack-wrapper").effect("shake");
+		}
+		$("#mystack-wrapper, #thestack-wrapper").effect("bounce", null, 400, function(){
+			$("#rocket-sound").animate({volume: '0'}, 1000, function(){
+				$("#rocket-sound").remove();
+				$("#cube").animate({height:'460px', top:'140px'}, 1000, function(){
+					$(".titles").hide();
+					playIntro();
+				});
+			});
+		});
+	}
+	
+	function playIntro(){
+		$("#titles-intro").fadeIn(400, function(){
+			$("#titles-intro").typed({
+				strings: [
+				
+				"Hello.",
+				"You're not in Kansas anymore, evidently.",
+				"Looks like you won, I guess.",
+				"Where are my manners?",
+				"My name is NARRATOR.",
+				"I pretty much run the show around here, if you know what I mean.",
+				'And by "here", I mean the universe.',
+				"No, I'm not God.",
+				"I see him at reunions, though.",
+				"I know what you'd like.",
+				"I usually don't encounter kids poking around on a middle school homework website,",
+				"but now that I have, I know something you might be interested in.",
+				"A space station.",
+				"Like a big space station.",
+				"Space stations are lots of fun, you know.",
+				"I'm not really sure what to use it for.  I just get other people to use it for me.",
+				"Does a pest like you know what to do with it?",
+				"       ",
+				"Hm?",
+				"Seriously.",
+				"Fool, get in here."
+				
+				],
+				backDelay: 1500,
+				callback: function(){
+					narrLink("enterStation()");
+				}
+			});
+		});
+	}
+	
+	function enterStation(){ //should look like the deathstar
+		//animate the color change to dark, dark grey (match the death star) of #thestack-wrapper and #mystack-wrapper
+		//animate the "extreme" rounding of the corners of #thestack-wrapper and #mystack-wrapper
+		//animate the slight contraction of #bugreports-wrapper, keep #cube completely in view, able to spin freely
+		
+		//NOTE: have the bounding box of the elements be square, with reponsive values (use percentages)
+		
+		createOverlay();
+		
+		setTimeout(function(){
+			$("body").css("background","#000 url(http://hdwallpapersdesign.com/wp-content/uploads/2013/05/star-wars-wallpaper-73.jpg)");
+			
+			$("#thestack-wrapper").css("border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-moz-border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-webkit-border-radius","400px 10px 10px 400px");
+			$("#thestack-wrapper").css("-khtml-border-radius","400px 10px 10px 400px");
+			
+			$("#mystack-wrapper").css("border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-moz-border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-webkit-border-radius","10px 400px 400px 10px");
+			$("#mystack-wrapper").css("-khtml-border-radius","10px 400px 400px 10px");
+			
+			$("#wrapper").css("width","60%");
+			$("#bugreports-wrapper").attr("style","width: 80%; height: 700px; position: relative;");
+			
+			$("#thestack-wrapper, #mystack-wrapper").css("background-color","#292929");
+			
+			removeOverlay();
+			
+			$("#titles-station").fadeIn(400, function(){
+				$("#titles-station").typed({
+					strings: [
+					
+					"Do you like it?"
+					
+					],
+					backDelay: 1500,
+					callback: function(){
+						//narrLink("")
+					}
+				});
+			});
+		},2500);
+	}
+	
+	function landingCrew(){
+		$("body").attr("style","background: #D45D22");
+		setTimeout(function(){
+			$("#wrapper").animate({width: "60%"}, 3000, function(){
+				//next
+			});
+			$("#mystack-wrapper, #thestack-wrapper").animate({width: "30%"}, 100);
+			$("#bugreports-wrapper").animate({width: "0px"}, 700);
+		},500);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	
+	function narrLink( js ){
+		$("#bugreports-wrapper").css("cursor","pointer");
+		$("#bugreports-wrapper").attr("onclick", js+";resetNarrLink();$('.titles').fadeOut(400);" );
+		$(".titles").css("text-decoration","underline");
+	}
+	
+	function resetNarrLink(){
+		$("#bugreports-wrapper").css("cursor","");
+		$("#bugreports-wrapper").attr("onclick","");
+		$(".titles").css("text-decoration","");
+		
+	}
+	
+	function createOverlay(){
+		$("body").append("<section id='overlay' style='display: none;'></section>");
+		$("#overlay").fadeIn(400);
+	}
+	
+	function removeOverlay(){
+		$("#overlay").fadeOut(400, function(){$("#overlay").remove();});
+	}
+	
+	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
+
+	function add(){
+		var key = $("#key").val();
+		var task = $("#task").val();
+		var date = $("#date").val();
+		
+		if(key.contains("^")){
+			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+		}
+		if(!key){
+			alert("Woops!  :I  Class must be specified!");
+			$("#key").focus();
+			return;
+		}
+		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+		
+		//markdown support
+		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>$1</b>' );
+  		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>$1</i>' );
+		task = task.replace(/<a href="(\S+)">(\S+)[^<]*<\/a>/gm, '[$2]($1)');
+		//
+		
+		date = (date.contains("on the morrow") ? "tomorrow" : date);
+		if(date.contains("next weekday")){
+			//sunday to thursday
+			if(Number(moment().format("d"))<5){
+				date = "tomorrow";
+			//friday to saturday
+			}else{
+				date = "next monday";
+			}
+		}
+		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
+			date = moment(Date.parse(date)).format("M/D/YY");
+		}
+		
+		$("#key").val('');
+		$("#task").val('');
+		$("#date").val('');
+		
+		$.jStorage.set(key, task+"@"+date);
+		
+		reDraw();
+		
+		$("#key").focus();
+	}
+	
+	function argsAdd( key, task, date ){
+		key = unescape(key);
+		key = (key.substring(0,1) == "#" || key.substring(0,1) == "<" ? key : "#"+key);
+		if(key.contains("^")){
+			key = key.split("^")[0] + '<sup>' + key.split("^")[1] + '</sup>';
+		}
+		
+		//markdown support
+		task = task.replace( /\*(\S(.*?\S)?)\*/gm, '<b>'+$.trim('$1')+'</b>' );
+		task = task.replace( /_(\S(.*?\S)?)_/gm, '<i>'+$.trim('$1')+'</i>' );
+		task = task.replace(/<a href="(\S+)">(\S+)*[^<]<\/a>/gm, '[$2]($1)');
+		//WIP
+		/*
+		task = task.replace( /<b>(.*)<\/b>/gm, '<b>'+$.trim('$1')+'</b>' );
+		task = task.replace( /<i>(.*)<\/i>/gm, '<i>'+$.trim('$1')+'</i>' );
+		//*/
+		
+		task = unescape(task);
+		date = unescape(date);
+		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
+			date = moment(Date.parse(date)).format("M/D/YY");
+		}
+		date = (date.contains("on the morrow") ? "tomorrow" : date);
+		if(date.contains("next class")){
+			//sunday to thursday
+			if(Number(moment().format("d"))<5){
+				date = "tomorrow";
+			//friday to saturday
+			}else{
+				date = "next monday";
+			}
+		}
+		
+		$.jStorage.set(key, task+"@"+date);
+		
+		reDraw();
+	}
+
+	function flush_data(){
+		var delKey;
+		for(i=0; i<$.jStorage.index().length; i++){
+			//makes sure not to delete any of mySubs
+			delKey = $.jStorage.index()[i]!=mySubsKey ? $.jStorage.index()[i] : "cookies fo you";
+			$.jStorage.deleteKey( delKey );
+		}
+		reDraw();
+	}
+
+	function delTask( key ){
+		$.jStorage.deleteKey( key.toString() );
+		reDraw();
+		
+		//WIP: eliminate need for reDraw() in cases like this
+		//$(".mystack-entry:contains("+key+")")
+	}
+	
+	function editTask ( key ){
+		$("#key").val( key );
+		var val = $.jStorage.get(key).split("@");
+		
+		//markdown support
+		var task = val[0];
+		task = task.replace( /<b>(\S(.*?\S)?)<\/b>/gm, '*$1*' );
+		task = task.replace( /<i>(\S(.*?\S)?)<\/i>/gm, '_$1_' );
+		task = task.replace( /<a href="(\S+)">(.+)[^<]*<\/a>/gm, '[$2]($1)' );
+		
+		//emoji support
+		task = task.replace( /<img title="(.+)" class="emoji".+><\/img>/, '$1' );
+		
+		$("#task").val( task );
+		$("#date").val( val[1] );
+		$("#task").focus();
+	}
+
+	function reDraw(){
+				
+		var key, task, date, row, delHref, editHref, valArray;
+		
+		//$("#empty-img").remove();
+
+		//clears old list before drawing new one
+		$("#tasks").empty();
+	
+		for(i=0; i<($.jStorage.index().length); i++){
+			key = $.jStorage.index()[i];
+			if(key!=mySubsKey && key!=infoKey){
+				val = $.jStorage.get(key).toString().split("@");
+				
+				task = unescape( val[0] );
+				task = task.replace(/\[(\S+)]\((\S+)\)/, "<a href='$2'>$1</a>");
+				date = unescape( val[1] );
+	
+				delHref = "javascript:delTask('"+key+"')";
+				editHref = "javascript:editTask('"+key+"')";
+				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+			
+				$( "#tasks" ).prepend( $row );
+			}
+		}
+		
+		colorize();
+		runEmojify();
+		
+		//UGLY
+		/*if( !($("#mystack-table:has(.taskL)").exists() ) ){
+			$("#empty-img-sect").append("<table id='empty-img'><tr><td><img style='zoom:1;filter:alpha(opacity=50);opacity:0.5;' src='http://www.clker.com/cliparts/h/H/m/7/9/J/empty-shoe-box-md.png' /></td></tr></table>");
+		}*/
+	}
+	
+	function clearInputs(){
+		$("#key").val('');
+		$("#task").val('');
+		$("#date").val('');
+	}
+	
+	$("#task, #key, #date").keypress(function(e){
+  		if(e.which==13){
+  			add();
+  			return false;
+  		}
+	});
+	
+	function writeClassTags(){
+		$("div").each(function(){
+			if( !$(this).find(".class").exists() ){
+				$(this).find(".date").after('&nbsp;<span class="class"></span>');
+			}
+		});
+		
+		$(".humv").find(".class").text("#HumVaughan");
+		$(".humc").find(".class").text("#HumCadigan");
+		$(".span").find(".class").text("#Span");
+		$(".mathk").find(".class").text("#MathKramer");
+		
+		$(".mathcw").find(".class").text("#MathCW");
+		$(".mathc").find(".class").text("#MathCW");
+		
+		$(".sci").find(".class").text("#Sci");
+		$(".lat").find(".class").text("#Lat");
+		$(".mun").find(".class").text("#MUN");
+		
+		colorize();
+	}
+	
+	function colorize(){
+		//colors entry tags
+		$( "span:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( "span:contains('#humc')" ).css( "color", "#4343E6" );
+		$( "span:contains('#span')" ).css( "color", "#00007F" );
+		$( "span:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( "span:contains('#mathc')" ).css( "color", "#369E19" );
+		$( "span:contains('#sci')" ).css( "color", "#EB9721" );
+		$( "span:contains('#lat')" ).css( "color", "#B20000" );
+		$( "span:contains('#mun')" ).css( "color", "#282828");
+		
+		//colors task tags 
+		$( ".class:contains('#humv')" ).css( "color", "#4B8AE3" );
+		$( ".class:contains('#humc')" ).css( "color", "#4343E6" );
+		$( ".class:contains('#span')" ).css( "color", "#00007F" );
+		$( ".class:contains('#mathk')" ).css( "color", "#C321EB" );
+		$( ".class:contains('#mathc')" ).css( "color", "#369E19" );
+		$( ".class:contains('#sci')" ).css( "color", "#EB9721" );
+		$( ".class:contains('#lat')" ).css( "color", "#B20000" );
+		$( ".class:contains('#mun')" ).css( "color", "#282828");
+		
+		//colors entries due today
+		$("div:contains("+today+")").css("background-color","#EBD754");
+		//colors tasks due today
+		$("td[id!=mystack-wrapper]:contains("+today+")").css("background-color","#EBD754");
+
+		$("div:contains("+todayDDay+")").css("background-color","#EBD754");
+		$("td[id!=mystack-wrapper]:contains("+todayDDay+")").css("background-color","#EBD754");
+	
+		//colors entries due tomorrow
+		$("div:contains("+tomorrow+")").css("background-color","#A7DE7A");
+		//colors tasks due tomorrow
+		$("td[id!=mystack-wrapper]:contains("+tomorrow+")").css("background-color","#A7DE7A");
+	
+		$("#thestack-wrapper").css("background-color","#DDDDDD");
+		
+		/*$(".mystack-entry").each(function(){
+			if( $(this).attr("style").contains("line-through") ){ $(this).css("background-color","#BFBFBF"); }
+		});*/
+	}
+	
+	function runEmojify(){
+		emojify.setConfig({
+			emojify_tag_type : 'html',
+			only_crawl_id    : null,
+			img_dir          : 'http://hassankhan.github.io/emojify.js/images/emoji/',
+			ignored_tags     : {
+				'SCRIPT'  : 1,
+				'TEXTAREA': 1,
+				'INPUT'   : 1,
+				'PRE'     : 1,
+				'CODE'    : 1
+			}
+		});
+		emojify.run();
+	}
+	
+	//.replaceText is not working for some reason... ?
+	function stylizeText(){
+		//$("body *").replaceText( /&/gi, '<b class="amp">' + '&' + '</b>' );
+		$("#mystack-table").autoLinks();
+	}
+	
+	$.fn.autoLinks = function() {
+		this.each(function() {
+			$(this).html(
+				$(this).html()
+					.replace(/((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi,'<a href="$1">$1</a>')
+					.replace(/(^|\s)#(\w+)/g,'$1<a href="javascript:showJustClass('+"'"+'$2'+"'"+')">#$2</a>')
+					//.replace(/(^|\s)@(\w+)/g,'$1<a href="http://twitter.com/$2">@$2</a>')
+			);
+		});
+		return $(this);
+	}
+	
+	$.fn.outerHTML = function(){
+		// IE, Chrome & Safari will comply with the non-standard outerHTML, all others (FF) will have a fall-back for cloning
+		return (!this.length) ? this : (this[0].outerHTML || (
+		function(el){
+			var div = document.createElement('div');
+			div.appendChild(el.cloneNode(true));
+			var contents = div.innerHTML;
+			div = null;
+			return contents;
+		})(this[0]));
+	};
+	
+	function specificView( type ){
+		if(type=="tS"){ //just theStack
+			$( "#thestack-wrapper" ).css( "display", "" );
+			$( "#mystack-wrapper" ).css( "display", "none" );
+			
+			if( getQueryVariable("r") != "no" ) {
+				$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
+			} else {
+				$("#sel-view-tS").css("display", "none");
+			}
+
+		}else if(type=="mS"){ //just myStack
+			$( "#thestack-wrapper" ).css( "display", "none" );
+			$( "#mystack-wrapper" ).css( "display", "" );
+			
+			if( getQueryVariable("r") != "no" ) {
+				$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
+			} else {
+    			$("#sel-view-mS").css("display", "none");
+			}
+		}
+	}
+	
+	function resetView(){
+		$( "#thestack-wrapper" ).css( "display", "" );
+		$( "#mystack-wrapper" ).css( "display", "" );
+	}
+	
+	function checkForArgs() {
+		var k = getQueryVariable('k');
+		var t = getQueryVariable('t');
+		var d = getQueryVariable('d');
+		if((k && t) && d){
+			argsAdd(k, t, d);
+			
+			var state = {
+				"yoloCuzICan": true
+			};
+			history.pushState(state, "hwStack", "http://hwstack.github.io/");
+		}
+		
+		var c = getQueryVariable('chat');
+		if(c){ showChat(c); }
+		
+		var pc = getQueryVariable('pc');
+		if(pc){ showPrivateChat(); }
+	}
+	
+	function getQueryVariable( variable ){
+		var query = window.location.search.substring(1);
+		var vars = query.split("+");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	</script>
+	
+	<script type="text/javascript" id="command-scripts">
+	function openCmd(){
+		var command = prompt("Run Command...");
+		if(command!=""){runCmd(command);}
+	}
+	
+	function runCmd( c ){
+		c = c.toString().toLowerCase();
+		
+		//command: chat [channel]
+		if(c.substr(0,5)=='chat '){
+			showChat(c.substr(5,696969));
+			return;
+		}else if(c.substr(0,4)=='chat'){
+			showChat('hwstack');
+			return;
+		}else if(c.substr(0,11)=='pchat'){
+			showPrivateChat();
+			return;
+		}else if(c=='totalrehab'){
+			totalrehab();
+			return;
+		}else if(c=='showbugreps'){
+			showBugReps();
+			return;
+		}else if(c.substring(0,5)=='echo '){
+			alert(c.substring(5,696969));
+			return;
+		}else if(c=='hwstack'){
+			return;
+		}else if(c=='mytasks'){
+			alert('Fool, that is soooooooooo january');
+			return;
+		}else if(c=='command'){
+			alert("Yep, that's what this window processes. Might want to execute one.");
+			return;
+		}else if(c=='easteregg'){
+			alert('Try running "showbugreps" in this command window.');
+			return;
+		}else if(c.substring(0,5)=='flush'){
+			var umad = confirm("umadbro?");
+			if(!umadbro){flush_data();}
+			return;
+		}else if(c.contains("get classy")){
+			$("*").css("font-family","monospace");
+			$(".fa").css("font-family","");
+			return;
+		}else{
+			alert('"'+c+'" is not recognized as an internal or external command, operable program or batch file."');
+		}
+	}
+	
+	function showChat( channel ){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#tlkio").remove();
+		$("#chatstep").remove();
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="chat-icon" type="image/png" href="http://tlk.io/images/favicon.png">');
+		
+		$("body").append('<div id="tlkio" data-channel="'+channel+'" data-theme="https://rawgithub.com/hwstack/hwstack.github.io/master/chatStyle.css" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		var tlkio = $("#tlkio"),
+		css_path = tlkio.attr("data-theme"),
+		channel_name = tlkio.attr("data-channel");
+		
+		tlkio.append("<iframe src='http://embed.tlk.io/"+channel_name+"?custom_css_path="+css_path+"' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;padding:0px;'></iframe>");
+		
+		$("#tlkio").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
+	}
+	
+	function showPrivateChat(){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#chatstep").remove();
+		$("#tlkio").remove();
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="pchat-icon" type="image/png" href="https://chatstep.com/image/lock.png">');
+		
+		$("body").append('<div id="chatstep" style="padding:0px;width:100%;height:100%;display:none;"></table>');
+		
+		var chatstep = $("#chatstep");
+		
+		chatstep.append("<iframe src='http://chatstep.com' width='100%' height='100%' frameborder='0' style='margin-bottom:-8px;overflow:none;-webkit-overflow-scrolling:touch;padding:0px;'></iframe>");
+		
+		$("#chatstep").fadeIn("fast",function(){/*Animation complete.*/});
+		
+		$("body").css("margin","0px");
+		bodyOnload();
+	}
+	
+	Element.prototype.prependChild = function(child) { this.insertBefore(child, this.firstChild); };
+	
+	function showMailFeed(){
+		$("#wrapper").fadeOut("fast",function(){/*Animation complete.*/});
+		$("#mail-feed").remove();
+		
+		$("*[id$=-icon]").remove();
+		$("head").append('<link rel="icon" id="mail-feed-icon" type="image/png" href="https://mail.google.com/mail/u/0/images/favicon.ico">');
+		$("body").append('<div id="mail-feed" style="padding:0px;width:100%;height:100%;display:none;"></div>');
+		
+		$.ajax({
+			type: "GET",
+			url: "https://mail.google.com/mail/u/1/feed/atom",
+			dataType: "xml",
+			success: function(xml) {
+				$(xml).find('entry').each(function(){
+					var title = $(this).find('title').text();
+					var summary = $(this).find('summary').text();
+					$("#mail-feed").append("<div class='mail-entry'><h3>"+title+"</h3><p>"+summary+"</p></div>");
+				});
+			}
+		});
+	}
+	</script>
+	
+	<script type="text/javascript">
+	
+	Array.prototype.move = function (old_index, new_index){
+		if (new_index >= this.length) {
+			var k = new_index - this.length;
+			while ((k--) + 1) {
+				this.push(undefined);
+			}
+		}
+		this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+		return this; // for testing purposes
+	};
+	
+	//WIP
+	/*function moveTaskUp(key){
+		//var index = $.jStorage.index().indexOf(key);
+		val = $.jStorage.get(key).toString().split("@");
+		task = unescape( val[0] );
+		date = unescape( val[1] );
+	}*/
+function showStats(){
+	/*var jason =
+		{
+				{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
+				{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
+		};*/
+	
+	
+}
+
+/*$(".showToday").click(function(){
+	$("[data-entry-type=today]").remove();
+	$("div, hr").show();
+	
+	$(this).text("feed");
+	$(this).attr("class","pure-button showFeed");
+});
+
+$(".showFeed").click(function(){
+	$("div, hr").hide();
+	
+	var tList = $("hr:first").prevAll("div");
+	tList.attr("data-entry-type","today");
+	
+	tList.css("display","");
+	
+	$("#thestack-wrapper").append(tList);
+	
+	$(this).text("today");
+	$(this).attr("class","pure-button showToday");
+});*/
+
+</script>
+
+</body>
+</html>
