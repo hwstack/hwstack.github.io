@@ -91,6 +91,8 @@ input {
   height: 40px;
   border: none;
   outline: none;
+  font-family: 'Alef', sans-serif;
+  font-size: 1em;
 }
 
 /*.tiny-header {
