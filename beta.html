@@ -491,6 +491,11 @@ function parseInfo(){
 	var aClicked = false;
 	
 	function bodyOnload(){
+		var state = {
+			"yoloCuzICan": true
+		};
+		history.pushState(state, "hwStack", "http://hwstack.github.io/");
+		
 		drawEntries('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
 		init();
 	}
