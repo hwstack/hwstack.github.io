@@ -1080,6 +1080,25 @@ function parseInfo(){
 		})(this[0]));
 	};
 	
+	function updateLayout(){
+		if ($(window).width() <= 1412){	
+			$( ".link-title" ).css( "display", "none" );
+			$( "#ribbon" ).css( "display", "none" );
+		}else{
+			$( ".link-title" ).css( "display", "" );
+			$( "#ribbon" ).css( "display", "" );
+		}
+		
+		if($(window).width() <= 1543){
+			if( !($(".js-br").exists()) ){ $("#boxes").before("<br class='js-br' />"); }
+		}else{
+			$(".js-br").remove();
+		}
+		
+		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 100)+"%";
+		$("#wrapper").css("width", wrapperWidth);
+	}
+	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
 			$( "#thestack-wrapper" ).css( "display", "" );
