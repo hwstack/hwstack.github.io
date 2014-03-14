@@ -217,10 +217,8 @@ function drawData(url, dataType){
 		}
 	});
 }
-	
-function round(n) {
-    return Math.round(n * 100) / 100;
-}
+
+$( document ).ajaxComplete(function(){
 
 var bugreps = false;
 
@@ -1338,6 +1336,8 @@ $(".showFeed").click(function(){
 	$(this).text("today");
 	$(this).attr("class","pure-button showToday");
 });*/
+
+});
 
 </script>
 
