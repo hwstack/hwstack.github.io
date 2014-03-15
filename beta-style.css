@@ -150,9 +150,9 @@ pre {
 }
 
 #boxes {
-	position:relative;
-	top:12px;
-	padding-bottom:12px;
+	position: relative;
+	top: 16px;
+	padding-bottom: 16px;
 }
 
 #overlay {
