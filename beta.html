@@ -137,7 +137,7 @@ Add functionality for moving around tasks.  :S
 	  </span>
   	  <br />
   	  
-  	  <small align="center">updated <span id="lastModified"></span></small>
+  	  <!--<small align="center">updated <span id="lastModified"></span></small>-->
   </nav>
   
   
@@ -218,7 +218,8 @@ function drawEntries(url, dataType){
 			});
 			$("#circularG").remove();
 			
-			$("#lastModified").text(moment(xml.lastModified).fromNow());
+			//borked b/c ajax counts as modifying the xml doc
+			//$("#lastModified").text(moment(xml.lastModified).fromNow());
 			
 			init();
 		},
@@ -519,7 +520,7 @@ function parseInfo(){
 		};
 		history.pushState(state, "hwStack", "http://hwstack.github.io/");
 		
-		drawEntries('https://rawgithub.com/hwstack/hwstack.github.io/master/grade7.xml', 'xml');
+		drawEntries('grade7.xml', 'xml');
 		init();
 	}
 	
