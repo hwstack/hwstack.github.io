@@ -218,7 +218,7 @@ function drawEntries(url, dataType){
 			});
 			$("#circularG").remove();
 			
-			$("#lastModified").text(xml.lastModified);
+			$("#lastModified").text(moment(xml.lastModified).fromNow());
 			
 			init();
 		},
