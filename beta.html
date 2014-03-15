@@ -122,19 +122,26 @@ Add functionality for moving around tasks.  :S
 	  <br />
 	  
 	  <small align="center" style="display:none;font-family:'Alef','sans-serif';margin-bottom:-10px;position:relative;bottom:10px;">&nbsp;&nbsp;last updated <abbr id="lastModified" class="timeago" title=""></abbr></small>
-	  
+	  &nbsp;&nbsp;&nbsp;&nbsp;
+	  <a id="sub-view" target="_blank" href="javascript:viewSubs(true)">
+  		<i class="fa fa-suitcase"></i>&nbsp;&nbsp;
+  		<span class="link-title">just subs</span>
+  	  </a>
+  	  &nbsp;&nbsp;
+	  <span id="boxes">
+  		<input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" id="humv-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" id="humc-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #Span" id="span-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #MathKramer" id="mathk-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #MathCW" id="mathcw-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #Sci" id="sci-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
+  		<input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
+	  </span>
+  	
   </nav>
   
-  <span id="boxes">
-  <input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" id="humv-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" id="humc-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #Span" id="span-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #MathKramer" id="mathk-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #MathCW" id="mathcw-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #Sci" id="sci-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
-  <input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
-  </span>
+  
   
 </td>
 
@@ -208,7 +215,7 @@ function drawEntries(url, dataType){
 				var date = $(this).find('date').text();
 				var key = $(this).find('class').text();
 				var task = $(this).find('task').text();
-				$("#entries").append('<div class='+key.replace("#","")+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
+				$("#entries").append('<div class='+key.replace("#","").substr(0,4).toLowerCase()+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
 			});
 			$("#circularG").remove();
 			init();
