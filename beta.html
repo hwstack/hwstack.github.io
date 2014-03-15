@@ -135,7 +135,9 @@ Add functionality for moving around tasks.  :S
   		<input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
   		<input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
 	  </span>
-  	
+  	  <br />
+  	  
+  	  <small align="center">last modified <span id="lastModified"></span></small>
   </nav>
   
   
@@ -215,6 +217,9 @@ function drawEntries(url, dataType){
 				$("#entries").append('<div class='+key.replace("#","").substr(0,4).toLowerCase()+'><span class="date">'+date+'</span>&nbsp;<span class="class">'+key+'</span><br><span class="task">'+task+'</span></div>');
 			});
 			$("#circularG").remove();
+			
+			$("#lastModified").text(xml.lastModified);
+			
 			init();
 		},
 	});
