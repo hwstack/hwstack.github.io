@@ -60,7 +60,7 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-#tiny-header {
+header {
   position: relative;
   z-index: 1;
   padding: 17px;
