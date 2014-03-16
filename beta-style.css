@@ -58,7 +58,7 @@ span:nth-of-type(3) {
 
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
-  color: #888;
+  /*color: #888;*/
 }
 
 #tiny-header {
@@ -66,9 +66,8 @@ a:link, a:visited, a:hover, a:active {
   z-index: 1;
   padding: 17px;
   color: #000;
+  background-color: #6886A8;
 }
-
-
 
 #key, #task {
   font-style: italic;
