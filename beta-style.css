@@ -37,9 +37,18 @@ span:nth-of-type(3) {
   background-color: #fff;
 }
 
-#thestack-info-bar {
+#thestack-util-row {
+  background-color: #6886A8;
+}
+
+#thestack-util {
   position: relative;
   background-color: #6886A8;
+}
+
+.special-help-kid {
+  position: relative;
+  bottom: 12px;
 }
 
 #mystack-wrapper {
@@ -48,7 +57,11 @@ span:nth-of-type(3) {
   background-color: #fff;
 }
 
-#mystack-info-bar {
+#mystack-util-row {
+  background-color: #6886A8;
+}
+
+#mystack-util {
   position: relative;
   background-color: #6886A8;
 }
@@ -97,7 +110,11 @@ header {
 
 .fa {
   font-size: 0.9em;
-  color: #6886A8;
+  color: #fff;
+}
+
+.link-title {
+  color: #fff;
 }
 
 hr {
@@ -176,8 +193,7 @@ pre {
 
 #boxes {
 	position: relative;
-	top: 16px;
-	padding-bottom: 16px;
+	top: 3px;
 }
 
 #overlay {
