@@ -38,17 +38,21 @@ span:nth-of-type(3) {
 }
 
 #thestack-info-bar {
-  position: fixed;
+  /*position: fixed;
   width: 45%;
   bottom: 12px;
   background-color: #6886A8;
-  border-top: 0.3em solid #526881;
+  border-top: 0.3em solid #526881;*/
+  position: relative;
+  top: 12px;
 }
 
 #mystack-wrapper {
-  width: 45%;
+  /*width: 45%;
   vertical-align: top;
-  background-color: #fff;
+  background-color: #fff;*/
+  position: relative;
+  top: 12px;
 }
 
 #mystack-info-bar {
