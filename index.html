@@ -1120,24 +1120,13 @@ function parseInfo(){
 	
 	function specificView( type ){
 		if(type=="tS"){ //just theStack
-			$( "#thestack-wrapper" ).css( "display", "" );
-			$( "#mystack-wrapper" ).css( "display", "none" );
-			
-			if( getQueryVariable("r") != "no" ) {
-				$( "#sel-view-tS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
-			} else {
-				$("#sel-view-tS").css("display", "none");
-			}
-
+			$( "#thestack-wrapper" ).show();
+			$( "#mystack-wrapper" ).hide()
+			$( "#sel-view-tS" ).replaceWith( "<a href='/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a>" );
 		}else if(type=="mS"){ //just myStack
-			$( "#thestack-wrapper" ).css( "display", "none" );
-			$( "#mystack-wrapper" ).css( "display", "" );
-			
-			if( getQueryVariable("r") != "no" ) {
-				$( "#sel-view-mS" ).replaceWith( "<a style='position:relative;bottom:12px;' href='http://hwstack.github.io/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a><br />" );
-			} else {
-    			$("#sel-view-mS").css("display", "none");
-			}
+			$( "#thestack-wrapper" ).hide();
+			$( "#mystack-wrapper" ).show();
+			$( "#sel-view-mS" ).replaceWith( "<a href='/'><i class='fa fa-arrow-left'></i>&nbsp;return to main view</a>" );
 		}
 	}
 	
