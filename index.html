@@ -83,6 +83,7 @@ Add functionality for moving around tasks.  :S
 	<small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
 	<small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
 	<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
+	<small><a title="Go Back to Old Version" onclick="revertToOld()">Old Version</a></small>
 </section>
 
 <table id="wrapper" width="100%">
@@ -513,10 +514,11 @@ function parseInfo(){
 	var aClicked = false;
 	
 	function bodyOnload(){
-		var state = {
-			"yoloCuzICan": true
-		};
-		//history.pushState(state, "hwStack", "http://hwstack.github.io/");
+		if(document.cookie.split("; ").length==1){
+			document.cookie = "version=default; expires=Thu, 31 Dec 2037 12:00:00 GMT;"
+		}else if(document.cookie.split("; ")[1].split("=")[1]=="old"){
+			window.open("old","_self");
+		}
 		
 		drawEntries('grade7.xml', 'xml');
 		init();
@@ -1299,6 +1301,10 @@ function parseInfo(){
 		task = unescape( val[0] );
 		date = unescape( val[1] );
 	}*/
+	
+	function revertToOld(){
+		document.cookie = "version=old; expires=Thu, 18 Dec 2037 12:00:00 GMT;"
+	}
 
 </script>
 
