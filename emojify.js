@@ -1,3 +1,4 @@
+    /*credit to: dmotz*/
     /* jshint unused:true, browser:true, strict:true */
     /* global define:false */
     (function (global) {
