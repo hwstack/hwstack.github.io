@@ -95,12 +95,6 @@ input {
   font-size: 1em;
 }
 
-/*.tiny-header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}*/
-
 pre {
  white-space: pre-wrap;       /* css-3 */
  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
