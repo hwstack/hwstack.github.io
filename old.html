@@ -83,7 +83,8 @@ Add functionality for moving around tasks.  :S
 <small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
 <small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
 <small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
-<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
+<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>&nbsp;|&nbsp;
+<small><a title="Go Back to New Version" href="javascript:revertToNew()">New Version</a></small>
 	
 </section>
 
@@ -1055,7 +1056,7 @@ function parseInfo(){
 	}
 	
 	function popout(){
-		var popout = window.open("http://hwstack.github.io/?w=100","hwStack","width=570,height=750");
+		var popout = window.open("http://hwstack.github.io/old?w=100","hwStack","width=570,height=750");
 	}
 	
 	var today, tomorrow, todayDDay, nextClass;
@@ -1066,7 +1067,6 @@ function parseInfo(){
 	var aClicked = false;
 	
 	function bodyOnload(){
-		//window.location.replace("/beta");
 		checkForArgs();
 		updateLayout();
 		
@@ -1892,6 +1892,11 @@ $(".showFeed").click(function(){
 	$(this).text("today");
 	$(this).attr("class","pure-button showToday");
 });*/
+
+	function revertToOld(){
+		document.cookie = "version=default; expires=Thu, 18 Dec 2037 12:00:00 GMT;"
+		window.open("/","_self");
+	}
 
 </script>
 
