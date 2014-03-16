@@ -1,5 +1,5 @@
 body {
-  font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: 'Alef', sans-serif;
   background-color: #fff;
   margin: 0;
 }
@@ -58,7 +58,6 @@ span:nth-of-type(3) {
 
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
-  /*color: #888;*/
 }
 
 #tiny-header {
@@ -67,6 +66,12 @@ a:link, a:visited, a:hover, a:active {
   padding: 17px;
   color: #000;
   background-color: #6886A8;
+}
+
+.nav-link {
+  font-size: 1.3em;
+  color: #fff;
+  font-weight: bold;
 }
 
 #key, #task {
