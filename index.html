@@ -100,7 +100,7 @@ Add functionality for moving around tasks.  :S
   	  <!--<small align="center">updated <span id="lastModified"></span></small>-->
 		</nav>
 		</td>
-		<section>
+		<section id="nav">
 			<td class="nav-item"><small><a class="nav-link" title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
 			 		(function(){
 			        	var date = prompt('When is this due?');
@@ -1136,7 +1136,7 @@ function parseInfo(){
 	};
 	
 	function updateLayout(){
-		if ($(window).width() <= 734){	
+		if ($(window).width() <= 1588){	
 			$( ".link-title" ).css( "display", "none" );
 		}else{
 			$( ".link-title" ).css( "display", "" );
