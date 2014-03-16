@@ -17,13 +17,13 @@ div {
 
 /* specific date selector */
 span:nth-of-type(1) {
-  color: #888888;
+  color: #888;
   font-size: 0.9em;
 }
 
 /* specific class tag selector */
 span:nth-of-type(2) {
-  color: #888888;
+  color: #888;
   font-size: 0.9em;
 }
 
@@ -54,6 +54,10 @@ span:nth-of-type(3) {
   width: 100%;
   
   position: relative;
+}
+
+#tiny-header {
+  color: #888;
 }
 
 a:link, a:visited, a:hover, a:active {
