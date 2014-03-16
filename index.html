@@ -66,6 +66,41 @@ Add functionality for moving around tasks.  :S
 <header width="100%">
 	<table align="center">
 		<tr>
+		<td>
+		<!--nav-->
+  		<nav align="left" id="thestack-info-bar">
+  
+		  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
+		  	<i class="fa fa-info"></i>&nbsp;&nbsp;
+		  	<span class="link-title">about</span>
+		  </a>
+		  &nbsp;&nbsp;&nbsp;&nbsp;
+		  <a id="sel-view-tS" href="?v=tS" target="_self">
+	  		<i class="fa fa-user"></i>&nbsp;
+	  		<span class="link-title">just this</span>
+	  	  <a>
+		  &nbsp;&nbsp;&nbsp;&nbsp;
+		  <a id="sub-view" target="_blank" href="javascript:viewSubs(true)">
+	  		<i class="fa fa-suitcase"></i>&nbsp;&nbsp;
+	  		<span class="link-title">just subs</span>
+	  	  </a>
+	  	  &nbsp;&nbsp;
+		  <span id="boxes">
+	  		<input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" id="humv-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" id="humc-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #Span" id="span-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #MathKramer" id="mathk-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #MathCW" id="mathcw-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #Sci" id="sci-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
+	  		<input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
+		  </span>
+	  	  <br />
+  	  
+  	  <!--<small align="center">updated <span id="lastModified"></span></small>-->
+		</nav>
+		</td>
+		<section>
 			<td class="nav-item"><small><a class="nav-link" title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
 			 		(function(){
 			        	var date = prompt('When is this due?');
@@ -86,6 +121,30 @@ Add functionality for moving around tasks.  :S
 			<td class="nav-item"><small><a class="nav-link" title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small></td>
 			<td class="nav-item"><small><a class="nav-link" title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small></td>
 			<td class="nav-item"><small><a class="nav-link" title="Go Back to Old Version" href="javascript:revertToOld()">Old Version</a></small></td>
+		</section>
+		<td>
+			<nav align="right" id="mystack-info-bar">
+			  <a href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
+			  	<i class="fa fa-info"></i>&nbsp;&nbsp;
+			  	<span class="link-title">about</span>
+			  </a>
+			  &nbsp;&nbsp;&nbsp;&nbsp;
+			  <a id="sel-view-mS" href="?v=mS" target="_self">
+		  		<i class="fa fa-user"></i>&nbsp;
+		  		<span class="link-title">just this</span>
+		  	  <a>
+			  &nbsp;&nbsp;&nbsp;&nbsp;
+			  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/dateDocumentation.md">
+			  	<i class="fa fa-calendar-o"></i>&nbsp;
+			  	<span class="link-title">custom dates</span>
+			  </a>
+			  &nbsp;&nbsp;&nbsp;&nbsp;
+			  <a href="javascript:flush_data()">
+			  	<i class="fa fa-fire"></i>&nbsp;
+			  	<span class="link-title">clear</span>
+			  </a>
+  			</nav>
+		</td>
 		</tr>
 	</table>
 </header>
@@ -114,42 +173,6 @@ Add functionality for moving around tasks.  :S
   </section>
   
   <hr />
-  
-  <!--nav-->
-  <nav align="center" id="thestack-info-bar">
-  
-	  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/README.md">
-	  	<i class="fa fa-info"></i>&nbsp;&nbsp;
-	  	<span class="link-title">about</span>
-	  </a>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <a id="sel-view-tS" href="?v=tS" target="_self">
-  		<i class="fa fa-user"></i>&nbsp;
-  		<span class="link-title">just this</span>
-  	  <a>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <a id="sub-view" target="_blank" href="javascript:viewSubs(true)">
-  		<i class="fa fa-suitcase"></i>&nbsp;&nbsp;
-  		<span class="link-title">just subs</span>
-  	  </a>
-  	  &nbsp;&nbsp;
-	  <span id="boxes">
-  		<input type="checkbox" title="subscribe/unsubscribe to #HumVaughan" id="humv-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #HumCadigan" id="humc-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #Span" id="span-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #MathKramer" id="mathk-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #MathCW" id="mathcw-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #Sci" id="sci-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #Lat" id="lat-box" />
-  		<input type="checkbox" title="subscribe/unsubscribe to #MUN" id="mun-box" />
-	  </span>
-  	  <br />
-  	  
-  	  <!--<small align="center">updated <span id="lastModified"></span></small>-->
-  </nav>
-  
-  
-  
 </td>
 
 <!--bug reports column-->
@@ -180,28 +203,6 @@ Add functionality for moving around tasks.  :S
   </table>
   
   <hr />
-  
-  <nav align="center" id="mystack-info-bar">
-	  <a href="https://github.com/hwstack/hwstack.github.io/blob/master/READMEmyStack.md" target="_blank">
-	  	<i class="fa fa-info"></i>&nbsp;&nbsp;
-	  	<span class="link-title">about</span>
-	  </a>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <a id="sel-view-mS" href="?v=mS" target="_self">
-  		<i class="fa fa-user"></i>&nbsp;
-  		<span class="link-title">just this</span>
-  	  <a>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <a target="_blank" href="https://github.com/hwstack/hwstack.github.io/blob/master/dateDocumentation.md">
-	  	<i class="fa fa-calendar-o"></i>&nbsp;
-	  	<span class="link-title">custom dates</span>
-	  </a>
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="javascript:flush_data()">
-	  	<i class="fa fa-fire"></i>&nbsp;
-	  	<span class="link-title">clear</span>
-	  </a>
-  </nav>
   
   <section id="empty-img-sect-disabled">
   	
