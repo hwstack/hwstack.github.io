@@ -38,13 +38,8 @@ span:nth-of-type(3) {
 }
 
 #thestack-info-bar {
-  /*position: fixed;
-  width: 45%;
-  bottom: 12px;
-  background-color: #6886A8;
-  border-top: 0.3em solid #526881;*/
   position: relative;
-  top: 12px;
+  background-color: #6886A8;
 }
 
 #mystack-wrapper {
@@ -54,13 +49,8 @@ span:nth-of-type(3) {
 }
 
 #mystack-info-bar {
-  /*position: fixed;
-  width: 55%;
-  bottom: 12px;
-  background-color: #6886A8;
-  border-top: 0.3em solid #526881;*/
   position: relative;
-  top: 12px;
+  background-color: #6886A8;
 }
 
 #bugreports-wrapper {
