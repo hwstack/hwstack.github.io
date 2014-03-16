@@ -63,10 +63,14 @@ a:link, a:visited, a:hover, a:active {
 header {
   position: relative;
   z-index: 1;
-  padding: 17px;
+  padding: 0.5em;
   color: #000;
   background-color: #6886A8;
   border-bottom: 0.3em solid #526881;
+}
+
+.nav-item {
+  background-color: #6886A8;
 }
 
 .nav-link {
