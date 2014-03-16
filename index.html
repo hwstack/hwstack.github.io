@@ -652,6 +652,14 @@ function parseInfo(){
   					"-khtml-opacity": 0.7,
 					"opacity": 0.7
 				},300);
+			}else{
+				$("header").animate({
+  					"-ms-filter": '"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"',
+  					"filter": "alpha(opacity=100)",
+  					"-moz-opacity": 1,
+  					"-khtml-opacity": 1,
+					"opacity": 1
+				},300);
 			}
 		});
 	}
