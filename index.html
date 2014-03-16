@@ -55,7 +55,7 @@ Add functionality for moving around tasks.  :S
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
 </head>
-<body onload="bodyOnload();">
+<body onload="bodyOnload()">
 
 <!--<label for="1">id=1</label><input type="checkbox" name="1" id="1" onclick="doThing(1);"/><br />
 <label for="2">id=2</label><input type="checkbox" name="2" id="2" onclick="doThing(2);"/><br />
@@ -63,7 +63,7 @@ Add functionality for moving around tasks.  :S
 
 <!--<section id="tiny-header" style="position: absolute;">
 <small style="color:#ff0000">v0.3beta</small>&nbsp;|&nbsp;
-<small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;
+<small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;-->
 <small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
  		(function(){
         	var date = prompt('When is this due?');
@@ -83,7 +83,6 @@ Add functionality for moving around tasks.  :S
 <small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
 <small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
 <small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
--->
 
 </section>
 
@@ -1301,43 +1300,6 @@ function parseInfo(){
 		task = unescape( val[0] );
 		date = unescape( val[1] );
 	}*/
-function showStats(){
-	/*var jason =
-		{
-				{"name": "#HumVaughan", "size": $(".humv > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#HumCadigan", "size": $(".humc > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Span", "size": $(".span > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MathKramer", "size": $(".mathk > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MathCW", "size": $(".mathcw > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Sci", "size": $(".sci > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#Lat", "size": $(".lat > .date:contains("+tomorrow+")").parent().find(".task").length},
-				{"name": "#MUN", "size": $(".mun > .date:contains("+tomorrow+")").parent().find(".task").length},
-		};*/
-	
-	
-}
-
-/*$(".showToday").click(function(){
-	$("[data-entry-type=today]").remove();
-	$("div, hr").show();
-	
-	$(this).text("feed");
-	$(this).attr("class","pure-button showFeed");
-});
-
-$(".showFeed").click(function(){
-	$("div, hr").hide();
-	
-	var tList = $("hr:first").prevAll("div");
-	tList.attr("data-entry-type","today");
-	
-	tList.css("display","");
-	
-	$("#thestack-wrapper").append(tList);
-	
-	$(this).text("today");
-	$(this).attr("class","pure-button showToday");
-});*/
 
 </script>
 
