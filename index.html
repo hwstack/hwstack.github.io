@@ -1137,9 +1137,12 @@ function parseInfo(){
 	
 	function updateLayout(){
 		if ($(window).width() <= 1588){	
-			$( ".link-title" ).css( "display", "none" );
+			$( ".link-title" ).hide();
+			if($(window).width() <= 1153){
+				//do something with [.nav-item]s
+			}
 		}else{
-			$( ".link-title" ).css( "display", "" );
+			$( ".link-title" ).show();
 		}
 		
 		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 100)+"%";
