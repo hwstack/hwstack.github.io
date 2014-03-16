@@ -644,7 +644,7 @@ function parseInfo(){
 	
 	function initFancyHeader(){
 		$(window).scroll(function(){
-			if($(window).scrollTop>48){
+			if($(window).scrollTop()>48){
 				$("header").animate({
   					"-ms-filter": '"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"',
   					"filter": "alpha(opacity=70)",
