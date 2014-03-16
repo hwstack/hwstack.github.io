@@ -64,26 +64,26 @@ Add functionality for moving around tasks.  :S
 <!--<section id="tiny-header" style="position: absolute;">
 <small style="color:#ff0000">v0.3beta</small>&nbsp;|&nbsp;
 <small><a href="http://hwstack.github.io" title="by Cash Cash ft. Bebe Rexha">Take Me Home</a></small>&nbsp;|&nbsp;-->
-<small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
- 		(function(){
-        	var date = prompt('When is this due?');
-        	var task = prompt('What is your task?');
-        	var key = prompt('For which class?');
- 		if(!task) {
- 			alert('Woops!  :I  Task must be specified!');
- 			return;
- 		}else if(!key){
- 			alert('Whoops!  :I  Class must be specified!');
- 			return;
- 		}
- 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
- 		})();
- ">Add Task</a></small>&nbsp;|&nbsp;
-<small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
-<small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
-<small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
-<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
-
+<section id="tiny-header">
+	<small><a title="Bookmarklet v1 :: Drag this into your bookmarks bar to save it!" href="javascript:
+	 		(function(){
+	        	var date = prompt('When is this due?');
+	        	var task = prompt('What is your task?');
+	        	var key = prompt('For which class?');
+	 		if(!task) {
+	 			alert('Woops!  :I  Task must be specified!');
+	 			return;
+	 		}else if(!key){
+	 			alert('Whoops!  :I  Class must be specified!');
+	 			return;
+	 		}
+	 		var myWindow = window.open('http://hwstack.github.io/?k='+escape(key)+'+t='+escape(task)+'+d='+escape(date), 'myWindow');
+	 		})();
+	 ">Add Task</a></small>&nbsp;|&nbsp;
+	<small><a title="Popout" href="javascript:popout()">Popout</a></small>&nbsp;|&nbsp;
+	<small><a title="View Source" href="view-source:http://hwstack.github.io" target="_blank">Source</a></small>&nbsp;|&nbsp;
+	<small><a title="Bug Reports" href="https://github.com/hwstack/hwstack.github.io/issues" target="_blank">Bug Reports</a></small>&nbsp;|&nbsp;
+	<small><a title="Command Reference" href="https://github.com/hwstack/hwstack.github.io/blob/master/commandRef.md" target="_blank">Commands</a></small>
 </section>
 
 <table id="wrapper" width="100%">
