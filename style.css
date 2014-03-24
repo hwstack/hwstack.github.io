@@ -10,13 +10,13 @@ div, td {
   font-family: 'Alef', sans-serif;
 }
 
-.delButton, .editButton {
-  color: #6886A8;
-}
-
 .amp {
    font-family: 'Baskerville', 'Alef', sans-serif;
    font-style: italic;
+}
+
+.fa-check-square-o, .fa-edit {
+  color: #6886A8;
 }
 
 div {
