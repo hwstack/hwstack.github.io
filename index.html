@@ -570,7 +570,9 @@ function parseInfo(){
 		initFancyHeader();
 		initBoxes();
 		initStrikes();
-		initLinkDetector();	
+		initLinkDetector();
+
+              $("#wrapper").css("top",$("header").outerHeight());
 		
 		keyCombos = 'listener.counting_combo("control shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("command shift c", function(e, count) {showChat("hwstack");});listener.counting_combo("control shift p", function(e, count) {showPrivateChat();});listener.counting_combo("command shift p", function(e, count) {showPrivateChat();});listener.counting_combo("control shift m", function(e, count) {showMailFeed();});'
 		eval(keyCombos);
