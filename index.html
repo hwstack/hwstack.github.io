@@ -7,7 +7,7 @@ Just don't say you made the original.
 
 Fool, that was our job.
 
-Peace on earth!
+Peace on earth!h
 
 --------------------------------
 
@@ -667,6 +667,10 @@ var isMobile = {
 					$(this).animate({
 						"background-color": "#A7DE7A"
 					},100);
+				}else{
+					$(this).animate({
+						"background-color": "#EBD754"
+					},100);
 				}
 			}, function() {
 				$(this).animate({
@@ -1047,7 +1051,7 @@ var isMobile = {
 	
 				delHref = "javascript:delTask('"+key+"')";
 				editHref = "javascript:editTask('"+key+"')";
-				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
+				$row = $( "<tr class='taskL'><td colspan='3' class='mystack-entry'><span>"+date+"</span>&nbsp;<span class='class'>"+key+"</span><br /><span class='task'>"+task+"</span></td><td><a class='delButton' href="+'"'+delHref+'"'+"><i class='fa fa-check-square-o'></i></a><br /><a class='editButton' href="+'"'+editHref+'"'+"><i class='fa fa-edit'></i></a></td></tr>" );
 			
 				$( "#tasks" ).prepend( $row );
 			}
