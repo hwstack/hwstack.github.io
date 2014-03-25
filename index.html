@@ -710,18 +710,20 @@ var isMobile = {
 	}
 	
 	function initStrikes(){
-		
-		$(".mystack-entry").click(function(){
-			if( $(this).css("text-decoration")=="line-through" ){
+		$(".mystack-entry .task").click(function(){
+			if( $(this).css("text-decoration").contains("line-through") ){
 				$(this).css("text-decoration","none");
+				$(this).css("color","");
 				colorize();
 				return;
 			}else{
 				$(this).css("text-decoration","line-through");
+				$(this).css("color","#888");
 				colorize();
 				return;
 			}
 		});
+		$(".mystack-entry .task").mousedown(function(){return false;});
 	}
 	
 	function initLinkDetector(){
@@ -1058,6 +1060,7 @@ var isMobile = {
 		}
 		
 		colorize();
+		initStrikes();
 		//runEmojify();
 		
 		//UGLY
