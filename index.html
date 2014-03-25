@@ -712,7 +712,7 @@ var isMobile = {
 	function initStrikes(){
 		$(".mystack-entry").dblclick(function(){
 			var $task = $(this).find(".task");
-			if( $(this).css("text-decoration").contains("line-through") ){
+			if( $task.css("text-decoration").contains("line-through") ){
 				$task.css("text-decoration","none");
 				$task.css("color","");
 				
