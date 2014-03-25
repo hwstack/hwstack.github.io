@@ -1202,9 +1202,9 @@ var isMobile = {
 	
 	function updateLayout(){
 		if ($(window).width() <= 1353){	
-			$( ".link-title" ).hide('400');
+			$( ".link-title" ).fadeOut('400');
 		}else{
-			$( ".link-title" ).show('400');
+			$( ".link-title" ).fadeIn('400');
 		}
 		
 		var wrapperWidth = (getQueryVariable("w") ? getQueryVariable("w") : 100)+"%";
