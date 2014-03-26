@@ -1414,7 +1414,7 @@ var isMobile = {
 function drawStats(){
 	$(".bubble").remove();
 	
-	var diameter = 1000,
+	var diameter = 900,
 	format = d3.format(",d"),
 	color = d3.scale.category20c();
 	
@@ -1424,7 +1424,9 @@ function drawStats(){
 	  .padding(1.5);
 	  
 	var svg = d3.select("body").append("svg")
-	  .attr("class", "bubble");
+	  .attr("class", "bubble")
+	  .attr("height", diameter)
+	  .attr("width", diameter);
           
       var root = {
        "name": "flare",
