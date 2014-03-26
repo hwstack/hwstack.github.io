@@ -1425,8 +1425,8 @@ function drawStats(){
 	  
 	var svg = d3.select("body").append("svg")
 	  .attr("class", "bubble")
-	  .attr("height", diameter)
-	  .attr("width", diameter);
+	  .attr("height", $(window).width())
+	  .attr("width", $(window).height());
           
       var root = {
        "name": "flare",
