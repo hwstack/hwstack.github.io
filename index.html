@@ -614,6 +614,7 @@ var isMobile = {
 		});
 		
 		reDraw();
+		drawStats();
 	}
 	
 	jQuery.fn.exists = function(){return this.length>0;}
@@ -1425,8 +1426,8 @@ function drawStats(){
 	  
 	var svg = d3.select("body").append("svg")
 	  .attr("class", "bubble")
-	  .attr("height", $(window).width())
-	  .attr("width", $(window).height());
+	  .attr("height", $(window).height())
+	  .attr("width", $(window).width());
           
       var root = {
        "name": "flare",
