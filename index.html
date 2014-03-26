@@ -50,7 +50,7 @@ Add functionality for moving around tasks.  :S
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="oridomi.js"></script>
   <script src="typed.js"></script>
-  <script src="emojify.js"></script>
+  <!--<script src="emojify.js"></script>-->
   
   <!--favicon-->
   <link rel="shortcut icon" id="stack-icon" href="http://www.iconj.com/ico/p/l/pl24j2fryv.ico" type="image/x-icon" />
@@ -1403,6 +1403,77 @@ var isMobile = {
 		document.cookie = "version=old; expires=Thu, 18 Dec 2037 12:00:00 GMT;"
 		window.open("old","_self");
 	}
+	
+	function tcount(a){
+		return $(".taskL:contains('"+a+"')").length;
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function drawStats(){
+	$(".bubble").remove();
+	
+	var diameter = 1000,
+	format = d3.format(",d"),
+	color = d3.scale.category20c();
+	
+	var bubble = d3.layout.pack()
+	  .sort(null)
+	  .size([diameter, diameter])
+	  .padding(1.5);
+	  
+	var svg = d3.select("body").append("svg")
+	  .attr("class", "bubble");
+          
+      var root = {
+       "name": "flare",
+       "children": [
+              {"name": "HumVaughan", "size": tcount("humv"), "color": "#4B8AE3"},
+              {"name": "HumCadigan", "size": tcount("humc"), "color": "#4343E6"},
+              {"name": "Span", "size": tcount("span"), "color": "#00007F"},
+              {"name": "MathKramer", "size": tcount("mathk"), "color": "#C321EB"},
+              {"name": "MathCW", "size": tcount("mathc"), "color": "#369E19"},
+              {"name": "Sci", "size": tcount("sci"), "color": "#EB9721"},
+              {"name": "Lat", "size": tcount("lat"), "color": "#B20000"},
+              {"name": "MUN", "size": tcount("mun"), "color": "#282828"}
+        ]
+      }
+      
+        var node = svg.selectAll(".node")
+            .data(bubble.nodes(classes(root))
+            .filter(function(d) { return !d.children; }))
+          .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      
+        node.append("title")
+            .text(function(d) { return d.className + ": " + format(d.value); });
+      
+        node.append("circle")
+            .attr("r", function(d) { return d.r; })
+            .style("fill", function(d) { return d.fill; });
+      
+        node.append("text")
+            .attr("dy", ".3em")
+            .style("text-anchor", "middle")
+            .text(function(d) { return d.className.substring(0, d.r / 3); });
+      
+      // Returns a flattened hierarchy containing all leaf nodes under the root.
+      function classes(root) {
+        var classes = [];
+      
+        function recurse(name, node) {
+          if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+          else classes.push({packageName: name, className: node.name, value: node.size, fill: node.color});
+        }
+      
+        recurse(null, root);
+        return {children: classes};
+      }
+      
+      d3.select(self.frameElement).style("height", diameter + "px");
+}
 
 </script>
 
