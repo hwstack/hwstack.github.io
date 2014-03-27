@@ -209,6 +209,12 @@ pre {
 	margin-bottom: 0.1em;
 }
 
+.bubble {
+	position: absolute;
+	top: 0px;
+	left: 20%;
+}
+
 #circularG {
     position: relative;
     margin: 0px auto;
