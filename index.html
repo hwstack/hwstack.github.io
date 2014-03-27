@@ -1417,7 +1417,7 @@ var isMobile = {
 function drawStats(){
 	$(".bubble").remove();
 	
-	var diameter = 900,
+	var diameter = $(window).width()/1.7,
 	format = d3.format(",d"),
 	color = d3.scale.category20c();
 	
