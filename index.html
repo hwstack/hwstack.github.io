@@ -983,7 +983,7 @@ var isMobile = {
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
 		
-		key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
+		//key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
 		
 		$("#key").val('');
 		$("#task").val('');
@@ -1029,7 +1029,7 @@ var isMobile = {
 			}
 		}
 		
-		key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
+		//key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
 		
 		$.jStorage.set(key, task+"@"+date);
 		
