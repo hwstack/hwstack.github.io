@@ -934,6 +934,19 @@ var isMobile = {
 	}
 	
 	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
+	Array.prototype.contains = function(s){
+		for(i=0;i<this.length;i++)
+			if(this[i].toUpperCase().contains(s.toUpperCase()))return true;
+		return false;
+	}
+	Array.prototype.count = function(s){
+		var c = 0;
+		for(i=0;i<this.length;i++){
+		    if(this[i]==s)
+		        c++;
+		}
+		return c;
+	}
 
 	function add(){
 		var key = $("#key").val();
@@ -969,6 +982,8 @@ var isMobile = {
 		if(moment(Date.parse(date)).format("M/D/YY")!="Invalid date"){
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
+		
+		key = $.jStorage.index().contains(key) ? key+$.jStorage.index().count(key)+1 : key;
 		
 		$("#key").val('');
 		$("#task").val('');
