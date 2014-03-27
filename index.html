@@ -7,7 +7,7 @@ Just don't say you made the original.
 
 Fool, that was our job.
 
-Peace on earth!h
+Peace on earth!
 
 --------------------------------
 
@@ -1458,11 +1458,6 @@ function drawStats(){
         node.append("circle")
             .attr("r", function(d) { return d.r; })
             .style("fill", function(d) { return d.fill; });
-      
-        node.append("text")
-            .attr("dy", ".3em")
-            .style("text-anchor", "middle")
-            .text(function(d) { return d.className.substring(0, d.r / 3); });
       
       // Returns a flattened hierarchy containing all leaf nodes under the root.
       function classes(root) {
