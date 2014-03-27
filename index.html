@@ -1692,13 +1692,13 @@ function drawStats(){
 		encodedNodes += String.fromCharCode(x) + String.fromCharCode(y);
 	}
 	while (encodedNodes.length > 74) {
-		S += '"' + encodedNodes.slice(0, 74) + "\"\n+";
+		S += encodedNodes.slice(0, 74);
 		encodedNodes = encodedNodes.slice(74, encodedNodes.length);
 	}
 	S += encodedNodes+"|";
 	bytes = bytes.toString();
 	while (bytes.length > 74) {
-		S += '"' + bytes.slice(0, 74) + "\"\n+";
+		S += bytes.slice(0, 74);
 		bytes = bytes.slice(74, bytes.length);
 	}
 	S += bytes+"|";
