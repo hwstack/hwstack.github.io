@@ -936,7 +936,7 @@ var isMobile = {
 	String.prototype.contains = function(s){return this.indexOf(s) != -1;}
 	Array.prototype.contains = function(s){
 		for(i=0;i<this.length;i++)
-			if(this[i].toUpperCase().contains(s.toUpperCase()))return true;
+			if(this[i].toString().toUpperCase().contains(s.toString().toUpperCase()))return true;
 		return false;
 	}
 	Array.prototype.count = function(s){
@@ -983,7 +983,7 @@ var isMobile = {
 			date = moment(Date.parse(date)).format("M/D/YY");
 		}
 		
-		key = $.jStorage.index().contains(key) ? key+$.jStorage.index().count(key)+1 : key;
+		key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
 		
 		$("#key").val('');
 		$("#task").val('');
@@ -1028,6 +1028,8 @@ var isMobile = {
 				date = "next monday";
 			}
 		}
+		
+		key = $.jStorage.index().contains(key) ? key+Number($.jStorage.index().count(key)+1) : key;
 		
 		$.jStorage.set(key, task+"@"+date);
 		
