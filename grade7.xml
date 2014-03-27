@@ -1,42 +1,41 @@
-<document>
-	<entry>
-		<date>3/27/14</date>
-		<class>#MathKramer</class>
-		<task>1.4, Practice (all)</task>
-	</entry>
-	<!--<entry>
-		<date>3/27/14</date>
-		<class>#MathCW</class>
-		<task>p. 711, #13-29 (all)</task>
-	</entry>-->
-	<entry>
-		<date>3/27/14</date>
-		<class>#Span</class>
-		<task>Crucigrama</task>
-	</entry>
-	<entry>
-		<date>3/31/14</date>
-		<class>#Span</class>
-		<task>Quiz of Vocab 1</task>
-	</entry>
-	<entry>
-		<date>3/31/14</date>
-		<class>#Sci</class>
-		<task>Ch 21 TCN + Qs</task>
-	</entry>
-	<entry>
-		<date>3/28/14</date>
-		<class>#HumVaughan</class>
-		<task>Finish Study Guide (Hardcopy) [MUN Folks: Share with Ms. Vaughan on Saturday]</task>
-	</entry>
-	<entry>
-		<date>3/31/14</date>
-		<class>#HumVaughan</class>
-		<task>Venn Diagram</task>
-	</entry>
-	<entry>
-		<date>3/26/14</date>
-		<class>#HumCadigan</class>
-		<task>30 Notecards by Monday</task>
-	</entry>
-</document>
+{
+  "document": {
+    "entry": [
+      {
+        "date": "3/27/14",
+        "class": "#MathKramer",
+        "task": "1.4, Practice (all)"
+      },
+      {
+        "date": "3/27/14",
+        "class": "#Span",
+        "task": "Crucigrama"
+      },
+      {
+        "date": "3/31/14",
+        "class": "#Span",
+        "task": "Quiz of Vocab 1"
+      },
+      {
+        "date": "3/31/14",
+        "class": "#Sci",
+        "task": "Ch 21 TCN + Qs"
+      },
+      {
+        "date": "3/28/14",
+        "class": "#HumVaughan",
+        "task": "Finish Study Guide (Hardcopy) [MUN Folks: Share with Ms. Vaughan on Saturday]"
+      },
+      {
+        "date": "3/31/14",
+        "class": "#HumVaughan",
+        "task": "Venn Diagram"
+      },
+      {
+        "date": "3/26/14",
+        "class": "#HumCadigan",
+        "task": "30 Notecards by Monday"
+      }
+    ]
+  }
+}
