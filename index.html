@@ -41,6 +41,7 @@ Add functionality for moving around tasks.  :S
   <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet"></link>
   
   <script src="jstorage.js"></script>
+  <script src="https://rawgithub.com/thetakeaway/zeus.js/master/zeus.js"></script>
   
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
   <script src="http://timeago.yarp.com/jquery.timeago.js"></script>
@@ -616,7 +617,7 @@ var isMobile = {
 		reDraw();
 	}
 	
-	jQuery.fn.exists = function(){return this.length>0;}
+	$.fn.exists = function(){return this.length>0;}
 	
 	$(window).resize(function(){
 		if(!bugreps){updateLayout();}
@@ -1723,22 +1724,22 @@ function parseCode(data){
 }
 
 function StringMaker () {
-		this.str = "";
-		this.length = 0;
-		this.append = function (s) {
-			this.str += s;
-			this.length += s.length;
-		}
-		this.prepend = function (s) {
-			this.str = s + this.str;
-			this.length += s.length;
-		}
-		this.toString = function () {
-			return this.str;
-		}
-	} 
-	
-	function BitsToBytes(i) {
+	this.str = "";
+	this.length = 0;
+	this.append = function (s) {
+		this.str += s;
+		this.length += s.length;
+	}
+	this.prepend = function (s) {
+		this.str = s + this.str;
+		this.length += s.length;
+	}
+	this.toString = function () {
+		return this.str;
+	}
+} 
+
+function BitsToBytes(i) {
 	o = 42;
 	if (i.charAt(0) == '1') {
 		o += 32;
@@ -1763,6 +1764,37 @@ function StringMaker () {
 	}
 	return String.fromCharCode(o);
 }
+
+	$.fn.htmls = function(){
+		var a = [];
+		this.each(function(){
+			a.push($(this).html());
+		});
+		return a;
+	}
+	
+	$.fn.texts = function(){
+		var a = [];
+		this.each(function(){
+			a.push($(this).text());
+		});
+		return a;
+	}
+	
+	function genCode(){
+		var a = "",
+		    k = $.jStorage.index().slice(1,$.jStorage.index().length);
+		for(i=0;i<k.length;i++) a += k[i]+"뼹"+$.jStorage.get(k[i])+"뼽";
+		console.log(a);
+	}
+	
+	function useCode(a){
+		var items = a.split("뼽");
+		var keys = items.split("뼹").odds();
+		var vals = items.split("뼹").evens();
+		console.log("Keys: "+keys.join("`"));
+		console.log("Vals: "+vals.join("`"));
+	}
 
 </script>
 
