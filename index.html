@@ -1784,16 +1784,19 @@ function BitsToBytes(i) {
 	function genCode(){
 		var a = "",
 		    k = $.jStorage.index().slice(1,$.jStorage.index().length);
-		for(i=0;i<k.length;i++) a += k[i]+"뼹"+$.jStorage.get(k[i])+"뼽";
+		for(i=0;i<k.length;i++) a += compressCode(k[i])+"뼹"+compressCode($.jStorage.get(k[i]))+"뼽";
 		console.log(a);
 	}
 	
 	function useCode(a){
-		var items = a.split("뼽");
-		var keys = items.split("뼹").odds();
-		var vals = items.split("뼹").evens();
-		console.log("Keys: "+keys.join("`"));
-		console.log("Vals: "+vals.join("`"));
+		var items = a.split("뼽"),
+		    keys = items.split("뼹").odds(),
+		    vals = items.split("뼹").evens();
+		for(i=0;i<items.length;i++){
+			$.jStorage.set(parseCode(keys[i]), parseCode(vals[i]))
+		}
+		reDraw();
+		
 	}
 
 </script>
